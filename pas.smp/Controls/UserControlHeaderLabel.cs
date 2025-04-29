@@ -12,31 +12,33 @@ namespace pas.smp.Controls
 {
     public partial class UserControlHeaderLabel : UserControl
     {
-        //[Browsable(true)]
-        [
-        Category("SetText"),
-        Description("Header 의 Text를 설정합니다.")
-        ]
+        [Category("SetText")]
+        [Description("Header 의 Text를 설정합니다.")]
         public string SetHeaderText
         {
-            get { return HeaderText.Text; }
+            get => HeaderText.Text;
             set
             {
                 HeaderText.Text = value;
             }
         }
 
-        //[Browsable(true)]
+        public override string Text
+        {
+            get => MainText.Text;
+            set => MainText.Text = value;
+        }
+
         //[Category("Custom Properties")]
         //[Description("컨트롤의 내용 Text를 설정합니다.")]
-        public string SetText
-        {
-            get { return MainText.Text; }
-            set
-            {
-                MainText.Text = value;
-            }
-        }
+        //public string SetText
+        //{
+        //    get => MainText.Text; 
+        //    set
+        //    {
+        //        MainText.Text = value;
+        //    }
+        //}
 
         public UserControlHeaderLabel()
         {

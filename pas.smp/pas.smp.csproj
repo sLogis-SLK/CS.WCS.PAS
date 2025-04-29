@@ -61,6 +61,11 @@
     <Compile Include="Controls\UserControlHeaderLabel.Designer.cs">
       <DependentUpon>UserControlHeaderLabel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Globel\GlobalClass.cs" />
+    <Compile Include="Models\운송장채번Model.cs" />
+    <Compile Include="Services\채번.cs" />
+    <Compile Include="Services\출하\출하내역관리.cs" />
+    <Compile Include="Utils\Utils.cs" />
     <Compile Include="WinFormsApp\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +117,10 @@
       <Project>{32334c37-e8d6-483c-a787-c66d31adf518}</Project>
       <Name>ldenvlib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\CS.TRabbit_V4\TR_Common\TR_Common.csproj">
+      <Project>{41217009-999a-4178-9266-8373b3a68dc6}</Project>
+      <Name>TR_Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CS.TRabbit_V4\TR_Library\TR_Library.csproj">
       <Project>{7845a835-3539-4c92-b83c-e6c3227a7831}</Project>
       <Name>TR_Library</Name>
@@ -122,11 +131,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Globel\" />
     <Folder Include="Library\" />
-    <Folder Include="Models\" />
-    <Folder Include="Services\" />
-    <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

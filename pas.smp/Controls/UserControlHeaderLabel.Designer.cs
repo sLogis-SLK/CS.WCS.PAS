@@ -47,10 +47,10 @@ namespace pas.smp.Controls
             appearance1.TextVAlignAsString = "Middle";
             this.HeaderText.Appearance = appearance1;
             this.HeaderText.Dock = System.Windows.Forms.DockStyle.Top;
-            this.HeaderText.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.HeaderText.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.HeaderText.Location = new System.Drawing.Point(0, 0);
             this.HeaderText.Name = "HeaderText";
-            this.HeaderText.Size = new System.Drawing.Size(344, 25);
+            this.HeaderText.Size = new System.Drawing.Size(178, 25);
             this.HeaderText.TabIndex = 1;
             this.HeaderText.Text = "Header Text";
             // 
@@ -63,7 +63,7 @@ namespace pas.smp.Controls
             this.ultraPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraPanel1.Location = new System.Drawing.Point(0, 25);
             this.ultraPanel1.Name = "ultraPanel1";
-            this.ultraPanel1.Size = new System.Drawing.Size(344, 87);
+            this.ultraPanel1.Size = new System.Drawing.Size(178, 87);
             this.ultraPanel1.TabIndex = 2;
             // 
             // MainText
@@ -75,7 +75,7 @@ namespace pas.smp.Controls
             this.MainText.Font = new System.Drawing.Font("굴림", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.MainText.Location = new System.Drawing.Point(0, 0);
             this.MainText.Name = "MainText";
-            this.MainText.Size = new System.Drawing.Size(344, 87);
+            this.MainText.Size = new System.Drawing.Size(178, 87);
             this.MainText.TabIndex = 0;
             // 
             // UserControlHeaderLabel
@@ -86,7 +86,7 @@ namespace pas.smp.Controls
             this.Controls.Add(this.ultraPanel1);
             this.Controls.Add(this.HeaderText);
             this.Name = "UserControlHeaderLabel";
-            this.Size = new System.Drawing.Size(344, 112);
+            this.Size = new System.Drawing.Size(178, 112);
             this.ultraPanel1.ClientArea.ResumeLayout(false);
             this.ultraPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -126,7 +126,6 @@ namespace pas.smp.WinFormsApp
             this.박스바코드.Location = new System.Drawing.Point(3, 3);
             this.박스바코드.Name = "박스바코드";
             this.박스바코드.SetHeaderText = "박스바 코드";
-            this.박스바코드.SetText = "";
             this.박스바코드.Size = new System.Drawing.Size(643, 108);
             this.박스바코드.TabIndex = 0;
             // 
@@ -366,7 +365,6 @@ namespace pas.smp.WinFormsApp
             this.총량.Location = new System.Drawing.Point(652, 3);
             this.총량.Name = "총량";
             this.총량.SetHeaderText = "총 량";
-            this.총량.SetText = "";
             this.총량.Size = new System.Drawing.Size(417, 108);
             this.총량.TabIndex = 1;
             // 
@@ -377,7 +375,6 @@ namespace pas.smp.WinFormsApp
             this.배송사.Location = new System.Drawing.Point(652, 117);
             this.배송사.Name = "배송사";
             this.배송사.SetHeaderText = "배 송 사";
-            this.배송사.SetText = "";
             this.배송사.Size = new System.Drawing.Size(417, 95);
             this.배송사.TabIndex = 2;
             // 
@@ -388,7 +385,6 @@ namespace pas.smp.WinFormsApp
             this.매장명.Location = new System.Drawing.Point(3, 117);
             this.매장명.Name = "매장명";
             this.매장명.SetHeaderText = "매 장 명";
-            this.매장명.SetText = "";
             this.매장명.Size = new System.Drawing.Size(643, 95);
             this.매장명.TabIndex = 3;
             // 
@@ -420,7 +416,6 @@ namespace pas.smp.WinFormsApp
             this.운송장번호.Location = new System.Drawing.Point(3, 356);
             this.운송장번호.Name = "운송장번호";
             this.운송장번호.SetHeaderText = "운송장 번호";
-            this.운송장번호.SetText = "";
             this.운송장번호.Size = new System.Drawing.Size(643, 109);
             this.운송장번호.TabIndex = 8;
             // 
@@ -431,7 +426,6 @@ namespace pas.smp.WinFormsApp
             this.내품수.Location = new System.Drawing.Point(3, 3);
             this.내품수.Name = "내품수";
             this.내품수.SetHeaderText = "내 품 수";
-            this.내품수.SetText = "";
             this.내품수.Size = new System.Drawing.Size(195, 126);
             this.내품수.TabIndex = 2;
             // 
@@ -442,7 +436,6 @@ namespace pas.smp.WinFormsApp
             this.마지막박스.Location = new System.Drawing.Point(198, 3);
             this.마지막박스.Name = "마지막박스";
             this.마지막박스.SetHeaderText = "마지막 박스";
-            this.마지막박스.SetText = "";
             this.마지막박스.Size = new System.Drawing.Size(216, 126);
             this.마지막박스.TabIndex = 3;
             // 
@@ -463,7 +456,6 @@ namespace pas.smp.WinFormsApp
             this.총량무시.Location = new System.Drawing.Point(198, 3);
             this.총량무시.Name = "총량무시";
             this.총량무시.SetHeaderText = "총량 무시";
-            this.총량무시.SetText = "";
             this.총량무시.Size = new System.Drawing.Size(216, 103);
             this.총량무시.TabIndex = 3;
             // 
@@ -474,7 +466,6 @@ namespace pas.smp.WinFormsApp
             this.재발행.Location = new System.Drawing.Point(3, 3);
             this.재발행.Name = "재발행";
             this.재발행.SetHeaderText = "재 발 행";
-            this.재발행.SetText = "";
             this.재발행.Size = new System.Drawing.Size(195, 103);
             this.재발행.TabIndex = 2;
             // 
@@ -485,7 +476,6 @@ namespace pas.smp.WinFormsApp
             this.배치번호.Location = new System.Drawing.Point(3, 3);
             this.배치번호.Name = "배치번호";
             this.배치번호.SetHeaderText = "배치 번호";
-            this.배치번호.SetText = "";
             this.배치번호.Size = new System.Drawing.Size(195, 126);
             this.배치번호.TabIndex = 3;
             // 
@@ -496,7 +486,6 @@ namespace pas.smp.WinFormsApp
             this.슈트번호.Location = new System.Drawing.Point(198, 3);
             this.슈트번호.Name = "슈트번호";
             this.슈트번호.SetHeaderText = "슈트 번호";
-            this.슈트번호.SetText = "";
             this.슈트번호.Size = new System.Drawing.Size(195, 126);
             this.슈트번호.TabIndex = 4;
             // 
@@ -507,7 +496,6 @@ namespace pas.smp.WinFormsApp
             this.박스번호.Location = new System.Drawing.Point(393, 3);
             this.박스번호.Name = "박스번호";
             this.박스번호.SetHeaderText = "박스 번호";
-            this.박스번호.SetText = "";
             this.박스번호.Size = new System.Drawing.Size(247, 126);
             this.박스번호.TabIndex = 5;
             // 
