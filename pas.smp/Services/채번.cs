@@ -7,48 +7,41 @@ namespace pas.smp
 {
     public class 채번
     {
-
-        public static 운송장채번Model 운송장채번(string sDivCd, string sCoCd, string sCenterCd, string sBcode, string sShippingCd, string sShopCd)
+        //s센터코드, sB코드, s배송사코드, s점코드
+        public static 운송장채번Model 운송장채번(string s장비코드, string s회원사코드, string s센터코드, string sB코드, string s배송사코드, string s점코드)
         {
             운송장채번Model waybill = new 운송장채번Model();
-            string str1 = sDivCd;
-            string str2 = sCoCd;
-            string str3 = sCenterCd;
-            string empty1 = string.Empty;
-            string empty2 = string.Empty;
-            string empty3 = string.Empty;
-            byte[] numArray = new byte[1024];
-            string str4 = "\u0002";
-            string str5 = "\u0003";
-            string str6 = "\b";
-            string str7 = "\a";
+            
             try
             {
-                Stream responseStream = WebRequest.Create(GlobalClass.URL + "sP1=" + str1 + "&sP2=" + str2 + "&sP3=" + str3 + "&sP4=" + sBcode + "&sP5=" + sShippingCd + "&sP6=" + sShopCd).GetResponse().GetResponseStream();
+                string sResponse원본 = string.Empty;
+
+                byte[] numArray = new byte[1024];
+                string str1 = "\u0002";
+                string str2 = "\u0003";
+                string str3 = "\b";
+                string str4 = "\a";
+
+                Stream responseStream = WebRequest.Create(GlobalClass.URL + "sP1=" + s장비코드 + "&sP2=" + s회원사코드 + "&sP3=" + s센터코드 + "&sP4=" + sB코드 + "&sP5=" + s배송사코드 + "&sP6=" + s점코드).GetResponse().GetResponseStream();
                 while (responseStream.Read(numArray, 0, numArray.Length) != 0)
-                    empty1 += Encoding.Default.GetString(numArray);
+                    sResponse원본 += Encoding.Default.GetString(numArray);
                 responseStream.Close();
 
-                string str8 = empty1;
-                string empty4 = string.Empty;
-                string empty5 = string.Empty;
-                string empty6 = string.Empty;
-                string str9 = str8.Trim().Replace("\t", "").Replace("\r", "").Replace("\n", "").Replace("\r\n", "").Replace("\0", "");
-                if (str9.Substring(0, 1).Equals(str4))
+                //변환한 데이터
+                string sResponseData = sResponse원본.Trim().Replace("\t", "").Replace("\r", "").Replace("\n", "").Replace("\r\n", "").Replace("\0", "");
+                if (sResponseData.Substring(0, 1).Equals(str1))
                 {
-                    if (str9.Substring(str9.Length - 1, 1).Equals(str5))
+                    if (sResponseData.Substring(sResponseData.Length - 1, 1).Equals(str2))
                     {
-                        string str10 = str9.Substring(1, str9.Length - 2);
-                        string str11 = str10.Substring(0, 1);
-                        int length1 = str10.IndexOf(str6, 0);
-                        str10.Substring(0, length1);
-                        switch (str11)
+                        string strTmp1 = sResponseData.Substring(1, sResponseData.Length - 2);
+                        int lengthTmp1 = strTmp1.IndexOf(str3, 0);
+
+                        switch (strTmp1.Substring(0, 1))
                         {
                             case "1":
-                                string str12 = str10.Substring(length1 + 1, str10.Length - (length1 + 1));
-                                int length2 = str12.IndexOf(str6, 0);
-                                str12.Substring(0, length2);
-                                string[] strArray = str12.Replace("\b", "").Split(Convert.ToChar(str7));
+                                string strTmp2 = strTmp1.Substring(lengthTmp1 + 1, strTmp1.Length - (lengthTmp1 + 1));
+
+                                string[] strArray = strTmp2.Replace("\b", "").Split(Convert.ToChar(str4));
                                 waybill.채번여부 = true;
                                 waybill.메시지 = "성공";
                                 waybill.운송장번호 = strArray[0].ToString();
@@ -58,7 +51,7 @@ namespace pas.smp
                                 waybill.출력값4 = strArray[4].ToString();
                                 waybill.출력값5 = strArray[5].ToString();
                                 waybill.출력값6 = strArray[6].ToString();
-                                waybill.배송사코드 = sShippingCd;
+                                waybill.배송사코드 = s배송사코드;
                                 break;
                             default:
                                 waybill.채번여부 = false;

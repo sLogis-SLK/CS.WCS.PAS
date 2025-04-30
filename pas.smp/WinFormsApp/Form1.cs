@@ -62,5 +62,10 @@ namespace pas.smp.WinFormsApp
         }
 
         #endregion
+
+        private void ultraButton2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

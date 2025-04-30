@@ -54,7 +54,21 @@ namespace pas.smp.WinFormsApp
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ultraGroupBox4 = new Infragistics.Win.Misc.UltraGroupBox();
+            this.총량무시 = new pas.smp.Controls.UserControlHeaderLabel();
+            this.재발행 = new pas.smp.Controls.UserControlHeaderLabel();
+            this.운송장번호 = new pas.smp.Controls.UserControlHeaderLabel();
+            this.ultraGroupBox3 = new Infragistics.Win.Misc.UltraGroupBox();
+            this.마지막박스 = new pas.smp.Controls.UserControlHeaderLabel();
+            this.내품수 = new pas.smp.Controls.UserControlHeaderLabel();
+            this.매장명 = new pas.smp.Controls.UserControlHeaderLabel();
+            this.배송사 = new pas.smp.Controls.UserControlHeaderLabel();
+            this.총량 = new pas.smp.Controls.UserControlHeaderLabel();
             this.박스바코드 = new pas.smp.Controls.UserControlHeaderLabel();
+            this.ultraGroupBox2 = new Infragistics.Win.Misc.UltraGroupBox();
+            this.박스번호 = new pas.smp.Controls.UserControlHeaderLabel();
+            this.슈트번호 = new pas.smp.Controls.UserControlHeaderLabel();
+            this.배치번호 = new pas.smp.Controls.UserControlHeaderLabel();
             this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
             this.ultraButton7 = new Infragistics.Win.Misc.UltraButton();
             this.종료버튼 = new Infragistics.Win.Misc.UltraButton();
@@ -66,32 +80,18 @@ namespace pas.smp.WinFormsApp
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.uGrid2 = new TR_Library.Controls.uGrid();
             this.uGrid1 = new TR_Library.Controls.uGrid();
-            this.총량 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.배송사 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.매장명 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.ultraGroupBox2 = new Infragistics.Win.Misc.UltraGroupBox();
-            this.ultraGroupBox3 = new Infragistics.Win.Misc.UltraGroupBox();
-            this.운송장번호 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.내품수 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.마지막박스 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.ultraGroupBox4 = new Infragistics.Win.Misc.UltraGroupBox();
-            this.총량무시 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.재발행 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.배치번호 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.슈트번호 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.박스번호 = new pas.smp.Controls.UserControlHeaderLabel();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox4)).BeginInit();
+            this.ultraGroupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).BeginInit();
+            this.ultraGroupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).BeginInit();
+            this.ultraGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
             this.ultraGroupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uGrid2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).BeginInit();
-            this.ultraGroupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).BeginInit();
-            this.ultraGroupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox4)).BeginInit();
-            this.ultraGroupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -119,6 +119,106 @@ namespace pas.smp.WinFormsApp
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1072, 468);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
+            // ultraGroupBox4
+            // 
+            this.ultraGroupBox4.Controls.Add(this.총량무시);
+            this.ultraGroupBox4.Controls.Add(this.재발행);
+            this.ultraGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraGroupBox4.Location = new System.Drawing.Point(652, 356);
+            this.ultraGroupBox4.Name = "ultraGroupBox4";
+            this.ultraGroupBox4.Size = new System.Drawing.Size(417, 109);
+            this.ultraGroupBox4.TabIndex = 9;
+            // 
+            // 총량무시
+            // 
+            this.총량무시.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.총량무시.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.총량무시.Location = new System.Drawing.Point(198, 3);
+            this.총량무시.Name = "총량무시";
+            this.총량무시.SetHeaderText = "총량 무시";
+            this.총량무시.Size = new System.Drawing.Size(216, 103);
+            this.총량무시.TabIndex = 3;
+            // 
+            // 재발행
+            // 
+            this.재발행.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.재발행.Dock = System.Windows.Forms.DockStyle.Left;
+            this.재발행.Location = new System.Drawing.Point(3, 3);
+            this.재발행.Name = "재발행";
+            this.재발행.SetHeaderText = "재 발 행";
+            this.재발행.Size = new System.Drawing.Size(195, 103);
+            this.재발행.TabIndex = 2;
+            // 
+            // 운송장번호
+            // 
+            this.운송장번호.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.운송장번호.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.운송장번호.Location = new System.Drawing.Point(3, 356);
+            this.운송장번호.Name = "운송장번호";
+            this.운송장번호.SetHeaderText = "운송장 번호";
+            this.운송장번호.Size = new System.Drawing.Size(643, 109);
+            this.운송장번호.TabIndex = 8;
+            // 
+            // ultraGroupBox3
+            // 
+            this.ultraGroupBox3.Controls.Add(this.마지막박스);
+            this.ultraGroupBox3.Controls.Add(this.내품수);
+            this.ultraGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraGroupBox3.Location = new System.Drawing.Point(652, 218);
+            this.ultraGroupBox3.Name = "ultraGroupBox3";
+            this.ultraGroupBox3.Size = new System.Drawing.Size(417, 132);
+            this.ultraGroupBox3.TabIndex = 5;
+            // 
+            // 마지막박스
+            // 
+            this.마지막박스.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.마지막박스.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.마지막박스.Location = new System.Drawing.Point(198, 3);
+            this.마지막박스.Name = "마지막박스";
+            this.마지막박스.SetHeaderText = "마지막 박스";
+            this.마지막박스.Size = new System.Drawing.Size(216, 126);
+            this.마지막박스.TabIndex = 3;
+            // 
+            // 내품수
+            // 
+            this.내품수.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.내품수.Dock = System.Windows.Forms.DockStyle.Left;
+            this.내품수.Location = new System.Drawing.Point(3, 3);
+            this.내품수.Name = "내품수";
+            this.내품수.SetHeaderText = "내 품 수";
+            this.내품수.Size = new System.Drawing.Size(195, 126);
+            this.내품수.TabIndex = 2;
+            // 
+            // 매장명
+            // 
+            this.매장명.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.매장명.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.매장명.Location = new System.Drawing.Point(3, 117);
+            this.매장명.Name = "매장명";
+            this.매장명.SetHeaderText = "매 장 명";
+            this.매장명.Size = new System.Drawing.Size(643, 95);
+            this.매장명.TabIndex = 3;
+            // 
+            // 배송사
+            // 
+            this.배송사.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.배송사.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.배송사.Location = new System.Drawing.Point(652, 117);
+            this.배송사.Name = "배송사";
+            this.배송사.SetHeaderText = "배 송 사";
+            this.배송사.Size = new System.Drawing.Size(417, 95);
+            this.배송사.TabIndex = 2;
+            // 
+            // 총량
+            // 
+            this.총량.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.총량.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.총량.Location = new System.Drawing.Point(652, 3);
+            this.총량.Name = "총량";
+            this.총량.SetHeaderText = "총 량";
+            this.총량.Size = new System.Drawing.Size(417, 108);
+            this.총량.TabIndex = 1;
+            // 
             // 박스바코드
             // 
             this.박스바코드.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -128,6 +228,47 @@ namespace pas.smp.WinFormsApp
             this.박스바코드.SetHeaderText = "박스바 코드";
             this.박스바코드.Size = new System.Drawing.Size(643, 108);
             this.박스바코드.TabIndex = 0;
+            // 
+            // ultraGroupBox2
+            // 
+            this.ultraGroupBox2.Controls.Add(this.박스번호);
+            this.ultraGroupBox2.Controls.Add(this.슈트번호);
+            this.ultraGroupBox2.Controls.Add(this.배치번호);
+            this.ultraGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraGroupBox2.Location = new System.Drawing.Point(3, 218);
+            this.ultraGroupBox2.Name = "ultraGroupBox2";
+            this.ultraGroupBox2.Size = new System.Drawing.Size(643, 132);
+            this.ultraGroupBox2.TabIndex = 4;
+            // 
+            // 박스번호
+            // 
+            this.박스번호.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.박스번호.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.박스번호.Location = new System.Drawing.Point(393, 3);
+            this.박스번호.Name = "박스번호";
+            this.박스번호.SetHeaderText = "박스 번호";
+            this.박스번호.Size = new System.Drawing.Size(247, 126);
+            this.박스번호.TabIndex = 5;
+            // 
+            // 슈트번호
+            // 
+            this.슈트번호.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.슈트번호.Dock = System.Windows.Forms.DockStyle.Left;
+            this.슈트번호.Location = new System.Drawing.Point(198, 3);
+            this.슈트번호.Name = "슈트번호";
+            this.슈트번호.SetHeaderText = "슈트 번호";
+            this.슈트번호.Size = new System.Drawing.Size(195, 126);
+            this.슈트번호.TabIndex = 4;
+            // 
+            // 배치번호
+            // 
+            this.배치번호.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.배치번호.Dock = System.Windows.Forms.DockStyle.Left;
+            this.배치번호.Location = new System.Drawing.Point(3, 3);
+            this.배치번호.Name = "배치번호";
+            this.배치번호.SetHeaderText = "배치 번호";
+            this.배치번호.Size = new System.Drawing.Size(195, 126);
+            this.배치번호.TabIndex = 3;
             // 
             // ultraGroupBox1
             // 
@@ -197,6 +338,7 @@ namespace pas.smp.WinFormsApp
             this.ultraButton2.Size = new System.Drawing.Size(74, 74);
             this.ultraButton2.TabIndex = 1;
             this.ultraButton2.Text = "예약.";
+            this.ultraButton2.Click += new System.EventHandler(this.ultraButton2_Click);
             // 
             // 미발행대상버튼
             // 
@@ -358,147 +500,6 @@ namespace pas.smp.WinFormsApp
             this.uGrid1.TabIndex = 0;
             this.uGrid1.Text = "uGrid1";
             // 
-            // 총량
-            // 
-            this.총량.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.총량.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.총량.Location = new System.Drawing.Point(652, 3);
-            this.총량.Name = "총량";
-            this.총량.SetHeaderText = "총 량";
-            this.총량.Size = new System.Drawing.Size(417, 108);
-            this.총량.TabIndex = 1;
-            // 
-            // 배송사
-            // 
-            this.배송사.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.배송사.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.배송사.Location = new System.Drawing.Point(652, 117);
-            this.배송사.Name = "배송사";
-            this.배송사.SetHeaderText = "배 송 사";
-            this.배송사.Size = new System.Drawing.Size(417, 95);
-            this.배송사.TabIndex = 2;
-            // 
-            // 매장명
-            // 
-            this.매장명.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.매장명.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.매장명.Location = new System.Drawing.Point(3, 117);
-            this.매장명.Name = "매장명";
-            this.매장명.SetHeaderText = "매 장 명";
-            this.매장명.Size = new System.Drawing.Size(643, 95);
-            this.매장명.TabIndex = 3;
-            // 
-            // ultraGroupBox2
-            // 
-            this.ultraGroupBox2.Controls.Add(this.박스번호);
-            this.ultraGroupBox2.Controls.Add(this.슈트번호);
-            this.ultraGroupBox2.Controls.Add(this.배치번호);
-            this.ultraGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraGroupBox2.Location = new System.Drawing.Point(3, 218);
-            this.ultraGroupBox2.Name = "ultraGroupBox2";
-            this.ultraGroupBox2.Size = new System.Drawing.Size(643, 132);
-            this.ultraGroupBox2.TabIndex = 4;
-            // 
-            // ultraGroupBox3
-            // 
-            this.ultraGroupBox3.Controls.Add(this.마지막박스);
-            this.ultraGroupBox3.Controls.Add(this.내품수);
-            this.ultraGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraGroupBox3.Location = new System.Drawing.Point(652, 218);
-            this.ultraGroupBox3.Name = "ultraGroupBox3";
-            this.ultraGroupBox3.Size = new System.Drawing.Size(417, 132);
-            this.ultraGroupBox3.TabIndex = 5;
-            // 
-            // 운송장번호
-            // 
-            this.운송장번호.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.운송장번호.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.운송장번호.Location = new System.Drawing.Point(3, 356);
-            this.운송장번호.Name = "운송장번호";
-            this.운송장번호.SetHeaderText = "운송장 번호";
-            this.운송장번호.Size = new System.Drawing.Size(643, 109);
-            this.운송장번호.TabIndex = 8;
-            // 
-            // 내품수
-            // 
-            this.내품수.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.내품수.Dock = System.Windows.Forms.DockStyle.Left;
-            this.내품수.Location = new System.Drawing.Point(3, 3);
-            this.내품수.Name = "내품수";
-            this.내품수.SetHeaderText = "내 품 수";
-            this.내품수.Size = new System.Drawing.Size(195, 126);
-            this.내품수.TabIndex = 2;
-            // 
-            // 마지막박스
-            // 
-            this.마지막박스.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.마지막박스.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.마지막박스.Location = new System.Drawing.Point(198, 3);
-            this.마지막박스.Name = "마지막박스";
-            this.마지막박스.SetHeaderText = "마지막 박스";
-            this.마지막박스.Size = new System.Drawing.Size(216, 126);
-            this.마지막박스.TabIndex = 3;
-            // 
-            // ultraGroupBox4
-            // 
-            this.ultraGroupBox4.Controls.Add(this.총량무시);
-            this.ultraGroupBox4.Controls.Add(this.재발행);
-            this.ultraGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraGroupBox4.Location = new System.Drawing.Point(652, 356);
-            this.ultraGroupBox4.Name = "ultraGroupBox4";
-            this.ultraGroupBox4.Size = new System.Drawing.Size(417, 109);
-            this.ultraGroupBox4.TabIndex = 9;
-            // 
-            // 총량무시
-            // 
-            this.총량무시.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.총량무시.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.총량무시.Location = new System.Drawing.Point(198, 3);
-            this.총량무시.Name = "총량무시";
-            this.총량무시.SetHeaderText = "총량 무시";
-            this.총량무시.Size = new System.Drawing.Size(216, 103);
-            this.총량무시.TabIndex = 3;
-            // 
-            // 재발행
-            // 
-            this.재발행.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.재발행.Dock = System.Windows.Forms.DockStyle.Left;
-            this.재발행.Location = new System.Drawing.Point(3, 3);
-            this.재발행.Name = "재발행";
-            this.재발행.SetHeaderText = "재 발 행";
-            this.재발행.Size = new System.Drawing.Size(195, 103);
-            this.재발행.TabIndex = 2;
-            // 
-            // 배치번호
-            // 
-            this.배치번호.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.배치번호.Dock = System.Windows.Forms.DockStyle.Left;
-            this.배치번호.Location = new System.Drawing.Point(3, 3);
-            this.배치번호.Name = "배치번호";
-            this.배치번호.SetHeaderText = "배치 번호";
-            this.배치번호.Size = new System.Drawing.Size(195, 126);
-            this.배치번호.TabIndex = 3;
-            // 
-            // 슈트번호
-            // 
-            this.슈트번호.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.슈트번호.Dock = System.Windows.Forms.DockStyle.Left;
-            this.슈트번호.Location = new System.Drawing.Point(198, 3);
-            this.슈트번호.Name = "슈트번호";
-            this.슈트번호.SetHeaderText = "슈트 번호";
-            this.슈트번호.Size = new System.Drawing.Size(195, 126);
-            this.슈트번호.TabIndex = 4;
-            // 
-            // 박스번호
-            // 
-            this.박스번호.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.박스번호.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.박스번호.Location = new System.Drawing.Point(393, 3);
-            this.박스번호.Name = "박스번호";
-            this.박스번호.SetHeaderText = "박스 번호";
-            this.박스번호.Size = new System.Drawing.Size(247, 126);
-            this.박스번호.TabIndex = 5;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -510,17 +511,17 @@ namespace pas.smp.WinFormsApp
             this.Name = "Form1";
             this.Text = "Form1";
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox4)).EndInit();
+            this.ultraGroupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).EndInit();
+            this.ultraGroupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).EndInit();
+            this.ultraGroupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).EndInit();
             this.ultraGroupBox1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uGrid2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).EndInit();
-            this.ultraGroupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).EndInit();
-            this.ultraGroupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox4)).EndInit();
-            this.ultraGroupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
