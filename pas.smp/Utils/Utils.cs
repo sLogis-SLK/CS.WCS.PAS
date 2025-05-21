@@ -45,7 +45,7 @@ namespace pas.smp
             }
             catch (Exception ex)
             {
-                //Common.Log((object)"[SMP9008]", (object)inStr, (object)ex.Message);
+                LogUtil.Log((object)"[SMP9008]", (object)inStr, (object)ex.Message);
                 return false;
             }
             return true;

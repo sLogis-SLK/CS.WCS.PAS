@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TR_Common;
 
 namespace pas.smp
 {
@@ -21,6 +22,7 @@ namespace pas.smp
             Mutex mtx = new Mutex(true, Process.GetCurrentProcess().ProcessName, out bcreate);
             if (bcreate)
             {
+                Global.g_sStartupPath = Application.StartupPath;
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new MainForm());

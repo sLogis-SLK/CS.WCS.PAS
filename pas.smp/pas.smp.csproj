@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>pas.smp</RootNamespace>
     <AssemblyName>pas.smp</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -37,6 +38,7 @@
     <Reference Include="Infragistics4.Win.Misc.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinEditors.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinGrid.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinTabControl.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
@@ -55,6 +57,18 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\SMPCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SMPCheckBox.Designer.cs">
+      <DependentUpon>SMPCheckBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\uMessage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\uMessage.Designer.cs">
+      <DependentUpon>uMessage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UserControlHeaderLabel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -62,16 +76,26 @@
       <DependentUpon>UserControlHeaderLabel.cs</DependentUpon>
     </Compile>
     <Compile Include="Globel\GlobalClass.cs" />
+    <Compile Include="Utils\INI.cs" />
+    <Compile Include="Models\INI_KEY.cs" />
+    <Compile Include="Models\INI_SECTION.cs" />
     <Compile Include="Models\운송장채번Model.cs" />
     <Compile Include="Services\채번.cs" />
     <Compile Include="Services\출하\출하내역관리.cs" />
+    <Compile Include="Models\Setting.cs" />
     <Compile Include="Utils\LogUtil.cs" />
     <Compile Include="Utils\Utils.cs" />
-    <Compile Include="WinFormsApp\Form1.cs">
+    <Compile Include="WinFormsApp\frmSetting.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinFormsApp\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="WinFormsApp\frmSetting.Designer.cs">
+      <DependentUpon>frmSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\frmSMP00004.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmSMP00004.Designer.cs">
+      <DependentUpon>frmSMP00004.cs</DependentUpon>
     </Compile>
     <Compile Include="WinFormsApp\MainForm.cs">
       <SubType>Form</SubType>
@@ -81,6 +105,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\SMPCheckBox.resx">
+      <DependentUpon>SMPCheckBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\uMessage.resx">
+      <DependentUpon>uMessage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\UserControlHeaderLabel.resx">
       <DependentUpon>UserControlHeaderLabel.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,9 +123,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="WinFormsApp\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="WinFormsApp\frmSetting.resx">
+      <DependentUpon>frmSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\frmSMP00004.resx">
+      <DependentUpon>frmSMP00004.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -133,6 +167,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Library\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

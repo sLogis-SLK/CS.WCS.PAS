@@ -22,7 +22,7 @@ namespace pas.smp
                 string str3 = "\b";
                 string str4 = "\a";
 
-                Stream responseStream = WebRequest.Create(GlobalClass.URL + "sP1=" + s장비코드 + "&sP2=" + s회원사코드 + "&sP3=" + s센터코드 + "&sP4=" + sB코드 + "&sP5=" + s배송사코드 + "&sP6=" + s점코드).GetResponse().GetResponseStream();
+                Stream responseStream = WebRequest.Create(GlobalClass.Setting.URL + "sP1=" + s장비코드 + "&sP2=" + s회원사코드 + "&sP3=" + s센터코드 + "&sP4=" + sB코드 + "&sP5=" + s배송사코드 + "&sP6=" + s점코드).GetResponse().GetResponseStream();
                 while (responseStream.Read(numArray, 0, numArray.Length) != 0)
                     sResponse원본 += Encoding.Default.GetString(numArray);
                 responseStream.Close();

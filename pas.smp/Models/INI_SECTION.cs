@@ -1,0 +1,16 @@
+﻿// Decompiled with JetBrains decompiler
+// Type: pas.smp.INI_SECTION
+// Assembly: pas.smp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+// MVID: E3D3B700-276A-43A7-A3AB-46516F4B49E0
+// Assembly location: C:\Users\User\Desktop\pas.smp - B라인\pas.smp.exe
+
+//#nullable disable
+namespace pas.smp
+{
+  public enum INI_SECTION
+  {
+    SMP,
+    DATABASE,
+    ETC,
+  }
+}
