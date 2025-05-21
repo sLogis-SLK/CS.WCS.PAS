@@ -42,6 +42,18 @@ namespace pas.smp.출하
             
         }
 
+        internal static DataTable 출하박스이력()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("매장명", typeof(string));
+            dt.Columns.Add("★", typeof(string));
+            dt.Columns.Add("배치번호", typeof(string));
+            dt.Columns.Add("슈트번호", typeof(string));
+            dt.Columns.Add("박스", typeof(string));
+            dt.Columns.Add("중량", typeof(string));
+            return dt;
+        }
+
         internal static bool 출하박스저장(string 배치번호, string 슈트번호, string 박스번호, string 출력값1, string 출력값2, string 출력값3, string 출력값4, string 출력값5, string 출력값6, string 출력값7, string 출력값8, string 출력값9, string 출력값10, string 중량, string 운송장출력, string 거래명세서)
         {
             try

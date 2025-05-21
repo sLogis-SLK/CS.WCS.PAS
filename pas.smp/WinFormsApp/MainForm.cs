@@ -170,7 +170,8 @@ namespace pas.smp
 
                 #region uGrid2 BindingSource 초기화
 
-                출하.출하내역관리.출하박스내역(m_출하박스내역Table, string.Empty);
+
+                m_출하박스내역Table = 출하.출하내역관리.출하박스이력();
 
                 m_출하박스내역BS.DataSource = m_출하박스내역Table;
                 uGrid2.DataSource = m_출하박스내역BS;
@@ -275,8 +276,9 @@ namespace pas.smp
                     return false;
                 }
 
-                this.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                socket.Connect(GlobalClass.Setting.PLC_IP, Convert.ToInt32(GlobalClass.Setting.PLC_PORT));
+                //this.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                //this.socket.Connect(GlobalClass.Setting.PLC_IP, Convert.ToInt32(GlobalClass.Setting.PLC_PORT));
+
                 this.socket.Send(GlobalClass.GetBufferBybyte);
 
                 //수신시작
@@ -426,10 +428,10 @@ namespace pas.smp
             //데이터 가져오기
             DataTable dt = new DataTable();
 
-            m_출하박스내역Table.Clear();
-            출하.출하내역관리.출하박스내역(m_출하박스내역Table, s바코드);
+            //m_출하박스내역Table.Clear();
+            출하.출하내역관리.출하박스내역(dt, s바코드);
 
-            if (m_출하박스내역Table == null || m_출하박스내역Table.Rows.Count <= 0)
+            if (dt == null || dt.Rows.Count <= 0)
             {
                 this.uMessage1.Invoke(new Action(() =>
                 {
@@ -439,7 +441,7 @@ namespace pas.smp
                 return false;
             }
 
-            DataRow row = m_출하박스내역Table.Rows[0];
+            DataRow row = dt.Rows[0];
 
             if (row["운송장출력여부"].ToString() == "1" && m재발행 == false)
             {
@@ -488,6 +490,7 @@ namespace pas.smp
             if (string.IsNullOrEmpty(str2))
             {
                 c운송장 = 채번.운송장채번("PAS", "9650", s센터코드, sB코드, s배송사코드, s점코드);
+                //c운송장 = new 운송장채번Model();
             }
             //출력값이 있다고 판단되면 기존 출력값을 사용하여 출력
             else
@@ -521,10 +524,10 @@ namespace pas.smp
 
                 DataRow newRow = m_출하박스내역Table.NewRow();
                 newRow["매장명"] = this.매장명.Text;
-                newRow["마지막박스"] = this.마지막박스.Text;
+                newRow["★"] = this.마지막박스.Text;
                 newRow["배치번호"] = this.배치번호.Text;
                 newRow["슈트번호"] = this.슈트번호.Text;
-                newRow["박스번호"] = this.박스번호.Text;
+                newRow["박스"] = this.박스번호.Text;
                 newRow["중량"] = this.중량.Text;
 
                 // 0번째에 삽입하려면 InsertAt 사용
