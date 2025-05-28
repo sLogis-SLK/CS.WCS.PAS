@@ -172,82 +172,85 @@ namespace pas.smp.출하
                 string 운송장번호 = param["운송장번호"] as string;
                 string 정제운송장번호 = param["정제운송장번호"] as string;
 
+                //글꼴
                 builder.Append("^XA^SEE:UHANGUL.DAT^FS^CW1,E:KFONT3.FNT^FS^CI26^PON");
+                //세로테두리
+                builder.Append("^FO0,0,^GB718,1,1^FS")
+                    .Append("^FO0,288^GB72,1,1^FS")
+                    .Append("^FO0,440^GB72,1,1^FS")
+                    .Append("^FO0,566.6^GB718,1,1^FS")
+                    .Append("^FO0,958,^GB718,1,1^FS");
 
-                builder.Append("^FO360,0^GB1,80,1^FS")
-                    .Append("^FO600,0^GB1,200,1^FS")
-                    .Append("^FO760,0^GB1,800,1^FS")
-                    .Append("^FO0,80^GB760,1,1^FS")
-                    .Append("^FO0,200^GB1200,1,1^FS")
-                    .Append("^FO360,720^GB1,80,1^FS")
-                    .Append("^FO600,720^GB1,200,1^FS")
-                    .Append("^FO0,720^GB1200,1,1^FS")
-                    .Append("^FO760,570^GB480,1,1^FS");
+                builder.Append("^FO198,566.6^GB1,393.4,1^FS")
+                    .Append("^FO640.8,0^GB1,566.6,1^FS")
+                    .Append("^FO640.8,208^GB77.2,1,1^FS")
+                    .Append("^FO640.8,375^GB77.2,1,1^FS")
+                    .Append("^FO532.8,455^GB108,1,1^FS");
 
-                builder.Append("^FO5,8^A1,N,8,8^FD브랜드^FS")
-                    .Append("^FO365,8^A1,N,8,8^FD배치번호^FS")
-                    .Append("^FO605,8^A1,N,8,8^FD매장코드^FS")
-                    .Append("^FO765,8^A1,N,8,8^FD운송장바코드^FS")
-                    .Append("^FO0,85^A1,N,8,8^FD매장^FS")
-                    .Append("^FO605,85^A1,N,8,8^FD박스번호^FS")
-                    .Append("^FO765,210^A1,N,8,8^FD배송사정보^FS")
-                    .Append("^FO765,580^A1,N,8,8^FD수하인 주소^FS")
-                    .Append("^FO5,725^A1,N,8,8^FD발행일시^FS")
-                    .Append("^FO365,725^A1,N,8,8^FD슈트번호^FS")
-                    .Append("^FO605,725^A1,N,8,8^FD중 량^FS")
-                    .Append("^FO765,725^A1,N,8,8^FD송하인^FS");
+                builder.Append("^FO0,0,^GB1,960,1^FS")
+                    .Append("^FO72,0^GB1,960,1^FS")
+                    .Append("^FO532.8,0^GB1,960,1^FS")
+                    .Append("^FO718,0,^GB1,960,1^FS");
 
-                builder.AppendFormat("^FO5,40^A1,N,15,15^FD{0}:{1}^FS", row["브랜드코드"].ToString(), row["브랜드명"].ToString())
-                    .AppendFormat("^FO365,40^A1,N,15,15^FD{0}^FS", 배치번호)
-                    .AppendFormat("^FO605,40^A1,N,15,15^FD{0}^FS", row["점코드"].ToString())
-                    .AppendFormat("^FO765,40^B2,N,100,Y,N^FD>:{0}^FS", 정제운송장번호)
-                    .AppendFormat("^FO5,120^A1,N,25,25^FD{0}^FS", row["점명"].ToString())
-                    .AppendFormat("^FO610,120^A1,N,15,15^FD{0}^FS", 박스번호)
-                    .AppendFormat("^FO765,250^A1,N,20,20^FD#{0}^FS", row["배송사명"].ToString())
-                    .AppendFormat("^FO765,300^A1,N,25,25^FD#{0}^FS", 운송장.출력값1)
-                    .AppendFormat("^FO765,360^A1,N,20,20^FD#{0}^FS", 운송장.출력값2)
+                builder.Append("^FO685,0^A1R,20,20^FD 브랜드^FS")
+                    .AppendFormat("^FO650,0^A1R,30,30^FD{0}:{1}^FS", row["브랜드코드"].ToString(), row["브랜드명"].ToString())
+                    .Append("^FO685,208^A1R,20,20^FD배치번호^FS")
+                    .AppendFormat("^FO650,208^A1R,30,30^FD{0}^FS", 배치번호)
+                    .Append("^FO685,385^A1R,20,20^FD매장코드^FS")
+                    .AppendFormat("^FO650,385^A1R,30,30^FD{0}^FS", row["점코드"].ToString())
+                    .Append("^FO610.8,0^A1R,20,20^FD매장^FS")
+                    .AppendFormat("^FO545.8,0^A1R,50,40^FD{0}^FS", row["점명"].ToString())
+                    .Append("^FO610.8,455^A1R,20,20^FD박스번호^FS")
+                    .AppendFormat("^FO565.8,475^A1R,30,30^FD{0}^FS", 박스번호)
+                    .Append("^FO685,571.8^A1R,20,20^FD운송장바코드^FS")
+                    .AppendFormat("^FO560.8,581.8^B3R,N,100,Y,N^FD>:#{0}^FS", 정제운송장번호)
+
+                    .Append("^FO500,571.8^A1R,20,20^FD배송사정보^FS")
+                    .AppendFormat("^FO420,571.8^A1R,60,70^FD{0}^FS", row["배송사명"].ToString())
+                    .AppendFormat("^FO370,576.8^A1R,40,40^FD{0}^FS", 운송장.출력값1)
+                    .AppendFormat("^FO320,571.8^A1R,35,35^FD{0}^FS", 운송장.출력값2)
                     .Append("^BY1")
-                    .AppendFormat("^FO765,430^B3,N,80,N,N^FD>:#{0}^FS", 운송장.출력값3)
-                    .AppendFormat("^FO970,430^A1,N,20,20^FD#{0}^FS", 운송장.출력값4)
-                    .AppendFormat("^FO970,500^A1,N,20,20^FD#{0}^FS", 운송장.출력값5)
-                    .AppendFormat("^FO766,615^A1,N,10,10^FB400,4,0,L^FD{0}^FS", row["점주소"].ToString())
-                    .AppendFormat("^FO5,755^A1,N,10,10^FD{0}^FS", DateTime.Now.ToString("yyyy-MM-dd"))
-                    .AppendFormat("^FO365,755^A1,N,8,8^FD{0}^FS", 슈트번호)
-                    .AppendFormat("^FO605,755^A1,N,8,8^FD{0}^FS", 중량)
-                    .AppendFormat("^FO765,755^A1,N,8,8^FD{0}{1}^FS", "SLK ", row["센터명"].ToString());
+                    .AppendFormat("^FO240,606.8^B3R,N,70,Y,N^FD>:#{0}^FS", 운송장.출력값3)
+                    .AppendFormat("^FO275,760.8^A1R,30,30^FD{0}^FS", 운송장.출력값4)
+                    .AppendFormat("^FO235,760.8^A1R,30,30^FD{0}^FS", 운송장.출력값5)
 
-                builder.Append("^FO10,215^A1,N,12,12^FD상품^FS")
-                    .Append("^FO635,215^A1,N,8,8^FD수량^FS");
+                    .Append("^FO165,571.8^A1R,20,20^FD수하인주소^FS")
+                    .AppendFormat("^FO75,571.8^A1R,30,30^FB400,3,0,L,0 ^FD{0}^FS", row["점주소"].ToString())
+                    .Append("^FO45,5^A1R,20,20^FD발행일시^FS")
+                    .AppendFormat("^FO10,5^A1R,30,30^FD{0}^FS", DateTime.Now.ToString("yyyy-MM-dd"))
+                    .Append("^FO45,293^A1R,20,20^FD슈트번호^FS")
+                    .AppendFormat("^FO10,313^A1R,30,30^FD{0}^FS", 슈트번호)
+                    .Append("^FO45,450^A1R,20,20^FD중 량^FS")
+                    .AppendFormat("^FO10,450^A1R,30,30^FD{0}^FS", 중량)
+                    .Append("^FO45,571.8^A1R,20,20^FD송하인^FS")
+                    .AppendFormat("^FO10,571.8^A1R,30,30^FD{0}{1}^FS", "SLK ", row["센터명"].ToString());
 
-                builder.Append("^FO5,250^GB20,1,1^FS")
-                    .Append("^F35,250^GB20,1,1^FS")
-                    .Append("^F65,250^GB20,1,1^FS")
-                    .Append("^F95,250^GB20,1,1^FS")
-                    .Append("^F125,250^GB20,1,1^FS")
-                    .Append("^F155,250^GB20,1,1^FS")
-                    .Append("^F185,250^GB20,1,1^FS")
-                    .Append("^F215,250^GB20,1,1^FS")
-                    .Append("^F245,250^GB20,1,1^FS")
-                    .Append("^F275,250^GB20,1,1^FS")
-                    .Append("^F305,250^GB20,1,1^FS")
-                    .Append("^F335,250^GB20,1,1^FS")
-                    .Append("^F365,250^GB20,1,1^FS")
-                    .Append("^F395,250^GB20,1,1^FS")
-                    .Append("^F425,250^GB20,1,1^FS")
-                    .Append("^F455,250^GB20,1,1^FS")
-                    .Append("^F485,250^GB20,1,1^FS")
-                    .Append("^F515,250^GB20,1,1^FS")
-                    .Append("^F545,250^GB20,1,1^FS")
-                    .Append("^F575,250^GB20,1,1^FS")
-                    .Append("^F605,250^GB20,1,1^FS")
-                    .Append("^F635,250^GB20,1,1^FS")
-                    .Append("^F665,250^GB20,1,1^FS")
-                    .Append("^F695,250^GB20,1,1^FS")
-                    .Append("^F725,250^GB20,1,1^FS");
+                builder.Append("^FO500,5^A1R,25,25^FD상품^FS")
+                    .Append("^FO500,485^A1R,25,25^FD수량^FS");
+
+                builder.Append("^FO485,5^GB1,20,1^FS")
+                    .Append("^FO485,35^GB1,20,1^FS")
+                    .Append("^FO485,65^GB1,20,1^FS")
+                    .Append("^FO485,95^GB1,20,1^FS")
+                    .Append("^FO485,125^GB1,20,1^FS")
+                    .Append("^FO485,155^GB1,20,1^FS")
+                    .Append("^FO485,185^GB1,20,1^FS")
+                    .Append("^FO485,215^GB1,20,1^FS")
+                    .Append("^FO485,245^GB1,20,1^FS")
+                    .Append("^FO485,275^GB1,20,1^FS")
+                    .Append("^FO485,305^GB1,20,1^FS")
+                    .Append("^FO485,335^GB1,20,1^FS")
+                    .Append("^FO485,365^GB1,20,1^FS")
+                    .Append("^FO485,395^GB1,20,1^FS")
+                    .Append("^FO485,425^GB1,20,1^FS")
+                    .Append("^FO485,455^GB1,20,1^FS")
+                    .Append("^FO485,485^GB1,20,1^FS")
+                    .Append("^FO485,515^GB1,20,1^FS")
+                    .Append("^FO485,545^GB1,20,1^FS");
 
                 #region 상품 리스트 for문
 
-                int 첫행 = 270;
+                int 첫행 = 450;
                 int 간격 = 30;
                 int 행 = 첫행;
                 int 출력수량합 = 0;
@@ -256,13 +259,13 @@ namespace pas.smp.출하
                 for (int i = 0; i < Math.Min(dt.Rows.Count, 10); i++)
                 {
                     DataRow rows = dt.Rows[i];
-                    string 상품정보 = $"{rows["상품명"]} {rows["색상"]} {rows["사이즈"]}";
+                    string 상품정보 = $"{rows["품번"]} {rows["색상"]} {rows["사이즈"]}";
                     string 수량 = rows["수량"].ToString();
 
-                    builder.AppendFormat("^FO5,{0}^A1,N,12,12^FD {1}^FS", 행, 상품정보);
-                    builder.AppendFormat("^FO650,{0}^A1,N,12,12^FD{1}^FS", 행, 수량);
+                    builder.AppendFormat("^FO{0},5^A1R,20,20^FD{1}^FS", 행, 상품정보);
+                    builder.AppendFormat("^FO{0},505^A1R,20,20^FD{1}^FS", 행, 수량);
 
-                    행 += 간격;
+                    행 -= 간격;
 
                     if (int.TryParse(수량, out int parsedQty))
                     {
@@ -279,39 +282,33 @@ namespace pas.smp.출하
 
                 if (나머지수량 > 0)
                 {
-                    builder.AppendFormat("^FO600,625^A1,N,12,12^FD 외 {0}건^FS", 나머지수량);
+                    builder.AppendFormat("^FO130,475^A1R,20,20^FD 외 {0}건^FS", 나머지수량);
                 }
 
                 #endregion
 
-                builder.Append("^FO5,655^GB20,1,1^FS")
-                    .Append("^F35,655^GB20,1,1^FS")
-                    .Append("^F65,655^GB20,1,1^FS")
-                    .Append("^F95,655^GB20,1,1^FS")
-                    .Append("^F125,655^GB20,1,1^FS")
-                    .Append("^F155,655^GB20,1,1^FS")
-                    .Append("^F185,655^GB20,1,1^FS")
-                    .Append("^F215,655^GB20,1,1^FS")
-                    .Append("^F245,655^GB20,1,1^FS")
-                    .Append("^F275,655^GB20,1,1^FS")
-                    .Append("^F305,655^GB20,1,1^FS")
-                    .Append("^F335,655^GB20,1,1^FS")
-                    .Append("^F365,655^GB20,1,1^FS")
-                    .Append("^F395,655^GB20,1,1^FS")
-                    .Append("^F425,655^GB20,1,1^FS")
-                    .Append("^F455,655^GB20,1,1^FS")
-                    .Append("^F485,655^GB20,1,1^FS")
-                    .Append("^F515,655^GB20,1,1^FS")
-                    .Append("^F545,655^GB20,1,1^FS")
-                    .Append("^F575,655^GB20,1,1^FS")
-                    .Append("^F605,655^GB20,1,1^FS")
-                    .Append("^F635,655^GB20,1,1^FS")
-                    .Append("^F665,655^GB20,1,1^FS")
-                    .Append("^F695,655^GB20,1,1^FS")
-                    .Append("^F725,655^GB20,1,1^FS");
+                builder.Append("^FO115,5^GB1,20,1^FS")
+                    .Append("^FO115,35^GB1,20,1^FS")
+                    .Append("^FO115,65^GB1,20,1^FS")
+                    .Append("^FO115,95^GB1,20,1^FS")
+                    .Append("^FO115,125^GB1,20,1^FS")
+                    .Append("^FO115,155^GB1,20,1^FS")
+                    .Append("^FO115,185^GB1,20,1^FS")
+                    .Append("^FO115,215^GB1,20,1^FS")
+                    .Append("^FO115,245^GB1,20,1^FS")
+                    .Append("^FO115,275^GB1,20,1^FS")
+                    .Append("^FO115,305^GB1,20,1^FS")
+                    .Append("^FO115,335^GB1,20,1^FS")
+                    .Append("^FO115,365^GB1,20,1^FS")
+                    .Append("^FO115,395^GB1,20,1^FS")
+                    .Append("^FO115,425^GB1,20,1^FS")
+                    .Append("^FO115,455^GB1,20,1^FS")
+                    .Append("^FO115,485^GB1,20,1^FS")
+                    .Append("^FO115,515^GB1,20,1^FS")
+                    .Append("^FO115,545^GB1,20,1^FS");
 
-                builder.Append("^FO660,670^A1,N,10,10^FD합계^FS")
-                    .AppendFormat("^FO660,670^A1,N,18,18^FD{0}^FS", 전체수량합)
+                builder.Append("^FO80,415^A1R,20,20^FD합계^FS")
+                    .AppendFormat("^FO75,485^A1R,30,30^FD{0}^FS", 전체수량합)
                     .Append("^XZ");
             }
             catch (Exception ex)
@@ -410,8 +407,8 @@ namespace pas.smp.출하
 
                 builder.AppendFormat("^FO300,40^A1R,60,50^FD{0}^FS", row["배송사명"].ToString());
 
-                builder.AppendFormat("^FO150,40^A1R,150,100^FD{0}^FS", 운송장.출력값2)
-                    .AppendFormat("^FO80,40^A1R,60,50^FD{0}^FS", 운송장.출력값1);
+                builder.AppendFormat("^FO150,40^A1R,150,120^FD{0}^FS", 운송장.출력값1)
+                    .AppendFormat("^FO80,40^A1R,60,50^FD{0}^FS", 운송장.출력값2);
 
                 string 바코드줄 = 배송사코드 == "A316"
                     ? $"^FO150,320^BY2,3.0^B2R,170,N,N^FD{정제운송장번호}^FS"

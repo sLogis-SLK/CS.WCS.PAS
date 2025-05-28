@@ -23,8 +23,8 @@ namespace pas.smp
         #region 개체선언부
         private List<KeyValuePair<string, string>> items;
 
-        private System.Windows.Forms.Timer timer출하상태확인 = new System.Windows.Forms.Timer();
-        private System.Windows.Forms.Timer timer출하박스확인 = new System.Windows.Forms.Timer();
+        private System.Timers.Timer timer출하상태확인 = new System.Timers.Timer();
+        private System.Timers.Timer timer출하박스확인 = new System.Timers.Timer();
 
         private DataTable m_출하상태Table = new DataTable("usp_출하_상태확인_Get");
         private DataTable m_출하박스내역Table = new DataTable("usp_출하_박스내용_Get");
@@ -78,8 +78,8 @@ namespace pas.smp
             comboBox1.ValueMember = "Value";
             comboBox1.SelectedIndex = 0;
 
-            timer출하상태확인.Tick += Timer출하상태확인_Tick;
-            timer출하박스확인.Tick += Timer출하박스확인_Tick;
+            timer출하상태확인.Elapsed += Timer출하상태확인_Tick;
+            timer출하박스확인.Elapsed += Timer출하박스확인_Tick;
 
             미발행대상버튼.Click += new System.EventHandler(this.미발행대상버튼_Click);
             다시시작버튼.Click += new System.EventHandler(this.다시시작버튼_Click);
@@ -130,7 +130,7 @@ namespace pas.smp
             timer출하박스확인.Stop();  //종료
 
             DateTime dateTime = DateTime.Now;
-            현시간.Invoke(new Action(() => this.현시간.Text = dateTime.ToString("G")));
+            this.Invoke(new Action(() =>{현시간.Text = dateTime.ToString("G");}));
 
             //this.현시간.Text = dateTime.ToString("G");
             //Application.DoEvents();
@@ -250,7 +250,6 @@ namespace pas.smp
             }
             return false;
         }
-
 
         private bool 출하박스정보Receive()
         {
@@ -442,7 +441,10 @@ namespace pas.smp
             }
 
             DataRow row = dt.Rows[0];
-
+            if (row == null)
+            {
+                return false;
+            }
             if (row["운송장출력여부"].ToString() == "1" && m재발행 == false)
             {
                 this.uMessage1.Invoke(new Action(() =>
@@ -450,7 +452,6 @@ namespace pas.smp
                     this.uMessage1.ShowMessage(uMessage.MessageType.재발행);
                     Application.DoEvents();
                 }));
-                return false;
             }
 
             string sB코드 = row["브랜드코드"].ToString();
@@ -628,7 +629,11 @@ namespace pas.smp
         {
             //세팅창 띄우기
             Form frm = new frmSetting();
-            frm.ShowDialog();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                GlobalClass.GetSetting();
+                this.Refresh시리얼포트();
+            }
         }
 
         private void 종료버튼_Click(object sender, EventArgs e)
@@ -642,17 +647,18 @@ namespace pas.smp
         {
             try
             {
-                //안해도 될거 같은데 그냥 함.. 해당 폼만 닫힐 경우 대비
-                if (timer출하상태확인 != null) timer출하상태확인.Stop();
-                if (timer출하박스확인 != null) timer출하박스확인.Stop();
-                if (this.시리얼포트.IsOpen) this.시리얼포트.Close();
+                timer출하상태확인?.Stop();
+                timer출하박스확인?.Stop();
+
+                if (시리얼포트?.IsOpen == true)
+                    시리얼포트.Close();
+
                 base.OnClosed(e);
             }
             catch (Exception ex)
             {
-                LogUtil.Log((object)"[SMP9001]", (object)ex.Message);
+                LogUtil.Log("[SMP9001]", ex.Message);
             }
-
         }
     }
 }
