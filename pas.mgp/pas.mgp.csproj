@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\User\Desktop\pas_20170601\pas_20170601\pas.mgp.exe-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4CD8D5F4-8775-4408-94A7-DC14B6B0ABD4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>pas.mgp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>pas.mgp</RootNamespace>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>게시\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="pas.ct">
+      <HintPath>lib\pas.ct.dll</HintPath>
+    </Reference>
+    <Reference Include="pas.dk">
+      <HintPath>lib\pas.dk.dll</HintPath>
+    </Reference>
+    <Reference Include="pas.ff">
+      <HintPath>lib\pas.ff.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DBProvider2.cs" />
+    <Compile Include="Chute.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="조회구분자.cs" />
+    <Compile Include="DbProvider.cs" />
+    <Compile Include="DB연결구분.cs" />
+    <Compile Include="상태.cs" />
+    <Compile Include="분류구분.cs" />
+    <Compile Include="분류방법.cs" />
+    <Compile Include="패턴구분.cs" />
+    <Compile Include="배치구분.cs" />
+    <Compile Include="재구성구분.cs" />
+    <Compile Include="INI_SECTION.cs" />
+    <Compile Include="INI_KEY.cs" />
+    <Compile Include="Rebuild.cs" />
+    <Compile Include="Setting.cs" />
+    <Compile Include="INI.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="PasPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Execbat.cs" />
+    <Compile Include="PasProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dlgPAS00064.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dlgPAS00063.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dlgPAS00062.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dlgPAS00061.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPAS00063.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dlgPAS00026.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPAS00027.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPAS00026.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPAS00025.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPAS00024.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPAS00023.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPAS00022.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPAS00021.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dlgPAS00901.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dlgPAS00101.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dlgPAS00999.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPAS00062.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dlgPAS00001.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dlgPAS00002.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPAS00061.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPAS00010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPAS00010T.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IMenu.cs" />
+    <Compile Include="MakeData.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Sortq.cs" />
+    <Compile Include="Report\레포트_박스별실적상세_토탈.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Cached레포트_박스별실적상세_토탈.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\레포트_박스별실적상세.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Cached레포트_박스별실적상세.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\레포트_박스별실적상세_SM.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Cached레포트_박스별실적상세_SM.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\레포트_박스별실적상세_상품명.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Cached레포트_박스별실적상세_상품명.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\상품발송장_매장별.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Cached상품발송장_매장별.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\패킹내역_박스별.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Cached패킹내역_박스별.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\미출고내역_슈트별.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Cached미출고내역_슈트별.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\미출고내역_상품별.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Cached미출고내역_상품별.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tables\분류_상품발송장.cs" />
+    <Compile Include="Properties\Resources.cs" />
+    <Compile Include="Properties\Settings.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="dlgPAS00001.resx" />
+    <EmbeddedResource Include="dlgPAS00002.resx" />
+    <EmbeddedResource Include="dlgPAS00026.resx" />
+    <EmbeddedResource Include="dlgPAS00061.resx" />
+    <EmbeddedResource Include="dlgPAS00062.resx" />
+    <EmbeddedResource Include="dlgPAS00063.resx" />
+    <EmbeddedResource Include="dlgPAS00064.resx" />
+    <EmbeddedResource Include="dlgPAS00101.resx" />
+    <EmbeddedResource Include="dlgPAS00901.resx" />
+    <EmbeddedResource Include="dlgPAS00999.resx" />
+    <EmbeddedResource Include="frmLoading.resx" />
+    <EmbeddedResource Include="frmMain.resx" />
+    <EmbeddedResource Include="frmMessageBox.resx" />
+    <EmbeddedResource Include="frmPAS00010.resx" />
+    <EmbeddedResource Include="frmPAS00010T.resx" />
+    <EmbeddedResource Include="frmPAS00021.resx" />
+    <EmbeddedResource Include="frmPAS00022.resx" />
+    <EmbeddedResource Include="frmPAS00023.resx" />
+    <EmbeddedResource Include="frmPAS00024.resx" />
+    <EmbeddedResource Include="frmPAS00025.resx" />
+    <EmbeddedResource Include="frmPAS00026.resx" />
+    <EmbeddedResource Include="frmPAS00027.resx" />
+    <EmbeddedResource Include="frmPAS00061.resx" />
+    <EmbeddedResource Include="frmPAS00062.resx" />
+    <EmbeddedResource Include="frmPAS00063.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\레포트_박스별실적상세.rpt" />
+    <EmbeddedResource Include="Report\레포트_박스별실적상세_SM.rpt" />
+    <EmbeddedResource Include="Report\레포트_박스별실적상세_상품명.rpt" />
+    <EmbeddedResource Include="Report\레포트_박스별실적상세_토탈.rpt" />
+    <EmbeddedResource Include="Report\미출고내역_상품별.rpt" />
+    <EmbeddedResource Include="Report\미출고내역_슈트별.rpt" />
+    <EmbeddedResource Include="Report\상품발송장_매장별.rpt" />
+    <EmbeddedResource Include="Report\패킹내역_박스별.rpt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tv_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
