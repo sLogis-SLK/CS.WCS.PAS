@@ -46,14 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="WinFormsApp\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="WinFormsApp\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WinFormsApp\SocketServer.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +76,32 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CS.TRabbit_V4\ldenvlib\ldenvlib.csproj">
+      <Project>{32334c37-e8d6-483c-a787-c66d31adf518}</Project>
+      <Name>ldenvlib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CS.TRabbit_V4\TR_Common\TR_Common.csproj">
+      <Project>{41217009-999a-4178-9266-8373b3a68dc6}</Project>
+      <Name>TR_Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CS.TRabbit_V4\TR_Library\TR_Library.csproj">
+      <Project>{7845a835-3539-4c92-b83c-e6c3227a7831}</Project>
+      <Name>TR_Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CS.TRabbit_V4\TR_Provider\TR_Provider.csproj">
+      <Project>{e9c69c3f-35ab-486f-95d5-484684c7aa4b}</Project>
+      <Name>TR_Provider</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
+    <Folder Include="Globel\" />
+    <Folder Include="Library\" />
+    <Folder Include="Models\" />
+    <Folder Include="Services\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

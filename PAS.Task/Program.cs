@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace PAS.Task
@@ -14,9 +13,16 @@ namespace PAS.Task
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //하나만 실행하게끔 
+            bool bcreate;
+            Mutex mtx = new Mutex(true, Process.GetCurrentProcess().ProcessName, out bcreate);
+            if (bcreate)
+            {
+                //Global.g_sStartupPath = Application.StartupPath;
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new MainForm());
+            }
         }
     }
 }

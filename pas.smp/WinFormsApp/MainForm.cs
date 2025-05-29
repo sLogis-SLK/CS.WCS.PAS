@@ -21,7 +21,7 @@ namespace pas.smp
     public partial class MainForm : Form
     {
         #region 개체선언부
-        private List<KeyValuePair<string, string>> items;
+        //private List<KeyValuePair<string, string>> items;
 
         private System.Timers.Timer timer출하상태확인 = new System.Timers.Timer();
         private System.Timers.Timer timer출하박스확인 = new System.Timers.Timer();
@@ -215,6 +215,7 @@ namespace pas.smp
             timer출하박스확인.Interval = 100; //0.1초
             timer출하박스확인.Start();//시작
         }
+
         private bool Disconnection()
         {
             try
@@ -643,6 +644,8 @@ namespace pas.smp
 
         #endregion
 
+        #region 폼 및 컨트롤 이벤트
+
         protected override void OnClosed(EventArgs e)
         {
             try
@@ -660,5 +663,7 @@ namespace pas.smp
                 LogUtil.Log("[SMP9001]", ex.Message);
             }
         }
+
+        #endregion
     }
 }

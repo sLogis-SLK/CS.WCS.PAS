@@ -76,6 +76,7 @@
       <DependentUpon>UserControlHeaderLabel.cs</DependentUpon>
     </Compile>
     <Compile Include="Globel\GlobalClass.cs" />
+    <Compile Include="Services\출하\출력템플릿.cs" />
     <Compile Include="Utils\INI.cs" />
     <Compile Include="Models\INI_KEY.cs" />
     <Compile Include="Models\INI_SECTION.cs" />
