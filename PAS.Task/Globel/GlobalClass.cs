@@ -40,10 +40,10 @@ namespace PAS.Task
         public static string SEIGYO_FOLDER { get; private set; }
         public static string SEIGYO_ID { get; private set; }
         public static string SEIGYO_PASSWORD { get; private set; }
-        public static string PAS_DURATION { get; private set; }
+        public static int PAS_DURATION { get; private set; }
         public static string INDICATOR_DURATION { get; private set; }
         public static string INDICATOR_IP { get; private set; }
-        public static string INDICATOR_PORT { get; private set; }
+        public static int INDICATOR_PORT { get; private set; }
         public static string INDICATOR_STRUCTURE { get; private set; }
         public static string BARCODE_PRINTER_LIST { get; private set; }
         public static string PRINTER_LIST { get; private set; }
@@ -91,10 +91,10 @@ namespace PAS.Task
             SEIGYO_FOLDER = row["SEIGYO_FOLDER"].ToString();
             SEIGYO_ID = row["SEIGYO_ID"].ToString();
             SEIGYO_PASSWORD = row["SEIGYO_PASSWORD"].ToString();
-            PAS_DURATION = row["PAS_DURATION"].ToString();
+            PAS_DURATION = ParseUtils.ObjectToint(row["PAS_DURATION"]);
             INDICATOR_DURATION = row["INDICATOR_DURATION"].ToString();
             INDICATOR_IP = row["INDICATOR_IP"].ToString();
-            INDICATOR_PORT = row["INDICATOR_PORT"].ToString();
+            INDICATOR_PORT = ParseUtils.ObjectToint(row["INDICATOR_PORT"]);
             INDICATOR_STRUCTURE = row["INDICATOR_STRUCTURE"].ToString();
 
             PAS_DB_IP = row["PAS_DB_IP"].ToString();

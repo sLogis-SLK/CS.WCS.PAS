@@ -7,7 +7,7 @@ namespace PAS.Task
 {
     internal class Indicator
     {
-        public static DataTable MakeDPSMap()
+        public static DataTable MakeDPSMap(string indicatorStructure)
         {
             DataTable dataTable = new DataTable("표시기맵TABLE");
             dataTable.Columns.AddRange(new DataColumn[3]
@@ -19,7 +19,7 @@ namespace PAS.Task
 
             try
             {
-                string indicatorStructure = "";// Common.Setting.INDICATOR_STRUCTURE; //꼭받아야함
+                //string indicatorStructure = "";// Common.Setting.INDICATOR_STRUCTURE; //꼭받아야함
                 string str1 = indicatorStructure.Length < 256 ? indicatorStructure.PadRight(256, '0') : indicatorStructure.Substring(0, 256);
                 if (!string.IsNullOrEmpty(str1))
                 {

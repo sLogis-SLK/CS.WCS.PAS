@@ -58,6 +58,15 @@ namespace PAS.Task
             }
         }
 
+        public bool IsPasThread { get; private set; }
+        public bool IsPasContinue { get; private set; }
+        public bool IsPrintContinue { get; private set; }
+
+        //public bool IsPrintThread { get; private set; }
+
+        public bool IsPasEvent { get; private set; }
+        public bool IsPrinting { get; private set; }
+
         #endregion
 
         #region 생성자 및 폼 override 이벤트
@@ -70,30 +79,33 @@ namespace PAS.Task
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-
-            //스크린 최상단으로 위치이동
-            Screen screen = Screen.FromPoint(Location);
-            Location = new Point(screen.WorkingArea.X, screen.WorkingArea.Y);
-
-            //최초 초기화 및 정보 가져오기
-            GlobalClass.InitializationSettings();
-
-            //PAS기기콤보 세팅
-            foreach (var item in GlobalClass.DicPas기기)
-            {
-                PAS기기콤보.Items.Add(item.Key);
-            }
-            if (PAS기기콤보.Items.Count > 0) PAS기기콤보.SelectedIndex = 0;
-
-            //시작버튼 이벤트
-            시작버튼.Click += 시작버튼_Click;
-            시작버튼.Focus();
-        }
-
-        protected override void OnShown(EventArgs e)
-        {
-            base.OnShown(e);
             if (DesignMode) return;
+            try
+            {
+                //스크린 최상단으로 위치이동
+                Screen screen = Screen.FromPoint(Location);
+                Location = new Point(screen.WorkingArea.X, screen.WorkingArea.Y);
+
+                //최초 초기화 및 정보 가져오기
+                GlobalClass.InitializationSettings();
+
+                //PAS기기콤보 세팅
+                foreach (var item in GlobalClass.DicPas기기)
+                {
+                    PAS기기콤보.Items.Add(item.Key);
+                }
+                if (PAS기기콤보.Items.Count > 0) PAS기기콤보.SelectedIndex = 0;
+
+                //시작버튼 이벤트
+                시작버튼.Click += 시작버튼_Click;
+                시작버튼.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("초기화에 실패하였습니다. \r\n재실행하시기 바랍니다.\r\n\r\n오류내용 : " + ex.Message, this.Text);
+                시작버튼.Enabled = false;
+            }
+
         }
 
         protected override void OnClosed(EventArgs e)
@@ -287,98 +299,109 @@ namespace PAS.Task
             }
         }
 
-        private void 모니터링시작()
+        private bool 모니터링시작()
         {
             try
             {
-                if (this.mPasThread != null)
-                {
-                    //Common.IsPasThread = false;
-                    this.mPasThread.Abort();
-                    this.mPasThread = (Thread)null;
-                }
-
-                mPasThread = new Thread(new ThreadStart(PasThread));
-
-                //Common.IsPasThread = true;
-                //Common.IsPasContinue = false;
-                //Common.IsPrintThread = true;
-                //Common.IsPrintContinue = false;
-                if (File.Exists(GlobalClass.PATH_STARTUP + "\\Task.dat"))
-                {
-                    string str = string.Empty;
-                    using (StreamReader streamReader = new StreamReader(GlobalClass.PATH_STARTUP + "\\Task.dat", Encoding.Default))
-                    {
-                        str = streamReader.ReadToEnd();
-                        streamReader.Close();
-                    }
-                    //Common.IsLog = !string.IsNullOrEmpty(str) && str.Trim() == "1";
-                }
+                //if (File.Exists(GlobalClass.PATH_STARTUP + "\\Task.dat"))
+                //{
+                //    string str = string.Empty;
+                //    using (StreamReader streamReader = new StreamReader(GlobalClass.PATH_STARTUP + "\\Task.dat", Encoding.Default))
+                //    {
+                //        str = streamReader.ReadToEnd();
+                //        streamReader.Close();
+                //    }
+                //    //Common.IsLog = !string.IsNullOrEmpty(str) && str.Trim() == "1";
+                //}
                 //else
                 //    Common.IsLog = false;
                 //Common.GetSetting();
+                //Common.Setting.INDICATOR_STRUCTURE
 
-                m_표시기맵Table = Indicator.MakeDPSMap();
-
+                m_표시기맵Table = Indicator.MakeDPSMap(GlobalClass.INDICATOR_STRUCTURE);
 
                 //Pas상태모니터링
                 mPasDurationTimer = new System.Windows.Forms.Timer();
                 //거래명세표출력 모니터링
                 mPrinterDurationTimer = new System.Windows.Forms.Timer();
 
+                //mPasThread
+                if (this.mPasThread != null)
+                {
+                    IsPasThread = false;
+                    mPasThread.Abort();
+                    mPasThread = (Thread)null;
+                }
+                mPasThread = new Thread(new ThreadStart(PasThread));
 
                 //SocketServer 관련
-                if (this.mSocketServer != null)
+                if (mSocketServer != null)
                 {
-                    this.mSocketServer.Stop();
-                    this.mSocketServer.Receiving -= new SocketBase.ReceivingEvent(mServer_Receiving);
-                    this.mSocketServer.Accept -= new SocketBase.AcceptEvent(mServer_Accept);
-                    this.mSocketServer = (SocketServer)null;
+                    mSocketServer.Stop();
+                    mSocketServer = (SocketServer)null;
                 }
                 //this.m_eDPSStatus = DPSStatus.START;
-                this.mSocketServer = new SocketServer();
-                //this.m_oServer.IP = Common.Setting.INDICATOR_IP;
-                //this.m_oServer.Port = Convert.ToInt32(Common.Setting.INDICATOR_PORT);
-                this.mSocketServer.Accept += new SocketBase.AcceptEvent(mServer_Accept);
-                this.mSocketServer.Receiving += new SocketBase.ReceivingEvent(mServer_Receiving);
+                mSocketServer = new SocketServer();
+                mSocketServer.IP = GlobalClass.INDICATOR_IP;
+                mSocketServer.Port = GlobalClass.INDICATOR_PORT;
+
+                //컨트롤 Falg
+                IsPasThread = true;
+                IsPasContinue = false;
+                //IsPrintThread = true; //인쇄 쓰레드  - 안쓰는듯
+                IsPrintContinue = false;
             }
             catch (Exception ex)
             {
                 //this.m_eDPSStatus = DPSStatus.NONE;
                 MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                return false;
             }
 
             //이벤트 한군데서 사용
-            mPasDurationTimer.Tick += mPasDurationTimer_Tick;
             mPrinterDurationTimer.Tick += mPrinterDurationTimer_Tick;
-            mSocketServer.Accept += new SocketBase.AcceptEvent(mServer_Accept);
+            mPasDurationTimer.Tick += mPasDurationTimer_Tick;
+            mSocketServer.Receiving -= new SocketBase.ReceivingEvent(mServer_Receiving);
+            mSocketServer.Accept -= new SocketBase.AcceptEvent(mServer_Accept);
             mSocketServer.Receiving += new SocketBase.ReceivingEvent(mServer_Receiving);
+            mSocketServer.Accept += new SocketBase.AcceptEvent(mServer_Accept);
+
+            //시작
+            mPrinterDurationTimer.Enabled = true;
+            mPasDurationTimer.Enabled = true;
+            mPasThread.Start();
+            mSocketServer.Start();
+
+            return true;
         }
 
         private void 모니터링종료()
         {
-            //각종 쓰레드 들 종료
+            //각종 쓰레드들 종료
             if (mPasDurationTimer != null)
             {
-                //Common.IsPasContinue = false;
+                IsPasContinue = false;
                 mPasDurationTimer.Enabled = false;
             }
             if (mPrinterDurationTimer != null)
             {
-                //Common.IsPrintContinue = false;
+                IsPrintContinue = false;
                 mPrinterDurationTimer.Enabled = false;
             }
-            //if (this.m_oPasThread != null)
-            //{
-            //    Common.IsPasThread = false;
-            //    this.m_oPasThread.Abort();
-            //    this.m_oPasThread = (Thread)null;
-            //}
 
-            if (this.mSocketServer != null)
+            if (mPasThread != null)
             {
-                this.mSocketServer.Stop();
-                this.mSocketServer = (SocketServer)null;
+                IsPasThread = false;
+                mPasThread.Abort();
+                mPasThread = (Thread)null;
+            }
+
+            if (mSocketServer != null)
+            {
+                mSocketServer.Stop();
+                mSocketServer.Receiving -= new SocketBase.ReceivingEvent(mServer_Receiving);
+                mSocketServer.Accept -= new SocketBase.AcceptEvent(mServer_Accept);
+                mSocketServer = (SocketServer)null;
             }
         }
 
@@ -396,9 +419,9 @@ namespace PAS.Task
             byteList.Add((byte)4);
             byteList.Add((byte)63);
             byteList.Add((byte)3);
-            //if (this.m_oServer.InitClient == null)
-            //    return;
-            //this.m_oServer.InitClient.Send(byteList.ToArray());
+            if (mSocketServer.InitClient == null) return;
+            mSocketServer.InitClient.Send(byteList.ToArray());
+
             //Common.Log((object)"ACCEPT", (object)"SEND", (object)Common.B2C(byteList.ToArray()));
         }
 
@@ -406,127 +429,110 @@ namespace PAS.Task
         {
             List<byte> byteList = new List<byte>();
             Socket client = ((SocketObject)sender).Client;
-            if (yBuffer[0] == (byte)2)
+
+            //조건안맞으면 종료
+            if (yBuffer[0] != (byte)2 || yBuffer[yBuffer.Length - 1] != (byte)3 || client == null)
             {
-                if (yBuffer[yBuffer.Length - 1] == (byte)3)
-                {
-                    if (client != null)
-                    {
-                        //if (!Common.IsSetting)
-                        //{
-                        //    Common.Log((object)"RECEIVING", (object)"RECV", (object)Common.B2C(yBuffer));
-                        //    if (yBuffer[3] != (byte)6)
-                        //    {
-                        //        byteList.Add((byte)2);
-                        //        byteList.Add(yBuffer[1]);
-                        //        byteList.Add(yBuffer[2]);
-                        //        byteList.Add((byte)6);
-                        //        byteList.Add((byte)4);
-                        //        byteList.Add((byte)63);
-                        //        byteList.Add((byte)3);
-                        //        if (client.Connected)
-                        //            client.Send(byteList.ToArray());
-                        //    }
-                        //    Common.LightOn_Normal(TaskType.INDICATOR);
-                        //    Common.LightOff_Error(TaskType.INDICATOR);
-                        //    DBProvider2.GetData(this.m_분류_숫자표시기값Table, new SqlConnection(Common.ConnectionString()), new string[1] { "@장비명" }, (object)Common.Setting.NAME);
-                        //    Common.Log((object)"RECEIVING", (object)"SELECT", (object)this.m_분류_숫자표시기값Table.Rows.Count.ToString());
-                        //    DataTable oDataTable = this.m_표시기맵Table.Copy();
-                        //    if (this.m_분류_숫자표시기값Table != null)
-                        //    {
-                        //        if (this.m_분류_숫자표시기값Table.Rows.Count > 0)
-                        //        {
-                        //            if (this.m_eDPSStatus == DPSStatus.START)
-                        //            {
-                        //                try
-                        //                {
-                        //                    foreach (DataRow row in (InternalDataCollectionBase)oDataTable.Rows)
-                        //                    {
-                        //                        DataRow[] dataRowArray = this.m_분류_숫자표시기값Table.Select("슈트번호='" + row["슈트번호"].ToString() + "'");
-                        //                        if (dataRowArray != null && dataRowArray.Length > 0)
-                        //                            row["수량"] = dataRowArray[0]["표시수"];
-                        //                    }
-                        //                    oDataTable.AcceptChanges();
-                        //                    Common.Log((object)"RECEIVING", (object)"START", (object)oDataTable.Rows.Count.ToString());
-                        //                    byte[] numArray = Indicator.MakeDPSCommand(oDataTable, Indicator.DPSCommandType.DATA);
-                        //                    if (numArray != null)
-                        //                    {
-                        //                        if (numArray.Length > 0)
-                        //                        {
-                        //                            if (client.Connected)
-                        //                            {
-                        //                                client.Send(numArray);
-                        //                                Common.Log((object)"RECEIVING", (object)"SEND", (object)Common.B2C(numArray));
-                        //                                mServer_Disconnect(client); return;
-                        //                                //goto label_31;
-                        //                            }
-                        //                            else
-                        //                            {
-                        //                                mServer_Disconnect(client); return;
-                        //                            }
-                        //                            //goto label_31;
-                        //                        }
-                        //                        else
-                        //                        {
-                        //                            mServer_Disconnect(client); return;
-                        //                        }
-                        //                            //goto label_31;
-                        //                    }
-                        //                    else
-                        //                    {
-                        //                        mServer_Disconnect(client); return;
-                        //                    }
-                        //                    //goto label_31;
-                        //                }
-                        //                catch (Exception ex)
-                        //                {
-                        //                    Common.LightOn_Error(TaskType.INDICATOR);
-                        //                    Common.Log(true, (object)"[DpsProcess]", (object)"[ERR-02]", (object)ex.Message);
-                        //                    mServer_Disconnect(client); return;
-                        //                    //goto label_31;
-                        //                }
-                        //                finally
-                        //                {
-                        //                    Thread.SpinWait(1);
-                        //                }
-                        //            }
-                        //        }
-                        //    }
-                        //    try
-                        //    {
-                        //        if (this.m_eDPSStatus != DPSStatus.NONE)
-                        //        {
-                        //            byte[] numArray = Indicator.MakeDPSCommand(this.m_표시기맵Table, Indicator.DPSCommandType.CLEAR);
-                        //            if (numArray != null)
-                        //            {
-                        //                if (numArray.Length > 0)
-                        //                {
-                        //                    if (client.Connected)
-                        //                    {
-                        //                        client.Send(numArray);
-                        //                        //Common.Log((object)"RECEIVING", (object)"SEND", (object)Common.B2C(numArray));
-                        //                    }
-                        //                }
-                        //            }
-                        //        }
-                        //    }
-                        //    catch (Exception ex)
-                        //    {
-                        //        //Common.LightOn_Error(TaskType.INDICATOR);
-                        //        //Common.Log(true, (object)"[DpsProcess]", (object)"[ERR-01]", (object)ex.Message);
-                        //    }
-                        //    finally
-                        //    {
-                        //        Thread.SpinWait(1);
-                        //    }
-                        //label_31: string ssss = ""; //의미없음
-                        //    //Common.LightOff_Normal(TaskType.INDICATOR);
-                        //}
-                    }
-                }
+                mServer_Disconnect(client);
+                return;
             }
 
-            mServer_Disconnect(client); return;
+            //Common.Log((object)"RECEIVING", (object)"RECV", (object)Common.B2C(yBuffer));
+            if (yBuffer[3] != (byte)6)
+            {
+                byteList.Add((byte)2);
+                byteList.Add(yBuffer[1]);
+                byteList.Add(yBuffer[2]);
+                byteList.Add((byte)6);
+                byteList.Add((byte)4);
+                byteList.Add((byte)63);
+                byteList.Add((byte)3);
+                if (client.Connected) client.Send(byteList.ToArray());
+            }
+
+            //숫자표시기 - 시작
+            사용불켜기(Enum.JobTaskType.숫자표시기);
+            오류불끄기(Enum.JobTaskType.숫자표시기);
+            //DBProvider2.GetData(this.m_분류_숫자표시기값Table, new SqlConnection(Common.ConnectionString()), new string[1] { "@장비명" }, (object)Common.Setting.NAME);
+            string s장비명 = GlobalClass.NAME;
+            DataTable 숫자표시기값Table = 작업.Pas작업.숫자표시기값(s장비명);
+
+            //Common.Log((object)"RECEIVING", (object)"SELECT", (object)this.m_분류_숫자표시기값Table.Rows.Count.ToString());
+
+            DataTable oDataTable = this.m_표시기맵Table.Copy();
+
+            if (숫자표시기값Table == null || 숫자표시기값Table.Rows.Count <= 0 /*|| this.m_eDPSStatus != DPSStatus.START*/)
+            {
+                try
+                {
+                    //if (this.m_eDPSStatus == DPSStatus.NONE)
+                    //{
+                    //    //종료
+                    //    return;
+                    //}
+
+                    byte[] numArray = Indicator.MakeDPSCommand(m_표시기맵Table, Indicator.DPSCommandType.CLEAR);
+                    if (numArray == null || numArray.Length <= 0)
+                    {
+                        //종료
+                        return;
+                    }
+
+                    if (client.Connected)
+                    {
+                        client.Send(numArray);
+                        //Common.Log((object)"RECEIVING", (object)"SEND", (object)Common.B2C(numArray));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    오류불켜기(Enum.JobTaskType.숫자표시기);
+                    //Common.Log(true, (object)"[DpsProcess]", (object)"[ERR-01]", (object)ex.Message);
+                }
+                finally
+                {
+                    Thread.SpinWait(1);
+                    사용불끄기(Enum.JobTaskType.숫자표시기);
+                    mServer_Disconnect(client);
+                }
+                return;
+            }
+
+            try
+            {
+                foreach (DataRow row in (InternalDataCollectionBase)oDataTable.Rows)
+                {
+                    DataRow[] dataRowArray = 숫자표시기값Table.Select("슈트번호='" + row["슈트번호"].ToString() + "'");
+                    if (dataRowArray != null && dataRowArray.Length > 0)
+                        row["수량"] = dataRowArray[0]["표시수"];
+                }
+                oDataTable.AcceptChanges();
+
+                //Common.Log((object)"RECEIVING", (object)"START", (object)oDataTable.Rows.Count.ToString());
+
+                byte[] numArray = Indicator.MakeDPSCommand(oDataTable, Indicator.DPSCommandType.DATA);
+                if (numArray == null || numArray.Length <= 0)
+                {
+                    return;
+                }
+
+                if (client.Connected)
+                {
+                    client.Send(numArray);
+                    //Common.Log((object)"RECEIVING", (object)"SEND", (object)Common.B2C(numArray));
+                }
+            }
+            catch (Exception ex)
+            {
+                오류불켜기(Enum.JobTaskType.숫자표시기);
+                //Common.Log(true, (object)"[DpsProcess]", (object)"[ERR-02]", (object)ex.Message);
+            }
+            finally
+            {
+                Thread.SpinWait(1);
+                사용불끄기(Enum.JobTaskType.숫자표시기);
+                mServer_Disconnect(client);
+            }
         }
 
         private void mServer_Disconnect(Socket client)
@@ -538,11 +544,13 @@ namespace PAS.Task
             }
             catch (SocketException ex)
             {
+                오류불켜기(Enum.JobTaskType.숫자표시기);
                 //Common.LightOn_Error(TaskType.INDICATOR);
                 //string message = ex.Message;
             }
             catch (Exception ex)
             {
+                오류불켜기(Enum.JobTaskType.숫자표시기);
                 //Common.LightOn_Error(TaskType.INDICATOR);
                 //string message = ex.Message;
             }
@@ -570,27 +578,29 @@ namespace PAS.Task
                 MessageBox.Show("PAS 제어 프로그램의 실적에 접근할 수 없습니다.\r\n프로그램을 종료합니다.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 Process.GetCurrentProcess().Kill();
             }
+
             if (networkDrive == null)
             {
                 MessageBox.Show("PAS 제어 프로그램의 실적에 접근할 수 없습니다.\r\n프로그램을 종료합니다.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 Process.GetCurrentProcess().Kill();
             }
 
-            bool IsPasThread = true;
-            bool IsPrinting = true;
-            bool IsSetting = true;
-            bool IsPasEvent = true;
-            bool IsPasContinue = true;
+            /*임시로 만들어놓음.*/
+            //bool IsPasThread = true;
+            //bool IsPrinting = true;
+            //bool IsSetting = true;
+            //bool IsPasEvent = true;
+            //bool IsPasContinue = true;
 
             while (IsPasThread)
             {
                 //인쇄중이거나 세팅중이거나 파스이벤트 있으면 멈춤
-                if (IsPrinting || IsSetting || IsPasEvent)
+                if (IsPrinting || /*IsSetting ||*/ IsPasEvent)
                 {
                     continue;
                 }
 
-                //IsPasContinue 는 
+                //IsPasContinue 는 false 의 경우 패스함.
                 if (IsPasContinue == false)
                 {
                     continue;
@@ -609,20 +619,19 @@ namespace PAS.Task
                 사용불끄기(Enum.JobTaskType.실적관리서버);
                 오류불끄기(Enum.JobTaskType.실적관리서버);
 
-                string s장비명 = "";
+                string s장비명 = GlobalClass.NAME;
                 DataTable dt = 작업.Pas작업.출하상태확인(s장비명);
 
                 if (dt == null || dt.Rows.Count <= 0)
                 {
-                    //Common.IsPasEvent = false;
-                    //Common.IsPasContinue = false;
+                    IsPasEvent = false;
+                    IsPasContinue = false;
                     Thread.Sleep(100);
                     continue;
                 }
 
                 string sBatchNo = dt.Rows[0]["분류번호"].ToString();
                 string 작업일자 = dt.Rows[0]["작업일자"].ToString();
-                //string empty = string.Empty;
                 string 작업월일;
 
                 try
@@ -640,9 +649,10 @@ namespace PAS.Task
 
                 if (!networkDrive.Exist(sFileName))
                 {
-                    //Common.IsPasEvent = false;
-                    //Common.IsPasContinue = false;
+                    IsPasEvent = false;
+                    IsPasContinue = false;
                     Thread.Sleep(100);
+                    continue;
                 }
 
                 try
@@ -650,9 +660,9 @@ namespace PAS.Task
                     DataTable dataTable = networkDrive.ReadLineParser(sDestPath, sFileName, sBatchNo, iLastIndex).Copy();
                     if (dataTable == null || dataTable.Rows.Count <= 0)
                     {
-                        //Common.IsPasEvent = false;
-                        //Common.IsPasContinue = false;
-                        Thread.Sleep(100);
+                        //IsPasEvent = false;
+                        //IsPasContinue = false;
+                        //Thread.Sleep(100);
                         continue;
                     }
 
@@ -665,7 +675,7 @@ namespace PAS.Task
                         continue;
                     }
 
-                    //Common.IsPrinting = true;
+                    IsPrinting = true;
                     foreach (DataRow dataRow in dataRowArray)
                     {
                         string s슈트번호 = dataRow["CHUTENO"].ToString();
@@ -691,10 +701,11 @@ namespace PAS.Task
                 }
                 finally
                 {
-                    //Common.IsPasEvent = false;
-                    //Common.IsPasContinue = false;
-                    //Common.IsPrinting = false;
+                    IsPasEvent = false;
+                    IsPasContinue = false;
+                    IsPrinting = false;
                     Thread.Sleep(100);
+
                     if (oClient != null)
                     {
                         oClient.Close();
@@ -702,8 +713,6 @@ namespace PAS.Task
                     }
                     사용불끄기(Enum.JobTaskType.PAS);
                     오류불끄기(Enum.JobTaskType.PAS);
-                    //Common.LightOff_Normal(TaskType.PAS);
-                    //Common.LightOff_Error(TaskType.PAS);
                 }
             }
         }
@@ -730,7 +739,10 @@ namespace PAS.Task
 
                 if (GlobalClass.SettingsPas기기(sPAS기기)) //기기정보 세팅
                 {
-                    모니터링시작();
+                    if (모니터링시작() == false)
+                    {
+                        return;
+                    }
                 }
                 else
                 {
@@ -740,8 +752,8 @@ namespace PAS.Task
                     오류불켜기(Enum.JobTaskType.실적관리서버);
                     오류불켜기(Enum.JobTaskType.거래명세서출력);
                     MessageBox.Show("작업시작시 오류발생하였습니다. \r\n\r\n전산팀에 문의 하여주시기 바랍니다.", this.Text);
+                    return;
                 }
-
             }
             else //종료
             {
@@ -757,11 +769,11 @@ namespace PAS.Task
         {
             DateTime now = DateTime.Now;
             int num = now.Hour * 60 * 60 + now.Minute * 60 + now.Second;
-            //if (Common.Setting.PAS_DURATION == 0 || num == 0 || num % Common.Setting.PAS_DURATION != 0)
-            //    return;
+            if (GlobalClass.PAS_DURATION == 0 || num == 0 || num % GlobalClass.PAS_DURATION != 0)
+                return;
 
             //PAS_DURATION 설정한 초에 한번 Flag 실행
-            //Common.IsPasContinue = true;
+            IsPasContinue = true;
         }
 
         private void mPrinterDurationTimer_Tick(object sender, EventArgs e)
@@ -772,7 +784,7 @@ namespace PAS.Task
             if (num == 0 || num % 15 != 0) return;
 
             //15초에 한번 Flag 실행
-            //Common.IsPrintContinue = true;
+            IsPrintContinue = true;
         }
         
         #endregion

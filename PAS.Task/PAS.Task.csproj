@@ -51,6 +51,8 @@
     <Compile Include="Globel\GlobalClass.cs" />
     <Compile Include="Services\공통.cs" />
     <Compile Include="Services\작업\Pas작업.cs" />
+    <Compile Include="Utils\SLKLog.cs" />
+    <Compile Include="Utils\ParseUtils.cs" />
     <Compile Include="WinFormsApp\DatabaseArgs.cs" />
     <Compile Include="WinFormsApp\Indicator.cs" />
     <Compile Include="WinFormsApp\MainForm.cs">
