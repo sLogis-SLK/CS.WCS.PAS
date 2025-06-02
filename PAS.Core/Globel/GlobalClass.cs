@@ -1,13 +1,10 @@
-﻿using PAS.Core;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using TR_Common;
-//using TR_Common;
 
-namespace PAS.Task
+namespace PAS.Core
 {
-    internal class GlobalClass1
+    public class GlobalClass
     {
         public static string PasDBConnectionString
         {
@@ -18,6 +15,7 @@ namespace PAS.Task
         {
             get { return $"Data Source={GlobalClass.HOST_DB_IP};Initial Catalog={GlobalClass.HOST_DB_SERVICE};Persist Security Info=True;User ID={GlobalClass.HOST_DB_ID};Password={GlobalClass.HOST_DB_PASSWORD}"; }
         }
+
 
         public static Dictionary<string, DataRow> DicPas기기 = new Dictionary<string, DataRow>();
 
@@ -59,8 +57,7 @@ namespace PAS.Task
 
             try
             {
-                DataTable dt = new DataTable();
-                //공통.접속정보(PasDBConnectionString);
+                DataTable dt = 공통.Pas접속정보(PasDBConnectionString);
 
                 foreach (DataRow row in dt.Rows)
                 {
@@ -114,4 +111,7 @@ namespace PAS.Task
             return true;
         }
     }
+
+
+
 }
