@@ -110,6 +110,10 @@
       <Project>{e9c69c3f-35ab-486f-95d5-484684c7aa4b}</Project>
       <Name>TR_Provider</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PAS.Core\PAS.Core.csproj">
+      <Project>{f13296c1-c8d6-4d4e-8bdf-df6464f70d2c}</Project>
+      <Name>PAS.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
