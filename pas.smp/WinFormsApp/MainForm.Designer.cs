@@ -54,7 +54,6 @@ namespace pas.smp
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -79,8 +78,8 @@ namespace pas.smp
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             this.업데이트 = new Infragistics.Win.Misc.UltraButton();
             this.종료버튼 = new Infragistics.Win.Misc.UltraButton();
             this.설정버튼 = new Infragistics.Win.Misc.UltraButton();
@@ -107,7 +106,7 @@ namespace pas.smp
             this.배송사 = new pas.smp.Controls.UserControlHeaderLabel();
             this.중량 = new pas.smp.Controls.UserControlHeaderLabel();
             this.박스바코드 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.시리얼포트 = new System.IO.Ports.SerialPort(this.components);
+            this.시리얼포트 = new System.IO.Ports.SerialPort();
             this.ultraGroupBox5 = new Infragistics.Win.Misc.UltraGroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.uGrid2 = new TR_Library.Controls.uGrid();
@@ -579,12 +578,12 @@ namespace pas.smp
             // 
             // HeaderText
             // 
-            appearance25.BackColor = System.Drawing.Color.LightSlateGray;
-            appearance25.FontData.BoldAsString = "True";
-            appearance25.ForeColor = System.Drawing.Color.White;
-            appearance25.TextHAlignAsString = "Center";
-            appearance25.TextVAlignAsString = "Middle";
-            this.HeaderText.Appearance = appearance25;
+            appearance27.BackColor = System.Drawing.Color.LightSlateGray;
+            appearance27.FontData.BoldAsString = "True";
+            appearance27.ForeColor = System.Drawing.Color.White;
+            appearance27.TextHAlignAsString = "Center";
+            appearance27.TextVAlignAsString = "Middle";
+            this.HeaderText.Appearance = appearance27;
             this.HeaderText.Dock = System.Windows.Forms.DockStyle.Left;
             this.HeaderText.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.HeaderText.Location = new System.Drawing.Point(3, 16);
@@ -595,8 +594,8 @@ namespace pas.smp
             // 
             // 현시간
             // 
-            appearance26.TextHAlignAsString = "Right";
-            this.현시간.Appearance = appearance26;
+            appearance28.TextHAlignAsString = "Right";
+            this.현시간.Appearance = appearance28;
             this.현시간.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.현시간.Location = new System.Drawing.Point(0, 794);
             this.현시간.Name = "현시간";

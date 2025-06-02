@@ -13,6 +13,10 @@ namespace PAS.Task
         [STAThread]
         static void Main()
         {
+            //GlobalClass.InitializationSettings();
+            //작업.Pas작업.test("1");
+            //return;
+
             //하나만 실행하게끔 
             bool bcreate;
             Mutex mtx = new Mutex(true, Process.GetCurrentProcess().ProcessName, out bcreate);

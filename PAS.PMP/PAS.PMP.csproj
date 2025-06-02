@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E44AB8D6-1F5E-40D4-8127-6D3598B87B45}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PAS.PMP</RootNamespace>
+    <AssemblyName>PAS.PMP</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Infragistics4.Shared.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.DataVisualization.Shared.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.DataVisualization.UltraGauges.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.Misc.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.Portable.Core.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.UltraWinEditors.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinGrid.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinSchedule.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinTabControl.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinToolbars.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Globel\Globel.cs" />
+    <Compile Include="Services\WCSHelper.cs" />
+    <Compile Include="Services\분류.cs" />
+    <Compile Include="Services\연동.cs" />
+    <Compile Include="Services\환경설정.cs" />
+    <Compile Include="WinFormsApp\frmTRPAS00001.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00001.Designer.cs">
+      <DependentUpon>frmTRPAS00001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00002.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00002.Designer.cs">
+      <DependentUpon>frmTRPAS00002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00003.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00003.Designer.cs">
+      <DependentUpon>frmTRPAS00003.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00004.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00004.Designer.cs">
+      <DependentUpon>frmTRPAS00004.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00005.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00005.Designer.cs">
+      <DependentUpon>frmTRPAS00005.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00006.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00006.Designer.cs">
+      <DependentUpon>frmTRPAS00006.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00007.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00007.Designer.cs">
+      <DependentUpon>frmTRPAS00007.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00011.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00011.Designer.cs">
+      <DependentUpon>frmTRPAS00011.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00021.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00021.Designer.cs">
+      <DependentUpon>frmTRPAS00021.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00022.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00022.Designer.cs">
+      <DependentUpon>frmTRPAS00022.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00023.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00023.Designer.cs">
+      <DependentUpon>frmTRPAS00023.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00024.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00024.Designer.cs">
+      <DependentUpon>frmTRPAS00024.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="WinFormsApp\frmTRPAS00001.resx">
+      <DependentUpon>frmTRPAS00001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\frmTRPAS00002.resx">
+      <DependentUpon>frmTRPAS00002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\frmTRPAS00003.resx">
+      <DependentUpon>frmTRPAS00003.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\frmTRPAS00004.resx">
+      <DependentUpon>frmTRPAS00004.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\frmTRPAS00005.resx">
+      <DependentUpon>frmTRPAS00005.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\frmTRPAS00006.resx">
+      <DependentUpon>frmTRPAS00006.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\frmTRPAS00007.resx">
+      <DependentUpon>frmTRPAS00007.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\frmTRPAS00011.resx">
+      <DependentUpon>frmTRPAS00011.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\frmTRPAS00021.resx">
+      <DependentUpon>frmTRPAS00021.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\frmTRPAS00022.resx">
+      <DependentUpon>frmTRPAS00022.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\frmTRPAS00023.resx">
+      <DependentUpon>frmTRPAS00023.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
+    <Folder Include="Library\" />
+    <Folder Include="Models\" />
+    <Folder Include="Services\공통\" />
+    <Folder Include="Services\관리\" />
+    <Folder Include="Services\분류\" />
+    <Folder Include="Services\연동\" />
+    <Folder Include="Services\출하\" />
+    <Folder Include="Services\표시\" />
+    <Folder Include="Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CS.TRabbit_V4\ldenvlib\ldenvlib.csproj">
+      <Project>{32334c37-e8d6-483c-a787-c66d31adf518}</Project>
+      <Name>ldenvlib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CS.TRabbit_V4\TR_Common\TR_Common.csproj">
+      <Project>{41217009-999a-4178-9266-8373b3a68dc6}</Project>
+      <Name>TR_Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CS.TRabbit_V4\TR_Library\TR_Library.csproj">
+      <Project>{7845a835-3539-4c92-b83c-e6c3227a7831}</Project>
+      <Name>TR_Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CS.TRabbit_V4\TR_Provider\TR_Provider.csproj">
+      <Project>{e9c69c3f-35ab-486f-95d5-484684c7aa4b}</Project>
+      <Name>TR_Provider</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
