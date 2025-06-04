@@ -1,4 +1,4 @@
-﻿namespace pas.smp
+﻿namespace PAS.SMP
 {
     public class 운송장채번Model
     {

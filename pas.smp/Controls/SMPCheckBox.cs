@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace pas.smp.Controls
+namespace PAS.SMP
 {
     [ToolboxItem(true)] // 도구 상자에 보이게 설정
     public partial class SMPCheckBox : CheckBox

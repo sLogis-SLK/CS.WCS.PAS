@@ -79,7 +79,7 @@ namespace PAS.Task.작업
                 string empty2 = string.Empty;
                 string empty3 = string.Empty;
                 string empty4 = string.Empty;
-                int num = ParseUtils.ObjectToint(oDataTable.Rows[0]["SKU수"]);
+                int num = ConvertUtil.ObjectToint(oDataTable.Rows[0]["SKU수"]);
                 int count = oDataTable.Rows.Count;
                 switch (s배치구분)
                 {
@@ -242,15 +242,15 @@ namespace PAS.Task.작업
                 }
                 else
                 {
-                    int num1 = ParseUtils.ObjectToint(s슈트번호);
+                    int num1 = ConvertUtil.ObjectToint(s슈트번호);
                     foreach (string str in strArray1)
                     {
                         string[] separator = new string[1] { "," };
                         string[] strArray3 = str.Split(separator, StringSplitOptions.RemoveEmptyEntries);
                         if (strArray3 != null && strArray3.Length > 0)
                         {
-                            int num2 = ParseUtils.ObjectToint(strArray3[1]);
-                            int num3 = ParseUtils.ObjectToint(strArray3[2]);
+                            int num2 = ConvertUtil.ObjectToint(strArray3[1]);
+                            int num3 = ConvertUtil.ObjectToint(strArray3[2]);
                             if (num2 != 0)
                             {
                                 if (num3 != 0)
@@ -288,7 +288,7 @@ namespace PAS.Task.작업
             string empty2 = string.Empty;
             string empty3 = string.Empty;
             string empty4 = string.Empty;
-            int num2 = ParseUtils.ObjectToint(oDataTable.Compute("SUM(수량)", string.Empty));
+            int num2 = ConvertUtil.ObjectToint(oDataTable.Compute("SUM(수량)", string.Empty));
             string empty5 = string.Empty;
             string str1 = oDataTable.Rows[0]["박스바코드"].ToString();
             string str2 = oDataTable.Rows[0]["박스바코드구분"].ToString();
@@ -300,49 +300,49 @@ namespace PAS.Task.작업
                 int num3 = 0;
                 string str6 = "^XA" + "^SEE:UHANGUL.DAT^FS" + "^CW1,E:KFONT3.FNT^FS" + "^CI26" + "^POI" + "^LH20,20" + "^FO690,20^A1R,70,70^FD" + str2 + "^FS" + "^FO690,500^BY3,2.0^BCR,70,N,N^FD" + str1 + "^FS" + "^FO680,10^GB0,850,2^FS" + "^FO640,20^A1R,25,25^FD스타일^FS" + "^FO640,370^A1R,25,25^FD색상^FS" + "^FO640,650^A1R,25,25^FD사이즈^FS" + "^FO640,0^A1R,25,25^FB850,1,0,R,0^FD수량^FS" + "^FO630,10^GB0,850,2^FS";
                 DataTableVerify(oDataTable, index * 15, ref empty2, ref empty3, ref empty4, ref empty5);
-                int num4 = num3 + ParseUtils.ObjectToint((object)empty5);
+                int num4 = num3 + ConvertUtil.ObjectToint((object)empty5);
                 string str7 = str6 + "^FO590,10^A1R,30,25^FD" + empty2 + "^FS" + "^FO590,370^A1R,30,25^FD" + empty3 + "^FS" + "^FO590,650^A1R,30,25^FD" + empty4 + "^FS" + "^FO590,780^A1R,30,25^FB70,1,0,R,0^FD" + empty5 + "^FS";
                 DataTableVerify(oDataTable, index * 15 + 1, ref empty2, ref empty3, ref empty4, ref empty5);
-                int num5 = num4 + ParseUtils.ObjectToint((object)empty5);
+                int num5 = num4 + ConvertUtil.ObjectToint((object)empty5);
                 string str8 = str7 + "^FO555,10^A1R,30,25^FD" + empty2 + "^FS" + "^FO555,370^A1R,30,25^FD" + empty3 + "^FS" + "^FO555,650^A1R,30,25^FD" + empty4 + "^FS" + "^FO555,780^A1R,30,25^FB70,1,0,R,0^FD" + empty5 + "^FS";
                 DataTableVerify(oDataTable, index * 15 + 2, ref empty2, ref empty3, ref empty4, ref empty5);
-                int num6 = num5 + ParseUtils.ObjectToint((object)empty5);
+                int num6 = num5 + ConvertUtil.ObjectToint((object)empty5);
                 string str9 = str8 + "^FO520,10^A1R,30,25^FD" + empty2 + "^FS" + "^FO520,370^A1R,30,25^FD" + empty3 + "^FS" + "^FO520,650^A1R,30,25^FD" + empty4 + "^FS" + "^FO520,780^A1R,30,25^FB70,1,0,R,0^FD" + empty5 + "^FS";
                 DataTableVerify(oDataTable, index * 15 + 3, ref empty2, ref empty3, ref empty4, ref empty5);
-                int num7 = num6 + ParseUtils.ObjectToint((object)empty5);
+                int num7 = num6 + ConvertUtil.ObjectToint((object)empty5);
                 string str10 = str9 + "^FO485,10^A1R,30,25^FD" + empty2 + "^FS" + "^FO485,370^A1R,30,25^FD" + empty3 + "^FS" + "^FO485,650^A1R,30,25^FD" + empty4 + "^FS" + "^FO485,780^A1R,30,25^FB70,1,0,R,0^FD" + empty5 + "^FS";
                 DataTableVerify(oDataTable, index * 15 + 4, ref empty2, ref empty3, ref empty4, ref empty5);
-                int num8 = num7 + ParseUtils.ObjectToint((object)empty5);
+                int num8 = num7 + ConvertUtil.ObjectToint((object)empty5);
                 string str11 = str10 + "^FO450,10^A1R,30,25^FD" + empty2 + "^FS" + "^FO450,370^A1R,30,25^FD" + empty3 + "^FS" + "^FO450,650^A1R,30,25^FD" + empty4 + "^FS" + "^FO450,780^A1R,30,25^FB70,1,0,R,0^FD" + empty5 + "^FS";
                 DataTableVerify(oDataTable, index * 15 + 5, ref empty2, ref empty3, ref empty4, ref empty5);
-                int num9 = num8 + ParseUtils.ObjectToint((object)empty5);
+                int num9 = num8 + ConvertUtil.ObjectToint((object)empty5);
                 string str12 = str11 + "^FO415,10^A1R,30,25^FD" + empty2 + "^FS" + "^FO415,370^A1R,30,25^FD" + empty3 + "^FS" + "^FO415,650^A1R,30,25^FD" + empty4 + "^FS" + "^FO415,780^A1R,30,25^FB70,1,0,R,0^FD" + empty5 + "^FS";
                 DataTableVerify(oDataTable, index * 15 + 6, ref empty2, ref empty3, ref empty4, ref empty5);
-                int num10 = num9 + ParseUtils.ObjectToint((object)empty5);
+                int num10 = num9 + ConvertUtil.ObjectToint((object)empty5);
                 string str13 = str12 + "^FO380,10^A1R,30,25^FD" + empty2 + "^FS" + "^FO380,370^A1R,30,25^FD" + empty3 + "^FS" + "^FO380,650^A1R,30,25^FD" + empty4 + "^FS" + "^FO380,780^A1R,30,25^FB70,1,0,R,0^FD" + empty5 + "^FS";
                 DataTableVerify(oDataTable, index * 15 + 7, ref empty2, ref empty3, ref empty4, ref empty5);
-                int num11 = num10 + ParseUtils.ObjectToint((object)empty5);
+                int num11 = num10 + ConvertUtil.ObjectToint((object)empty5);
                 string str14 = str13 + "^FO345,10^A1R,30,25^FD" + empty2 + "^FS" + "^FO345,370^A1R,30,25^FD" + empty3 + "^FS" + "^FO345,650^A1R,30,25^FD" + empty4 + "^FS" + "^FO345,780^A1R,30,25^FB70,1,0,R,0^FD" + empty5 + "^FS";
                 DataTableVerify(oDataTable, index * 15 + 8, ref empty2, ref empty3, ref empty4, ref empty5);
-                int num12 = num11 + ParseUtils.ObjectToint((object)empty5);
+                int num12 = num11 + ConvertUtil.ObjectToint((object)empty5);
                 string str15 = str14 + "^FO310,10^A1R,30,25^FD" + empty2 + "^FS" + "^FO310,370^A1R,30,25^FD" + empty3 + "^FS" + "^FO310,650^A1R,30,25^FD" + empty4 + "^FS" + "^FO310,780^A1R,30,25^FB70,1,0,R,0^FD" + empty5 + "^FS";
                 DataTableVerify(oDataTable, index * 15 + 9, ref empty2, ref empty3, ref empty4, ref empty5);
-                int num13 = num12 + ParseUtils.ObjectToint((object)empty5);
+                int num13 = num12 + ConvertUtil.ObjectToint((object)empty5);
                 string str16 = str15 + "^FO275,10^A1R,30,25^FD" + empty2 + "^FS" + "^FO275,370^A1R,30,25^FD" + empty3 + "^FS" + "^FO275,650^A1R,30,25^FD" + empty4 + "^FS" + "^FO275,780^A1R,30,25^FB70,1,0,R,0^FD" + empty5 + "^FS";
                 DataTableVerify(oDataTable, index * 15 + 10, ref empty2, ref empty3, ref empty4, ref empty5);
-                int num14 = num13 + ParseUtils.ObjectToint((object)empty5);
+                int num14 = num13 + ConvertUtil.ObjectToint((object)empty5);
                 string str17 = str16 + "^FO240,10^A1R,30,25^FD" + empty2 + "^FS" + "^FO240,370^A1R,30,25^FD" + empty3 + "^FS" + "^FO240,650^A1R,30,25^FD" + empty4 + "^FS" + "^FO240,780^A1R,30,25^FB70,1,0,R,0^FD" + empty5 + "^FS";
                 DataTableVerify(oDataTable, index * 15 + 11, ref empty2, ref empty3, ref empty4, ref empty5);
-                int num15 = num14 + ParseUtils.ObjectToint((object)empty5);
+                int num15 = num14 + ConvertUtil.ObjectToint((object)empty5);
                 string str18 = str17 + "^FO205,10^A1R,30,25^FD" + empty2 + "^FS" + "^FO205,370^A1R,30,25^FD" + empty3 + "^FS" + "^FO205,650^A1R,30,25^FD" + empty4 + "^FS" + "^FO205,780^A1R,30,25^FB70,1,0,R,0^FD" + empty5 + "^FS";
                 DataTableVerify(oDataTable, index * 15 + 12, ref empty2, ref empty3, ref empty4, ref empty5);
-                int num16 = num15 + ParseUtils.ObjectToint((object)empty5);
+                int num16 = num15 + ConvertUtil.ObjectToint((object)empty5);
                 string str19 = str18 + "^FO170,10^A1R,30,25^FD" + empty2 + "^FS" + "^FO170,370^A1R,30,25^FD" + empty3 + "^FS" + "^FO170,650^A1R,30,25^FD" + empty4 + "^FS" + "^FO170,780^A1R,30,25^FB70,1,0,R,0^FD" + empty5 + "^FS";
                 DataTableVerify(oDataTable, index * 15 + 13, ref empty2, ref empty3, ref empty4, ref empty5);
-                int num17 = num16 + ParseUtils.ObjectToint((object)empty5);
+                int num17 = num16 + ConvertUtil.ObjectToint((object)empty5);
                 string str20 = str19 + "^FO135,10^A1R,30,25^FD" + empty2 + "^FS" + "^FO135,370^A1R,30,25^FD" + empty3 + "^FS" + "^FO135,650^A1R,30,25^FD" + empty4 + "^FS" + "^FO135,780^A1R,30,25^FB70,1,0,R,0^FD" + empty5 + "^FS";
                 DataTableVerify(oDataTable, index * 15 + 14, ref empty2, ref empty3, ref empty4, ref empty5);
-                int num18 = num17 + ParseUtils.ObjectToint((object)empty5);
+                int num18 = num17 + ConvertUtil.ObjectToint((object)empty5);
                 string str21 = str20 + "^FO100,10^A1R,30,25^FD" + empty2 + "^FS" + "^FO100,370^A1R,30,25^FD" + empty3 + "^FS" + "^FO100,650^A1R,30,25^FD" + empty4 + "^FS" + "^FO100,780^A1R,30,25^FB70,1,0,R,0^FD" + empty5 + "^FS" + "^FO95,10^GB0,850,2^FS" + "^FO60,10^A1R30,25^FD소계. SKU : " + (index + 1 != num1 ? 15 : Math.Min(val1, 15)).ToString() + ", 수량 : " + num18.ToString() + "^FS" + "^FO60,0^A1R30,25^FB850,1,0,R,0^FD누계. SKU : " + oDataTable.Rows.Count.ToString() + ", 수량 : " + (object)num2 + "^FS" + "^FO45,10^GB0,850,2^FS" + "^FO10,20^A1R,25,25^FD" + oDataTable.Rows[0]["센터명"].ToString() + "^FS" + "^FO10,0^A1R,25,20^FB800,1,0,R,0^FD" + str3 + "^FS" + "^FO10,230^A1R,25,25^FDPAS^FS" + "^FO10,350^A1R,25,25^FD( " + (index + 1).ToString() + " / " + num1.ToString() + " )^FS" + "^FO50,990^A1N,50,40^FD" + str2 + "^FS" + "^FO300,920^BY2,2.0^BCN,90,N,N^FD" + str1 + "^FS" + "^FO300,1015^A1N,25,17^FD" + str3 + "^FS" + "^FO580,960^A1N,25,20^FD수량^FS" + "^FO580,990^A1N,50,45^FD" + num2.ToString() + "^FS" + "^FO680,960^A1N,25,20^FDSKU^FS" + "^FO680,990^A1N,50,45^FD" + oDataTable.Rows.Count.ToString() + "^FS" + "^FO50,1110^A1N,50,40^FD" + str2 + "^FS" + "^FO300,1080^A1N,25,20^FD수량^FS" + "^FO300,1110^A1N,50,45^FD" + num2.ToString() + "^FS" + "^FO400,1080^A1N,25,20^FDSKU^FS" + "^FO400,1110^A1N,50,45^FD" + oDataTable.Rows.Count.ToString() + "^FS" + "^FO500,1040^BY2,2.0^BCN,90,N,N^FD" + str1 + "^FS" + "^FO500,1135^A1N,25,17^FD" + str3 + "^FS" + "^XZ";
                 if (string.IsNullOrEmpty(str21))
                     return false;
@@ -397,10 +397,10 @@ namespace PAS.Task.작업
                 }
                 else
                 {
-                    s스타일 = ParseUtils.Substring(dataRowArray[0]["스타일"].ToString(), 18);
-                    s색상 = ParseUtils.Substring(dataRowArray[0]["색상"].ToString(), 16);
-                    s사이즈 = ParseUtils.Substring(dataRowArray[0]["사이즈"].ToString(), 7);
-                    int num = ParseUtils.ObjectToint(dataRowArray[0]["수량"]);
+                    s스타일 = ConvertUtil.Substring(dataRowArray[0]["스타일"].ToString(), 18);
+                    s색상 = ConvertUtil.Substring(dataRowArray[0]["색상"].ToString(), 16);
+                    s사이즈 = ConvertUtil.Substring(dataRowArray[0]["사이즈"].ToString(), 7);
+                    int num = ConvertUtil.ObjectToint(dataRowArray[0]["수량"]);
                     if (num == 0)
                         s내품수 = string.Empty;
                     else

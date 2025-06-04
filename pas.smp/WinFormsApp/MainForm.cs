@@ -1,6 +1,5 @@
 ﻿using Infragistics.Win.UltraWinGrid;
-using pas.smp.Controls;
-using pas.smp.WinFormsApp;
+using PAS.Core;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +15,7 @@ using System.Windows.Forms;
 using TR_Common;
 using TR_Provider;
 
-namespace pas.smp
+namespace PAS.SMP
 {
     public partial class MainForm : Form
     {
@@ -54,6 +53,23 @@ namespace pas.smp
             get => 중량무시_Check.Checked;
         }
 
+        private bool 시작여부
+        {
+            get => ultraButton1.Text == "시작" ? true : false;
+            set
+            {
+                if (value)
+                {
+                    ultraButton1.Text = "시작";
+                }
+                else
+                {
+                    ultraButton1.Text = "동작중";
+                }
+                comboBox1.Enabled = value;
+            }
+        }
+
         #endregion
 
         #region 초기화
@@ -61,23 +77,33 @@ namespace pas.smp
         public MainForm()
         {
             InitializeComponent();
+
             ControlInit();
+            StartPosition = FormStartPosition.CenterScreen;
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            if (DesignMode) return; //디자인모드일때 아래 부분 적용안되게 함.
+
+            //구초기화..
             GlobalClass.GetSetting();
             GlobalClass.IsLog = true;
-            this.StartPosition = FormStartPosition.CenterScreen;
 
-            var items = new List<KeyValuePair<string, string>>()
+            //최초 초기화 및 정보 가져오기
+            GlobalClass.InitializationSettings();
+
+            //PAS기기콤보 세팅
+            foreach (var item in GlobalClass.Dic출하기기)
             {
-                new KeyValuePair<string, string>("======선택======", ""),
-                new KeyValuePair<string, string>("=====A라인======", "2001"),
-                new KeyValuePair<string, string>("=====B라인======", "2011")
-            };
+                comboBox1.Items.Add(item.Key);
+            }
 
-            comboBox1.DataSource = items;
-            comboBox1.DisplayMember = "Key";
-            comboBox1.ValueMember = "Value";
-            comboBox1.SelectedIndex = 0;
+            //Default 설정
+            if (comboBox1.Items.Count > 0) comboBox1.SelectedIndex = 0;
 
+            //이벤트모음
             timer출하상태확인.Elapsed += Timer출하상태확인_Tick;
             timer출하박스확인.Elapsed += Timer출하박스확인_Tick;
 
@@ -85,19 +111,14 @@ namespace pas.smp
             다시시작버튼.Click += new System.EventHandler(this.다시시작버튼_Click);
             설정버튼.Click += new System.EventHandler(this.설정버튼_Click);
             종료버튼.Click += new System.EventHandler(this.종료버튼_Click);
-        }
 
-        protected override void OnShown(EventArgs e)
-        {
-            base.OnShown(e);
-            
             그리드초기화();
 
-            //timer 초기 세팅값
-            timer출하상태확인.Interval = 2000; //2초
-            timer출하상태확인.Start();  //시작
+            ////timer 초기 세팅값
+            //timer출하상태확인.Interval = 2000; //2초
+            //timer출하상태확인.Start();  //시작
 
-            Refresh시리얼포트();
+            //Refresh시리얼포트();
         }
 
         private void ControlInit()
@@ -152,7 +173,7 @@ namespace pas.smp
             {
                 #region uGrid1 BindingSource 초기화
                 
-                출하.출하내역관리.출하상태확인(m_출하상태Table, true);
+                출하.출하내역관리.출하상태확인(m_출하상태Table, false);
                 
                 m_출하상태BS.DataSource = m_출하상태Table;
                 uGrid1.DataSource = m_출하상태BS;
@@ -201,8 +222,8 @@ namespace pas.smp
             try
             {
                 시리얼포트.Close();
-                시리얼포트.PortName = GlobalClass.Setting.COM_NAME;
-                시리얼포트.BaudRate = Convert.ToInt32(GlobalClass.Setting.COM_BAUDRATE);
+                시리얼포트.PortName = GlobalClass.출하라인설정.COM_NAME;
+                시리얼포트.BaudRate = Convert.ToInt32(GlobalClass.출하라인설정.COM_BAUDRATE);
                 시리얼포트.Open();
             }
             catch (Exception ex)
@@ -242,7 +263,7 @@ namespace pas.smp
                 if (!this.Disconnection())
                     return false;
                 this.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                this.socket.Connect(GlobalClass.Setting.PLC_IP, Convert.ToInt32(GlobalClass.Setting.PLC_PORT));
+                this.socket.Connect(GlobalClass.출하라인설정.PLC_IP, Convert.ToInt32(GlobalClass.출하라인설정.PLC_PORT));
                 return true;
             }
             catch (SocketException ex)
@@ -491,7 +512,7 @@ namespace pas.smp
             //출력값이 없다고 판단되면 배송사 채번
             if (string.IsNullOrEmpty(str2))
             {
-                c운송장 = 채번.운송장채번("PAS", "9650", s센터코드, sB코드, s배송사코드, s점코드);
+                c운송장 = 채번.운송장채번(GlobalClass.출하라인설정.URL, "PAS", "9650", s센터코드, sB코드, s배송사코드, s점코드);
                 //c운송장 = new 운송장채번Model();
             }
             //출력값이 있다고 판단되면 기존 출력값을 사용하여 출력
@@ -601,16 +622,37 @@ namespace pas.smp
 
         private void 시작버튼_Click(object sender, EventArgs e)
         {
-            if (this.comboBox1.SelectedIndex == 0)
+            if (시작여부)
             {
-                MessageBox.Show("출하라인을 선택해주세요", this.Text);
+                string s출하기기 = comboBox1.SelectedItem.ToString();
+
+                if (GlobalClass.Settings출하기기(s출하기기)) //기기정보 세팅
+                {
+                    //timer 초기 세팅값
+                    timer출하상태확인.Interval = 2000; //2초
+                    timer출하상태확인.Start();  //시작
+
+                    Refresh시리얼포트();
+                }
+                else
+                {
+                    MessageBox.Show("작업시작시 오류발생하였습니다. \r\n\r\n전산팀에 문의 하여주시기 바랍니다.", this.Text);
+                    return;
+                }
             }
+            else
+            {
+                //작업중시
+                timer출하상태확인?.Stop();
+                timer출하박스확인?.Stop();
 
-            //timer 초기 세팅값
-            //timer출하상태확인.Interval = 2000; //2초
-            //timer출하상태확인.Start();  //시작
+                if (시리얼포트?.IsOpen == true)
+                    시리얼포트.Close();
 
-            //Refresh시리얼포트();
+                //25.06.04 김동준
+                //작업중시시 화면 클리어 할지 안할지는 알아서 판단...주석으로 남겨놓음
+            }
+            시작여부 = !시작여부;
         }
 
         private void 미발행대상버튼_Click(object sender, EventArgs e)
@@ -628,6 +670,9 @@ namespace pas.smp
 
         private void 설정버튼_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("DB에서 직접 데이터 제어중... 변경창 만드는중...", this.Text);
+            return;
+
             //세팅창 띄우기
             Form frm = new frmSetting();
             if (frm.ShowDialog() == DialogResult.OK)

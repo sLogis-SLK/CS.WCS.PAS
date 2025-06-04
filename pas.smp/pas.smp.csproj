@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{277567A6-D048-4FB6-BC5E-C4950870A416}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>pas.smp</RootNamespace>
-    <AssemblyName>pas.smp</AssemblyName>
+    <RootNamespace>PAS.SMP</RootNamespace>
+    <AssemblyName>PAS.SMP</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -85,7 +85,6 @@
     <Compile Include="Services\출하\출하내역관리.cs" />
     <Compile Include="Models\Setting.cs" />
     <Compile Include="Utils\LogUtil.cs" />
-    <Compile Include="Utils\Utils.cs" />
     <Compile Include="WinFormsApp\frmSetting.cs">
       <SubType>Form</SubType>
     </Compile>

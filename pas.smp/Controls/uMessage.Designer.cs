@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System;
 
-namespace pas.smp.Controls
+namespace PAS.SMP
 {
     partial class uMessage
     {

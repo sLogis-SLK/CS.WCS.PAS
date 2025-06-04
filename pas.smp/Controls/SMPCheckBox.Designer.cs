@@ -1,4 +1,4 @@
-﻿namespace pas.smp.Controls
+﻿namespace PAS.SMP
 {
     partial class SMPCheckBox
     {

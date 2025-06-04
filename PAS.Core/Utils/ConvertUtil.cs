@@ -1,9 +1,30 @@
 ﻿using System;
 
-namespace pas.smp
+namespace PAS.Core
 {
     public class ConvertUtil
     {
+        public static int ObjectToint(Object obj)
+        {
+            int result = 0;
+            string s = obj == null ? "0" : obj.ToString();
+            Int32.TryParse(s, out result);
+            return result;
+        }
+
+        public static string Substring(string s, int i)
+        {
+            try
+            {
+                return s.Substring(0, i);
+            }
+            catch
+            {
+
+            }
+            return s;
+        }
+
         public static byte[] StringToBuffer(string inStr)
         {
             byte[] numArray = (byte[])null;
@@ -23,7 +44,7 @@ namespace pas.smp
             return numArray;
         }
 
-        public static bool ObjectToDouble(object obj, out double  result )
+        public static bool ObjectToDouble(object obj, out double result)
         {
             try
             {
@@ -36,7 +57,6 @@ namespace pas.smp
                 return false;
             }
         }
-
         public static bool IsDouble(string inStr)
         {
             try
@@ -45,11 +65,11 @@ namespace pas.smp
             }
             catch (Exception ex)
             {
-                LogUtil.Log((object)"[SMP9008]", (object)inStr, (object)ex.Message);
+                Console.WriteLine(ex.ToString());
+                //LogUtil.Log((object)"[SMP9008]", (object)inStr, (object)ex.Message);
                 return false;
             }
             return true;
         }
-
     }
 }

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using TR_Common;
 using TR_Library.Controls;
 
-namespace pas.smp.WinFormsApp
+namespace PAS.SMP
 {
     public partial class frmSMP00004: Form
     {

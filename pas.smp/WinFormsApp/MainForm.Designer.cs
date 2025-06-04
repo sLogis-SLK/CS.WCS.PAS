@@ -3,7 +3,7 @@ using Infragistics.Win;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace pas.smp
+namespace PAS.SMP
 {
     partial class MainForm
     {
@@ -54,6 +54,7 @@ namespace pas.smp
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -78,8 +79,8 @@ namespace pas.smp
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             this.업데이트 = new Infragistics.Win.Misc.UltraButton();
             this.종료버튼 = new Infragistics.Win.Misc.UltraButton();
             this.설정버튼 = new Infragistics.Win.Misc.UltraButton();
@@ -89,24 +90,24 @@ namespace pas.smp
             this.미발행대상버튼 = new Infragistics.Win.Misc.UltraButton();
             this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
             this.ultraGroupBox2 = new Infragistics.Win.Misc.UltraGroupBox();
-            this.박스번호 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.슈트번호 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.배치번호 = new pas.smp.Controls.UserControlHeaderLabel();
+            this.박스번호 = new PAS.SMP.UserControlHeaderLabel();
+            this.슈트번호 = new PAS.SMP.UserControlHeaderLabel();
+            this.배치번호 = new PAS.SMP.UserControlHeaderLabel();
             this.ultraGroupBox3 = new Infragistics.Win.Misc.UltraGroupBox();
-            this.마지막박스 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.내품수 = new pas.smp.Controls.UserControlHeaderLabel();
+            this.마지막박스 = new PAS.SMP.UserControlHeaderLabel();
+            this.내품수 = new PAS.SMP.UserControlHeaderLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ultraGroupBox4 = new Infragistics.Win.Misc.UltraGroupBox();
-            this.중량무시_Check = new pas.smp.Controls.SMPCheckBox();
-            this.재발행_Check = new pas.smp.Controls.SMPCheckBox();
-            this.중량무시 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.재발행 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.운송장번호 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.매장명 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.배송사 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.중량 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.박스바코드 = new pas.smp.Controls.UserControlHeaderLabel();
-            this.시리얼포트 = new System.IO.Ports.SerialPort();
+            this.중량무시_Check = new PAS.SMP.SMPCheckBox();
+            this.재발행_Check = new PAS.SMP.SMPCheckBox();
+            this.중량무시 = new PAS.SMP.UserControlHeaderLabel();
+            this.재발행 = new PAS.SMP.UserControlHeaderLabel();
+            this.운송장번호 = new PAS.SMP.UserControlHeaderLabel();
+            this.매장명 = new PAS.SMP.UserControlHeaderLabel();
+            this.배송사 = new PAS.SMP.UserControlHeaderLabel();
+            this.중량 = new PAS.SMP.UserControlHeaderLabel();
+            this.박스바코드 = new PAS.SMP.UserControlHeaderLabel();
+            this.시리얼포트 = new System.IO.Ports.SerialPort(this.components);
             this.ultraGroupBox5 = new Infragistics.Win.Misc.UltraGroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.uGrid2 = new TR_Library.Controls.uGrid();
@@ -117,7 +118,7 @@ namespace pas.smp
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.ultraButton1 = new Infragistics.Win.Misc.UltraButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.uMessage1 = new pas.smp.Controls.uMessage();
+            this.uMessage1 = new PAS.SMP.uMessage();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
             this.ultraGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).BeginInit();
@@ -578,12 +579,12 @@ namespace pas.smp
             // 
             // HeaderText
             // 
-            appearance27.BackColor = System.Drawing.Color.LightSlateGray;
-            appearance27.FontData.BoldAsString = "True";
-            appearance27.ForeColor = System.Drawing.Color.White;
-            appearance27.TextHAlignAsString = "Center";
-            appearance27.TextVAlignAsString = "Middle";
-            this.HeaderText.Appearance = appearance27;
+            appearance25.BackColor = System.Drawing.Color.LightSlateGray;
+            appearance25.FontData.BoldAsString = "True";
+            appearance25.ForeColor = System.Drawing.Color.White;
+            appearance25.TextHAlignAsString = "Center";
+            appearance25.TextVAlignAsString = "Middle";
+            this.HeaderText.Appearance = appearance25;
             this.HeaderText.Dock = System.Windows.Forms.DockStyle.Left;
             this.HeaderText.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.HeaderText.Location = new System.Drawing.Point(3, 16);
@@ -594,8 +595,8 @@ namespace pas.smp
             // 
             // 현시간
             // 
-            appearance28.TextHAlignAsString = "Right";
-            this.현시간.Appearance = appearance28;
+            appearance26.TextHAlignAsString = "Right";
+            this.현시간.Appearance = appearance26;
             this.현시간.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.현시간.Location = new System.Drawing.Point(0, 794);
             this.현시간.Name = "현시간";
@@ -705,17 +706,17 @@ namespace pas.smp
         private Infragistics.Win.Misc.UltraButton 미발행대상버튼;
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox1;
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox2;
-        private Controls.UserControlHeaderLabel 박스번호;
-        private Controls.UserControlHeaderLabel 슈트번호;
-        private Controls.UserControlHeaderLabel 배치번호;
-        private Controls.UserControlHeaderLabel 중량;
-        private Controls.UserControlHeaderLabel 매장명;
-        private Controls.UserControlHeaderLabel 배송사;
-        private Controls.UserControlHeaderLabel 마지막박스;
-        private Controls.UserControlHeaderLabel 내품수;
-        private Controls.UserControlHeaderLabel 운송장번호;
+        private UserControlHeaderLabel 박스번호;
+        private UserControlHeaderLabel 슈트번호;
+        private UserControlHeaderLabel 배치번호;
+        private UserControlHeaderLabel 중량;
+        private UserControlHeaderLabel 매장명;
+        private UserControlHeaderLabel 배송사;
+        private UserControlHeaderLabel 마지막박스;
+        private UserControlHeaderLabel 내품수;
+        private UserControlHeaderLabel 운송장번호;
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox3;
-        private Controls.UserControlHeaderLabel 박스바코드;
+        private UserControlHeaderLabel 박스바코드;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.IO.Ports.SerialPort 시리얼포트;
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox5;
@@ -724,12 +725,12 @@ namespace pas.smp
         private TR_Library.Controls.uGrid uGrid1;
         private Infragistics.Win.Misc.UltraLabel HeaderText;
         private Infragistics.Win.Misc.UltraLabel 현시간;
-        private Controls.uMessage uMessage1;
+        private uMessage uMessage1;
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox4;
-        private Controls.SMPCheckBox 재발행_Check;
-        private Controls.UserControlHeaderLabel 중량무시;
-        private Controls.UserControlHeaderLabel 재발행;
-        private Controls.SMPCheckBox 중량무시_Check;
+        private SMPCheckBox 재발행_Check;
+        private UserControlHeaderLabel 중량무시;
+        private UserControlHeaderLabel 재발행;
+        private SMPCheckBox 중량무시_Check;
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox6;
         private ComboBox comboBox1;
         private Infragistics.Win.Misc.UltraButton ultraButton1;

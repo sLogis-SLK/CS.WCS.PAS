@@ -5,7 +5,7 @@
 // Assembly location: C:\Users\User\Desktop\pas.smp - B라인\pas.smp.exe
 
 //#nullable disable
-namespace pas.smp
+namespace PAS.SMP
 {
   public enum INI_KEY
   {

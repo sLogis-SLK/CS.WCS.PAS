@@ -6,66 +6,61 @@ namespace PAS.Core
 {
     public class GlobalCore
     {
+        public static string PATH_STARTUP { get => Application.StartupPath; }
+
         public static string PasDBConnectionString
         {
-            get { return $"Data Source={PAS_DB_IP};Initial Catalog={PAS_DB_SERVICE};Persist Security Info=True;User ID={PAS_DB_ID};Password={PAS_DB_PASSWORD}"; }
+            get { return $"Data Source={db접속정보.PAS_DB_IP};Initial Catalog={db접속정보.PAS_DB_SERVICE};Persist Security Info=True;User ID={db접속정보.PAS_DB_ID};Password={db접속정보.PAS_DB_PASSWORD}"; }
         }
 
         public static string HostDBConnectionString
         {
-            get { return $"Data Source={HOST_DB_IP};Initial Catalog={HOST_DB_SERVICE};Persist Security Info=True;User ID={HOST_DB_ID};Password={HOST_DB_PASSWORD}"; }
+            get { return $"Data Source={db접속정보.HOST_DB_IP};Initial Catalog={db접속정보.HOST_DB_SERVICE};Persist Security Info=True;User ID={db접속정보.HOST_DB_ID};Password={db접속정보.HOST_DB_PASSWORD}"; }
         }
 
-
         public static Dictionary<string, DataRow> DicPas기기 = new Dictionary<string, DataRow>();
+        
+        public static Dictionary<string, DataRow> Dic출하기기 = new Dictionary<string, DataRow>();
 
-        public static string PATH_STARTUP { get => Application.StartupPath; }
+        public static DB접속정보 db접속정보 = new DB접속정보();
 
-        public static string PAS_DB_IP { get; set; }
-        public static string PAS_DB_SERVICE { get; set; }
-        public static string PAS_DB_ID { get; set; }
-        public static string PAS_DB_PASSWORD { get; set; }
-        public static string HOST_DB_IP { get; private set; }
-        public static string HOST_DB_SERVICE { get; private set; }
-        public static string HOST_DB_ID { get; private set; }
-        public static string HOST_DB_PASSWORD { get; private set; }
-        public static string NAME { get; private set; }
-        public static string SEIGYO_IP { get; private set; }
-        public static string SEIGYO_PORT { get; private set; }
-        public static string CHUTES { get; private set; }
-        public static string CHUTES_ERROR { get; private set; }
-        public static string CHUTES_OVERFLOW { get; private set; }
-        public static string LOCAL_FOLDER { get; private set; }
-        public static string SEIGYO_FOLDER { get; private set; }
-        public static string SEIGYO_ID { get; private set; }
-        public static string SEIGYO_PASSWORD { get; private set; }
-        public static int PAS_DURATION { get; private set; }
-        public static string INDICATOR_DURATION { get; private set; }
-        public static string INDICATOR_IP { get; private set; }
-        public static int INDICATOR_PORT { get; private set; }
-        public static string INDICATOR_STRUCTURE { get; private set; }
-        public static string BARCODE_PRINTER_LIST { get; private set; }
-        public static string PRINTER_LIST { get; private set; }
+        public static PAS환경설정 pas환경설정 = new PAS환경설정();
+
+        public static 출하라인환경설정 출하라인설정 = new 출하라인환경설정();
+
 
         public static void InitializationSettings()
         {
-            PAS_DB_IP = "112.216.239.253,4222";
-            PAS_DB_SERVICE = "PASOP";
-            PAS_DB_ID = "pasuser";
-            PAS_DB_PASSWORD = "paspass";
+            db접속정보.PAS_DB_IP = "112.216.239.253,4222";
+            db접속정보.PAS_DB_SERVICE = "PASOP";
+            db접속정보.PAS_DB_ID = "pasuser";
+            db접속정보.PAS_DB_PASSWORD = "paspass";
 
             try
             {
-                DataTable dt = 공통.Pas접속정보(PasDBConnectionString);
+                //DB접속정보 최초가져오기
+                DataTable dt_DB접속정보 = 공통.DB접속정보(PasDBConnectionString);
+                db접속정보.SetDataRow(dt_DB접속정보.Rows[0]);
 
-                foreach (DataRow row in dt.Rows)
+                //Pas접속정보 최초가져오기
+                DataTable dt_DicPas기기 = 공통.Pas접속정보(PasDBConnectionString);
+                foreach (DataRow row in dt_DicPas기기.Rows)
                 {
-                    DataRow saveRow = dt.NewRow();
+                    DataRow saveRow = dt_DicPas기기.NewRow();
                     saveRow.ItemArray = row.ItemArray;
                     DicPas기기.Add(row["NAME"].ToString(), saveRow);
                 }
-
                 SettingsPas기기("PAS01");
+
+                //Pas출하라인접속정보 최초가져오기
+                DataTable dt_Dic출하기기 = 공통.출하라인접속정보(PasDBConnectionString);
+                foreach (DataRow row in dt_Dic출하기기.Rows)
+                {
+                    DataRow saveRow = dt_Dic출하기기.NewRow();
+                    saveRow.ItemArray = row.ItemArray;
+                    Dic출하기기.Add(row["NAME"].ToString(), saveRow);
+                }
+                Settings출하기기("A라인");
             }
             catch (System.Exception ex)
             {
@@ -75,38 +70,17 @@ namespace PAS.Core
 
         public static bool SettingsPas기기(string key)
         {
-            if (DicPas기기.ContainsKey(key) == false) return false;
+            if (DicPas기기.ContainsKey(key) == false) 
+                return false;
+            pas환경설정.SetDataRow(DicPas기기[key]);
+            return true;
+        }
 
-            DataRow row = DicPas기기[key];
-
-            NAME = row["NAME"].ToString();
-            SEIGYO_IP = row["SEIGYO_IP"].ToString();
-            SEIGYO_PORT = row["SEIGYO_PORT"].ToString();
-            CHUTES = row["CHUTES"].ToString();
-            CHUTES_ERROR = row["CHUTES_ERROR"].ToString();
-            CHUTES_OVERFLOW = row["CHUTES_OVERFLOW"].ToString();
-            LOCAL_FOLDER = row["LOCAL_FOLDER"].ToString();
-            SEIGYO_FOLDER = row["SEIGYO_FOLDER"].ToString();
-            SEIGYO_ID = row["SEIGYO_ID"].ToString();
-            SEIGYO_PASSWORD = row["SEIGYO_PASSWORD"].ToString();
-            PAS_DURATION = ParseUtils.ObjectToint(row["PAS_DURATION"]);
-            INDICATOR_DURATION = row["INDICATOR_DURATION"].ToString();
-            INDICATOR_IP = row["INDICATOR_IP"].ToString();
-            INDICATOR_PORT = ParseUtils.ObjectToint(row["INDICATOR_PORT"]);
-            INDICATOR_STRUCTURE = row["INDICATOR_STRUCTURE"].ToString();
-
-            PAS_DB_IP = row["PAS_DB_IP"].ToString();
-            PAS_DB_SERVICE = row["PAS_DB_SERVICE"].ToString();
-            PAS_DB_ID = row["PAS_DB_ID"].ToString();
-            PAS_DB_PASSWORD = row["PAS_DB_PASSWORD"].ToString();
-            HOST_DB_IP = row["HOST_DB_IP"].ToString();
-            HOST_DB_SERVICE = row["HOST_DB_SERVICE"].ToString();
-            HOST_DB_ID = row["HOST_DB_ID"].ToString();
-            HOST_DB_PASSWORD = row["HOST_DB_PASSWORD"].ToString();
-
-            BARCODE_PRINTER_LIST = row["BARCODE_PRINTER_LIST"].ToString();
-            PRINTER_LIST = row["PRINTER_LIST"].ToString();
-
+        public static bool Settings출하기기(string key)
+        {
+            if (Dic출하기기.ContainsKey(key) == false)
+                return false;
+            출하라인설정.SetDataRow(Dic출하기기[key]);
             return true;
         }
     }

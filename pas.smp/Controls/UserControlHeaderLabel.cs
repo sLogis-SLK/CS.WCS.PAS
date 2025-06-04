@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace pas.smp.Controls
+namespace PAS.SMP
 {
     public partial class UserControlHeaderLabel : UserControl
     {

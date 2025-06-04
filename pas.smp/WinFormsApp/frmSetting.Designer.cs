@@ -1,4 +1,4 @@
-﻿namespace pas.smp.WinFormsApp
+﻿namespace PAS.SMP
 {
     partial class frmSetting
     {

@@ -742,7 +742,7 @@ namespace PAS.Task
                 }
                 else
                 {
-                    작업시작여부 = !작업시작여부;
+                    //작업시작여부 = !작업시작여부;
                     오류불켜기(Enum.JobTaskType.PAS);
                     오류불켜기(Enum.JobTaskType.숫자표시기);
                     오류불켜기(Enum.JobTaskType.실적관리서버);

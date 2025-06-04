@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 
 //#nullable disable
-namespace pas.smp
+namespace PAS.SMP
 {
   public class INI
   {

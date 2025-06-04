@@ -1,11 +1,10 @@
-﻿using System.Xml.Linq;
-using System;
+﻿using System;
 using TR_Common;
-using System.Runtime.CompilerServices;
+using PAS.Core;
 
-namespace pas.smp
+namespace PAS.SMP
 {
-    public static class GlobalClass
+    public class GlobalClass : GlobalCore
     {
 
         public static string CMD_01_BUF = "500000FFFF03000C00100001040000100400A82300";
@@ -24,33 +23,27 @@ namespace pas.smp
 
         public static bool IsLog { get; set; }
 
-        public static string ConnectionString
-        {
-            get { return $"Data Source={GlobalClass.Setting.PASDB_IP};Initial Catalog={GlobalClass.Setting.PASDB_SERVICE};Persist Security Info=True;User ID={GlobalClass.Setting.PASDB_ID};Password={GlobalClass.Setting.PASDB_PASSWORD}"; }
-        }
-
-
         public static void GetSetting()
         {
             Setting setting = new Setting();
             try 
             {
-                INI ini = new INI(Global.g_sStartupPath + "\\smp.ini");
-                setting.PLC_IP = ini.GetIniValue(INI_SECTION.SMP, INI_KEY.PLC_IP);
-                setting.PLC_PORT = ini.GetIniValue(INI_SECTION.SMP, INI_KEY.PLC_PORT);
-                setting.PASDB_IP = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.PASDB_IP);
-                setting.PASDB_SERVICE = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.PASDB_SERVICE);
-                setting.PASDB_ID = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.PASDB_ID);
-                setting.PASDB_PASSWORD = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.PASDB_PASSWORD);
-                setting.HOST_IP = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.HOST_IP);
-                setting.HOST_SERVICE = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.HOST_SERVICE);
-                setting.HOST_ID = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.HOST_ID);
-                setting.HOST_PASSWORD = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.HOST_PASSWORD);
-                setting.COM_NAME = ini.GetIniValue(INI_SECTION.ETC, INI_KEY.COM_NAME);
-                setting.COM_BAUDRATE = ini.GetIniValue(INI_SECTION.ETC, INI_KEY.COM_BAUDRATE);
-                setting.PRINTER_NAME = ini.GetIniValue(INI_SECTION.ETC, INI_KEY.PRINTER_NAME);
-                setting.BARCODE_POSITION = ini.GetIniValue(INI_SECTION.ETC, INI_KEY.BARCODE_POSITION);
-                setting.URL = ini.GetIniValue(INI_SECTION.ETC, INI_KEY.URL);
+                //INI ini = new INI(Global.g_sStartupPath + "\\smp.ini");
+                //setting.PLC_IP = ini.GetIniValue(INI_SECTION.SMP, INI_KEY.PLC_IP);
+                //setting.PLC_PORT = ini.GetIniValue(INI_SECTION.SMP, INI_KEY.PLC_PORT);
+                //setting.PASDB_IP = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.PASDB_IP);
+                //setting.PASDB_SERVICE = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.PASDB_SERVICE);
+                //setting.PASDB_ID = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.PASDB_ID);
+                //setting.PASDB_PASSWORD = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.PASDB_PASSWORD);
+                //setting.HOST_IP = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.HOST_IP);
+                //setting.HOST_SERVICE = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.HOST_SERVICE);
+                //setting.HOST_ID = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.HOST_ID);
+                //setting.HOST_PASSWORD = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.HOST_PASSWORD);
+                //setting.COM_NAME = ini.GetIniValue(INI_SECTION.ETC, INI_KEY.COM_NAME);
+                //setting.COM_BAUDRATE = ini.GetIniValue(INI_SECTION.ETC, INI_KEY.COM_BAUDRATE);
+                //setting.PRINTER_NAME = ini.GetIniValue(INI_SECTION.ETC, INI_KEY.PRINTER_NAME);
+                //setting.BARCODE_POSITION = ini.GetIniValue(INI_SECTION.ETC, INI_KEY.BARCODE_POSITION);
+                //setting.URL = ini.GetIniValue(INI_SECTION.ETC, INI_KEY.URL);
             }
             catch (Exception ex)
             {
@@ -93,7 +86,7 @@ namespace pas.smp
         //신규
         public static byte[] GetBufferBybyte
         {
-            get => ConvertUtil.StringToBuffer(GlobalClass.Setting.PLC_PORT == "2011" ? GlobalClass.CMD_01_BUF : GlobalClass.CMD_02_BUF);
+            get => ConvertUtil.StringToBuffer(GlobalClass.출하라인설정.PLC_PORT == "2011" ? GlobalClass.CMD_01_BUF : GlobalClass.CMD_02_BUF);
         }
     }
 }

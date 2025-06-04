@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TR_Common;
 
-namespace pas.smp.WinFormsApp
+namespace PAS.SMP
 {
     public partial class frmSetting: Form
     {

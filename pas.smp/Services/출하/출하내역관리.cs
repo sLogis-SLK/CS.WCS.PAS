@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TR_Common;
 
-namespace pas.smp.출하
+namespace PAS.SMP.출하
 {
     internal partial class 출하내역관리
     {
@@ -18,7 +18,7 @@ namespace pas.smp.출하
             try
             {
                 if (string.IsNullOrEmpty(dt.TableName)) dt.TableName = "usp_출하_상태확인_Get";
-                TlkTranscope.GetData(dt, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.ConnectionString), new string[] { "@조회구분자" }, is조회구분자 ? 1 : 0);
+                TlkTranscope.GetData(dt, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), new string[] { "@조회구분자" }, is조회구분자 ? 1 : 0);
             }
             catch (Exception ex)
             {
@@ -32,7 +32,7 @@ namespace pas.smp.출하
             try
             {
                 if (string.IsNullOrEmpty(dt.TableName)) dt.TableName = "usp_출하_박스내용_Get";
-                TlkTranscope.GetData(dt, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.ConnectionString), new string[] { "@박스바코드" }, s박스바코드);
+                TlkTranscope.GetData(dt, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), new string[] { "@박스바코드" }, s박스바코드);
             }
             catch (Exception ex)
             {
@@ -57,7 +57,7 @@ namespace pas.smp.출하
         {
             try
             {
-                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.ConnectionString), IsolationLevel.ReadCommitted))
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
                 {
                     oScope.Initialize("usp_출하_박스내용_Set", "@배치번호", "@슈트번호", "@박스번호",
                         "@출력값1", "@출력값2", "@출력값3", "@출력값4", "@출력값5", "@출력값6", "@출력값7", "@출력값8", "@출력값9", "@출력값10",
@@ -80,7 +80,7 @@ namespace pas.smp.출하
             try
             {
                 if (string.IsNullOrEmpty(dt.TableName)) dt.TableName = "usp_출하_미발행박스_Get";
-                TlkTranscope.GetData(dt, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.ConnectionString),
+                TlkTranscope.GetData(dt, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
                     new string[] { "@작업일자", "@분류번호", "@조회구분자" }
                     , 작업일자
                     , string.Empty
@@ -98,7 +98,7 @@ namespace pas.smp.출하
             try 
             {
                 if (string.IsNullOrEmpty(dt.TableName)) dt.TableName = "usp_출하_박스별패킹내역_Get_JH";
-                TlkTranscope.GetData(dt, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.ConnectionString),
+                TlkTranscope.GetData(dt, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
                     new string[] { "@배치번호", "@슈트번호", "@박스번호" },
                     new object[] { 배치번호
                                 , 슈트번호
