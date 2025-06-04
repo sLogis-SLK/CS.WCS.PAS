@@ -15,7 +15,11 @@ namespace PAS.Task
         {
             //GlobalClass.InitializationSettings();
             //작업.Pas작업.test("1");
-            //return;
+
+
+            Core.Controls.OutLineSettingForm lineSettingForm = new Core.Controls.OutLineSettingForm();
+            Application.Run(lineSettingForm);            
+            return;
 
             //하나만 실행하게끔 
             bool bcreate;

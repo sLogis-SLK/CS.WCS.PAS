@@ -64,6 +64,9 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\InitializeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Globel\Globel.cs" />
     <Compile Include="Services\WCSHelper.cs" />
     <Compile Include="Services\분류.cs" />
@@ -210,7 +213,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\" />
     <Folder Include="Library\" />
     <Folder Include="Models\" />
     <Folder Include="Services\공통\" />
