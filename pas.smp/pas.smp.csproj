@@ -77,20 +77,10 @@
     </Compile>
     <Compile Include="Globel\GlobalClass.cs" />
     <Compile Include="Services\출하\출력템플릿.cs" />
-    <Compile Include="Utils\INI.cs" />
-    <Compile Include="Models\INI_KEY.cs" />
-    <Compile Include="Models\INI_SECTION.cs" />
     <Compile Include="Models\운송장채번Model.cs" />
     <Compile Include="Services\채번.cs" />
     <Compile Include="Services\출하\출하내역관리.cs" />
-    <Compile Include="Models\Setting.cs" />
     <Compile Include="Utils\LogUtil.cs" />
-    <Compile Include="WinFormsApp\frmSetting.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinFormsApp\frmSetting.Designer.cs">
-      <DependentUpon>frmSetting.cs</DependentUpon>
-    </Compile>
     <Compile Include="WinFormsApp\frmSMP00004.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,9 +115,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="WinFormsApp\frmSetting.resx">
-      <DependentUpon>frmSetting.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\frmSMP00004.resx">
       <DependentUpon>frmSMP00004.cs</DependentUpon>
     </EmbeddedResource>

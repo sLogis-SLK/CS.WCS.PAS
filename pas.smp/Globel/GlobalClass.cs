@@ -17,40 +17,9 @@ namespace PAS.SMP
 
         public static string FILE_SETTING => "\\smp.ini";
 
-        public static Setting Setting { get; set; }
-
         public static bool IsThread { get; set; }
 
         public static bool IsLog { get; set; }
-
-        public static void GetSetting()
-        {
-            Setting setting = new Setting();
-            try 
-            {
-                //INI ini = new INI(Global.g_sStartupPath + "\\smp.ini");
-                //setting.PLC_IP = ini.GetIniValue(INI_SECTION.SMP, INI_KEY.PLC_IP);
-                //setting.PLC_PORT = ini.GetIniValue(INI_SECTION.SMP, INI_KEY.PLC_PORT);
-                //setting.PASDB_IP = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.PASDB_IP);
-                //setting.PASDB_SERVICE = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.PASDB_SERVICE);
-                //setting.PASDB_ID = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.PASDB_ID);
-                //setting.PASDB_PASSWORD = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.PASDB_PASSWORD);
-                //setting.HOST_IP = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.HOST_IP);
-                //setting.HOST_SERVICE = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.HOST_SERVICE);
-                //setting.HOST_ID = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.HOST_ID);
-                //setting.HOST_PASSWORD = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.HOST_PASSWORD);
-                //setting.COM_NAME = ini.GetIniValue(INI_SECTION.ETC, INI_KEY.COM_NAME);
-                //setting.COM_BAUDRATE = ini.GetIniValue(INI_SECTION.ETC, INI_KEY.COM_BAUDRATE);
-                //setting.PRINTER_NAME = ini.GetIniValue(INI_SECTION.ETC, INI_KEY.PRINTER_NAME);
-                //setting.BARCODE_POSITION = ini.GetIniValue(INI_SECTION.ETC, INI_KEY.BARCODE_POSITION);
-                //setting.URL = ini.GetIniValue(INI_SECTION.ETC, INI_KEY.URL);
-            }
-            catch (Exception ex)
-            {
-                Common.ErrorMessage("GlobalClass GetSetting", ex.Message);
-            }
-            GlobalClass.Setting = setting;
-        }
 
         #region ini 파일 하드코딩
         /*

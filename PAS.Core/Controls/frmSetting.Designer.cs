@@ -1,4 +1,4 @@
-﻿namespace PAS.SMP
+﻿namespace PAS.Core
 {
     partial class frmSetting
     {

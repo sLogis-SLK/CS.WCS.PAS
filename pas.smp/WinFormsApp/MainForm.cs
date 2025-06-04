@@ -88,8 +88,8 @@ namespace PAS.SMP
             if (DesignMode) return; //디자인모드일때 아래 부분 적용안되게 함.
 
             //구초기화..
-            GlobalClass.GetSetting();
-            GlobalClass.IsLog = true;
+            //GlobalClass.GetSetting();
+            //GlobalClass.IsLog = true;
 
             //최초 초기화 및 정보 가져오기
             GlobalClass.InitializationSettings();
@@ -682,13 +682,13 @@ namespace PAS.SMP
             MessageBox.Show("DB에서 직접 데이터 제어중... 변경창 만드는중...", this.Text);
             return;
 
-            //세팅창 띄우기
-            Form frm = new frmSetting();
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                GlobalClass.GetSetting();
-                this.Refresh시리얼포트();
-            }
+            ////세팅창 띄우기
+            //Form frm = new frmSetting();
+            //if (frm.ShowDialog() == DialogResult.OK)
+            //{
+            //    //GlobalClass.GetSetting();
+            //    this.Refresh시리얼포트();
+            //}
         }
 
         private void 종료버튼_Click(object sender, EventArgs e)
