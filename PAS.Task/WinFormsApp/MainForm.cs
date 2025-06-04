@@ -90,7 +90,18 @@ namespace PAS.Task
                 {
                     PAS기기콤보.Items.Add(item.Key);
                 }
-                if (PAS기기콤보.Items.Count > 0) PAS기기콤보.SelectedIndex = 0;
+                PAS기기콤보.SelectedItem = GlobalClass.DefaultValuePasName;
+                if (PAS기기콤보.SelectedItem != null)
+                {
+                    if (GlobalClass.SettingsPas기기(GlobalClass.DefaultValuePasName)) //DefaultValuePasName 세팅
+                    {
+                        //성공
+                    }
+                    else
+                    {
+                        //실패
+                    }
+                }
 
                 //시작버튼 이벤트
                 시작버튼.Click += 시작버튼_Click;
@@ -116,7 +127,11 @@ namespace PAS.Task
 
                     모니터링종료(); //각종쓰레드 종료
 
-                    Process.GetCurrentProcess().Kill();
+                    //기본Default 값 저장
+                    string sPAS기기 = PAS기기콤보.SelectedItem.ToString();
+                    GlobalClass.SaveDefaultValueToIni(sPAS기기, string.Empty);
+
+                    //Process.GetCurrentProcess().Kill();
                     base.OnClosed(e);
                 }
                 catch (Exception ex)

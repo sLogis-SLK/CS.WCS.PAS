@@ -415,19 +415,5 @@ namespace PAS.Task.작업
             }
         }
 
-        //internal static void test(string ss)
-        //{
-        //    DataTable dt = new DataTable("usp_김동준_테스트프로시저");
-        //    using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.HostDBConnectionString), IsolationLevel.ReadCommitted))
-        //    {
-        //        oScope.Initialize("usp_김동준_테스트프로시저", "@tmp");
-        //        oScope.Fill(dt, ss);
-        //        //oScope.Update(s분류번호, s장비명, s슈트번호,s마지막박스여부);
-        //        //Commit전에 출력
-
-        //        oScope.Rollback();
-        //    }
-        //}
-
     }
 }

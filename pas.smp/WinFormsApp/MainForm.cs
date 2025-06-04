@@ -99,9 +99,18 @@ namespace PAS.SMP
             {
                 comboBox1.Items.Add(item.Key);
             }
-
-            //Default 설정
-            if (comboBox1.Items.Count > 0) comboBox1.SelectedIndex = 0;
+            comboBox1.SelectedItem = GlobalClass.DefaultValue출하라인;
+            if (comboBox1.SelectedItem != null)
+            {
+                if (GlobalClass.Settings출하기기(GlobalClass.DefaultValue출하라인)) //DefaultValue출하라인 세팅
+                {
+                    //성공
+                }
+                else
+                {
+                    //실패
+                }
+            }
 
             //이벤트모음
             timer출하상태확인.Elapsed += Timer출하상태확인_Tick;
@@ -700,6 +709,10 @@ namespace PAS.SMP
 
                 if (시리얼포트?.IsOpen == true)
                     시리얼포트.Close();
+
+                //기본Default 값 저장
+                string sDefault기기 = comboBox1.SelectedItem.ToString();
+                GlobalClass.SaveDefaultValueToIni(string.Empty, sDefault기기);
 
                 base.OnClosed(e);
             }

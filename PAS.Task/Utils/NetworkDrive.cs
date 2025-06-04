@@ -51,7 +51,7 @@ namespace PAS.Task
 
         public int Connect()
         {
-            return NetworkDrive.WNetUseConnection(IntPtr.Zero, ref this._NETRESOURCE, this.m_sPassword, this.m_sID, this.m_iFlags, this.m_Sb, ref this.m_iCapacity, out this.m_iResultFlags);
+            return NetworkDrive.WNetUseConnection(IntPtr.Zero, ref _NETRESOURCE, m_sPassword, m_sID, m_iFlags, m_Sb, ref m_iCapacity, out m_iResultFlags);
         }
 
         public bool Copy(string sDestPath, string sFileName, bool bIsOverWrite)

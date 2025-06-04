@@ -49,12 +49,9 @@
     <Compile Include="Globel\Enum\JobTaskType.cs" />
     <Compile Include="Globel\Enum\NETRESOURCE.cs" />
     <Compile Include="Globel\GlobalClass.cs" />
-    <Compile Include="Services\공통.cs" />
     <Compile Include="Services\작업\Pas작업.cs" />
-    <Compile Include="Utils\SLKLog.cs" />
-    <Compile Include="Utils\ParseUtils.cs" />
-    <Compile Include="WinFormsApp\DatabaseArgs.cs" />
-    <Compile Include="WinFormsApp\Indicator.cs" />
+    <Compile Include="Utils\DatabaseArgs.cs" />
+    <Compile Include="Utils\Indicator.cs" />
     <Compile Include="WinFormsApp\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,8 +63,7 @@
     <Compile Include="Utils\SocketBase.cs" />
     <Compile Include="Utils\SocketObject.cs" />
     <Compile Include="Utils\SocketServer.cs" />
-    <Compile Include="WinFormsApp\NetworkDrive.cs" />
-    <Compile Include="WinFormsApp\PasProcess.cs" />
+    <Compile Include="Utils\NetworkDrive.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

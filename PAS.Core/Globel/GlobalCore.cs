@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -8,6 +9,8 @@ namespace PAS.Core
     {
         public static string PATH_STARTUP { get => Application.StartupPath; }
 
+        private static string DafaultValuePathToIni { get => PATH_STARTUP + "\\Default.ini"; }
+        
         public static string PasDBConnectionString
         {
             get { return $"Data Source={db접속정보.PAS_DB_IP};Initial Catalog={db접속정보.PAS_DB_SERVICE};Persist Security Info=True;User ID={db접속정보.PAS_DB_ID};Password={db접속정보.PAS_DB_PASSWORD}"; }
@@ -28,16 +31,18 @@ namespace PAS.Core
 
         public static 출하라인환경설정 출하라인설정 = new 출하라인환경설정();
 
+        public static string DefaultValuePasName = string.Empty;
+
+        public static string DefaultValue출하라인 = string.Empty;
 
         public static void InitializationSettings()
         {
-            db접속정보.PAS_DB_IP = "112.216.239.253,4222";
-            db접속정보.PAS_DB_SERVICE = "PASOP";
-            db접속정보.PAS_DB_ID = "pasuser";
-            db접속정보.PAS_DB_PASSWORD = "paspass";
 
             try
             {
+                //기본값확인
+                GetDefaultValueToIni();
+
                 //DB접속정보 최초가져오기
                 DataTable dt_DB접속정보 = 공통.DB접속정보(PasDBConnectionString);
                 db접속정보.SetDataRow(dt_DB접속정보.Rows[0]);
@@ -50,7 +55,6 @@ namespace PAS.Core
                     saveRow.ItemArray = row.ItemArray;
                     DicPas기기.Add(row["NAME"].ToString(), saveRow);
                 }
-                SettingsPas기기("PAS01");
 
                 //Pas출하라인접속정보 최초가져오기
                 DataTable dt_Dic출하기기 = 공통.출하라인접속정보(PasDBConnectionString);
@@ -60,12 +64,60 @@ namespace PAS.Core
                     saveRow.ItemArray = row.ItemArray;
                     Dic출하기기.Add(row["NAME"].ToString(), saveRow);
                 }
-                Settings출하기기("A라인");
             }
             catch (System.Exception ex)
             {
                 throw ex;
             }
+        }
+
+        private static void GetDefaultValueToIni()
+        {
+            //기본Default값 가지고 오기
+            INI ini = new INI(DafaultValuePathToIni);
+            db접속정보.PAS_DB_IP = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.PAS_DB_IP);
+            db접속정보.PAS_DB_SERVICE = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.PAS_DB_SERVICE);
+            db접속정보.PAS_DB_ID = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.PAS_DB_ID);
+            db접속정보.PAS_DB_PASSWORD = ini.GetIniValue(INI_SECTION.DATABASE, INI_KEY.PAS_DB_PASSWORD);
+            DefaultValuePasName = ini.GetIniValue(INI_SECTION.PAS, INI_KEY.NAME);
+            DefaultValue출하라인 = ini.GetIniValue(INI_SECTION.SMP, INI_KEY.LINE_NAME);
+
+            //비었으면 Default 값 넣기
+            if (string.IsNullOrEmpty(db접속정보.PAS_DB_IP))
+            {
+                db접속정보.PAS_DB_IP = "sol.slogis.co.kr,4222";
+                db접속정보.PAS_DB_SERVICE = "PASOP";
+                db접속정보.PAS_DB_ID = "pas_user";
+                db접속정보.PAS_DB_PASSWORD = "i7w0ufs6jn9s4o";
+            }
+        }
+
+        public static bool SaveDefaultValueToIni(string pasDefaultValue, string 출하DefaultValue)
+        {
+            //기본Default값 저장
+            try
+            {
+                INI ini = new INI(DafaultValuePathToIni);
+                ini.SetIniValue(INI_SECTION.DATABASE, INI_KEY.PAS_DB_IP, db접속정보.PAS_DB_IP);
+                ini.SetIniValue(INI_SECTION.DATABASE, INI_KEY.PAS_DB_SERVICE, db접속정보.PAS_DB_SERVICE);
+                ini.SetIniValue(INI_SECTION.DATABASE, INI_KEY.PAS_DB_ID, db접속정보.PAS_DB_ID);
+                ini.SetIniValue(INI_SECTION.DATABASE, INI_KEY.PAS_DB_PASSWORD, db접속정보.PAS_DB_PASSWORD);
+
+                if (string.IsNullOrEmpty(pasDefaultValue) == false)
+                {
+                    ini.SetIniValue(INI_SECTION.PAS, INI_KEY.NAME, pasDefaultValue);
+                }
+
+                if (string.IsNullOrEmpty(출하DefaultValue) == false)
+                {
+                    ini.SetIniValue(INI_SECTION.SMP, INI_KEY.LINE_NAME, 출하DefaultValue);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            return true;
         }
 
         public static bool SettingsPas기기(string key)
