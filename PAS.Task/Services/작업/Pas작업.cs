@@ -1,14 +1,12 @@
 ﻿using DbProvider;
 using PAS.Core;
 using System;
-using System.Collections.Generic;
 using System.Data;
+using System.Drawing.Printing;
 using System.IO;
-using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using TR_Common;
 
 namespace PAS.Task.작업
@@ -57,7 +55,6 @@ namespace PAS.Task.작업
             }
         }
 
-
         private static bool 출력(string s슈트번호, DataTable oDataTable, TcpClient oClient)
         {
             if (oDataTable != null && oDataTable.Rows.Count > 0)
@@ -88,7 +85,7 @@ namespace PAS.Task.작업
                 {
                     case "패키지":
                         if (!string.IsNullOrEmpty(str5) && str5 != "0" && str6 == "1")
-                            return true;// GetPrintScript2(Common.GetBarcodePrinterName("패키지"), oClient, oDataTable);
+                            return GetPrintScript2(GetBarcodePrinterName("패키지"), oClient, oDataTable);
                         return true;
                         //goto label_32;
                     case "반품":
@@ -97,7 +94,7 @@ namespace PAS.Task.작업
                 }
                 if (!string.IsNullOrEmpty(str5) && str5 != "0" && str6 == "1")
                 {
-                    string printScript = "";// Common.GetPrintScript(s패턴구분, s배치구분, count);
+                    string printScript =  GetPrintScript(s패턴구분, s배치구분, count);
                     string str12;
                     switch (s패턴구분)
                     {
@@ -142,9 +139,11 @@ namespace PAS.Task.작업
                             str12 = string.Format(printScript, (object)str3, (object)s슈트번호, (object)str5, (object)str1);
                             break;
                     }
+
                     if (string.IsNullOrEmpty(str12))
                         return false;
-                    string barcodePrinterName = "";// Common.GetBarcodePrinterName(s슈트번호);
+
+                    string barcodePrinterName = GetBarcodePrinterName(s슈트번호);
                     if (oClient != null)
                     {
                         oClient.Close();
@@ -184,6 +183,98 @@ namespace PAS.Task.작업
             return true;
         }
 
+        public static string GetPrintScript(string s패턴구분, string s배치구분, int i박스풀대상수)
+        {
+            string empty = string.Empty;
+            string str1 = "~DGSLKN.GRF,330,10," + "00000000000000000000" + "00000000000000000000" + "0007FFFF000000000000" + "007FFFFF000000000000" + "01FFFFFF800000000000" + "03FFFFFF800000000000" + "07FFFFFF800000000000" + "07FFFFFF800000000000" + "0FFFF80F800000000000" + "0FFFE000800000000000" + "0FFFE000000000000000" + "0FFFF000000000000000" + "07FFF800000000000000" + "03FFFE00000000000000" + "01FFFF80000000000000" + "00FFFFC0000000000000" + "003FFFF003F8007F03F8" + "000FFFFC03F800FF07F8" + "0007FFFE03F800FF0FF0" + "0001FFFF03F800FE1FC0" + "00007FFF83F800FE3F80" + "00003FFF83F800FE7F00" + "00001FFF83F800FFFE00" + "3C003FFF83F800FEFE00" + "1FE07FFF83F800FEFF00" + "1FFFFFFF83F800FE7F80" + "1FFFFFFF03F800FE3FC0" + "1FFFFFFE07FFFCFE1FE0" + "1FFFFFFC07FFFCFE0FF0" + "1FFFFFF007FFFCFE07F8" + "00FFFF0007FFF8FC03F8" + "00000000000000000000" + "00000000000000000000";
+            string str2 = "~DGSLKR.GRF,400,5," + "0000000000" + "0000000000" + "00C0000000" + "1FC0000000" + "1FC0078000" + "1FC00FE000" + "1F801FF000" + "1F803FF800" + "3F807FF800" + "3F807FFC00" + "3F80FFFC00" + "3F00FFFC00" + "3F01FFFE00" + "3F03FFFE00" + "3F03FFFE00" + "3F07FFFE00" + "3F87FFFE00" + "3F8FFFFE00" + "3FDFFFFE00" + "3FFFF8FE00" + "3FFFF8FE00" + "3FFFF07E00" + "3FFFF07E00" + "3FFFE07E00" + "1FFFC07E00" + "1FFFC07E00" + "1FFF807E00" + "1FFF807E00" + "0FFF00FE00" + "07FF00FE00" + "07FE00FE00" + "03FC00FE00" + "01F801F800" + "0000000000" + "0000000000" + "0000000000" + "0000000000" + "3C00000000" + "3FFF800000" + "3FFF800000" + "3FFF800000" + "3FFF800000" + "3FFF800000" + "3FFF800000" + "3FFF800000" + "3C00000000" + "3C00000000" + "3C00000000" + "3C00000000" + "3C00000000" + "3C00000000" + "3C00000000" + "3C00000000" + "1C00000000" + "0000000000" + "0000000000" + "3FFF000000" + "3FFF800000" + "3FFF800000" + "3FFF800000" + "3FFF800000" + "3FFF800000" + "1FFF800000" + "0023800000" + "00E0000000" + "01F0000000" + "03F8000000" + "07FC000000" + "0FFE000000" + "1FFF000000" + "3FFF800000" + "3F9F800000" + "3F0F800000" + "3E07800000" + "3C03800000" + "3803800000" + "3001800000" + "0000000000" + "0000000000" + "0000000000";
+            string printScript;
+            switch (s패턴구분)
+            {
+                case "사용안함":
+                    printScript = string.Empty;
+                    break;
+                case "출고유형":
+                    printScript = str1 + "^XA" + "^SEE:UHANGUL.DAT^FS" + "^CW1,E:KFONT3.FNT^FS" + "^CI26" + "^PON" + "^LH20,20" + "^FO10,20^A1N,40,40^FD{0}^FS" + "^FO10,70^A1N,40,40^FD{1}^FS" + "^FO10,120^GB490,0,1^FS" + "^FO10,145^A1N,35,35^FD슈트번호^FS" + "^FO200,145^A1N,35,35^FD박스번호^FS" + "^FO400,145^A1N,35,35^FD수량^FS" + "^FO10,195^A1N,35,35^FD{2}^FS" + "^FO200,195^A1N,35,35^FD{3}^FS" + "^FO400,195^A1N,35,35^FD{4}^FS" + "^FO10,250^BY2,2.0" + "^B3N,N,150,Y,N,N^FD*{5}*^FS" + "^FO10,450^A1N,25,25^FD{6}^FS" + "^FO400,450^XGSLKN,1,1,^FS" + "^PQ1^XZ";
+                    break;
+                case "반품유형1":
+                    string str3 = str2 + "^XA" + "^SEE:UHANGUL.DAT^FS" + "^CW1,E:KFONT3.FNT^FS" + "^CI26" + "^PON" + "^LH10,10" + "^FO480,20^A1R,30,25^FD{0}^FS" + "^FO480,320^A1R,30,25^FD[{1}]^FS" + "^FO410,20^BY3" + "^BCR,50,N,N,N^FD{2}^FS" + "^FO320,60^A1R,80,60^FD*{3}*^FS" + "^FO290,10^A1R,20,20^FD슈트번호^FS" + "^FO210,10^A1R,70,50^FD{4}^FS" + "^FO290,210^A1R,20,20^FD박스번호^FS" + "^FO210,210^A1R,70,50^FD{5}^FS" + "^FO290,350^A1R,20,20^FD수량^FS" + "^FO210,350^A1R,70,50^FD{6}^FS";
+                    if (i박스풀대상수 >= 1)
+                        str3 = str3 + "^FO160,10^BY2.2.0" + "^BCR,40,N,N,N^FD{7}^FS" + "^FO130,10^A1R,25,20^FD{7}^FS" + "^FO130,250^A1R,25,20^FD{8}^FS";
+                    if (i박스풀대상수 >= 2)
+                        str3 = str3 + "^FO80,10^BY2.2.0" + "^BCR,40,N,N,N^FD{9}^FS" + "^FO50,10^A1R,25,20^FD{9}^FS" + "^FO50,250^A1R,25,20^FD{10}^FS";
+                    printScript = str3 + "^FO0,20^A1R,25,20^FD{11}^FS" + "^FO0,450^XGSLKR,1,1,^FS" + "^PQ1^XZ";
+                    break;
+                case "반품유형2":
+                    printScript = str2 + "^XA" + "^SEE:UHANGUL.DAT^FS" + "^CW1,E:KFONT3.FNT^FS" + "^CI26" + "^PON" + "^LH10,10" + "^FO480,20^A1R,30,25^FD{0}^FS" + "^FO410,20^BY3" + "^BCR,50,N,N,N^FD{1}^FS" + "^FO320,60^A1R,80,60^FD*{2}*^FS" + "^FO290,10^A1R,20,20^FD배치번호^FS" + "^FO250,10^A1R,40,30^FD{3}^FS" + "^FO210,10^A1R,20,20^FD슈트번호^FS" + "^FO140,10^A1R,70,50^FD{4}^FS" + "^FO210,270^A1R,20,20^FD박스번호^FS" + "^FO140,270^A1R,70,50^FD{5}^FS" + "^FO120,270^A1R,20,20^FD수량^FS" + "^FO40,270^A1R,70,50^FD{6}^FS" + "^FO120,10^A1R,20,20^FDSKU^FS" + "^FO40,10^A1R,70,50^FD{7}^FS" + "^FO0,20^A1R,25,20^FD{8}^FS" + "^FO0,450^XGSLKR,1,1,^FS" + "^PQ1^XZ";
+                    break;
+                default:
+                    string str4 = "^XA" + "^SEE:UHANGUL.DAT^FS" + "^CW1,E:KFONT3.FNT^FS" + "^CI26";
+                    string str5 = (!(s배치구분 == "반품") ? str4 + "^FO30,15^A1N,40,40^FD점명:{0}^FS" : str4 + "^FO30,15^A1N,40,40^FDSKU:{0}^FS") + "^FO30,65^A1N,40,40^FD슈트:{1}^FS" + "^FO300,65^A1N,40,40^FD수량:{2}^FS" + "^FO60,118^BY2,2.0";
+                    printScript = (!(s배치구분 == "반품") ? str5 + "^B3N,N,120,Y,N,N^FD*{3}*^FS" : str5 + "^B3N,N,120,Y,N,N^FD{3}^FS") + "^PQ1^XZ";
+                    break;
+            }
+            return printScript;
+        }
+
+        public static string GetBarcodePrinterName(string s슈트번호)
+        {
+            string empty = string.Empty;
+            string printerName = new PrinterSettings().PrinterName;
+            try
+            {
+                string[] strArray1 = GlobalClass.BARCODE_PRINTER_LIST.Split(new string[1]
+                {
+          "|"
+                }, StringSplitOptions.RemoveEmptyEntries);
+                if (s슈트번호 == "패키지")
+                {
+                    foreach (string str in strArray1)
+                    {
+                        string[] separator = new string[1] { "," };
+                        string[] strArray2 = str.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+                        if (strArray2[1] == "패키지" && strArray2[2] == "패키지")
+                        {
+                            printerName = strArray2[0];
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    int num1 = ParseUtils.ObjectToint(s슈트번호);
+                    foreach (string str in strArray1)
+                    {
+                        string[] separator = new string[1] { "," };
+                        string[] strArray3 = str.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+                        if (strArray3 != null && strArray3.Length > 0)
+                        {
+                            int num2 = ParseUtils.ObjectToint(strArray3[1]);
+                            int num3 = ParseUtils.ObjectToint(strArray3[2]);
+                            if (num2 != 0)
+                            {
+                                if (num3 != 0)
+                                {
+                                    if (num1 >= num2 && num1 <= num3)
+                                    {
+                                        printerName = strArray3[0];
+                                        break;
+                                    }
+                                }
+                                else
+                                    break;
+                            }
+                            else
+                                break;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+            }
+            return printerName;
+        }
 
         public static bool GetPrintScript2(string s프린터명, TcpClient oClient, DataTable oDataTable)
         {

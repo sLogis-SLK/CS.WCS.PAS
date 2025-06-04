@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Globel\GlobalClass.cs" />
+    <Compile Include="Globel\GlobalCore.cs" />
     <Compile Include="Services\공통.cs" />
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>

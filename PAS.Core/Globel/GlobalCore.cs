@@ -4,16 +4,16 @@ using System.Windows.Forms;
 
 namespace PAS.Core
 {
-    public class GlobalClass
+    public class GlobalCore
     {
         public static string PasDBConnectionString
         {
-            get { return $"Data Source={GlobalClass.PAS_DB_IP};Initial Catalog={GlobalClass.PAS_DB_SERVICE};Persist Security Info=True;User ID={GlobalClass.PAS_DB_ID};Password={GlobalClass.PAS_DB_PASSWORD}"; }
+            get { return $"Data Source={PAS_DB_IP};Initial Catalog={PAS_DB_SERVICE};Persist Security Info=True;User ID={PAS_DB_ID};Password={PAS_DB_PASSWORD}"; }
         }
 
         public static string HostDBConnectionString
         {
-            get { return $"Data Source={GlobalClass.HOST_DB_IP};Initial Catalog={GlobalClass.HOST_DB_SERVICE};Persist Security Info=True;User ID={GlobalClass.HOST_DB_ID};Password={GlobalClass.HOST_DB_PASSWORD}"; }
+            get { return $"Data Source={HOST_DB_IP};Initial Catalog={HOST_DB_SERVICE};Persist Security Info=True;User ID={HOST_DB_ID};Password={HOST_DB_PASSWORD}"; }
         }
 
 
@@ -46,7 +46,6 @@ namespace PAS.Core
         public static string INDICATOR_STRUCTURE { get; private set; }
         public static string BARCODE_PRINTER_LIST { get; private set; }
         public static string PRINTER_LIST { get; private set; }
-
 
         public static void InitializationSettings()
         {

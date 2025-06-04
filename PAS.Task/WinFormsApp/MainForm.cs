@@ -1,16 +1,10 @@
-﻿using PAS.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PAS.Task
@@ -28,7 +22,6 @@ namespace PAS.Task
         private SocketServer mSocketServer;
 
         private DataTable m_표시기맵Table = new DataTable("표시기맵TABLE");
-        private DataTable m_분류_숫자표시기값Table = new DataTable("usp_분류_숫자표시기값_Get");
 
         private bool 작업시작여부 //true시 작업시작 대기 상태, false시 작업중
         {
@@ -81,6 +74,8 @@ namespace PAS.Task
         {
             base.OnLoad(e);
             if (DesignMode) return;
+
+            //여기서는 기본 정보만 세팅함.
             try
             {
                 //스크린 최상단으로 위치이동
