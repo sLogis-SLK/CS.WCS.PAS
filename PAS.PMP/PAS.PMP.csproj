@@ -34,15 +34,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Infragistics4.Shared.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.DataVisualization.Barcode.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.DataVisualization.Shared.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Infragistics4.Win.DataVisualization.UltraGauges.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.Misc.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.Portable.Core.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.UltraWinDock.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinEditors.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinGrid.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinSchedule.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinTabbedMdi.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinTabControl.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinToolbars.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinTree.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -190,6 +194,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -237,6 +242,27 @@
       <Project>{f13296c1-c8d6-4d4e-8bdf-df6464f70d2c}</Project>
       <Name>PAS.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\제목 없음.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuIcon%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\폴더%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\메뉴_list%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\메뉴_list.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

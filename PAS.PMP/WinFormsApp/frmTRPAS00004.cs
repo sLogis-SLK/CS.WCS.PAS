@@ -53,7 +53,7 @@ namespace PAS.PMP
             {
                 #region uGrid4 BindingSource 초기화
 
-                PasWCS.분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 0);
+                분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 0);
 
 
 
@@ -68,7 +68,7 @@ namespace PAS.PMP
 
                 #region uGrid1 BindingSource 초기화
 
-                PasWCS.분류.박스재발행조회(m_분류_박스재발행Table, "", "", "", 0);
+                분류.박스재발행조회(m_분류_박스재발행Table, "", "", "", 0);
 
                 this.m_분류_박스재발행BS.DataSource = this.m_분류_박스재발행Table;
                 this.uGrid1.DataSource = this.m_분류_박스재발행BS;
@@ -83,7 +83,7 @@ namespace PAS.PMP
 
                 #region uGrid2 BindingSource 초기화
 
-                PasWCS.분류.슈트별박스풀조회(m_분류_박스재발행_슈트별Table, "", "", "", "", "", 0);
+                분류.슈트별박스풀조회(m_분류_박스재발행_슈트별Table, "", "", "", "", "", 0);
 
                 this.m_분류_박스재발행슈트별BS.DataSource = this.m_분류_박스재발행_슈트별Table;
                 this.uGrid2.DataSource = this.m_분류_박스재발행슈트별BS;
@@ -98,7 +98,7 @@ namespace PAS.PMP
 
                 #region uGrid3 BindingSource 초기화
 
-                PasWCS.분류.슈트별박스풀상세조회(m_분류_박스재발행_슈트별상세Table, "", "", "", "", "", "", 0);
+                분류.슈트별박스풀상세조회(m_분류_박스재발행_슈트별상세Table, "", "", "", "", "", "", 0);
 
                 this.m_분류_박스재발행슈트별상세BS.DataSource = this.m_분류_박스재발행_슈트별상세Table;
                 this.uGrid3.DataSource = this.m_분류_박스재발행슈트별상세BS;
@@ -126,7 +126,7 @@ namespace PAS.PMP
 
         private void 조회_Click(object sender, EventArgs e)
         {
-            PasWCS.분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 1);
+            분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 1);
         }
         private void uGrid4_AfterRowActivate(object sender, EventArgs e)
         {
@@ -134,7 +134,7 @@ namespace PAS.PMP
             _장비명 = oRow["장비명"].ToString();
             _배치번호 = oRow["배치번호"].ToString();
             _분류번호 = oRow["분류번호"].ToString();
-            PasWCS.분류.박스재발행조회(m_분류_박스재발행Table, _분류번호, _장비명, _배치번호, 1);
+            분류.박스재발행조회(m_분류_박스재발행Table, _분류번호, _장비명, _배치번호, 1);
 
 
         }
@@ -148,7 +148,7 @@ namespace PAS.PMP
             DataRow oRow = ((DataRowView)uGrid1.ActiveRow.ListObject).Row;
             _슈트번호 = oRow["슈트번호"].ToString();
             _서브슈트번호 = oRow["서브슈트번호"].ToString();
-            PasWCS.분류.슈트별박스풀조회(m_분류_박스재발행_슈트별Table, _분류번호, _장비명, _배치번호, _슈트번호, _서브슈트번호, 1);
+            분류.슈트별박스풀조회(m_분류_박스재발행_슈트별Table, _분류번호, _장비명, _배치번호, _슈트번호, _서브슈트번호, 1);
 
             // 박스번호 리스트업
             this.박스번호리스트.DataSource = getBoxListup();
@@ -157,7 +157,7 @@ namespace PAS.PMP
         private void uGrid2_AfterRowActivate(object sender, EventArgs e)
         {
             DataRow oRow = ((DataRowView)uGrid2.ActiveRow.ListObject).Row;
-            PasWCS.분류.슈트별박스풀상세조회(m_분류_박스재발행_슈트별상세Table, _분류번호, _장비명, _배치번호, _슈트번호, _서브슈트번호, oRow["박스번호"].ToString(), 1);
+            분류.슈트별박스풀상세조회(m_분류_박스재발행_슈트별상세Table, _분류번호, _장비명, _배치번호, _슈트번호, _서브슈트번호, oRow["박스번호"].ToString(), 1);
         }
 
 

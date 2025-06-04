@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using DbProvider;
-using Infragistics.Win.UltraWinGrid;
 using TR_Common;
-using TR_Provider;
 
 namespace PAS.PMP
 {
@@ -80,7 +77,7 @@ namespace PAS.PMP
             try
             {
                 //#region uGrid3 BindingSource 초기화
-                PasWCS.분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.조회시작일.Value).ToString("yyyyMMdd"), 0);
+                분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.조회시작일.Value).ToString("yyyyMMdd"), 0);
 
 
                 this.m_분류_작업배치그룹BS.DataSource = this.m_분류_작업배치그룹Table;
@@ -93,7 +90,7 @@ namespace PAS.PMP
                 this.uGrid3.DisplayLayout.Bands[0].Columns["등록일시"].Format = "yy-MM-dd HH:mm";
 
 
-                PasWCS.분류.미출고슈트별조회(m_분류_슈트별미출고Table, "", "", "", 0);
+                분류.미출고슈트별조회(m_분류_슈트별미출고Table, "", "", "", 0);
 
                 this.m_분류_슈트별미출고BS.DataSource = this.m_분류_슈트별미출고Table;
                 this.uGrid1.DataSource = this.m_분류_슈트별미출고BS;
@@ -104,7 +101,7 @@ namespace PAS.PMP
 
 
 
-                PasWCS.분류.미출고슈트별상세조회(m_분류_슈트별미출고상세Table, "", "", "", "", 0);
+                분류.미출고슈트별상세조회(m_분류_슈트별미출고상세Table, "", "", "", "", 0);
 
                 this.m_분류_슈트별미출고상세BS.DataSource = this.m_분류_슈트별미출고상세Table;
                 this.uGrid2.DataSource = this.m_분류_슈트별미출고상세BS;
@@ -152,7 +149,7 @@ namespace PAS.PMP
                 _장비명 = oRow["장비명"].ToString();
                 _배치번호 = oRow["배치번호"].ToString();
                 _분류번호 = oRow["분류번호"].ToString();
-                PasWCS.분류.미출고슈트별조회(m_분류_슈트별미출고Table, oRow["분류번호"].ToString(), oRow["장비명"].ToString(), oRow["배치번호"].ToString(), 1);
+                분류.미출고슈트별조회(m_분류_슈트별미출고Table, oRow["분류번호"].ToString(), oRow["장비명"].ToString(), oRow["배치번호"].ToString(), 1);
             }   
             catch (Exception ex) 
             {
@@ -176,7 +173,7 @@ namespace PAS.PMP
             {
                 DataRow oRow = ((DataRowView)uGrid1.ActiveRow.ListObject).Row;
 
-                PasWCS.분류.미출고슈트별상세조회(m_분류_슈트별미출고상세Table, _분류번호, _장비명, _배치번호, oRow["슈트번호"].ToString(), 1);
+                분류.미출고슈트별상세조회(m_분류_슈트별미출고상세Table, _분류번호, _장비명, _배치번호, oRow["슈트번호"].ToString(), 1);
             }
             catch (Exception ex)
             {
@@ -192,7 +189,7 @@ namespace PAS.PMP
 
         private void 조회_Click(object sender, EventArgs e)
         {
-            PasWCS.분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.조회시작일.Value).ToString("yyyyMMdd"), 1);
+            분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.조회시작일.Value).ToString("yyyyMMdd"), 1);
         }
 
     

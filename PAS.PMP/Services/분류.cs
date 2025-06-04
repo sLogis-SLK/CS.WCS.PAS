@@ -2,7 +2,7 @@
 using System.Data;
 using TR_Common;
 
-namespace PAS.PMP.PasWCS
+namespace PAS.PMP
 {
     internal class 분류
     {

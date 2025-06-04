@@ -42,7 +42,7 @@ namespace PAS.PMP
             {
                 #region uGrid2 BindingSource 초기화
 
-                PasWCS.분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 0);
+                분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 0);
 
                 this.m_분류_작업배치그룹BS.DataSource = this.m_분류_작업배치그룹Table;
                 this.uGrid2.DataSource = this.m_분류_작업배치그룹BS;
@@ -55,7 +55,7 @@ namespace PAS.PMP
 
                 #region uGrid1 BindingSource 초기화
 
-                PasWCS.분류.마지막박스내역조회(m_분류_마지막박스내역Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), "", "", 0);
+                분류.마지막박스내역조회(m_분류_마지막박스내역Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), "", "", 0);
 
                 this.m_분류_마지막박스내역BS.DataSource = this.m_분류_마지막박스내역Table;
                 this.uGrid1.DataSource = this.m_분류_마지막박스내역BS;
@@ -83,7 +83,7 @@ namespace PAS.PMP
 
         private void 조회_Click(object sender, EventArgs e)
         {
-            PasWCS.분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 1);
+            분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 1);
         }
 
         private void uGrid2_AfterRowActivate(object sender, EventArgs e)
@@ -97,7 +97,7 @@ namespace PAS.PMP
             try
             {
                 DataRow oRow = ((DataRowView)uGrid2.ActiveRow.ListObject).Row;
-                PasWCS.분류.마지막박스내역조회(m_분류_마지막박스내역Table, oRow["분류번호"].ToString(), oRow["장비명"].ToString(), oRow["배치번호"].ToString(), 1);
+                분류.마지막박스내역조회(m_분류_마지막박스내역Table, oRow["분류번호"].ToString(), oRow["장비명"].ToString(), oRow["배치번호"].ToString(), 1);
             }
             catch (Exception ex)
             {
