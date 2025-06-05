@@ -155,7 +155,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="WinFormsApp\frmTRPAS00001.resx">
       <DependentUpon>frmTRPAS00001.cs</DependentUpon>
     </EmbeddedResource>
