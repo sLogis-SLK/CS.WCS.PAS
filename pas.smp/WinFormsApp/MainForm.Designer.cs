@@ -300,7 +300,6 @@ namespace PAS.SMP
             this.tableLayoutPanel1.Controls.Add(this.중량, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.박스바코드, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.ultraGroupBox2, 0, 2);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 68);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -607,7 +606,6 @@ namespace PAS.SMP
             // ultraGroupBox6
             // 
             this.ultraGroupBox6.Controls.Add(this.tableLayoutPanel3);
-            this.ultraGroupBox6.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultraGroupBox6.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBox6.Name = "ultraGroupBox6";
             this.ultraGroupBox6.Size = new System.Drawing.Size(948, 68);

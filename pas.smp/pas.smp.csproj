@@ -80,7 +80,13 @@
     <Compile Include="Models\운송장채번Model.cs" />
     <Compile Include="Services\채번.cs" />
     <Compile Include="Services\출하\출하내역관리.cs" />
-    <Compile Include="Utils\LogUtil.cs" />
+    <Compile Include="Models\Setting.cs" />
+    <Compile Include="WinFormsApp\frmSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmSetting.Designer.cs">
+      <DependentUpon>frmSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinFormsApp\frmSMP00004.cs">
       <SubType>Form</SubType>
     </Compile>
