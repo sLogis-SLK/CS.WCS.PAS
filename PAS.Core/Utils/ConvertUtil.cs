@@ -44,6 +44,19 @@ namespace PAS.Core
             return numArray;
         }
 
+        public static bool ObjectToInt32(object obj, out int result)
+        {
+            try
+            {
+                string tmp = obj.ToString();
+                return Int32.TryParse(tmp, out result);
+            }
+            catch (Exception ex)
+            {
+                result = (int)0;
+                return false;
+            }
+        }
         public static bool ObjectToDouble(object obj, out double result)
         {
             try
