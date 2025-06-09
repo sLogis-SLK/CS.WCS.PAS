@@ -70,8 +70,9 @@
     <Compile Include="Controls\InitializeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Globel\Globel.cs" />
+    <Compile Include="Globel\GlobalClass.cs" />
     <Compile Include="Services\WCSHelper.cs" />
+    <Compile Include="Services\관리.cs" />
     <Compile Include="Services\분류.cs" />
     <Compile Include="Services\연동.cs" />
     <Compile Include="Services\환경설정.cs" />

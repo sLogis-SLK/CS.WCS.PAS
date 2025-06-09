@@ -12,7 +12,7 @@ namespace PAS.PMP
             {
                 dataTable.TableName = "usp_분류_작업요약_Get";
             }
-            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, PasWCS.Globel.PasDBConnectionString),
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
                 new string[] { "@장비명", "@배치상태", "@작업일자", "@조회구분자" },
                 new object[] { "모두"
                                ,"모두"
@@ -27,7 +27,7 @@ namespace PAS.PMP
             {
                 dataTable.TableName = "usp_분류_미출고내역_슈트별_Get";
             }
-            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, PasWCS.Globel.PasDBConnectionString),
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
             new string[] { "@분류번호", "@장비명", "@배치번호", "@조회구분자" },
                 new object[] { 분류번호
                                ,장비명
@@ -42,7 +42,7 @@ namespace PAS.PMP
             {
                 dataTable.TableName = "usp_분류_미출고내역_상품별_Get";
             }
-            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, PasWCS.Globel.PasDBConnectionString),
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
             new string[] { "@분류번호", "@장비명", "@배치번호", "@조회구분자" },
                 new object[] { 분류번호
                                ,장비명
@@ -58,7 +58,7 @@ namespace PAS.PMP
                 dataTable.TableName = "usp_분류_미출고내역_슈트별상세_Get";
             }
 
-            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, PasWCS.Globel.PasDBConnectionString),
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
             new string[] { "@분류번호", "@장비명", "@배치번호", "@슈트번호", "@서브슈트번호", "@조회구분자" },
                 new object[] { 분류번호
                                 ,장비명
@@ -77,7 +77,7 @@ namespace PAS.PMP
                 dataTable.TableName = "usp_분류_박스바코드재발행_Get";
             }
 
-            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, PasWCS.Globel.PasDBConnectionString),
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
             new string[] { "@분류번호", "@장비명", "@배치번호", "@조회구분자" },
                 new object[] { 분류번호
                                 ,장비명
@@ -93,7 +93,7 @@ namespace PAS.PMP
                 dataTable.TableName = "usp_분류_박스바코드재발행_슈트별_Get";
             }
 
-            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, PasWCS.Globel.PasDBConnectionString),
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
             new string[] { "@분류번호", "@장비명", "@배치번호", "@슈트번호", "@서브슈트번호", "@조회구분자" },
                 new object[] { 분류번호
                                 ,장비명
@@ -111,7 +111,7 @@ namespace PAS.PMP
                 dataTable.TableName = "usp_분류_박스바코드재발행_슈트별상세_Get";
             }
 
-            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, PasWCS.Globel.PasDBConnectionString),
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
             new string[] { "@분류번호", "@장비명", "@배치번호", "@슈트번호", "@서브슈트번호", "@박스번호", "@조회구분자" },
                 new object[] { 분류번호
                                 ,장비명
@@ -130,7 +130,7 @@ namespace PAS.PMP
                 dataTable.TableName = "usp_분류_마지막박스내역_Get";
             }
 
-            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, PasWCS.Globel.PasDBConnectionString),
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
             new string[] { "@분류번호", "@장비명", "@배치번호", "@조회구분자" },
                 new object[] { 분류번호
                                 ,장비명
@@ -146,7 +146,7 @@ namespace PAS.PMP
                 dataTable.TableName = "usp_분류_레코드수_Get";
             }
 
-            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, PasWCS.Globel.PasDBConnectionString),
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
             new string[] { "@분류번호", "@장비명"},
             new object[] { 분류번호, 장비명 }
             );

@@ -16,7 +16,7 @@ namespace PAS.PMP.PasWCS
         {
             관리Table.TableName = "usp_PAS_배치정보_Get";
 
-            TlkTranscope.GetData(관리Table, Connections.GetConnection(Connections.CN_MSSQL, PasWCS.Globel.HostDBConnectionString),
+            TlkTranscope.GetData(관리Table, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.HostDBConnectionString),
                 new string[] { "@기간앞", "@기간뒤", "@조회구분자" }, 조회시작일자, 조회종료일자, 데이터조회여부 ? 1 : 0);
         }
 
@@ -24,7 +24,7 @@ namespace PAS.PMP.PasWCS
         {
             관리Table.TableName = "usp_연동_작업지시_Get";
 
-            TlkTranscope.GetData(관리Table, Connections.GetConnection(Connections.CN_MSSQL, PasWCS.Globel.PasDBConnectionString),
+            TlkTranscope.GetData(관리Table, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
                 new string[] { "@기간앞", "@기간뒤", "@조회구분자" }, 조회시작일자, 조회종료일자, 데이터조회여부 ? 1 : 0);
         }
 
@@ -39,15 +39,15 @@ namespace PAS.PMP.PasWCS
                     count++;
                     진행배치번호 = 배치번호;
                     //배치번호 한개씩 처리하도록 함 - SqlBulkCopy 때문
-                    using (TlkTranscope oScopeWCSIF = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, PasWCS.Globel.HostDBConnectionString), IsolationLevel.ReadCommitted))
+                    using (TlkTranscope oScopeWCSIF = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.HostDBConnectionString), IsolationLevel.ReadCommitted))
                     {
                         DataTable dt = new DataTable("usp_PAS_주문정보_Get");
-                        TlkTranscope.GetData(dt, Connections.GetConnection(Connections.CN_MSSQL, PasWCS.Globel.HostDBConnectionString), new string[] { "@배치번호" }, 배치번호);
+                        TlkTranscope.GetData(dt, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.HostDBConnectionString), new string[] { "@배치번호" }, 배치번호);
 
                         oScopeWCSIF.Initialize("usp_PAS_배치수신_Set", "@배치번호");
                         oScopeWCSIF.Update(배치번호);
 
-                        using (SqlConnection connection = new SqlConnection(PasWCS.Globel.PasDBConnectionString))
+                        using (SqlConnection connection = new SqlConnection(GlobalClass.PasDBConnectionString))
                         {
                             connection.Open();
 
@@ -70,8 +70,8 @@ namespace PAS.PMP.PasWCS
 
         internal static void 수신취소(List<string> 배치번호리스트)
         {
-            using (TlkTranscope oScopeWCSIF = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, PasWCS.Globel.HostDBConnectionString), IsolationLevel.ReadCommitted))
-            using (TlkTranscope oScopeOP = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, PasWCS.Globel.PasDBConnectionString), IsolationLevel.ReadCommitted))
+            using (TlkTranscope oScopeWCSIF = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.HostDBConnectionString), IsolationLevel.ReadCommitted))
+            using (TlkTranscope oScopeOP = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
             {
                 foreach (var 배치번호 in 배치번호리스트)
                 {
@@ -94,7 +94,7 @@ namespace PAS.PMP.PasWCS
             if (string.IsNullOrEmpty(장비명)) 장비명 = "모두";
             if (string.IsNullOrEmpty(배치상태)) 배치상태 = "모두";
 
-            TlkTranscope.GetData(관리Table, Connections.GetConnection(Connections.CN_MSSQL, PasWCS.Globel.PasDBConnectionString),
+            TlkTranscope.GetData(관리Table, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
                 new string[] { "@장비명", "@배치상태", "@작업일자", "@조회구분자" }, 장비명, 배치상태, 작업일자, 데이터조회여부 ? 1 : 0);
         }
 
