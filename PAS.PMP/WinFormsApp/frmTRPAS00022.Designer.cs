@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace PAS.PMP
 {
     partial class frmTRPAS00022
@@ -61,13 +63,13 @@ namespace PAS.PMP
             this.조회버튼 = new Infragistics.Win.Misc.UltraButton();
             this.ultraGroupBox4 = new Infragistics.Win.Misc.UltraGroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.ultraLabel11 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraLabel10 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraLabel7 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraLabel6 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
+            this.배치반영 = new Infragistics.Win.Misc.UltraLabel();
+            this.Total = new Infragistics.Win.Misc.UltraLabel();
+            this.실적반영 = new Infragistics.Win.Misc.UltraLabel();
+            this.완료 = new Infragistics.Win.Misc.UltraLabel();
+            this.실적작성 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel5 = new Infragistics.Win.Misc.UltraLabel();
-            this.btn실행 = new Infragistics.Win.Misc.UltraButton();
+            this.실행버튼 = new Infragistics.Win.Misc.UltraButton();
             this.ultraLabel4 = new Infragistics.Win.Misc.UltraLabel();
             this.com분류실적처리 = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             this.btn1년 = new System.Windows.Forms.Button();
@@ -114,6 +116,7 @@ namespace PAS.PMP
             this.조회버튼.Size = new System.Drawing.Size(90, 34);
             this.조회버튼.TabIndex = 2;
             this.조회버튼.Text = "조회";
+            this.조회버튼.Click += new System.EventHandler(this.조회버튼_Click);
             // 
             // ultraGroupBox4
             // 
@@ -124,7 +127,7 @@ namespace PAS.PMP
             this.ultraGroupBox4.BorderStyle = Infragistics.Win.Misc.GroupBoxBorderStyle.RectangularSolid;
             this.ultraGroupBox4.Controls.Add(this.tableLayoutPanel1);
             this.ultraGroupBox4.Controls.Add(this.ultraLabel5);
-            this.ultraGroupBox4.Controls.Add(this.btn실행);
+            this.ultraGroupBox4.Controls.Add(this.실행버튼);
             this.ultraGroupBox4.Controls.Add(this.ultraLabel4);
             this.ultraGroupBox4.Controls.Add(this.com분류실적처리);
             this.ultraGroupBox4.Controls.Add(this.btn1년);
@@ -152,11 +155,11 @@ namespace PAS.PMP
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.ultraLabel11, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.ultraLabel10, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.ultraLabel7, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.ultraLabel6, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.ultraLabel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.배치반영, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Total, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.실적반영, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.완료, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.실적작성, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(7, 52);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -164,70 +167,70 @@ namespace PAS.PMP
             this.tableLayoutPanel1.Size = new System.Drawing.Size(682, 32);
             this.tableLayoutPanel1.TabIndex = 91;
             // 
-            // ultraLabel11
+            // 배치반영
             // 
             appearance3.TextVAlignAsString = "Middle";
-            this.ultraLabel11.Appearance = appearance3;
-            this.ultraLabel11.AutoSize = true;
-            this.ultraLabel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel11.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ultraLabel11.Location = new System.Drawing.Point(411, 3);
-            this.ultraLabel11.Name = "ultraLabel11";
-            this.ultraLabel11.Size = new System.Drawing.Size(130, 26);
-            this.ultraLabel11.TabIndex = 74;
-            this.ultraLabel11.Text = "배치반영 : 0";
+            this.배치반영.Appearance = appearance3;
+            this.배치반영.AutoSize = true;
+            this.배치반영.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.배치반영.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.배치반영.Location = new System.Drawing.Point(411, 3);
+            this.배치반영.Name = "배치반영";
+            this.배치반영.Size = new System.Drawing.Size(130, 26);
+            this.배치반영.TabIndex = 74;
+            this.배치반영.Text = "배치반영 : 0";
             // 
-            // ultraLabel10
+            // Total
             // 
             appearance4.TextVAlignAsString = "Middle";
-            this.ultraLabel10.Appearance = appearance4;
-            this.ultraLabel10.AutoSize = true;
-            this.ultraLabel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel10.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ultraLabel10.Location = new System.Drawing.Point(547, 3);
-            this.ultraLabel10.Name = "ultraLabel10";
-            this.ultraLabel10.Size = new System.Drawing.Size(132, 26);
-            this.ultraLabel10.TabIndex = 73;
-            this.ultraLabel10.Text = "Total : 0";
+            this.Total.Appearance = appearance4;
+            this.Total.AutoSize = true;
+            this.Total.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Total.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Total.Location = new System.Drawing.Point(547, 3);
+            this.Total.Name = "Total";
+            this.Total.Size = new System.Drawing.Size(132, 26);
+            this.Total.TabIndex = 73;
+            this.Total.Text = "Total : 0";
             // 
-            // ultraLabel7
+            // 실적반영
             // 
             appearance5.TextVAlignAsString = "Middle";
-            this.ultraLabel7.Appearance = appearance5;
-            this.ultraLabel7.AutoSize = true;
-            this.ultraLabel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel7.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ultraLabel7.Location = new System.Drawing.Point(275, 3);
-            this.ultraLabel7.Name = "ultraLabel7";
-            this.ultraLabel7.Size = new System.Drawing.Size(130, 26);
-            this.ultraLabel7.TabIndex = 72;
-            this.ultraLabel7.Text = "실적반영 : 0";
+            this.실적반영.Appearance = appearance5;
+            this.실적반영.AutoSize = true;
+            this.실적반영.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.실적반영.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.실적반영.Location = new System.Drawing.Point(275, 3);
+            this.실적반영.Name = "실적반영";
+            this.실적반영.Size = new System.Drawing.Size(130, 26);
+            this.실적반영.TabIndex = 72;
+            this.실적반영.Text = "실적반영 : 0";
             // 
-            // ultraLabel6
+            // 완료
             // 
             appearance6.TextVAlignAsString = "Middle";
-            this.ultraLabel6.Appearance = appearance6;
-            this.ultraLabel6.AutoSize = true;
-            this.ultraLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ultraLabel6.Location = new System.Drawing.Point(3, 3);
-            this.ultraLabel6.Name = "ultraLabel6";
-            this.ultraLabel6.Size = new System.Drawing.Size(130, 26);
-            this.ultraLabel6.TabIndex = 71;
-            this.ultraLabel6.Text = "완료 : 0 ";
+            this.완료.Appearance = appearance6;
+            this.완료.AutoSize = true;
+            this.완료.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.완료.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.완료.Location = new System.Drawing.Point(3, 3);
+            this.완료.Name = "완료";
+            this.완료.Size = new System.Drawing.Size(130, 26);
+            this.완료.TabIndex = 71;
+            this.완료.Text = "완료 : 0 ";
             // 
-            // ultraLabel1
+            // 실적작성
             // 
             appearance7.TextVAlignAsString = "Middle";
-            this.ultraLabel1.Appearance = appearance7;
-            this.ultraLabel1.AutoSize = true;
-            this.ultraLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ultraLabel1.Location = new System.Drawing.Point(139, 3);
-            this.ultraLabel1.Name = "ultraLabel1";
-            this.ultraLabel1.Size = new System.Drawing.Size(130, 26);
-            this.ultraLabel1.TabIndex = 70;
-            this.ultraLabel1.Text = "실적작성 : 0";
+            this.실적작성.Appearance = appearance7;
+            this.실적작성.AutoSize = true;
+            this.실적작성.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.실적작성.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.실적작성.Location = new System.Drawing.Point(139, 3);
+            this.실적작성.Name = "실적작성";
+            this.실적작성.Size = new System.Drawing.Size(130, 26);
+            this.실적작성.TabIndex = 70;
+            this.실적작성.Text = "실적작성 : 0";
             // 
             // ultraLabel5
             // 
@@ -241,16 +244,17 @@ namespace PAS.PMP
             this.ultraLabel5.TabIndex = 90;
             this.ultraLabel5.Text = "합니다.";
             // 
-            // btn실행
+            // 실행버튼
             // 
             appearance9.ForeColor = System.Drawing.Color.Red;
-            this.btn실행.Appearance = appearance9;
-            this.btn실행.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn실행.Location = new System.Drawing.Point(942, 9);
-            this.btn실행.Name = "btn실행";
-            this.btn실행.Size = new System.Drawing.Size(90, 27);
-            this.btn실행.TabIndex = 89;
-            this.btn실행.Text = "실행";
+            this.실행버튼.Appearance = appearance9;
+            this.실행버튼.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.실행버튼.Location = new System.Drawing.Point(942, 9);
+            this.실행버튼.Name = "실행버튼";
+            this.실행버튼.Size = new System.Drawing.Size(90, 27);
+            this.실행버튼.TabIndex = 89;
+            this.실행버튼.Text = "실행";
+            this.실행버튼.Click += new System.EventHandler(this.실행버튼_Click);
             // 
             // ultraLabel4
             // 
@@ -270,6 +274,7 @@ namespace PAS.PMP
             this.com분류실적처리.Name = "com분류실적처리";
             this.com분류실적처리.Size = new System.Drawing.Size(144, 21);
             this.com분류실적처리.TabIndex = 87;
+            this.com분류실적처리.ValueChanged += new EventHandler(this.com분류실적처리_ValueChanged);
             // 
             // btn1년
             // 
@@ -281,6 +286,7 @@ namespace PAS.PMP
             this.btn1년.TabIndex = 86;
             this.btn1년.Text = "1년";
             this.btn1년.UseVisualStyleBackColor = true;
+            this.btn1년.Click += new System.EventHandler(this.기간버튼_Click);
             // 
             // btn3달
             // 
@@ -292,6 +298,7 @@ namespace PAS.PMP
             this.btn3달.TabIndex = 85;
             this.btn3달.Text = "3달";
             this.btn3달.UseVisualStyleBackColor = true;
+            this.btn3달.Click += new System.EventHandler(this.기간버튼_Click);
             // 
             // btn1달
             // 
@@ -303,6 +310,7 @@ namespace PAS.PMP
             this.btn1달.TabIndex = 84;
             this.btn1달.Text = "1달";
             this.btn1달.UseVisualStyleBackColor = true;
+            this.btn1달.Click += new System.EventHandler(this.기간버튼_Click);
             // 
             // btn1주
             // 
@@ -314,6 +322,7 @@ namespace PAS.PMP
             this.btn1주.TabIndex = 83;
             this.btn1주.Text = "1주";
             this.btn1주.UseVisualStyleBackColor = true;
+            this.btn1주.Click += new System.EventHandler(this.기간버튼_Click);
             // 
             // btn오늘
             // 
@@ -325,6 +334,7 @@ namespace PAS.PMP
             this.btn오늘.TabIndex = 82;
             this.btn오늘.Text = "오늘";
             this.btn오늘.UseVisualStyleBackColor = true;
+            this.btn오늘.Click += new System.EventHandler(this.기간버튼_Click);
             // 
             // ultraLabel3
             // 
@@ -506,12 +516,12 @@ namespace PAS.PMP
         private Infragistics.Win.Misc.UltraLabel ultraLabel4;
         private Infragistics.Win.UltraWinEditors.UltraComboEditor com분류실적처리;
         private Infragistics.Win.Misc.UltraLabel ultraLabel5;
-        private Infragistics.Win.Misc.UltraButton btn실행;
+        private Infragistics.Win.Misc.UltraButton 실행버튼;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel11;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel10;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel7;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel6;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel1;
+        private Infragistics.Win.Misc.UltraLabel 배치반영;
+        private Infragistics.Win.Misc.UltraLabel Total;
+        private Infragistics.Win.Misc.UltraLabel 실적반영;
+        private Infragistics.Win.Misc.UltraLabel 완료;
+        private Infragistics.Win.Misc.UltraLabel 실적작성;
     }
 }

@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace PAS.PMP
 {
     partial class frmTRPAS00021
@@ -50,17 +52,17 @@ namespace PAS.PMP
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
             this.조회버튼 = new Infragistics.Win.Misc.UltraButton();
-            this.배치개시 = new Infragistics.Win.Misc.UltraButton();
-            this.배치종료 = new Infragistics.Win.Misc.UltraButton();
+            this.배치개시버튼 = new Infragistics.Win.Misc.UltraButton();
+            this.배치종료버튼 = new Infragistics.Win.Misc.UltraButton();
             this.ultraGroupBox4 = new Infragistics.Win.Misc.UltraGroupBox();
             this.임계치퍼센트 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
-            this.분류종료 = new Infragistics.Win.Misc.UltraButton();
+            this.분류종료버튼 = new Infragistics.Win.Misc.UltraButton();
             this.ultraLinearGauge1 = new Infragistics.Win.DataVisualization.UltraLinearGauge();
             this.ultraCheckEditor1 = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
-            this.ultraRadioButton2 = new Infragistics.Win.UltraWinEditors.UltraRadioButton();
-            this.rad = new Infragistics.Win.UltraWinEditors.UltraRadioButton();
+            this.균등 = new Infragistics.Win.UltraWinEditors.UltraRadioButton();
+            this.연속 = new Infragistics.Win.UltraWinEditors.UltraRadioButton();
             this.ultraLabel8 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel9 = new Infragistics.Win.Misc.UltraLabel();
             this.uGrid3 = new TR_Library.Controls.uGrid();
@@ -70,8 +72,8 @@ namespace PAS.PMP
             this.ultraGroupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraLinearGauge1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraCheckEditor1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraRadioButton2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.균등)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.연속)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uGrid3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,8 +84,8 @@ namespace PAS.PMP
             this.ultraGroupBox1.Appearance = appearance1;
             this.ultraGroupBox1.BorderStyle = Infragistics.Win.Misc.GroupBoxBorderStyle.RectangularSolid;
             this.ultraGroupBox1.Controls.Add(this.조회버튼);
-            this.ultraGroupBox1.Controls.Add(this.배치개시);
-            this.ultraGroupBox1.Controls.Add(this.배치종료);
+            this.ultraGroupBox1.Controls.Add(this.배치개시버튼);
+            this.ultraGroupBox1.Controls.Add(this.배치종료버튼);
             this.ultraGroupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultraGroupBox1.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
@@ -100,23 +102,25 @@ namespace PAS.PMP
             this.조회버튼.Text = "조회";
             this.조회버튼.Click += new System.EventHandler(this.조회버튼_Click);
             // 
-            // 배치개시
+            // 배치개시버튼
             // 
-            this.배치개시.Dock = System.Windows.Forms.DockStyle.Right;
-            this.배치개시.Location = new System.Drawing.Point(1192, 2);
-            this.배치개시.Name = "배치개시";
-            this.배치개시.Size = new System.Drawing.Size(90, 34);
-            this.배치개시.TabIndex = 3;
-            this.배치개시.Text = "배치개시";
+            this.배치개시버튼.Dock = System.Windows.Forms.DockStyle.Right;
+            this.배치개시버튼.Location = new System.Drawing.Point(1192, 2);
+            this.배치개시버튼.Name = "배치개시버튼";
+            this.배치개시버튼.Size = new System.Drawing.Size(90, 34);
+            this.배치개시버튼.TabIndex = 3;
+            this.배치개시버튼.Text = "배치개시";
+            this.배치개시버튼.Click += new System.EventHandler(this.배치개시_Click);
             // 
-            // 배치종료
+            // 배치종료버튼
             // 
-            this.배치종료.Dock = System.Windows.Forms.DockStyle.Right;
-            this.배치종료.Location = new System.Drawing.Point(1282, 2);
-            this.배치종료.Name = "배치종료";
-            this.배치종료.Size = new System.Drawing.Size(100, 34);
-            this.배치종료.TabIndex = 4;
-            this.배치종료.Text = "배치종료";
+            this.배치종료버튼.Dock = System.Windows.Forms.DockStyle.Right;
+            this.배치종료버튼.Location = new System.Drawing.Point(1282, 2);
+            this.배치종료버튼.Name = "배치종료버튼";
+            this.배치종료버튼.Size = new System.Drawing.Size(100, 34);
+            this.배치종료버튼.TabIndex = 4;
+            this.배치종료버튼.Text = "배치종료";
+            this.배치종료버튼.Click += new System.EventHandler(this.배치종료_Click);
             // 
             // ultraGroupBox4
             // 
@@ -128,11 +132,11 @@ namespace PAS.PMP
             this.ultraGroupBox4.Controls.Add(this.임계치퍼센트);
             this.ultraGroupBox4.Controls.Add(this.ultraLabel2);
             this.ultraGroupBox4.Controls.Add(this.ultraLabel1);
-            this.ultraGroupBox4.Controls.Add(this.분류종료);
+            this.ultraGroupBox4.Controls.Add(this.분류종료버튼);
             this.ultraGroupBox4.Controls.Add(this.ultraLinearGauge1);
             this.ultraGroupBox4.Controls.Add(this.ultraCheckEditor1);
-            this.ultraGroupBox4.Controls.Add(this.ultraRadioButton2);
-            this.ultraGroupBox4.Controls.Add(this.rad);
+            this.ultraGroupBox4.Controls.Add(this.균등);
+            this.ultraGroupBox4.Controls.Add(this.연속);
             this.ultraGroupBox4.Controls.Add(this.ultraLabel8);
             this.ultraGroupBox4.Controls.Add(this.ultraLabel9);
             this.ultraGroupBox4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -180,13 +184,14 @@ namespace PAS.PMP
             this.ultraLabel1.TabIndex = 75;
             this.ultraLabel1.Text = "쾌적";
             // 
-            // 분류종료
+            // 분류종료버튼
             // 
-            this.분류종료.Location = new System.Drawing.Point(665, 9);
-            this.분류종료.Name = "분류종료";
-            this.분류종료.Size = new System.Drawing.Size(90, 27);
-            this.분류종료.TabIndex = 74;
-            this.분류종료.Text = "분류종료";
+            this.분류종료버튼.Location = new System.Drawing.Point(665, 9);
+            this.분류종료버튼.Name = "분류종료버튼";
+            this.분류종료버튼.Size = new System.Drawing.Size(90, 27);
+            this.분류종료버튼.TabIndex = 74;
+            this.분류종료버튼.Text = "분류종료";
+            this.분류종료버튼.Click += new System.EventHandler(this.분류종료_Click);
             // 
             // ultraLinearGauge1
             // 
@@ -206,21 +211,21 @@ namespace PAS.PMP
             this.ultraCheckEditor1.TabIndex = 72;
             this.ultraCheckEditor1.Text = "배치완료 대상";
             // 
-            // ultraRadioButton2
+            // 균등
             // 
-            this.ultraRadioButton2.Location = new System.Drawing.Point(147, 16);
-            this.ultraRadioButton2.Name = "ultraRadioButton2";
-            this.ultraRadioButton2.Size = new System.Drawing.Size(70, 20);
-            this.ultraRadioButton2.TabIndex = 71;
-            this.ultraRadioButton2.Text = "균등";
+            this.균등.Location = new System.Drawing.Point(147, 16);
+            this.균등.Name = "균등";
+            this.균등.Size = new System.Drawing.Size(70, 20);
+            this.균등.TabIndex = 71;
+            this.균등.Text = "균등";
             // 
-            // rad
+            // 연속
             // 
-            this.rad.Location = new System.Drawing.Point(95, 16);
-            this.rad.Name = "rad";
-            this.rad.Size = new System.Drawing.Size(70, 20);
-            this.rad.TabIndex = 70;
-            this.rad.Text = "연속";
+            this.연속.Location = new System.Drawing.Point(95, 16);
+            this.연속.Name = "연속";
+            this.연속.Size = new System.Drawing.Size(70, 20);
+            this.연속.TabIndex = 70;
+            this.연속.Text = "연속";
             // 
             // ultraLabel8
             // 
@@ -313,6 +318,7 @@ namespace PAS.PMP
             this.uGrid3.Size = new System.Drawing.Size(1384, 531);
             this.uGrid3.TabIndex = 1035;
             this.uGrid3.Text = "uGrid3";
+            this.uGrid3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.uGrid3_MouseUp);
             // 
             // frmTRPAS00021
             // 
@@ -331,8 +337,8 @@ namespace PAS.PMP
             this.ultraGroupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraLinearGauge1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraCheckEditor1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraRadioButton2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.균등)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.연속)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uGrid3)).EndInit();
             this.ResumeLayout(false);
 
@@ -342,18 +348,18 @@ namespace PAS.PMP
 
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox1;
         private Infragistics.Win.Misc.UltraButton 조회버튼;
-        private Infragistics.Win.Misc.UltraButton 배치개시;
-        private Infragistics.Win.Misc.UltraButton 배치종료;
+        private Infragistics.Win.Misc.UltraButton 배치개시버튼;
+        private Infragistics.Win.Misc.UltraButton 배치종료버튼;
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox4;
         private Infragistics.Win.Misc.UltraLabel ultraLabel8;
         private Infragistics.Win.Misc.UltraLabel ultraLabel9;
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor ultraCheckEditor1;
-        private Infragistics.Win.UltraWinEditors.UltraRadioButton ultraRadioButton2;
-        private Infragistics.Win.UltraWinEditors.UltraRadioButton rad;
+        private Infragistics.Win.UltraWinEditors.UltraRadioButton 균등;
+        private Infragistics.Win.UltraWinEditors.UltraRadioButton 연속;
         private TR_Library.Controls.uGrid uGrid3;
         private Infragistics.Win.Misc.UltraLabel ultraLabel2;
         private Infragistics.Win.Misc.UltraLabel ultraLabel1;
-        private Infragistics.Win.Misc.UltraButton 분류종료;
+        private Infragistics.Win.Misc.UltraButton 분류종료버튼;
         private Infragistics.Win.Misc.UltraLabel 임계치퍼센트;
         private Infragistics.Win.DataVisualization.UltraLinearGauge ultraLinearGauge1;
     }

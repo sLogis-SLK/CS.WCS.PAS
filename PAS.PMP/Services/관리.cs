@@ -15,7 +15,7 @@ namespace PAS.PMP
                 dataTable.TableName = "usp_관리_제약사항_배정할수없는슈트확인_Get";
             }
             TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
-                new string[] { "@원배치번호", "@배치상태", "@작업일자", "@조회구분자" },
+                new string[] { "@원배치번호"},
                 new object[] { 원배치번호 }
             );
         }
@@ -59,6 +59,64 @@ namespace PAS.PMP
                 new string[] { "@분류번호", "@장비명", "@원배치번호" },
                 new object[] { 분류번호, 장비명, 원배치번호 }
             );
+        }
+
+        internal static void 바코드중복확인취소(string 분류번호, string 장비명, string 원배치번호)
+        {
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_관리_제약사항_바코드중복확인취소_Set", "@분류번호", "@장비명", "@원배치번호");
+                    oScope.Update(분류번호, 장비명, 원배치번호);
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        internal static void 재구성배치슈트중복확인(DataTable dataTable, string 분류번호, string 장비명, string 원배치번호)
+        {
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_관리_제약사항_재구성배치슈트중복확인_Get")
+            {
+                dataTable.TableName = "usp_관리_제약사항_재구성배치슈트중복확인_Get";
+            }
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+                new string[] { "@분류번호", "@장비명", "@원배치번호" },
+                new object[] { 분류번호, 장비명, 원배치번호 }
+            );
+        }
+
+        internal static void 분류실적백업_GET(DataTable dataTable, string 조회앞, string 조회뒤, string 장비명, string 배치상태, int 조회구분자)
+        {
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_관리_분류실적_백업_Get")
+            {
+                dataTable.TableName = "usp_관리_분류실적_백업_Get";
+            }
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+                new string[] { "@조회앞", "@조회뒤", "@장비명", "@배치상태", "@조회구분자" },
+                new object[] { 조회앞, 조회뒤, 장비명, 배치상태, 조회구분자}
+            );
+        }
+
+        internal static void 분류실적백업_SET(string 조회앞, string 조회뒤, string 장비명, string 배치상태, string 관리상태)
+        {
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_관리_분류실적_백업_Set", "@조회앞", "@조회뒤", "@장비명", "@배치상태", "@관리상태");
+                    oScope.Update(조회앞, 조회뒤, 장비명, 배치상태, 관리상태);
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

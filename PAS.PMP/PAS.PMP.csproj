@@ -76,6 +76,15 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Globel\GlobalClass.cs" />
+    <Compile Include="Models\Chute.cs" />
+    <Compile Include="Models\Execbat.cs" />
+    <Compile Include="Models\Sortq.cs" />
+    <Compile Include="Models\동작모드.cs" />
+    <Compile Include="Models\분류방법.cs" />
+    <Compile Include="Models\상태처리.cs" />
+    <Compile Include="Models\응답상태.cs" />
+    <Compile Include="Models\재구성Model.cs" />
+    <Compile Include="Models\재구성구분.cs" />
     <Compile Include="Report\레포트_거래명세서_AM01.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -84,6 +93,8 @@
     <Compile Include="Services\분류.cs" />
     <Compile Include="Services\연동.cs" />
     <Compile Include="Services\환경설정.cs" />
+    <Compile Include="Utils\Command.cs" />
+    <Compile Include="Utils\MakeData.cs" />
     <Compile Include="Utils\PasTabPage.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -238,7 +249,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Library\" />
-    <Folder Include="Models\" />
     <Folder Include="Services\공통\" />
     <Folder Include="Services\관리\" />
     <Folder Include="Services\분류\" />

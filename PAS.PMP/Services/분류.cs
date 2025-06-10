@@ -1,4 +1,5 @@
 ﻿using DbProvider;
+using System;
 using System.Data;
 using TR_Common;
 
@@ -183,6 +184,86 @@ namespace PAS.PMP
             new string[] { "@분류번호", "@장비명"},
             new object[] { 분류번호, 장비명 }
             );
+        }
+
+
+        internal static void 분류상태변경(string 장비명, string 분류번호, string 분류상태)
+        {
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_분류_분류상태변경_Set", "@장비명", "@분류번호", "@분류상태");
+                    oScope.Update(장비명, 분류번호, 분류상태);
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        internal static void 분류상태변경_원배치용(string 장비명, string 분류번호, string 배치번호, string 원배치번호, string 배치상태)
+        {
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_분류_배치상태변경_원배치용_Set", "@장비명", "@분류번호", "@배치번호", "@원배치번호", "배치상태");
+                    oScope.Update(장비명, 분류번호, 배치번호, 원배치번호, 배치상태);
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        internal static void 배치종료대상(DataTable dataTable, string 분류번호, string 장비명, string 원배치번호)
+        {
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_배치종료대상_Get")
+            {
+                dataTable.TableName = "usp_분류_배치종료대상_Get";
+            }
+
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+            new string[] { "@분류번호", "@장비명", "@원배치번호" },
+            new object[] { 분류번호, 장비명, 원배치번호 }
+            );
+        }
+
+        internal static void 배치종료확인(DataTable dataTable, string 분류번호, string 장비명, string 원배치번호)
+        {
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_배치종료확인_Get")
+            {
+                dataTable.TableName = "usp_분류_배치종료확인_Get";
+            }
+
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+            new string[] { "@분류번호", "@장비명", "@원배치번호" },
+            new object[] { 분류번호, 장비명, 원배치번호 }
+            );
+        }
+
+        internal static void 작업요약생성(string 분류명, string 장비명, string 작업일자, string 배치번호, string 원배치상태,
+            string 배치명, string 배치구분, string 분류구분, string 출하구분, string 패턴구분, int 지시수, string 슈트수, string 분류번호)
+        {
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_분류_작업요약생성_Set", "@분류명", "@장비명", "@작업일자", "@배치번호", "@원배치번호", 
+                        "@배치명", "@배치구분", "@분류구분", "@출하구분", "@패턴구분", "@지시수", "@슈트수", "@분류번호");
+                    oScope.Update(분류명, 장비명, 작업일자, 배치번호, 원배치상태, 배치명, 배치구분, 분류구분, 출하구분, 패턴구분, 지시수, 슈트수, 분류번호);
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }
