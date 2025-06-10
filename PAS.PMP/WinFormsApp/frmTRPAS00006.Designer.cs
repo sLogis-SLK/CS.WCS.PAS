@@ -45,17 +45,6 @@ namespace PAS.PMP
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
             this.작업일자 = new TR_Library.Controls.uCalendarCombo();
             this.ultraLabel11 = new Infragistics.Win.Misc.UltraLabel();
@@ -64,8 +53,8 @@ namespace PAS.PMP
             this.ultraGroupBox2 = new Infragistics.Win.Misc.UltraGroupBox();
             this.uGrid2 = new TR_Library.Controls.uGrid();
             this.ultraGroupBox3 = new Infragistics.Win.Misc.UltraGroupBox();
-            this.uGrid1 = new TR_Library.Controls.uGrid();
             this.splitter1 = new System.Windows.Forms.Splitter();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
             this.ultraGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.작업일자)).BeginInit();
@@ -74,7 +63,6 @@ namespace PAS.PMP
             ((System.ComponentModel.ISupportInitialize)(this.uGrid2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).BeginInit();
             this.ultraGroupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraGroupBox1
@@ -202,6 +190,9 @@ namespace PAS.PMP
             this.uGrid2.DisplayLayout.Override.WrapHeaderText = Infragistics.Win.DefaultableBoolean.True;
             this.uGrid2.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.uGrid2.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            appearance15.BackColor = System.Drawing.Color.IndianRed;
+            appearance15.BackColor2 = System.Drawing.Color.Firebrick;
+            this.uGrid2.DisplayLayout.SplitterBarHorizontalAppearance = appearance15;
             this.uGrid2.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.uGrid2.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.uGrid2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -214,81 +205,12 @@ namespace PAS.PMP
             // 
             // ultraGroupBox3
             // 
-            this.ultraGroupBox3.Controls.Add(this.uGrid1);
+            this.ultraGroupBox3.Controls.Add(this.tabControl1);
             this.ultraGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraGroupBox3.Location = new System.Drawing.Point(0, 294);
             this.ultraGroupBox3.Name = "ultraGroupBox3";
             this.ultraGroupBox3.Size = new System.Drawing.Size(1388, 410);
             this.ultraGroupBox3.TabIndex = 1029;
-            this.ultraGroupBox3.Text = "한덱스";
-            // 
-            // uGrid1
-            // 
-            appearance15.BackColor = System.Drawing.SystemColors.Window;
-            appearance15.BorderColor = System.Drawing.SystemColors.InactiveCaption;
-            this.uGrid1.DisplayLayout.Appearance = appearance15;
-            this.uGrid1.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            this.uGrid1.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            appearance16.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            appearance16.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance16.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance16.BorderColor = System.Drawing.SystemColors.Window;
-            this.uGrid1.DisplayLayout.GroupByBox.Appearance = appearance16;
-            appearance17.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.uGrid1.DisplayLayout.GroupByBox.BandLabelAppearance = appearance17;
-            this.uGrid1.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance18.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            appearance18.BackColor2 = System.Drawing.SystemColors.Control;
-            appearance18.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance18.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.uGrid1.DisplayLayout.GroupByBox.PromptAppearance = appearance18;
-            this.uGrid1.DisplayLayout.MaxColScrollRegions = 1;
-            this.uGrid1.DisplayLayout.MaxRowScrollRegions = 1;
-            appearance19.BackColor = System.Drawing.SystemColors.Window;
-            appearance19.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.uGrid1.DisplayLayout.Override.ActiveCellAppearance = appearance19;
-            appearance20.BackColor = System.Drawing.SystemColors.Highlight;
-            appearance20.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.uGrid1.DisplayLayout.Override.ActiveRowAppearance = appearance20;
-            this.uGrid1.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False;
-            this.uGrid1.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
-            this.uGrid1.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
-            appearance21.BackColor = System.Drawing.SystemColors.Window;
-            this.uGrid1.DisplayLayout.Override.CardAreaAppearance = appearance21;
-            appearance22.BorderColor = System.Drawing.Color.Silver;
-            appearance22.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
-            this.uGrid1.DisplayLayout.Override.CellAppearance = appearance22;
-            this.uGrid1.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
-            this.uGrid1.DisplayLayout.Override.CellPadding = 0;
-            this.uGrid1.DisplayLayout.Override.DefaultRowHeight = 24;
-            appearance23.BackColor = System.Drawing.SystemColors.Control;
-            appearance23.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance23.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
-            appearance23.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance23.BorderColor = System.Drawing.SystemColors.Window;
-            this.uGrid1.DisplayLayout.Override.GroupByRowAppearance = appearance23;
-            appearance24.TextHAlignAsString = "Left";
-            this.uGrid1.DisplayLayout.Override.HeaderAppearance = appearance24;
-            this.uGrid1.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            this.uGrid1.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
-            appearance25.BackColor = System.Drawing.SystemColors.Window;
-            appearance25.BorderColor = System.Drawing.Color.Silver;
-            this.uGrid1.DisplayLayout.Override.RowAppearance = appearance25;
-            this.uGrid1.DisplayLayout.Override.RowSelectorNumberStyle = Infragistics.Win.UltraWinGrid.RowSelectorNumberStyle.None;
-            this.uGrid1.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
-            appearance26.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.uGrid1.DisplayLayout.Override.TemplateAddRowAppearance = appearance26;
-            this.uGrid1.DisplayLayout.Override.WrapHeaderText = Infragistics.Win.DefaultableBoolean.True;
-            this.uGrid1.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-            this.uGrid1.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.uGrid1.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
-            this.uGrid1.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
-            this.uGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uGrid1.Location = new System.Drawing.Point(3, 18);
-            this.uGrid1.Name = "uGrid1";
-            this.uGrid1.Size = new System.Drawing.Size(1382, 389);
-            this.uGrid1.TabIndex = 0;
-            this.uGrid1.Text = "uGrid1";
             // 
             // splitter1
             // 
@@ -299,6 +221,15 @@ namespace PAS.PMP
             this.splitter1.Size = new System.Drawing.Size(1388, 3);
             this.splitter1.TabIndex = 1030;
             this.splitter1.TabStop = false;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(3, 3);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1382, 404);
+            this.tabControl1.TabIndex = 0;
             // 
             // frmTRPAS00006
             // 
@@ -321,7 +252,6 @@ namespace PAS.PMP
             ((System.ComponentModel.ISupportInitialize)(this.uGrid2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).EndInit();
             this.ultraGroupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -335,8 +265,8 @@ namespace PAS.PMP
         private TR_Library.Controls.uCalendarCombo 작업일자;
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox2;
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox3;
-        private TR_Library.Controls.uGrid uGrid1;
         private System.Windows.Forms.Splitter splitter1;
         private TR_Library.Controls.uGrid uGrid2;
+        private System.Windows.Forms.TabControl tabControl1;
     }
 }

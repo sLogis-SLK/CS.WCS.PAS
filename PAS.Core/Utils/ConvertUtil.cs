@@ -84,5 +84,17 @@ namespace PAS.Core
             }
             return true;
         }
+
+        public static int C2I(object obj)
+        {
+            try
+            {
+                return Convert.ToInt32(obj);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }

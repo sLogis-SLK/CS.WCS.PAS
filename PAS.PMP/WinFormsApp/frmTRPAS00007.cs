@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Data;
 using System.Windows.Forms;
 using Infragistics.Win.UltraWinGrid;
@@ -11,9 +12,11 @@ namespace PAS.PMP
     {
         #region 폼개체 선언부
 
-        private DataTable m_분류_작업배치그룹Table = new DataTable("usp_분류_작업요약_Get");
+        private DataTable m_분류_작업배치그룹Table = new DataTable("usp_분류_작업요약_배치그룹별_Get");
+        private DataTable m_출하_박스별패킹대상Table = new DataTable("usp_출하_박스별패킹대상_Get");
 
         private BindingSource m_분류_작업배치그룹BS = new BindingSource();
+        private BindingSource m_출하_박스별패킹BS = new BindingSource();
 
         #endregion
 
@@ -27,7 +30,7 @@ namespace PAS.PMP
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            //SetDataTableBindingInit();
+            SetDataTableBindingInit();
         }
 
         #endregion
@@ -51,6 +54,18 @@ namespace PAS.PMP
                 Common.SetGridEditColumn(this.uGrid2, null);
 
                 #endregion
+
+                #region uGrid1 BindingSource 초기화
+
+                분류.출하박스별패킹대상(m_출하_박스별패킹대상Table, "", "", 0);
+
+                this.m_출하_박스별패킹BS.DataSource = this.m_출하_박스별패킹대상Table;
+                this.uGrid1.DataSource = this.m_출하_박스별패킹BS;
+                Common.SetGridInit(this.uGrid1, false, false, true, true, false, false);
+                Common.SetGridHiddenColumn(this.uGrid1, "배치번호", "슈트번호");
+                Common.SetGridEditColumn(this.uGrid1, null);
+
+                #endregion
             }
             catch (Exception ex)
             {
@@ -71,8 +86,41 @@ namespace PAS.PMP
             분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 1);
         }
 
-        #endregion
+        private void uGrid2_AfterRowActivate(object sender, EventArgs e)
+        {
+            if (this.uGrid2.ActiveRow == null || this.uGrid2.ActiveRow.Index < 0)
+                return;
 
+            Cursor = Cursors.WaitCursor;
 
+            try
+            {
+                DataRow oRow = ((DataRowView)uGrid2.ActiveRow.ListObject).Row;
+                분류.출하박스별패킹대상(m_출하_박스별패킹대상Table, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), 1);
+            } 
+            catch (Exception ex)
+            {
+                Common.ErrorMessage(this.Text, ex);
+                Cursor = Cursors.Default;
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in (IEnumerable)this.uGrid1.Rows)
+            {
+                if (row.Tag == null || !(row.Tag.ToString() == "요약"))
+                    row.Cells["선택"].Value = (object)this.checkBox1.Checked;
+            }
+            this.m_출하_박스별패킹BS.EndEdit();
+        }
     }
+
+    #endregion
+
+
 }

@@ -5,21 +5,22 @@ using TR_Common;
 
 namespace PAS.PMP
 {
-    public partial class frmTRPAS00001 : Form
+    public partial class frmTRPAS00001 : Form, IToolBase
     {
         #region 폼개체 선언부
 
-        private DataTable m_분류_작업배치그룹Table = new DataTable("usp_분류_작업요약_Get");
+        private DataTable m_분류_작업배치그룹Table = new DataTable("usp_분류_작업요약_배치그룹별_Get");
         private DataTable m_분류_슈트별미출고Table = new DataTable("usp_분류_미출고내역_슈트별_Get");
         private DataTable m_분류_슈트별미출고상세Table = new DataTable("usp_분류_미출고내역_슈트별상세_Get");
+        private DataTable m_분류_미출고내역_슈트별출력용_Table = new DataTable("usp_분류_미출고내역_슈트별출력용_Get");
 
         private BindingSource m_분류_작업배치그룹BS = new BindingSource();
         private BindingSource m_분류_슈트별미출고BS = new BindingSource();
         private BindingSource m_분류_슈트별미출고상세BS = new BindingSource();
 
-        string _장비명 = "";
         string _배치번호 = "";
         string _분류번호 = "";
+        
 
         enum enum신규입력
         {
@@ -90,26 +91,29 @@ namespace PAS.PMP
                 this.uGrid3.DisplayLayout.Bands[0].Columns["등록일시"].Format = "yy-MM-dd HH:mm";
 
 
-                분류.미출고슈트별조회(m_분류_슈트별미출고Table, "", "", "", 0);
+                분류.미출고슈트별조회(m_분류_슈트별미출고Table, "", "", 0);
 
                 this.m_분류_슈트별미출고BS.DataSource = this.m_분류_슈트별미출고Table;
                 this.uGrid1.DataSource = this.m_분류_슈트별미출고BS;
 
                 Common.SetGridInit(this.uGrid1, false, false, true, true, false, false);
                 Common.SetGridEditColumn(this.uGrid1, null);
+                Common.SetGridHiddenColumn(this.uGrid1, "분류번호", "배치번호");
                 Common.uGridSummarySet(this.uGrid1, Infragistics.Win.UltraWinGrid.SummaryType.Sum, "부족수");
 
 
 
-                분류.미출고슈트별상세조회(m_분류_슈트별미출고상세Table, "", "", "", "", 0);
+                분류.미출고슈트별상세조회(m_분류_슈트별미출고상세Table, "", "", "", 0);
 
                 this.m_분류_슈트별미출고상세BS.DataSource = this.m_분류_슈트별미출고상세Table;
                 this.uGrid2.DataSource = this.m_분류_슈트별미출고상세BS;
 
                 Common.SetGridInit(this.uGrid2, false, false, true, true, false, false);
-                Common.SetGridHiddenColumn(this.uGrid2, null);
+                Common.SetGridHiddenColumn(this.uGrid2, "지시수", "실적수", "품번", "품명", "스타일명", "색상명", "사이즈명", "기타1", "기타2");
                 Common.SetGridEditColumn(this.uGrid2, null);
                 Common.uGridSummarySet(this.uGrid2, Infragistics.Win.UltraWinGrid.SummaryType.Sum, "부족수");
+
+                this.출력대상유형.Value = 10; 
 
             }
             catch (Exception ex)
@@ -146,10 +150,9 @@ namespace PAS.PMP
             try
             {
                 DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
-                _장비명 = oRow["장비명"].ToString();
                 _배치번호 = oRow["배치번호"].ToString();
                 _분류번호 = oRow["분류번호"].ToString();
-                분류.미출고슈트별조회(m_분류_슈트별미출고Table, oRow["분류번호"].ToString(), oRow["장비명"].ToString(), oRow["배치번호"].ToString(), 1);
+                분류.미출고슈트별조회(m_분류_슈트별미출고Table, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), 1);
             }   
             catch (Exception ex) 
             {
@@ -173,7 +176,7 @@ namespace PAS.PMP
             {
                 DataRow oRow = ((DataRowView)uGrid1.ActiveRow.ListObject).Row;
 
-                분류.미출고슈트별상세조회(m_분류_슈트별미출고상세Table, _분류번호, _장비명, _배치번호, oRow["슈트번호"].ToString(), 1);
+                분류.미출고슈트별상세조회(m_분류_슈트별미출고상세Table, _분류번호, _배치번호, oRow["슈트번호"].ToString(), 1);
             }
             catch (Exception ex)
             {
@@ -192,7 +195,25 @@ namespace PAS.PMP
             분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.조회시작일.Value).ToString("yyyyMMdd"), 1);
         }
 
-    
+        public void OnPrint(bool bPrevView)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnExcel()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnControlVisible(object sender, ControlVisibleEventArgs e)
+        {
+      
+        }
+
+        public void OnBrandChange(object sender, BrandChangeEventArgs e)
+        {
+          
+        }
     }
 
 }

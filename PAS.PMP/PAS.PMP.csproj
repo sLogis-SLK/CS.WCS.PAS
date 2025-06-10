@@ -33,6 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Shared.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.AppStylistSupport.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.DataVisualization.Barcode.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
@@ -71,11 +76,17 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Globel\GlobalClass.cs" />
+    <Compile Include="Report\레포트_거래명세서_AM01.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Services\WCSHelper.cs" />
     <Compile Include="Services\관리.cs" />
     <Compile Include="Services\분류.cs" />
     <Compile Include="Services\연동.cs" />
     <Compile Include="Services\환경설정.cs" />
+    <Compile Include="Utils\PasTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WinFormsApp\frmTRPAS00001.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +159,12 @@
     <Compile Include="WinFormsApp\frmTRPAS00024.Designer.cs">
       <DependentUpon>frmTRPAS00024.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinFormsApp\frmTRPASTEST.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPASTEST.Designer.cs">
+      <DependentUpon>frmTRPASTEST.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinFormsApp\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +173,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="WinFormsApp\frmTRPAS00001.resx">
       <DependentUpon>frmTRPAS00001.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\frmTRPAS00023.resx">
       <DependentUpon>frmTRPAS00023.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\frmTRPASTEST.resx">
+      <DependentUpon>frmTRPASTEST.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -224,7 +245,6 @@
     <Folder Include="Services\연동\" />
     <Folder Include="Services\출하\" />
     <Folder Include="Services\표시\" />
-    <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CS.TRabbit_V4\ldenvlib\ldenvlib.csproj">
@@ -249,6 +269,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Report\레포트_거래명세서_AM01.rpt" />
     <None Include="Resources\제목 없음.bmp" />
   </ItemGroup>
   <ItemGroup>

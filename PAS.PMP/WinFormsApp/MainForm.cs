@@ -38,8 +38,8 @@ namespace PAS.PMP
             string strFormNm = string.Empty;
             try
             {
-                UltraTreeNode selectedNode = ultraTree1.SelectedNodes.Count > 0
-                ? ultraTree1.SelectedNodes[0]
+                UltraTreeNode selectedNode = 네비게이션.SelectedNodes.Count > 0
+                ? 네비게이션.SelectedNodes[0]
                 : null;
 
                 strTag = selectedNode.Tag == null ? string.Empty : selectedNode.Tag.ToString();
@@ -52,8 +52,29 @@ namespace PAS.PMP
 
                     switch(strTag)
                     {
-                        case "frmPAS00011":
+                        case "frmTRPAS00011":
+                            form = new frmTRPAS00011();
+                            break;
+                        case "frmTRPAS00001":
                             form = new frmTRPAS00001();
+                            break;
+                        case "frmTRPAS00002":
+                            form = new frmTRPAS00002();
+                            break;
+                        case "frmTRPAS00003":
+                            form = new frmTRPAS00003();
+                            break;
+                        case "frmTRPAS00004":
+                            form = new frmTRPAS00004();
+                            break;
+                        case "frmTRPAS00005":
+                            form = new frmTRPAS00005();
+                            break;
+                        case "frmTRPAS00006":
+                            form = new frmTRPAS00006();
+                            break;
+                        case "frmTRPAS00007":
+                            form = new frmTRPAS00007();
                             break;
                         default:
                             MessageBox.Show("해당 태그에 해당하는 폼이 없습니다.");
@@ -82,12 +103,6 @@ namespace PAS.PMP
 
                     }
                 }
-
-                //if(strTag )
-                //strTag = this.m_LastNodeFromPos.Cells["태그"].Text;
-                //strGubun = this.m_LastNodeFromPos.Cells["폴더구분"].Text;
-                //strType = this.m_LastNodeFromPos.Cells["타입구분"].Text;
-                //strFormNm = this.m_LastNodeFromPos.Cells["프로그램코드"].Column.ToString();
             }
             catch (Exception ex)
             {
@@ -103,7 +118,7 @@ namespace PAS.PMP
 
         private void ultraTree1_MouseDown(object sender, MouseEventArgs e)
         {
-            this.m_LastNodeFromPos = ultraTree1.GetNodeFromPoint(e.X, e.Y);
+            this.m_LastNodeFromPos = 네비게이션.GetNodeFromPoint(e.X, e.Y);
         }
 
         private void MainForm_Load(object sender, EventArgs e)

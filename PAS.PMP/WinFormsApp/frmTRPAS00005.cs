@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Data;
 using System.Windows.Forms;
 using Infragistics.Win.UltraWinGrid;
@@ -11,7 +12,7 @@ namespace PAS.PMP
     {
         #region 폼개체 선언부
 
-        private DataTable m_분류_작업배치그룹Table = new DataTable("usp_분류_작업요약_Get");
+        private DataTable m_분류_작업배치그룹Table = new DataTable("usp_분류_작업요약_배치그룹별_Get");
         private DataTable m_분류_마지막박스내역Table = new DataTable("usp_분류_마지막박스내역_Get");
 
         private BindingSource m_분류_작업배치그룹BS = new BindingSource();
@@ -55,7 +56,7 @@ namespace PAS.PMP
 
                 #region uGrid1 BindingSource 초기화
 
-                분류.마지막박스내역조회(m_분류_마지막박스내역Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), "", "", 0);
+                분류.마지막박스내역조회(m_분류_마지막박스내역Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), "", 0);
 
                 this.m_분류_마지막박스내역BS.DataSource = this.m_분류_마지막박스내역Table;
                 this.uGrid1.DataSource = this.m_분류_마지막박스내역BS;
@@ -97,7 +98,7 @@ namespace PAS.PMP
             try
             {
                 DataRow oRow = ((DataRowView)uGrid2.ActiveRow.ListObject).Row;
-                분류.마지막박스내역조회(m_분류_마지막박스내역Table, oRow["분류번호"].ToString(), oRow["장비명"].ToString(), oRow["배치번호"].ToString(), 1);
+                분류.마지막박스내역조회(m_분류_마지막박스내역Table, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), 1);
             }
             catch (Exception ex)
             {
@@ -108,6 +109,16 @@ namespace PAS.PMP
             {
                 Cursor = Cursors.Default;
             }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in (IEnumerable)this.uGrid1.Rows)
+            {
+                if (row.Tag == null || !(row.Tag.ToString() == "요약"))
+                    row.Cells["선택"].Value = (object)this.checkBox1.Checked;
+            }
+            this.m_분류_마지막박스내역BS.EndEdit();
         }
 
         #endregion
