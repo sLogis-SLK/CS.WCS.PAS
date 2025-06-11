@@ -48,6 +48,7 @@
     <Reference Include="Infragistics4.Win.UltraWinDock.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinEditors.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinExplorerBar.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.UltraWinGrid.ExcelExport.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinGrid.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinListView.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinSchedule.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
@@ -85,7 +86,34 @@
     <Compile Include="Models\응답상태.cs" />
     <Compile Include="Models\재구성Model.cs" />
     <Compile Include="Models\재구성구분.cs" />
-    <Compile Include="Report\레포트_거래명세서_AM01.cs">
+    <Compile Include="Report\레포트_박스별실적상세.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\레포트_박스별실적상세_SM.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\레포트_박스별실적상세_상품명.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\레포트_박스별실적상세_토탈.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\미출고내역_상품별.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\미출고내역_슈트별.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\미출고내역_슈트별1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>미출고내역_슈트별.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\상품발송장_매장별.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\패킹내역_박스별.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\WCSHelper.cs" />
@@ -185,6 +213,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Report\미출고내역_슈트별.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>미출고내역_슈트별1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\frmTRPAS00001.resx">
       <DependentUpon>frmTRPAS00001.cs</DependentUpon>
     </EmbeddedResource>
@@ -279,7 +311,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Report\레포트_거래명세서_AM01.rpt" />
+    <EmbeddedResource Include="Report\레포트_박스별실적상세.rpt" />
+    <EmbeddedResource Include="Report\레포트_박스별실적상세_SM.rpt" />
+    <EmbeddedResource Include="Report\레포트_박스별실적상세_상품명.rpt" />
+    <EmbeddedResource Include="Report\레포트_박스별실적상세_토탈.rpt" />
+    <EmbeddedResource Include="Report\미출고내역_상품별.rpt" />
+    <EmbeddedResource Include="Report\상품발송장_매장별.rpt" />
+    <EmbeddedResource Include="Report\패킹내역_박스별.rpt" />
     <None Include="Resources\제목 없음.bmp" />
   </ItemGroup>
   <ItemGroup>
@@ -299,6 +337,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\메뉴_list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

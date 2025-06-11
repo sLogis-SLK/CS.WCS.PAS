@@ -163,6 +163,7 @@ namespace PAS.PMP
             this.박스발행.Size = new System.Drawing.Size(107, 25);
             this.박스발행.TabIndex = 4;
             this.박스발행.Text = "마지막박스 발행";
+            this.박스발행.Click += new System.EventHandler(this.박스발행_Click);
             // 
             // 닫기
             // 

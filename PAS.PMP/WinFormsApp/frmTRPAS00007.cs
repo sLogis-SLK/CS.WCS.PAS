@@ -43,21 +43,22 @@ namespace PAS.PMP
             {
                 #region uGrid2 BindingSource 초기화
 
-                분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 0);
+                분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 0, "모두");
 
 
                 this.m_분류_작업배치그룹BS.DataSource = this.m_분류_작업배치그룹Table;
                 this.uGrid2.DataSource = this.m_분류_작업배치그룹BS;
 
                 Common.SetGridInit(this.uGrid2, false, false, true, true, false, false);
-                Common.SetGridHiddenColumn(this.uGrid2, "선택", "순번", "추가배치", "원배치번호", "관리번호", "장비명", "배치구분코드", "분류구분코드", "출하구분코드", "분류방법코드", "패턴구분", "패턴구분코드", "분류상태", "분류상태코드", "배치상태코드", "완료일시");
+                Common.SetGridHiddenColumn(this.uGrid2, "분류구분", "패턴구분", "분류상태", "완료일시", "선택", "순번", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "패턴구분코드", "분류상태코드", "배치상태코드");
                 Common.SetGridEditColumn(this.uGrid2, null);
 
+                this.uGrid2.DisplayLayout.Bands[0].Columns["등록일시"].Format = "yy-MM-dd HH:mm";
                 #endregion
 
                 #region uGrid1 BindingSource 초기화
 
-                분류.출하박스별패킹대상(m_출하_박스별패킹대상Table, "", "", 0);
+                분류.출하박스별패킹대상(m_출하_박스별패킹대상Table, "", "", "", 0);
 
                 this.m_출하_박스별패킹BS.DataSource = this.m_출하_박스별패킹대상Table;
                 this.uGrid1.DataSource = this.m_출하_박스별패킹BS;
@@ -69,7 +70,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Name, ex);
+                MessageBox.Show(ex.Message);
             }
         }
 

@@ -1,7 +1,10 @@
-﻿using System;
+﻿using CrystalDecisions.Windows.Forms;
+using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using TR_Common;
+using TR_Library.Controls;
 
 namespace PAS.PMP
 {
@@ -20,7 +23,7 @@ namespace PAS.PMP
 
         string _배치번호 = "";
         string _분류번호 = "";
-        
+        string _장비명 = "";
 
         enum enum신규입력
         {
@@ -63,11 +66,16 @@ namespace PAS.PMP
             InitializeComponent();
         }
 
-        protected override void OnShown(EventArgs e)
+        private void frmTRPAS00001_Load(object sender, EventArgs e)
         {
-            base.OnShown(e);
             SetDataTableBindingInit();
         }
+
+        //protected override void OnShown(EventArgs e)
+        //{
+        //    base.OnShown(e);
+        //    SetDataTableBindingInit();
+        //}
 
         #endregion
 
@@ -78,20 +86,20 @@ namespace PAS.PMP
             try
             {
                 //#region uGrid3 BindingSource 초기화
-                분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.조회시작일.Value).ToString("yyyyMMdd"), 0);
+                분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.조회시작일.Value).ToString("yyyyMMdd"), 0, "모두");
 
 
                 this.m_분류_작업배치그룹BS.DataSource = this.m_분류_작업배치그룹Table;
                 this.uGrid3.DataSource = this.m_분류_작업배치그룹BS;
 
                 Common.SetGridInit(this.uGrid3, false, false, true, true, false, false);
-                Common.SetGridHiddenColumn(this.uGrid3, "선택", "순번", "추가배치", "원배치번호", "관리번호", "장비명", "배치구분코드", "분류구분코드", "출하구분코드", "분류방법코드", "패턴구분", "패턴구분코드", "분류상태", "분류상태코드", "배치상태코드", "완료일시");
+                Common.SetGridHiddenColumn(this.uGrid3, "분류구분", "패턴구분", "분류상태", "완료일시", "선택", "순번", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "패턴구분코드", "분류상태코드", "배치상태코드");
                 Common.SetGridEditColumn(this.uGrid3, null);
 
                 this.uGrid3.DisplayLayout.Bands[0].Columns["등록일시"].Format = "yy-MM-dd HH:mm";
 
 
-                분류.미출고슈트별조회(m_분류_슈트별미출고Table, "", "", 0);
+                분류.미출고슈트별조회(m_분류_슈트별미출고Table, "", "", "", 0);
 
                 this.m_분류_슈트별미출고BS.DataSource = this.m_분류_슈트별미출고Table;
                 this.uGrid1.DataSource = this.m_분류_슈트별미출고BS;
@@ -101,24 +109,30 @@ namespace PAS.PMP
                 Common.SetGridHiddenColumn(this.uGrid1, "분류번호", "배치번호");
                 Common.uGridSummarySet(this.uGrid1, Infragistics.Win.UltraWinGrid.SummaryType.Sum, "부족수");
 
+                this.uGrid1.DisplayLayout.Bands[0].Columns["부족수"].CellAppearance.BackColor = SystemColors.Info;
+                this.uGrid1.DisplayLayout.Bands[0].Columns["부족수"].CellAppearance.ForeColor = Color.Red;
 
 
-                분류.미출고슈트별상세조회(m_분류_슈트별미출고상세Table, "", "", "", 0);
+                분류.미출고슈트별상세조회(m_분류_슈트별미출고상세Table, "", "", "", "", 0);
 
                 this.m_분류_슈트별미출고상세BS.DataSource = this.m_분류_슈트별미출고상세Table;
                 this.uGrid2.DataSource = this.m_분류_슈트별미출고상세BS;
 
                 Common.SetGridInit(this.uGrid2, false, false, true, true, false, false);
-                Common.SetGridHiddenColumn(this.uGrid2, "지시수", "실적수", "품번", "품명", "스타일명", "색상명", "사이즈명", "기타1", "기타2");
+                Common.SetGridHiddenColumn(this.uGrid2, null);
                 Common.SetGridEditColumn(this.uGrid2, null);
+                
                 Common.uGridSummarySet(this.uGrid2, Infragistics.Win.UltraWinGrid.SummaryType.Sum, "부족수");
 
-                this.출력대상유형.Value = 10; 
+                this.uGrid2.DisplayLayout.Bands[0].Columns["부족수"].CellAppearance.BackColor = SystemColors.Info;
+                this.uGrid2.DisplayLayout.Bands[0].Columns["부족수"].CellAppearance.ForeColor = Color.Red;
+
+                this.출력대상유형.Value = "10"; 
 
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Name, ex);
+                MessageBox.Show(ex.Message, this.Text);
             }
         }
 
@@ -152,11 +166,12 @@ namespace PAS.PMP
                 DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
                 _배치번호 = oRow["배치번호"].ToString();
                 _분류번호 = oRow["분류번호"].ToString();
-                분류.미출고슈트별조회(m_분류_슈트별미출고Table, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), 1);
+                _장비명 = oRow["장비명"].ToString();
+                분류.미출고슈트별조회(m_분류_슈트별미출고Table, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), _장비명, 1);
             }   
             catch (Exception ex) 
             {
-                    Common.ErrorMessage(this.Text, ex);
+                    MessageBox.Show(ex.Message, this.Text);
                     Cursor = Cursors.Default;
             }
             finally
@@ -176,11 +191,11 @@ namespace PAS.PMP
             {
                 DataRow oRow = ((DataRowView)uGrid1.ActiveRow.ListObject).Row;
 
-                분류.미출고슈트별상세조회(m_분류_슈트별미출고상세Table, _분류번호, _배치번호, oRow["슈트번호"].ToString(), 1);
+                분류.미출고슈트별상세조회(m_분류_슈트별미출고상세Table, _분류번호, _배치번호, oRow["슈트번호"].ToString(), _장비명, 1);
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex);
+                MessageBox.Show(ex.Message, this.Text);
                 Cursor = Cursors.Default;
             }
             finally
@@ -192,17 +207,122 @@ namespace PAS.PMP
 
         private void 조회_Click(object sender, EventArgs e)
         {
-            분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.조회시작일.Value).ToString("yyyyMMdd"), 1);
+            분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.조회시작일.Value).ToString("yyyyMMdd"), 1, "모두");
         }
 
         public void OnPrint(bool bPrevView)
         {
-            throw new NotImplementedException();
+            Cursor.Current = Cursors.WaitCursor;
+            try
+            {
+
+             
+
+                DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
+
+                if (oRow == null)
+                {
+                    MessageBox.Show("출력할 배치를 선택하세요.", this.Text);
+                    return;
+                }
+
+                string s분류번호 = oRow["분류번호"].ToString();
+                string s배치번호 = oRow["배치번호"].ToString();
+                string oValue3 = string.Empty;
+
+                DataRow oRowSute = ((DataRowView)uGrid1.ActiveRow.ListObject).Row;
+
+                if (oRowSute == null)
+                {
+                    MessageBox.Show("출력할 배치를 선택하세요.", this.Text);
+                    return;
+                }
+
+                oValue3 = this.출력대상유형.Value == (object)"20" ? oRowSute["슈트번호"].ToString() : string.Empty;
+                분류.미출고내역슈트별출력(this.m_분류_미출고내역_슈트별출력용_Table, s분류번호, s배치번호, oValue3, _장비명);
+
+                if (this.m_분류_미출고내역_슈트별출력용_Table == null || this.m_분류_미출고내역_슈트별출력용_Table.Rows.Count <= 0)
+                {
+                    MessageBox.Show("출력할 대상이 없습니다.", this.Text);
+                }
+                else
+                {
+                    string val = $"{this.m_분류_미출고내역_슈트별출력용_Table.Rows[0]["브랜드코드"].ToString()}:{this.m_분류_미출고내역_슈트별출력용_Table.Rows[0]["브랜드명"].ToString()}";
+                    미출고내역_슈트별 미출고내역슈트별 = new 미출고내역_슈트별();
+                    미출고내역슈트별.SetDataSource(this.m_분류_미출고내역_슈트별출력용_Table);
+                    미출고내역슈트별.SetParameterValue("로컬장비명", _장비명);
+                    미출고내역슈트별.SetParameterValue("브랜드명", (object)val);
+
+                    Common.PrintPrevView(미출고내역슈트별);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text);
+                Cursor = Cursors.Default;
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
         }
 
         public void OnExcel()
         {
-            throw new NotImplementedException();
+            Cursor.Current = Cursors.WaitCursor;
+            
+            try
+            {
+                DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
+
+                if (oRow == null)
+                {
+                    MessageBox.Show("출력할 배치를 선택하세요.", this.Text);
+                    return;
+                }
+
+                string s분류번호 = oRow["분류번호"].ToString();
+                string s배치번호 = oRow["배치번호"].ToString();
+                string oValue3 = string.Empty;
+
+                DataRow oRowSute = ((DataRowView)uGrid1.ActiveRow.ListObject).Row;
+
+                if (oRowSute == null)
+                {
+                    MessageBox.Show("출력할 배치를 선택하세요.", this.Text);
+                    return;
+                }
+
+                oValue3 = this.출력대상유형.Value == (object)"20" ? oRowSute["슈트번호"].ToString() : string.Empty;
+                분류.미출고내역슈트별출력(this.m_분류_미출고내역_슈트별출력용_Table, s분류번호, s배치번호, oValue3, _장비명);
+
+                if (this.m_분류_미출고내역_슈트별출력용_Table == null || this.m_분류_미출고내역_슈트별출력용_Table.Rows.Count <= 0)
+                {
+                    MessageBox.Show("출력할 대상이 없습니다.", this.Text);
+                    return;
+                }
+
+                Common.SetGridInit(this.uGrid4, false, false, true, true, false, false);
+                Common.SetGridHiddenColumn(this.uGrid4, null);
+                Common.SetGridEditColumn(uGrid4, null);
+                BindingSource myBinding = new BindingSource();
+                myBinding.DataSource = m_분류_미출고내역_슈트별출력용_Table;
+                this.uGrid4.DataSource = myBinding;
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    this.uGridExcelExporter1.ExportAsync(uGrid4, saveFileDialog1.FileName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text);
+                Cursor = Cursors.Default;
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+
+
         }
 
         public void OnControlVisible(object sender, ControlVisibleEventArgs e)
@@ -214,6 +334,8 @@ namespace PAS.PMP
         {
           
         }
+
+   
     }
 
 }

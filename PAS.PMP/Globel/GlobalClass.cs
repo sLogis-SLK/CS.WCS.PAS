@@ -7,6 +7,8 @@ namespace PAS.PMP
     {
         internal static string 장비명 { get => pas환경설정.NAME; }
 
+        //internal static string 
+
         internal static string LOCAL_FOLDER { get => pas환경설정.LOCAL_FOLDER; }
 
         internal static string SEIGYO_IP { get => pas환경설정.SEIGYO_IP; }

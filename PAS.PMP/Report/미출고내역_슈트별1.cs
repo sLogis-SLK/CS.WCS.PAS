@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TR_Report.레포트 {
+namespace PAS.PMP.Report {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace TR_Report.레포트 {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class 레포트_거래명세서_AM01 : ReportClass {
+    public class 미출고내역_슈트별 : ReportClass {
         
-        public 레포트_거래명세서_AM01() {
+        public 미출고내역_슈트별() {
         }
         
         public override string ResourceName {
             get {
-                return "레포트_거래명세서_AM01.rpt";
+                return "미출고내역_슈트별.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace TR_Report.레포트 {
         
         public override string FullResourceName {
             get {
-                return "TR_Report.레포트.레포트_거래명세서_AM01.rpt";
+                return "PAS.PMP.Report.미출고내역_슈트별.rpt";
             }
             set {
                 // Do nothing
@@ -87,12 +87,68 @@ namespace TR_Report.레포트 {
                 return this.ReportDefinition.Sections[4];
             }
         }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_로컬장비명 {
+            get {
+                return this.DataDefinition.ParameterFields[0];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_브랜드명 {
+            get {
+                return this.DataDefinition.ParameterFields[1];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_분류번호 {
+            get {
+                return this.DataDefinition.ParameterFields[2];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_장비명 {
+            get {
+                return this.DataDefinition.ParameterFields[3];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_배치번호 {
+            get {
+                return this.DataDefinition.ParameterFields[4];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_슈트번호 {
+            get {
+                return this.DataDefinition.ParameterFields[5];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_박스번호 {
+            get {
+                return this.DataDefinition.ParameterFields[6];
+            }
+        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class Cached레포트_거래명세서_AM01 : Component, ICachedReport {
+    public class Cached미출고내역_슈트별 : Component, ICachedReport {
         
-        public Cached레포트_거래명세서_AM01() {
+        public Cached미출고내역_슈트별() {
         }
         
         [Browsable(false)]
@@ -129,7 +185,7 @@ namespace TR_Report.레포트 {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            레포트_거래명세서_AM01 rpt = new 레포트_거래명세서_AM01();
+            미출고내역_슈트별 rpt = new 미출고내역_슈트별();
             rpt.Site = this.Site;
             return rpt;
         }

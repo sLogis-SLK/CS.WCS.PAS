@@ -58,7 +58,6 @@ namespace PAS.PMP
             Infragistics.Win.UltraWinDock.DockAreaPane dockAreaPane1 = new Infragistics.Win.UltraWinDock.DockAreaPane(Infragistics.Win.UltraWinDock.DockedLocation.DockedLeft, new System.Guid("834b5ffa-09ac-4fa5-994f-3e65b5fa1278"));
             Infragistics.Win.UltraWinDock.DockableControlPane dockableControlPane1 = new Infragistics.Win.UltraWinDock.DockableControlPane(new System.Guid("ed1122e5-a720-45e5-ac2a-f3bf17b10e7a"), new System.Guid("00000000-0000-0000-0000-000000000000"), -1, new System.Guid("834b5ffa-09ac-4fa5-994f-3e65b5fa1278"), -1);
             Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("UltraToolbar1");
-            Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool5 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("라인변경", "");
             Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool7 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("메뉴", "");
             Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool8 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("저장", "");
             Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool9 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("인쇄", "");
@@ -69,31 +68,30 @@ namespace PAS.PMP
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool11 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("저장", "");
             Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool12 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("인쇄", "");
-            this.네비게이션 = new Infragistics.Win.UltraWinTree.UltraTree();
+            this.uTreeProgram = new Infragistics.Win.UltraWinTree.UltraTree();
             this.ultraTabbedMdiManager1 = new Infragistics.Win.UltraWinTabbedMdi.UltraTabbedMdiManager(this.components);
-            this.ultraCode128Barcode1 = new Infragistics.Win.DataVisualization.UltraCode128Barcode();
             this.ultraDockManager1 = new Infragistics.Win.UltraWinDock.UltraDockManager(this.components);
             this._MainFormUnpinnedTabAreaLeft = new Infragistics.Win.UltraWinDock.UnpinnedTabArea();
             this._MainFormUnpinnedTabAreaRight = new Infragistics.Win.UltraWinDock.UnpinnedTabArea();
             this._MainFormUnpinnedTabAreaTop = new Infragistics.Win.UltraWinDock.UnpinnedTabArea();
             this._MainFormUnpinnedTabAreaBottom = new Infragistics.Win.UltraWinDock.UnpinnedTabArea();
             this._MainFormAutoHideControl = new Infragistics.Win.UltraWinDock.AutoHideControl();
-            this.ultraToolbarsManager1 = new Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(this.components);
             this._MainForm_Toolbars_Dock_Area_Right = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._MainForm_Toolbars_Dock_Area_Left = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._MainForm_Toolbars_Dock_Area_Bottom = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._MainForm_Toolbars_Dock_Area_Top = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this.windowDockingArea1 = new Infragistics.Win.UltraWinDock.WindowDockingArea();
             this.dockableWindow1 = new Infragistics.Win.UltraWinDock.DockableWindow();
-            ((System.ComponentModel.ISupportInitialize)(this.네비게이션)).BeginInit();
+            this.ultraToolbarsManager1 = new Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.uTreeProgram)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDockManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).BeginInit();
             this.windowDockingArea1.SuspendLayout();
             this.dockableWindow1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).BeginInit();
             this.SuspendLayout();
             // 
-            // 네비게이션
+            // uTreeProgram
             // 
             ultraTreeColumnSet1.AllowCellEdit = Infragistics.Win.UltraWinTree.AllowCellEdit.Full;
             ultraTreeNodeColumn1.ButtonDisplayStyle = Infragistics.Win.UltraWinTree.ButtonDisplayStyle.Always;
@@ -109,12 +107,12 @@ namespace PAS.PMP
             ultraTreeColumnSet1.NodeTextColumnIndex = 1;
             ultraTreeColumnSet1.NullText = "aa";
             ultraTreeColumnSet1.TipStyleCell = Infragistics.Win.UltraWinTree.TipStyleCell.Show;
-            this.네비게이션.ColumnSettings.RootColumnSet = ultraTreeColumnSet1;
-            this.네비게이션.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.네비게이션.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.네비게이션.Location = new System.Drawing.Point(0, 18);
-            this.네비게이션.Name = "네비게이션";
-            this.네비게이션.NodeConnectorColor = System.Drawing.SystemColors.ControlDark;
+            this.uTreeProgram.ColumnSettings.RootColumnSet = ultraTreeColumnSet1;
+            this.uTreeProgram.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uTreeProgram.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.uTreeProgram.Location = new System.Drawing.Point(0, 18);
+            this.uTreeProgram.Name = "uTreeProgram";
+            this.uTreeProgram.NodeConnectorColor = System.Drawing.SystemColors.ControlDark;
             ultraTreeNode21.LeftImages.Add(((object)(resources.GetObject("ultraTreeNode21.LeftImages"))));
             ultraTreeNode22.LeftImages.Add(((object)(resources.GetObject("ultraTreeNode22.LeftImages"))));
             _override1.Tag = "frmPAS00011";
@@ -182,38 +180,28 @@ namespace PAS.PMP
             ultraTreeNode39.Nodes.AddRange(new Infragistics.Win.UltraWinTree.UltraTreeNode[] {
             ultraTreeNode40});
             ultraTreeNode39.Text = "PAS 관리";
-            this.네비게이션.Nodes.AddRange(new Infragistics.Win.UltraWinTree.UltraTreeNode[] {
+            this.uTreeProgram.Nodes.AddRange(new Infragistics.Win.UltraWinTree.UltraTreeNode[] {
             ultraTreeNode21,
             ultraTreeNode23,
             ultraTreeNode33,
             ultraTreeNode39});
-            this.네비게이션.Size = new System.Drawing.Size(243, 556);
-            this.네비게이션.TabIndex = 4;
-            this.네비게이션.ViewStyle = Infragistics.Win.UltraWinTree.ViewStyle.Standard;
-            this.네비게이션.AfterSelect += new Infragistics.Win.UltraWinTree.AfterNodeSelectEventHandler(this.ultraTree1_AfterSelect);
-            this.네비게이션.DoubleClick += new System.EventHandler(this.ultraTree1_DoubleClick);
-            this.네비게이션.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ultraTree1_MouseDown);
+            this.uTreeProgram.Size = new System.Drawing.Size(243, 556);
+            this.uTreeProgram.TabIndex = 4;
+            this.uTreeProgram.ViewStyle = Infragistics.Win.UltraWinTree.ViewStyle.Standard;
+            this.uTreeProgram.AfterSelect += new Infragistics.Win.UltraWinTree.AfterNodeSelectEventHandler(this.ultraTree1_AfterSelect);
+            this.uTreeProgram.DoubleClick += new System.EventHandler(this.ultraTree1_DoubleClick);
+            this.uTreeProgram.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ultraTree1_MouseDown);
             // 
             // ultraTabbedMdiManager1
             // 
             this.ultraTabbedMdiManager1.MdiParent = this;
             this.ultraTabbedMdiManager1.ViewStyle = Infragistics.Win.UltraWinTabbedMdi.ViewStyle.VisualStudio2005;
             // 
-            // ultraCode128Barcode1
-            // 
-            this.ultraCode128Barcode1.ErrorMessageText = "Invalid value! Reference the documentation for the valid barcode Data property va" +
-    "lue structure.";
-            this.ultraCode128Barcode1.Location = new System.Drawing.Point(0, 0);
-            this.ultraCode128Barcode1.Name = "ultraCode128Barcode1";
-            this.ultraCode128Barcode1.Size = new System.Drawing.Size(400, 300);
-            this.ultraCode128Barcode1.TabIndex = 0;
-            this.ultraCode128Barcode1.WidthToHeightRatio = 30D;
-            this.ultraCode128Barcode1.XDimension = 1.016D;
-            // 
             // ultraDockManager1
             // 
             this.ultraDockManager1.CompressUnpinnedTabs = false;
-            dockableControlPane1.Control = this.네비게이션;
+            dockableControlPane1.Control = this.uTreeProgram;
+            dockableControlPane1.Key = "uTreeProgram";
             dockableControlPane1.OriginalControlBounds = new System.Drawing.Rectangle(375, 121, 260, 299);
             dockableControlPane1.Size = new System.Drawing.Size(100, 100);
             dockableControlPane1.Text = "네비게이션";
@@ -229,44 +217,44 @@ namespace PAS.PMP
             // 
             this._MainFormUnpinnedTabAreaLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this._MainFormUnpinnedTabAreaLeft.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this._MainFormUnpinnedTabAreaLeft.Location = new System.Drawing.Point(0, 58);
+            this._MainFormUnpinnedTabAreaLeft.Location = new System.Drawing.Point(0, 35);
             this._MainFormUnpinnedTabAreaLeft.Name = "_MainFormUnpinnedTabAreaLeft";
             this._MainFormUnpinnedTabAreaLeft.Owner = this.ultraDockManager1;
             this._MainFormUnpinnedTabAreaLeft.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this._MainFormUnpinnedTabAreaLeft.Size = new System.Drawing.Size(0, 501);
+            this._MainFormUnpinnedTabAreaLeft.Size = new System.Drawing.Size(0, 574);
             this._MainFormUnpinnedTabAreaLeft.TabIndex = 10;
             // 
             // _MainFormUnpinnedTabAreaRight
             // 
             this._MainFormUnpinnedTabAreaRight.Dock = System.Windows.Forms.DockStyle.Right;
             this._MainFormUnpinnedTabAreaRight.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this._MainFormUnpinnedTabAreaRight.Location = new System.Drawing.Point(970, 58);
+            this._MainFormUnpinnedTabAreaRight.Location = new System.Drawing.Point(1054, 35);
             this._MainFormUnpinnedTabAreaRight.Name = "_MainFormUnpinnedTabAreaRight";
             this._MainFormUnpinnedTabAreaRight.Owner = this.ultraDockManager1;
             this._MainFormUnpinnedTabAreaRight.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this._MainFormUnpinnedTabAreaRight.Size = new System.Drawing.Size(0, 501);
+            this._MainFormUnpinnedTabAreaRight.Size = new System.Drawing.Size(0, 574);
             this._MainFormUnpinnedTabAreaRight.TabIndex = 11;
             // 
             // _MainFormUnpinnedTabAreaTop
             // 
             this._MainFormUnpinnedTabAreaTop.Dock = System.Windows.Forms.DockStyle.Top;
             this._MainFormUnpinnedTabAreaTop.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this._MainFormUnpinnedTabAreaTop.Location = new System.Drawing.Point(0, 58);
+            this._MainFormUnpinnedTabAreaTop.Location = new System.Drawing.Point(0, 35);
             this._MainFormUnpinnedTabAreaTop.Name = "_MainFormUnpinnedTabAreaTop";
             this._MainFormUnpinnedTabAreaTop.Owner = this.ultraDockManager1;
             this._MainFormUnpinnedTabAreaTop.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this._MainFormUnpinnedTabAreaTop.Size = new System.Drawing.Size(970, 0);
+            this._MainFormUnpinnedTabAreaTop.Size = new System.Drawing.Size(1054, 0);
             this._MainFormUnpinnedTabAreaTop.TabIndex = 12;
             // 
             // _MainFormUnpinnedTabAreaBottom
             // 
             this._MainFormUnpinnedTabAreaBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this._MainFormUnpinnedTabAreaBottom.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this._MainFormUnpinnedTabAreaBottom.Location = new System.Drawing.Point(0, 559);
+            this._MainFormUnpinnedTabAreaBottom.Location = new System.Drawing.Point(0, 609);
             this._MainFormUnpinnedTabAreaBottom.Name = "_MainFormUnpinnedTabAreaBottom";
             this._MainFormUnpinnedTabAreaBottom.Owner = this.ultraDockManager1;
             this._MainFormUnpinnedTabAreaBottom.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this._MainFormUnpinnedTabAreaBottom.Size = new System.Drawing.Size(970, 0);
+            this._MainFormUnpinnedTabAreaBottom.Size = new System.Drawing.Size(1054, 0);
             this._MainFormUnpinnedTabAreaBottom.TabIndex = 13;
             // 
             // _MainFormAutoHideControl
@@ -278,44 +266,6 @@ namespace PAS.PMP
             this._MainFormAutoHideControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this._MainFormAutoHideControl.Size = new System.Drawing.Size(0, 574);
             this._MainFormAutoHideControl.TabIndex = 14;
-            // 
-            // ultraToolbarsManager1
-            // 
-            this.ultraToolbarsManager1.DesignerFlags = 1;
-            this.ultraToolbarsManager1.DockWithinContainer = this;
-            this.ultraToolbarsManager1.DockWithinContainerBaseType = typeof(System.Windows.Forms.Form);
-            this.ultraToolbarsManager1.ImageSizeLarge = new System.Drawing.Size(40, 28);
-            this.ultraToolbarsManager1.ImageSizeSmall = new System.Drawing.Size(28, 24);
-            ultraToolbar1.DockedColumn = 0;
-            ultraToolbar1.DockedRow = 0;
-            ultraToolbar1.IsMainMenuBar = true;
-            ultraToolbar1.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            stateButtonTool5,
-            stateButtonTool7,
-            stateButtonTool8,
-            stateButtonTool9});
-            ultraToolbar1.Text = "UltraToolbar1";
-            this.ultraToolbarsManager1.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
-            ultraToolbar1});
-            appearance1.Image = global::PAS.PMP.Properties.Resources.MenuIcon_2x;
-            stateButtonTool6.SharedPropsInternal.AppearancesLarge.Appearance = appearance1;
-            appearance2.Image = global::PAS.PMP.Properties.Resources.MenuIcon_2x;
-            stateButtonTool6.SharedPropsInternal.AppearancesSmall.Appearance = appearance2;
-            stateButtonTool6.SharedPropsInternal.Caption = "라인변경";
-            stateButtonTool6.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            appearance3.Image = global::PAS.PMP.Properties.Resources.MenuIcon_2x;
-            stateButtonTool10.SharedPropsInternal.AppearancesSmall.Appearance = appearance3;
-            stateButtonTool10.SharedPropsInternal.Caption = "메뉴";
-            stateButtonTool10.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            stateButtonTool11.SharedPropsInternal.Caption = "저장";
-            stateButtonTool11.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            stateButtonTool12.SharedPropsInternal.Caption = "인쇄";
-            stateButtonTool12.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            this.ultraToolbarsManager1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            stateButtonTool6,
-            stateButtonTool10,
-            stateButtonTool11,
-            stateButtonTool12});
             // 
             // _MainForm_Toolbars_Dock_Area_Right
             // 
@@ -375,12 +325,50 @@ namespace PAS.PMP
             // 
             // dockableWindow1
             // 
-            this.dockableWindow1.Controls.Add(this.네비게이션);
+            this.dockableWindow1.Controls.Add(this.uTreeProgram);
             this.dockableWindow1.Location = new System.Drawing.Point(0, 0);
             this.dockableWindow1.Name = "dockableWindow1";
             this.dockableWindow1.Owner = this.ultraDockManager1;
             this.dockableWindow1.Size = new System.Drawing.Size(243, 574);
             this.dockableWindow1.TabIndex = 29;
+            // 
+            // ultraToolbarsManager1
+            // 
+            this.ultraToolbarsManager1.DesignerFlags = 1;
+            this.ultraToolbarsManager1.DockWithinContainer = this;
+            this.ultraToolbarsManager1.DockWithinContainerBaseType = typeof(System.Windows.Forms.Form);
+            this.ultraToolbarsManager1.ImageSizeLarge = new System.Drawing.Size(40, 28);
+            this.ultraToolbarsManager1.ImageSizeSmall = new System.Drawing.Size(28, 24);
+            ultraToolbar1.DockedColumn = 0;
+            ultraToolbar1.DockedRow = 0;
+            ultraToolbar1.IsMainMenuBar = true;
+            ultraToolbar1.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            stateButtonTool7,
+            stateButtonTool8,
+            stateButtonTool9});
+            ultraToolbar1.Text = "UltraToolbar1";
+            this.ultraToolbarsManager1.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
+            ultraToolbar1});
+            appearance1.Image = global::PAS.PMP.Properties.Resources.MenuIcon_2x;
+            stateButtonTool6.SharedPropsInternal.AppearancesLarge.Appearance = appearance1;
+            appearance2.Image = global::PAS.PMP.Properties.Resources.MenuIcon_2x;
+            stateButtonTool6.SharedPropsInternal.AppearancesSmall.Appearance = appearance2;
+            stateButtonTool6.SharedPropsInternal.Caption = "라인변경";
+            stateButtonTool6.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
+            appearance3.Image = global::PAS.PMP.Properties.Resources.MenuIcon_2x;
+            stateButtonTool10.SharedPropsInternal.AppearancesSmall.Appearance = appearance3;
+            stateButtonTool10.SharedPropsInternal.Caption = "메뉴";
+            stateButtonTool10.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
+            stateButtonTool11.SharedPropsInternal.Caption = "저장";
+            stateButtonTool11.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
+            stateButtonTool12.SharedPropsInternal.Caption = "인쇄";
+            stateButtonTool12.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
+            this.ultraToolbarsManager1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            stateButtonTool6,
+            stateButtonTool10,
+            stateButtonTool11,
+            stateButtonTool12});
+            this.ultraToolbarsManager1.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.ultraToolbarsManager1_ToolClick);
             // 
             // MainForm
             // 
@@ -402,20 +390,19 @@ namespace PAS.PMP
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.네비게이션)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uTreeProgram)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabbedMdiManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDockManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).EndInit();
             this.windowDockingArea1.ResumeLayout(false);
             this.dockableWindow1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Infragistics.Win.UltraWinTree.UltraTree 네비게이션;
+        private Infragistics.Win.UltraWinTree.UltraTree uTreeProgram;
         private Infragistics.Win.UltraWinTabbedMdi.UltraTabbedMdiManager ultraTabbedMdiManager1;
-        private Infragistics.Win.DataVisualization.UltraCode128Barcode ultraCode128Barcode1;
         private Infragistics.Win.UltraWinDock.AutoHideControl _MainFormAutoHideControl;
         private Infragistics.Win.UltraWinDock.UltraDockManager ultraDockManager1;
         private Infragistics.Win.UltraWinDock.UnpinnedTabArea _MainFormUnpinnedTabAreaBottom;
