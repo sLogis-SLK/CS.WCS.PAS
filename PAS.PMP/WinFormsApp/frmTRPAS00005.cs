@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Data;
+using System.IO;
 using System.Net.Sockets;
+using System.Text;
+using System.Threading;
 using System.Windows.Forms;
+using DbProvider;
 using Infragistics.Win.UltraWinGrid;
+using PAS.Core;
+using PAS.PMP.WinFormsApp.Dialog;
 using TR_Common;
 using TR_Provider;
 
@@ -82,10 +88,6 @@ namespace PAS.PMP
 
         #endregion
 
-        #region IToolBase 멤버
-
-        #endregion
-
         #region Event
 
         private void 조회_Click(object sender, EventArgs e)
@@ -161,7 +163,183 @@ namespace PAS.PMP
                 return;
             }
 
+            frmTRDLG00001 oDlg = (frmTRDLG00001)FormProvider.T1.CreateForm("frmTRDLG00001");
+            DialogResult oResult = oDlg.ShowDialog();
 
+            if (oResult == DialogResult.OK)
+            {
+                bool flag1;
+                bool flag2;
+                switch (oDlg.선택값)
+                {
+                    case 1:
+                        flag1 = true;
+                        flag2 = false;
+                        break;
+                    case 2:
+                        flag1 = false;
+                        flag2 = true;
+                        break;
+                    case 3:
+                        flag1 = true;
+                        flag2 = true;
+                        break;
+                    default:
+                        MessageBox.Show("발행을 취소합니다.");
+                        return;
+                }
+
+                try
+                {
+                    DataTable oDataTable1 = new DataTable("usp_기준_거래명세서용_마스터_Get");
+                    분류.거래명세서출력조회(oDataTable1);
+                    if (oDataTable1 == null || oDataTable1.Rows.Count <= 0)
+                    {
+                        MessageBox.Show("발행할 거래명세서 대상이 없습니다.");
+                        return;
+                    }
+
+                    Cursor.Current = Cursors.WaitCursor;
+                    string empty18 = string.Empty;
+
+                    using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
+                    {
+                        DataTable oDataTable2 = new DataTable("usp_분류_박스풀작성_Set");
+                        oScope.Initialize("usp_분류_박스풀작성_Set", "@분류번호", "@장비명", "@슈트번호", "@마지막박스여부");
+
+                        foreach (DataGridViewRow row in (IEnumerable)this.uGrid1.Rows)
+                        {
+                            if (row.Cells["선택"].Value.ToString() == bool.TrueString)
+                            {
+                                string str1 = row.Cells["분류번호"].Value.ToString();
+                                string s슈트번호 = row.Cells["슈트번호"].Value.ToString();
+                                oScope.Fill(oDataTable2, (object)str1, (object)_장비명, (object)s슈트번호, (object)"1");
+                                if (oDataTable2 != null && oDataTable2.Rows.Count > 0)
+                                {
+                                    string s박스바코드 = oDataTable2.Rows[0]["박스바코드"].ToString();
+                                    string str2 = oDataTable2.Rows[0]["점명"].ToString();
+                                    string str3 = oDataTable2.Rows[0]["내품수"].ToString();
+                                    string s배치구분 = oDataTable2.Rows[0]["배치구분"].ToString();
+                                    string s박스바코드구분 = oDataTable2.Rows[0]["박스바코드구분"].ToString();
+                                    oDataTable2.Rows[0]["점코드"].ToString();
+                                    string str4 = oDataTable2.Rows[0]["박스번호"].ToString();
+                                    string s패턴구분 = oDataTable2.Rows[0]["패턴구분"].ToString();
+                                    string str5 = oDataTable2.Rows[0]["출력여부"].ToString();
+                                    string str6 = oDataTable2.Rows[0]["브랜드코드"].ToString();
+                                    string str7 = oDataTable2.Rows[0]["브랜드명"].ToString();
+                                    string s배치번호 = oDataTable2.Rows[0]["배치번호"].ToString();
+                                    string str8 = oDataTable2.Rows[0]["배치명"].ToString();
+                                    oDataTable2.Rows[0]["대표바코드"].ToString();
+                                    oDataTable2.Rows[0]["수량"].ToString();
+                                    string str9 = DateTime.Now.ToString("yyyy-MM-dd");
+                                    string empty19 = string.Empty;
+                                    string empty20 = string.Empty;
+                                    string empty21 = string.Empty;
+                                    string empty22 = string.Empty;
+                                    int num = ConvertUtil.ObjectToint(oDataTable2.Rows[0]["SKU수"]);
+                                    int count = oDataTable2.Rows.Count;
+
+                                    switch (s배치구분)
+                                    {
+                                        case "패키지":
+                                            Libs.GetPrintScript2(Libs.GetPrinterName("피키지"), s박스바코드, s박스바코드구분, oClient, oDataTable2.Copy());
+                                            break;
+                                        case "반품":
+                                            s패턴구분 = num <= 3 ? "반품유형1" : "반품유형2";
+                                            goto default;
+                                        default:
+                                            if (!string.IsNullOrEmpty(str3) && str3 != "0" && str5 == "1")
+                                            {
+                                                string printScript = Libs.GetPrintScript(s패턴구분, s배치구분, count);
+                                                string str10;
+                                                switch (s패턴구분)
+                                                {
+                                                    case "사용안함":
+                                                        str10 = string.Empty;
+                                                        break;
+                                                    case "출고유형":
+                                                        str10 = string.Format(printScript, (object)$"{str6}:{str7}", (object)str2, (object)s슈트번호, (object)str4, (object)str3, (object)s박스바코드, (object)str9);
+                                                        break;
+                                                    case "반품유형1":
+                                                        string empty23;
+                                                        string empty24;
+                                                        string empty25;
+                                                        string empty26;
+                                                        switch (count)
+                                                        {
+                                                            case 1:
+                                                                empty23 = oDataTable2.Rows[0]["대표바코드"].ToString();
+                                                                empty24 = string.Empty;
+                                                                empty25 = oDataTable2.Rows[0]["수량"].ToString();
+                                                                empty26 = string.Empty;
+                                                                break;
+                                                            case 2:
+                                                                empty23 = oDataTable2.Rows[0]["대표바코드"].ToString();
+                                                                empty24 = oDataTable2.Rows[1]["대표바코드"].ToString();
+                                                                empty25 = oDataTable2.Rows[0]["수량"].ToString();
+                                                                empty26 = oDataTable2.Rows[1]["수량"].ToString();
+                                                                break;
+                                                            default:
+                                                                empty23 = string.Empty;
+                                                                empty24 = string.Empty;
+                                                                empty25 = string.Empty;
+                                                                empty26 = string.Empty;
+                                                                break;
+                                                        }
+                                                        str10 = string.Format(printScript, (object)$"{str6}:{str8}", (object)s배치번호, (object)s박스바코드, (object)s박스바코드구분, (object)s슈트번호, (object)str4, (object)str3, (object)empty23, (object)empty25, (object)empty24, (object)empty26, (object)str9);
+                                                        break;
+                                                    case "반품유형2":
+                                                        str10 = string.Format(printScript, (object)$"{str6}:{str8}", (object)s박스바코드, (object)s박스바코드구분, (object)s배치번호, (object)s슈트번호, (object)str4, (object)str3, (object)num.ToString(), (object)str9);
+                                                        break;
+                                                    default:
+                                                        str10 = string.Format(printScript, (object)str2, (object)s슈트번호, (object)str3, (object)s박스바코드);
+                                                        break;
+                                                }
+                                                string printerName = Libs.GetPrinterName(s슈트번호);
+                                                if (oClient != null)
+                                                {
+                                                    oClient.Close();
+                                                    oClient = (TcpClient)null;
+                                                }
+                                                oClient = new TcpClient();
+                                                oClient.Connect(printerName, 9100);
+                                                using (StreamWriter streamWriter = new StreamWriter((Stream)oClient.GetStream(), Encoding.GetEncoding(949)))
+                                                {
+                                                    streamWriter.Write(str10);
+                                                    streamWriter.Flush();
+                                                    streamWriter.Close();
+                                                }
+                                                Thread.Sleep(300);
+                                                break;
+                                            }
+                                            break;
+                                    }
+
+                                    if (s배치구분 == "출하")
+                                    {
+                                        DataRow[] dataRowArray = oDataTable1.Select($"슈트번호 = '{s슈트번호}'");
+                                        string s거명용바코드 = dataRowArray == null || dataRowArray.Length <= 0 ? $"*SLK{s슈트번호}{1.ToString("D4")}*" : $"*{dataRowArray[0]["아이템코드"].ToString()}*";
+                                        if (flag1)
+                                            분류.거래명세서발행_박스별(s배치번호, s슈트번호, s거명용바코드);
+                                        if (flag2)
+                                            분류.거래명세서발행_토탈(s배치번호, s슈트번호, s거명용바코드);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    Cursor.Current = Cursors.Default;
+                }
+                finally { Cursor.Current = Cursors.Default; }
+            }
+            else
+            {
+
+            }
         }
     }
 }

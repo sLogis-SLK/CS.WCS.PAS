@@ -246,9 +246,9 @@ namespace PAS.PMP
             string 수량 = row.Cells["수량"].Value.ToString();
             string 잔여 = row.Cells["잔여"].Value.ToString();
 
-            int num1 = ConvertUtil.C2I(수량);
-            int num2 = ConvertUtil.C2I(조정);
-            int num3 = ConvertUtil.C2I(잔여);
+            int num1 = ConvertUtil.ObjectToint(수량);
+            int num2 = ConvertUtil.ObjectToint(조정);
+            int num3 = ConvertUtil.ObjectToint(잔여);
             string str = row.Cells["아이템코드"].Value.ToString();
 
             DataRow[] dataRowArray = this.m_분류_박스재발행_슈트별상세Table.Select($"아이템코드='{str}'");

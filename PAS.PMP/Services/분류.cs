@@ -1,4 +1,6 @@
-﻿using DbProvider;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using DbProvider;
+using PAS.Core;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -193,6 +195,19 @@ namespace PAS.PMP
             );
         }
 
+        internal static void 거래명세서출력조회(DataTable dataTable)
+        {
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_기준_거래명세서용_마스터_Get")
+            {
+                dataTable.TableName = "usp_기준_거래명세서용_마스터_Get";
+            }
+
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+             new string[] {  },
+                 new object[] {  }
+             );
+        }
+
         internal static void 분류상품발송장조회(DataTable dataTable, string 분류번호, string 배치번호, string 장비명, int 구분자)
         {
             if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_상품발송장_Get")
@@ -262,7 +277,7 @@ namespace PAS.PMP
             {
                 using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
                 {
-                    oScope.Initialize("usp_분류_배치상태변경_원배치용_Set", "@장비명", "@분류번호", "@배치번호", "@원배치번호", "배치상태");
+                    oScope.Initialize("usp_분류_배치상태변경_원배치용_Set", "@장비명", "@분류번호", "@배치번호", "@원배치번호", "@배치상태");
                     oScope.Update(장비명, 분류번호, 배치번호, 원배치번호, 배치상태);
                     oScope.Commit();
                 }
@@ -270,6 +285,183 @@ namespace PAS.PMP
             catch (Exception ex)
             {
 
+            }
+        }
+
+        internal static bool 거래명세서발행_토탈(string s배치번호, string s슈트번호, string s거명용바코드)
+        {
+            string empty1 = string.Empty;
+            string empty2 = string.Empty;
+            string empty3 = string.Empty;
+            string empty4 = string.Empty;
+            string empty5 = string.Empty;
+            string empty6 = string.Empty;
+            DataTable dataTable = new DataTable("usp_출하_토탈패킹내역_Get");
+
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+             new string[] { "@배치번호", "@슈트번호", },
+             new object[] { s배치번호, s슈트번호 });
+            if (dataTable == null || dataTable.Rows.Count <= 0)
+                return false;
+
+            PAS환경설정 pasSetting = new PAS환경설정();
+            string[] strArray = pasSetting.BARCODE_PRINTER_LIST.Split(new string[1]
+            {
+                    "|"
+            }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (strArray == null || strArray.Length <= 0)
+            {
+                MessageBox.Show("설정된 프린터가 없습니다.");
+                return false;
+            }
+            if (pasSetting.PrinterIndex >= strArray.Length)
+                pasSetting.PrinterIndex = 0;
+
+            try
+            {
+                DataRow row = dataTable.Rows[0];
+                if (row == null)
+                    return false;
+                row["브랜드코드"].ToString();
+                string val1 = row["설비명"].ToString();
+                string val2 = row["작업일자"].ToString();
+                string val3 = $"('{row["매장코드"].ToString()}')'{row["매장명"].ToString()}'";
+                string val4 = $"사용자:{"출하라인"}, 컴퓨터:{string.Empty}";
+                ReportClass reportClass = (ReportClass)new 레포트_박스별실적상세_토탈();
+                reportClass.SetDataSource(dataTable);
+                reportClass.SetParameterValue(0, (object)val4);
+                reportClass.SetParameterValue(1, (object)val1);
+                reportClass.SetParameterValue(2, (object)val3);
+                reportClass.SetParameterValue(3, (object)val2);
+                reportClass.SetParameterValue(4, (object)s배치번호);
+                reportClass.SetParameterValue(5, (object)s슈트번호);
+                reportClass.SetParameterValue(6, (object)s거명용바코드);
+                if (reportClass == null)
+                    return false;
+
+                try
+                {
+                    reportClass.PrintOptions.PrinterName = strArray[pasSetting.PrinterIndex++];
+                }
+                catch
+                {
+                }
+                reportClass.PrintToPrinter(1, true, 0, 0);
+                reportClass.Close();
+                reportClass.Dispose();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                ++pasSetting.PrinterIndex;
+            }
+        }
+
+        internal static bool 거래명세서발행_박스별(string s배치번호, string s슈트번호, string s거명용바코드)
+        {
+            string empty1 = string.Empty;
+            string empty2 = string.Empty;
+            string empty3 = string.Empty;
+            string empty4 = string.Empty;
+            string empty5 = string.Empty;
+            string empty6 = string.Empty;
+
+            DataTable dataTable = new DataTable("usp_출하_박스별패킹내역_Get");
+
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+               new string[] { "@배치번호", "@슈트번호", },
+               new object[] { s배치번호, s슈트번호 });
+
+            if (dataTable == null || dataTable.Rows.Count <= 0)
+                return false;
+            PAS환경설정 pasSetting = new PAS환경설정();
+            string[] strArray = pasSetting.BARCODE_PRINTER_LIST.Split(new string[1]
+            {
+                    "|"
+            }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (strArray == null || strArray.Length <= 0)
+            {
+                MessageBox.Show("설정된 프린터가 없습니다.");
+                return false;
+            }
+            if (pasSetting.PrinterIndex >= strArray.Length)
+                pasSetting.PrinterIndex = 0;
+
+            try
+            {
+                DataRow row = dataTable.Rows[0];
+                if (row == null)
+                    return false;
+                string str = row["브랜드코드"].ToString();
+                string val1 = row["설비명"].ToString();
+                string val2 = row["작업일자"].ToString();
+                string val3 = $"('{row["매장코드"].ToString()}')'{row["매장명"].ToString()}'";
+                string val4 = $"사용자:{"출하라인"}, 컴퓨터:{string.Empty}";
+                ReportClass reportClass;
+                switch (str)
+                {
+                    case "SM":
+                    case "FS":
+                        reportClass = (ReportClass)new 레포트_박스별실적상세_SM();
+                        reportClass.SetDataSource(dataTable);
+                        reportClass.SetParameterValue(0, (object)row["주문일자"].ToString());
+                        reportClass.SetParameterValue(1, (object)row["예정일자"].ToString());
+                        reportClass.SetParameterValue(2, (object)val2);
+                        reportClass.SetParameterValue(3, (object)s슈트번호);
+                        reportClass.SetParameterValue(4, (object)s거명용바코드);
+                        break;
+                    case "A1":
+                    case "A2":
+                    case "WW":
+                        reportClass = (ReportClass)new 레포트_박스별실적상세_상품명();
+                        reportClass.SetDataSource(dataTable);
+                        reportClass.SetParameterValue(0, (object)val4);
+                        reportClass.SetParameterValue(1, (object)val1);
+                        reportClass.SetParameterValue(2, (object)val3);
+                        reportClass.SetParameterValue(3, (object)val2);
+                        reportClass.SetParameterValue(4, (object)s배치번호);
+                        reportClass.SetParameterValue(5, (object)s슈트번호);
+                        reportClass.SetParameterValue(6, (object)s거명용바코드);
+                        break;
+                    default:
+                        reportClass = (ReportClass)new 레포트_박스별실적상세();
+                        reportClass.SetDataSource(dataTable);
+                        reportClass.SetParameterValue(0, (object)val4);
+                        reportClass.SetParameterValue(1, (object)val1);
+                        reportClass.SetParameterValue(2, (object)val3);
+                        reportClass.SetParameterValue(3, (object)val2);
+                        reportClass.SetParameterValue(4, (object)s배치번호);
+                        reportClass.SetParameterValue(5, (object)s슈트번호);
+                        reportClass.SetParameterValue(6, (object)s거명용바코드);
+                        break;
+                }
+                if (reportClass == null)
+                    return false;
+                try
+                {
+                    reportClass.PrintOptions.PrinterName = strArray[pasSetting.PrinterIndex++];
+                }
+                catch
+                {
+                }
+                reportClass.PrintToPrinter(1, true, 0, 0);
+                reportClass.Close();
+                reportClass.Dispose();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                ++pasSetting.PrinterIndex;
             }
         }
 

@@ -126,6 +126,12 @@
     <Compile Include="Utils\PasTabPage.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WinFormsApp\Dialog\frmTRDLG00001.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\Dialog\frmTRDLG00001.Designer.cs">
+      <DependentUpon>frmTRDLG00001.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinFormsApp\frmTRPAS00001.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +222,9 @@
     <EmbeddedResource Include="Report\미출고내역_슈트별.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>미출고내역_슈트별1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\Dialog\frmTRDLG00001.resx">
+      <DependentUpon>frmTRDLG00001.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\frmTRPAS00001.resx">
       <DependentUpon>frmTRPAS00001.cs</DependentUpon>

@@ -3,12 +3,13 @@ using System.Collections;
 using System.Data;
 using System.Windows.Forms;
 using Infragistics.Win.UltraWinGrid;
+using PAS.PMP.WinFormsApp.Dialog;
 using TR_Common;
 using TR_Provider;
 
 namespace PAS.PMP
 {
-    public partial class frmTRPAS00007 : Form
+    public partial class frmTRPAS00007 : Form, IToolBase
     {
         #region 폼개체 선언부
 
@@ -78,6 +79,91 @@ namespace PAS.PMP
 
         #region IToolBase 멤버
 
+        public void OnPrint(bool bPrevView)
+        {
+            frmTRDLG00001 oDlg = (frmTRDLG00001)FormProvider.T1.CreateForm("frmTRDLG00001");
+            DialogResult oResult = oDlg.ShowDialog();
+
+            if (oResult == DialogResult.OK)
+            {
+                bool flag1;
+                bool flag2;
+                switch (oDlg.선택값)
+                {
+                    case 1:
+                        flag1 = true;
+                        flag2 = false;
+                        break;
+                    case 2:
+                        flag1 = false;
+                        flag2 = true;
+                        break;
+                    case 3:
+                        flag1 = true;
+                        flag2 = true;
+                        break;
+                    default:
+                        MessageBox.Show("발행을 취소합니다.");
+                        return;
+                }
+
+                try
+                {
+                    DataTable oDataTable1 = new DataTable("usp_기준_거래명세서용_마스터_Get");
+                    분류.거래명세서출력조회(oDataTable1);
+                    if (oDataTable1 == null || oDataTable1.Rows.Count <= 0)
+                    {
+                        MessageBox.Show("발행할 거래명세서 대상이 없습니다.");
+                        return;
+                    }
+
+                    Cursor.Current = Cursors.WaitCursor;
+
+                    string empty1 = string.Empty;
+                    string empty2 = string.Empty;
+                    string empty3 = string.Empty;
+                    foreach (DataGridViewRow row in (IEnumerable)this.uGrid1.Rows)
+                    {
+                        if (row.Cells["선택"].Value.ToString() == bool.TrueString)
+                        {
+                            string s배치번호 = row.Cells["배치번호"].Value.ToString();
+                            string s슈트번호 = row.Cells["슈트번호"].Value.ToString();
+                            DataRow[] dataRowArray = oDataTable1.Select($"슈트번호 = '{s슈트번호}'");
+                            string s거명용바코드 = dataRowArray == null || dataRowArray.Length <= 0 ? $"*SLK{s슈트번호}{1.ToString("D4")}*" : $"*{dataRowArray[0]["아이템코드"].ToString()}*";
+                            if (flag1)
+                                분류.거래명세서발행_박스별(s배치번호, s슈트번호, s거명용바코드);
+                            if (flag2)
+                                분류.거래명세서발행_토탈(s배치번호, s슈트번호, s거명용바코드);
+                        }
+                    }
+                }
+                catch (Exception ex) 
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    Cursor.Current = Cursors.Default;
+                    this.조회_Click((object)null, EventArgs.Empty);
+                }
+            }
+        }
+
+        public void OnExcel()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnControlVisible(object sender, ControlVisibleEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnBrandChange(object sender, BrandChangeEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Event
@@ -97,7 +183,7 @@ namespace PAS.PMP
             try
             {
                 DataRow oRow = ((DataRowView)uGrid2.ActiveRow.ListObject).Row;
-                분류.출하박스별패킹대상(m_출하_박스별패킹대상Table, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), 1);
+                분류.출하박스별패킹대상(m_출하_박스별패킹대상Table, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), oRow["장비명"].ToString(), 1);
             } 
             catch (Exception ex)
             {
@@ -119,9 +205,8 @@ namespace PAS.PMP
             }
             this.m_출하_박스별패킹BS.EndEdit();
         }
+
+        #endregion
     }
-
-    #endregion
-
 
 }

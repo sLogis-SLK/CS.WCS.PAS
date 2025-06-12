@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using TR_Common;
 
 namespace PAS.Core
 {
@@ -22,6 +23,8 @@ namespace PAS.Core
         public string INDICATOR_STRUCTURE { get; set; }
         public string BARCODE_PRINTER_LIST { get; set; }
         public string PRINTER_LIST { get; set; }
+
+        public int PrinterIndex { get; set; }
 
         internal void SetDataRow(DataRow row)
         {
@@ -52,6 +55,7 @@ namespace PAS.Core
 
             BARCODE_PRINTER_LIST = row["BARCODE_PRINTER_LIST"].ToString();
             PRINTER_LIST = row["PRINTER_LIST"].ToString();
+            PrinterIndex = 0;
         }
     }
 

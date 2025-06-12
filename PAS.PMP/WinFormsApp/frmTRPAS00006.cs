@@ -161,8 +161,8 @@ namespace PAS.PMP
             foreach (string str1 in stringList)
             {
                 DataRow[] dataRowArray1 = oDtatTable.Select($"배송사명='{s배송사명}' AND 점코드='{str1}'");
-                int num1 = ConvertUtil.C2I(oDtatTable.Compute("SUM(내품수)", $"배송사명='{s배송사명}' AND 점코드='{str1}'"));
-                int num2 = ConvertUtil.C2I(oDtatTable.Compute("MAX(박스번호)", $"배송사명='{s배송사명}' AND 점코드='{str1}'"));
+                int num1 = ConvertUtil.ObjectToint(oDtatTable.Compute("SUM(내품수)", $"배송사명='{s배송사명}' AND 점코드='{str1}'"));
+                int num2 = ConvertUtil.ObjectToint(oDtatTable.Compute("MAX(박스번호)", $"배송사명='{s배송사명}' AND 점코드='{str1}'"));
                 int length = dataRowArray1.Length;
                 int num3 = num2 / 10;
                 int num4 = num2 % 10;
@@ -230,8 +230,8 @@ namespace PAS.PMP
                 int val4 = 0;
                 foreach (DataRow row in (InternalDataCollectionBase)selectedTab.DataSource.Rows)
                 {
-                    val3 += ConvertUtil.C2I(row["C/T수"]);
-                    val4 += ConvertUtil.C2I(row["총계"]);
+                    val3 += ConvertUtil.ObjectToint(row["C/T수"]);
+                    val4 += ConvertUtil.ObjectToint(row["총계"]);
                 }
                 상품발송장매장별.SetParameterValue("CT수", (object)val3);
                 상품발송장매장별.SetParameterValue("총계", (object)val4);
@@ -324,11 +324,6 @@ namespace PAS.PMP
             분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 1, "모두");
         }
 
-
-
-
-        #endregion
-
         private void uGrid2_AfterRowActivate(object sender, EventArgs e)
         {
             DataRow oRow = ((DataRowView)uGrid2.ActiveRow.ListObject).Row;
@@ -336,6 +331,11 @@ namespace PAS.PMP
             this.분류_상품발송장_조회(oRow["분류번호"].ToString(), oRow["배치번호"].ToString());
 
         }
+
+
+        #endregion
+
+
 
     }
 }
