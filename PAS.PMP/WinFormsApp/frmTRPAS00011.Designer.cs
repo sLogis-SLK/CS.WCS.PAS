@@ -42,6 +42,8 @@ namespace PAS.PMP
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
@@ -77,11 +79,13 @@ namespace PAS.PMP
             Infragistics.Win.Appearance appearance46 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance47 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance48 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             this.ultraGroupBox3 = new Infragistics.Win.Misc.UltraGroupBox();
             this.uGrid3 = new TR_Library.Controls.uGrid();
             this.ultraGroupBox6 = new Infragistics.Win.Misc.UltraGroupBox();
+            this.com출하구분 = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
+            this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
+            this.분류명 = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
             this.작업조회버튼 = new Infragistics.Win.Misc.UltraButton();
             this.출하위치변경버튼 = new Infragistics.Win.Misc.UltraButton();
             this.전체선택3 = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
@@ -107,15 +111,13 @@ namespace PAS.PMP
             this.슈트조정버튼 = new Infragistics.Win.Misc.UltraButton();
             this.새로고침버튼 = new Infragistics.Win.Misc.UltraButton();
             this.수신취소버튼 = new Infragistics.Win.Misc.UltraButton();
-            this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
-            this.분류명 = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
-            this.브랜드센터코드 = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).BeginInit();
             this.ultraGroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uGrid3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox6)).BeginInit();
             this.ultraGroupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.com출하구분)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.분류명)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.전체선택3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -135,8 +137,6 @@ namespace PAS.PMP
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox5)).BeginInit();
             this.ultraGroupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.전체선택2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.분류명)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.브랜드센터코드)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraGroupBox3
@@ -217,6 +217,7 @@ namespace PAS.PMP
             this.uGrid3.Size = new System.Drawing.Size(1374, 308);
             this.uGrid3.TabIndex = 0;
             this.uGrid3.Text = "uGrid1";
+            this.uGrid3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.uGrid3_MouseUp);
             // 
             // ultraGroupBox6
             // 
@@ -224,7 +225,7 @@ namespace PAS.PMP
             appearance13.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ultraGroupBox6.Appearance = appearance13;
             this.ultraGroupBox6.BorderStyle = Infragistics.Win.Misc.GroupBoxBorderStyle.RectangularSolid;
-            this.ultraGroupBox6.Controls.Add(this.브랜드센터코드);
+            this.ultraGroupBox6.Controls.Add(this.com출하구분);
             this.ultraGroupBox6.Controls.Add(this.ultraLabel3);
             this.ultraGroupBox6.Controls.Add(this.분류명);
             this.ultraGroupBox6.Controls.Add(this.ultraLabel2);
@@ -239,6 +240,46 @@ namespace PAS.PMP
             this.ultraGroupBox6.Name = "ultraGroupBox6";
             this.ultraGroupBox6.Size = new System.Drawing.Size(1374, 38);
             this.ultraGroupBox6.TabIndex = 1033;
+            // 
+            // com출하구분
+            // 
+            this.com출하구분.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
+            this.com출하구분.Location = new System.Drawing.Point(527, 9);
+            this.com출하구분.Name = "com출하구분";
+            this.com출하구분.Size = new System.Drawing.Size(160, 21);
+            this.com출하구분.TabIndex = 1046;
+            // 
+            // ultraLabel3
+            // 
+            appearance14.ForeColor = System.Drawing.Color.White;
+            appearance14.TextVAlignAsString = "Middle";
+            this.ultraLabel3.Appearance = appearance14;
+            this.ultraLabel3.AutoSize = true;
+            this.ultraLabel3.Location = new System.Drawing.Point(459, 12);
+            this.ultraLabel3.Name = "ultraLabel3";
+            this.ultraLabel3.Size = new System.Drawing.Size(62, 16);
+            this.ultraLabel3.TabIndex = 1045;
+            this.ultraLabel3.Text = ">출하구분";
+            // 
+            // 분류명
+            // 
+            this.분류명.Location = new System.Drawing.Point(283, 9);
+            this.분류명.Name = "분류명";
+            this.분류명.ReadOnly = true;
+            this.분류명.Size = new System.Drawing.Size(160, 21);
+            this.분류명.TabIndex = 1044;
+            // 
+            // ultraLabel2
+            // 
+            appearance15.ForeColor = System.Drawing.Color.White;
+            appearance15.TextVAlignAsString = "Middle";
+            this.ultraLabel2.Appearance = appearance15;
+            this.ultraLabel2.AutoSize = true;
+            this.ultraLabel2.Location = new System.Drawing.Point(228, 12);
+            this.ultraLabel2.Name = "ultraLabel2";
+            this.ultraLabel2.Size = new System.Drawing.Size(49, 16);
+            this.ultraLabel2.TabIndex = 1043;
+            this.ultraLabel2.Text = ">분류명";
             // 
             // 작업조회버튼
             // 
@@ -644,46 +685,6 @@ namespace PAS.PMP
             this.수신취소버튼.Text = "수신취소";
             this.수신취소버튼.Click += new System.EventHandler(this.수신취소버튼_Click);
             // 
-            // ultraLabel2
-            // 
-            appearance15.ForeColor = System.Drawing.Color.White;
-            appearance15.TextVAlignAsString = "Middle";
-            this.ultraLabel2.Appearance = appearance15;
-            this.ultraLabel2.AutoSize = true;
-            this.ultraLabel2.Location = new System.Drawing.Point(228, 12);
-            this.ultraLabel2.Name = "ultraLabel2";
-            this.ultraLabel2.Size = new System.Drawing.Size(49, 16);
-            this.ultraLabel2.TabIndex = 1043;
-            this.ultraLabel2.Text = ">분류명";
-            // 
-            // 분류명
-            // 
-            this.분류명.Location = new System.Drawing.Point(283, 9);
-            this.분류명.Name = "분류명";
-            this.분류명.ReadOnly = true;
-            this.분류명.Size = new System.Drawing.Size(160, 21);
-            this.분류명.TabIndex = 1044;
-            // 
-            // ultraLabel3
-            // 
-            appearance14.ForeColor = System.Drawing.Color.White;
-            appearance14.TextVAlignAsString = "Middle";
-            this.ultraLabel3.Appearance = appearance14;
-            this.ultraLabel3.AutoSize = true;
-            this.ultraLabel3.Location = new System.Drawing.Point(459, 12);
-            this.ultraLabel3.Name = "ultraLabel3";
-            this.ultraLabel3.Size = new System.Drawing.Size(62, 16);
-            this.ultraLabel3.TabIndex = 1045;
-            this.ultraLabel3.Text = ">출하구분";
-            // 
-            // 브랜드센터코드
-            // 
-            this.브랜드센터코드.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.브랜드센터코드.Location = new System.Drawing.Point(527, 9);
-            this.브랜드센터코드.Name = "브랜드센터코드";
-            this.브랜드센터코드.Size = new System.Drawing.Size(160, 21);
-            this.브랜드센터코드.TabIndex = 1046;
-            // 
             // frmTRPAS00011
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -701,6 +702,8 @@ namespace PAS.PMP
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox6)).EndInit();
             this.ultraGroupBox6.ResumeLayout(false);
             this.ultraGroupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.com출하구분)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.분류명)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.전체선택3)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -722,8 +725,6 @@ namespace PAS.PMP
             this.ultraGroupBox5.ResumeLayout(false);
             this.ultraGroupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.전체선택2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.분류명)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.브랜드센터코드)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -760,6 +761,6 @@ namespace PAS.PMP
         private Infragistics.Win.Misc.UltraLabel ultraLabel2;
         private Infragistics.Win.Misc.UltraLabel ultraLabel3;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor 분류명;
-        private Infragistics.Win.UltraWinEditors.UltraComboEditor 브랜드센터코드;
+        private Infragistics.Win.UltraWinEditors.UltraComboEditor com출하구분;
     }
 }

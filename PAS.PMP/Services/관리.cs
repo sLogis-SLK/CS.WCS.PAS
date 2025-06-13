@@ -90,7 +90,7 @@ namespace PAS.PMP
             );
         }
 
-        internal static void 분류실적백업_GET(DataTable dataTable, string 조회앞, string 조회뒤, string 장비명, string 배치상태, int 조회구분자)
+        internal static void 분류실적백업_Get(DataTable dataTable, string 조회앞, string 조회뒤, string 장비명, string 배치상태, int 조회구분자)
         {
             if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_관리_분류실적_백업_Get")
             {
@@ -102,7 +102,7 @@ namespace PAS.PMP
             );
         }
 
-        internal static void 분류실적백업_SET(string 조회앞, string 조회뒤, string 장비명, string 배치상태, string 관리상태)
+        internal static void 분류실적백업_Set(string 조회앞, string 조회뒤, string 장비명, string 배치상태, string 관리상태)
         {
             try
             {
@@ -110,6 +110,70 @@ namespace PAS.PMP
                 {
                     oScope.Initialize("usp_관리_분류실적_백업_Set", "@조회앞", "@조회뒤", "@장비명", "@배치상태", "@관리상태");
                     oScope.Update(조회앞, 조회뒤, 장비명, 배치상태, 관리상태);
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        internal static void 배송사변경_Get(DataTable dataTable, string 배치번호, int 구분자)
+        {
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_관리_배송사변경_Get")
+            {
+                dataTable.TableName = "usp_관리_배송사변경_Get";
+            }
+
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+            new string[] { "@배치번호", "@조회구분자" },
+            new object[] { 배치번호, 구분자 }
+            );
+        }
+
+        internal static void 배송사변경_Set(string 배치번호, string XML)
+        {
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_관리_배송사변경_Set", "@배치번호", "@XML");
+                    oScope.Update(배치번호, XML);
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        internal static void 배치명변경(string 배치번호, string 배치명)
+        {
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_관리_배치명변경_Set", "@배치번호", "@배치명");
+                    oScope.Update(배치번호, 배치명);
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        internal static void 출하위치변경(string 배치번호, string 배치명)
+        {
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_관리_출하위치변경_Set", "@배치번호", "@배치명");
+                    oScope.Update(배치번호, 배치명);
                     oScope.Commit();
                 }
             }

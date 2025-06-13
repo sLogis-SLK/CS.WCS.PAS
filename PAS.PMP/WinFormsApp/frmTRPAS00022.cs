@@ -1,7 +1,11 @@
-﻿using Infragistics.Win.Misc;
+﻿using Infragistics.Win;
+using Infragistics.Win.Misc;
+using Infragistics.Win.UltraWinGrid;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using TR_Common;
 
@@ -26,6 +30,17 @@ namespace PAS.PMP
             InitializeComponent();
             this.조회시작일 = Convert.ToDateTime(this.ucl조회시작일.Value).ToString("yyyyMMdd");
             this.조회종료일 = Convert.ToDateTime(this.ucl조회종료일.Value).ToString("yyyyMMdd");
+            var valueList = ValueListUtil.ValueItemList.ValueList_분류실적처리();
+            var comboItems = valueList.ValueListItems
+                .Cast<ValueListItem>()
+                .Select(item => new KeyValuePair<string, string>(item.DataValue.ToString(), item.DisplayText))
+                .ToList();
+
+            // com분류실적처리 세팅
+            com분류실적처리.DataSource = new BindingSource(comboItems, null);
+            com분류실적처리.DisplayMember = "Value";
+            com분류실적처리.ValueMember = "Key";
+            com분류실적처리.Value = "1";
         }
 
         protected override void OnShown(EventArgs e)
@@ -42,7 +57,7 @@ namespace PAS.PMP
         {
             try
             {
-                관리.분류실적백업_GET(m_관리_분류실적_백업Table, 조회시작일, 조회종료일, GlobalClass.장비명, "모두", 0);
+                관리.분류실적백업_Get(m_관리_분류실적_백업Table, 조회시작일, 조회종료일, GlobalClass.장비명, "모두", 0);
 
                 this.m_관리_분류실적_백업BS.DataSource = this.m_관리_분류실적_백업Table;
                 this.uGrid3.DataSource = this.m_관리_분류실적_백업BS;
@@ -52,6 +67,27 @@ namespace PAS.PMP
                 Common.SetGridEditColumn(this.uGrid3, null);
 
                 this.uGrid3.DisplayLayout.Bands[0].Columns["등록일시"].Format = "yy-MM-dd HH:mm";
+
+            }
+            catch (Exception ex)
+            {
+                Common.ErrorMessage(this.Text, ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region 이벤트
+
+        private void 조회버튼_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                
+                this.배치상태값 = "모두";
+                관리.분류실적백업_Get(m_관리_분류실적_백업Table, 조회시작일, 조회종료일, GlobalClass.장비명, "모두", 1);
 
                 int 완료 = 0;
                 int 실적작성 = 0;
@@ -82,27 +118,6 @@ namespace PAS.PMP
                 this.실적반영.Text = $"실적반영 : {실적반영:#,0}";
                 this.배치반영.Text = $"배치반영 : {배치반영:#,0}";
                 this.Total.Text = $"Total : {this.m_관리_분류실적_백업Table.Rows.Count:#,0}";
-
-            }
-            catch (Exception ex)
-            {
-                Common.ErrorMessage(this.Text, ex.Message);
-            }
-        }
-
-        #endregion
-
-        #region 이벤트
-
-        private void 조회버튼_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Cursor.Current = Cursors.WaitCursor;
-
-                
-                this.배치상태값 = "모두";
-                관리.분류실적백업_GET(m_관리_분류실적_백업Table, 조회시작일, 조회종료일, GlobalClass.장비명, "모두", 0);
             }
             catch (Exception ex)
             {
@@ -155,7 +170,7 @@ namespace PAS.PMP
                 if (ulabel.Tag == null)
                     return;
                 this.배치상태값 = ulabel.Tag.ToString();
-                관리.분류실적백업_GET(m_관리_분류실적_백업Table, 조회시작일, 조회종료일, GlobalClass.장비명, "모두", 0);
+                관리.분류실적백업_Get(m_관리_분류실적_백업Table, 조회시작일, 조회종료일, GlobalClass.장비명, "모두", 0);
             }
             catch (Exception ex)
             {
@@ -174,7 +189,7 @@ namespace PAS.PMP
                 Cursor.Current = Cursors.WaitCursor;
                 if (string.IsNullOrEmpty(this.배치상태값))
                     this.배치상태값 = "모두";
-                관리.분류실적백업_SET(조회시작일, 조회종료일, GlobalClass.장비명, this.배치상태값, this.com분류실적처리.Text);
+                관리.분류실적백업_Set(조회시작일, 조회종료일, GlobalClass.장비명, this.배치상태값, this.com분류실적처리.Text);
                 if (!(this.com분류실적처리.Text == "삭제"))
                     return;
                 foreach (DataRow row in (InternalDataCollectionBase)this.m_관리_분류실적_백업Table.Rows)

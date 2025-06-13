@@ -1,9 +1,12 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using DbProvider;
 using PAS.Core;
+using PAS.PMP.Utils;
 using System;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
+using System.IO;
 using System.Windows.Forms;
 using TR_Common;
 
@@ -491,16 +494,25 @@ namespace PAS.PMP
             );
         }
 
-        internal static void 작업요약생성(string 분류명, string 장비명, string 작업일자, string 배치번호, string 원배치상태,
-            string 배치명, string 배치구분, string 분류구분, string 출하구분, string 패턴구분, int 지시수, string 슈트수, string 분류번호)
+        internal static void 작업요약생성(string 분류명, string 장비명, string 작업일자, string 배치번호, string 원배치번호,
+            string 배치명, string 배치구분, string 분류구분, string 출하구분, string 패턴구분, int 지시수, string 슈트수, out string 분류번호)
         {
+            분류번호 = null;
+
             try
             {
                 using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
                 {
+                    DbParameterCollection oParams = null;
                     oScope.Initialize("usp_분류_작업요약생성_Set", "@분류명", "@장비명", "@작업일자", "@배치번호", "@원배치번호",
                         "@배치명", "@배치구분", "@분류구분", "@출하구분", "@패턴구분", "@지시수", "@슈트수", "@분류번호");
-                    oScope.Update(분류명, 장비명, 작업일자, 배치번호, 원배치상태, 배치명, 배치구분, 분류구분, 출하구분, 패턴구분, 지시수, 슈트수, 분류번호);
+                    oScope.Update(out oParams, 분류명, 장비명, 작업일자, 배치번호, 원배치번호, 배치명, 배치구분, 분류구분, 출하구분, 패턴구분, 지시수, 슈트수, 분류번호);
+
+                    if (oParams != null && oParams.Count > 0 && oParams.Contains("@분류번호"))
+                    {
+                        분류번호 = oParams["@분류번호"].Value?.ToString();
+                    }
+
                     oScope.Commit();
                 }
             }
@@ -537,6 +549,221 @@ namespace PAS.PMP
                 {
                     oScope.Initialize("usp_기록_로그_Set", "@TEXT");
                     oScope.Update(text);
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        internal static void 배치작성(DataTable dataTable, string 장비명, string 배치번호, string 원배치번호, string 구분)
+        {
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_배치작성_Get")
+            {
+                dataTable.TableName = "usp_분류_배치작성_Get";
+            }
+
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+            new string[] { "@장비명", "@배치번호", "@원배치번호", "@구분" },
+            new object[] { 장비명, 배치번호, 원배치번호, 구분 }
+            );
+        }
+
+        internal static int 수신취소(DataRow[] rows)
+        {
+            int 취소건수 = 0;
+
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_분류_수신취소_Set", "@원배치번호");
+
+                    foreach (var row in rows)
+                    {
+                        int 순번 = Convert.ToInt32(row["순번"]);
+                        string s분류번호 = row["분류번호"].ToString();
+                        string s원배치번호 = row["원배치번호"].ToString();
+                        string s작업일자 = row["작업일자"].ToString();
+                        string s월일;
+                        try
+                        {
+                            s월일 = s작업일자.Substring(4, 4);
+                        }
+                        catch
+                        {
+                            s월일 = DateTime.Now.ToString("MMdd");
+                        }
+
+
+                        oScope.Update(s원배치번호);
+
+                        if (순번 != 1)
+                        {
+                            if (File.Exists($"{GlobalClass.PATH_STARTUP}\\TEMP\\{s원배치번호}_REBUILD.DAT"))
+                                File.Delete($"{GlobalClass.PATH_STARTUP}\\TEMP\\{s원배치번호}_REBUILD.DAT");
+                            ++취소건수;
+                        }
+                        else
+                        {
+                            if (Directory.Exists($"{GlobalClass.LOCAL_FOLDER}\\DATA\\DATE{s원배치번호}\\{s분류번호}"))
+                                Directory.Delete($"{GlobalClass.LOCAL_FOLDER}\\DATA\\DATE{s원배치번호}\\{s분류번호}", true);
+                            if (Directory.Exists(GlobalClass.LOCAL_FOLDER + "\\DATA"))
+                                MakeData.EXECBATDelete(GlobalClass.LOCAL_FOLDER, s작업일자, s분류번호);
+                            ++취소건수;
+                        }
+                    }
+
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+                Common.ErrorMessage("수신취소 오류", ex.Message);
+            }
+
+            return 취소건수;
+        }
+
+        internal static void 실적작성대상(DataTable dataTable, string 배치번호, int 조회구분자)
+        {
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_실적작성대상_Get")
+            {
+                dataTable.TableName = "usp_분류_실적작성대상_Get";
+            }
+
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+            new string[] { "@배치번호", "@조회구분자" },
+            new object[] { 배치번호, 조회구분자 }
+            );
+        }
+
+        internal static void 배치상태변경(string 장비명, string 분류번호, string 배치번호, string 배치상태)
+        {
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_분류_배치상태변경_Set", "@장비명", "@분류번호", "@배치번호", "@배치상태");
+                    oScope.Update(장비명, 분류번호, 배치번호, 배치상태);
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        internal static void 실적작성내용(DataTable dataTable, string 분류번호, string 장비명, string 배치번호)
+        {
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_실적작성내용_Get")
+            {
+                dataTable.TableName = "usp_분류_실적작성내용_Get";
+            }
+
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+            new string[] { "@분류번호", "@장비명", "@배치번호" },
+            new object[] { 분류번호, 장비명, 배치번호 }
+            );
+        }
+
+        internal static void 실적작성(string 분류번호, string 장비명, string 배치번호)
+        {
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_분류_실적작성_Set", "@분류번호", "@장비명", "@배치번호");
+                    oScope.Update(분류번호, 장비명, 배치번호);
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        internal static void 출하배치반영(DataTable dataTable, string 분류번호, string 장비명, string 배치번호, int 조회구분자)
+        {
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_출하_배치반영_Get")
+            {
+                dataTable.TableName = "usp_출하_배치반영_Get";
+            }
+
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+            new string[] { "@분류번호", "@장비명", "@배치번호", "@조회구분자" },
+            new object[] { 분류번호, 장비명, 배치번호, 조회구분자 }
+            );
+        }
+
+        internal static void 실적작성대상_중간(DataTable dataTable, string 배치번호)
+        {
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_실적작성대상_중간_Get")
+            {
+                dataTable.TableName = "usp_분류_실적작성대상_중간_Get";
+            }
+
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+            new string[] { "@배치번호" },
+            new object[] { 배치번호 }
+            );
+        }
+
+        internal static void 실적작성취소(string 배치번호)
+        {
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_분류_실적작성취소_Set", "@배치번호");
+                    oScope.Update(배치번호);
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        internal static void 슈트조정_슈트별현황_Get(DataTable dataTable, string 원배치번호, int 조회구분자)
+        {
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_슈트조정_슈트별현황_Get")
+            {
+                dataTable.TableName = "usp_분류_슈트조정_슈트별현황_Get";
+            }
+
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+            new string[] { "@원배치번호", "@조회구분자" },
+            new object[] { 원배치번호, 조회구분자 }
+            );
+        }
+
+        internal static void 슈트조정_가용슈트_조회(DataTable dataTable, string 장비명, int 조회구분자)
+        {
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_슈트조정_가용슈트_Get")
+            {
+                dataTable.TableName = "usp_분류_슈트조정_가용슈트_Get";
+            }
+
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+            new string[] { "@장비명", "@조회구분자" },
+            new object[] { 장비명, 조회구분자 }
+            );
+        }
+
+        internal static void 슈트조정_슈트별현황_Set(string 장비명, string 원배치번호, string XML)
+        {
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_분류_슈트조정_슈트별현황_Set", "@장비명", "@원배치번호", "@XML");
+                    oScope.Update(장비명, 원배치번호, XML);
                     oScope.Commit();
                 }
             }

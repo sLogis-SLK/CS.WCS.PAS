@@ -121,6 +121,7 @@
     <Compile Include="Services\분류.cs" />
     <Compile Include="Services\연동.cs" />
     <Compile Include="Services\환경설정.cs" />
+    <Compile Include="Utils\ValueListUtil.cs" />
     <Compile Include="Utils\Command.cs" />
     <Compile Include="Utils\MakeData.cs" />
     <Compile Include="Utils\PasTabPage.cs">
@@ -129,8 +130,24 @@
     <Compile Include="WinFormsApp\Dialog\frmTRDLG00001.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinFormsApp\Dialog\frmTRDLG00001.Designer.cs">
-      <DependentUpon>frmTRDLG00001.cs</DependentUpon>
+    <Compile Include="WinFormsApp\Dialog\frmTRDLG00001.Designer.cs" />
+    <Compile Include="WinFormsApp\Dialog\frmTRDLG00063.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\Dialog\frmTRDLG00063.Designer.cs">
+      <DependentUpon>frmTRDLG00063.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\Dialog\frmTRDLG00062.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\Dialog\frmTRDLG00062.Designer.cs">
+      <DependentUpon>frmTRDLG00062.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\Dialog\frmTRDLG00061.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\Dialog\frmTRDLG00061.Designer.cs">
+      <DependentUpon>frmTRDLG00061.cs</DependentUpon>
     </Compile>
     <Compile Include="WinFormsApp\frmTRPAS00001.cs">
       <SubType>Form</SubType>
@@ -180,6 +197,30 @@
     <Compile Include="WinFormsApp\frmTRPAS00011.Designer.cs">
       <DependentUpon>frmTRPAS00011.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinFormsApp\Dialog\frmTRDLG00002.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\Dialog\frmTRDLG00002.Designer.cs">
+      <DependentUpon>frmTRDLG00002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\Dialog\frmTRDLG00064.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\Dialog\frmTRDLG00064.Designer.cs">
+      <DependentUpon>frmTRDLG00064.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00012.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00012.Designer.cs">
+      <DependentUpon>frmTRPAS00012.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00013.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00013.Designer.cs">
+      <DependentUpon>frmTRPAS00013.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinFormsApp\frmTRPAS00021.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,8 +264,15 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>미출고내역_슈트별1.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinFormsApp\Dialog\frmTRDLG00001.resx">
-      <DependentUpon>frmTRDLG00001.cs</DependentUpon>
+    <EmbeddedResource Include="WinFormsApp\Dialog\frmTRDLG00001.resx" />
+    <EmbeddedResource Include="WinFormsApp\Dialog\frmTRDLG00063.resx">
+      <DependentUpon>frmTRDLG00063.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\Dialog\frmTRDLG00062.resx">
+      <DependentUpon>frmTRDLG00062.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\Dialog\frmTRDLG00061.resx">
+      <DependentUpon>frmTRDLG00061.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\frmTRPAS00001.resx">
       <DependentUpon>frmTRPAS00001.cs</DependentUpon>
@@ -249,6 +297,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\frmTRPAS00011.resx">
       <DependentUpon>frmTRPAS00011.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\Dialog\frmTRDLG00002.resx">
+      <DependentUpon>frmTRDLG00002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\Dialog\frmTRDLG00064.resx">
+      <DependentUpon>frmTRDLG00064.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\frmTRPAS00012.resx">
+      <DependentUpon>frmTRPAS00012.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\frmTRPAS00013.resx">
+      <DependentUpon>frmTRPAS00013.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\frmTRPAS00021.resx">
       <DependentUpon>frmTRPAS00021.cs</DependentUpon>

@@ -98,5 +98,103 @@ namespace PAS.PMP.PasWCS
                 new string[] { "@장비명", "@배치상태", "@작업일자", "@조회구분자" }, 장비명, 배치상태, 작업일자, 데이터조회여부 ? 1 : 0);
         }
 
+        internal static void PAS배송사변경(DataTable dataTable, string 배치번호, int 구분자)
+        {
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_PAS_배송사변경_Get")
+            {
+                dataTable.TableName = "usp_PAS_배송사변경_Get";
+            }
+
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.HostDBConnectionString),
+            new string[] { "@배치번호", "@조회구분자" },
+            new object[] { 배치번호, 구분자 }
+            );
+        }
+
+        internal static void PAS실적반영(string 배치번호, string XML)
+        {
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.HostDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_PAS_실적반영_Set", "@배치번호", "@XML");
+                    oScope.Update(배치번호, XML);
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        internal static void PAS배치반영(string 배치번호, string XML)
+        {
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.HostDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_PAS_배치반영_Set", "@배치번호", "@XML");
+                    oScope.Update(배치번호, XML);
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        internal static void PAS실적반영취소(string 배치번호)
+        {
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.HostDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_PAS_실적반영취소_Set", "@배치번호");
+                    oScope.Update(배치번호);
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        internal static void PAS배치반영취소(string 배치번호)
+        {
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.HostDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_PAS_배치반영취소_Set", "@배치번호");
+                    oScope.Update(배치번호);
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        internal static void PAS슈트조정(string 원배치번호, string XML)
+        {
+            try
+            {
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.HostDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_PAS_슈트조정_Set", "@원배치번호", "@XML");
+                    oScope.Update(원배치번호, XML);
+                    oScope.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
     }
 }

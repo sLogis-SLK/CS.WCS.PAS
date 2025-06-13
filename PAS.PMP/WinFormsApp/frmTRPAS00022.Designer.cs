@@ -178,7 +178,9 @@ namespace PAS.PMP
             this.배치반영.Name = "배치반영";
             this.배치반영.Size = new System.Drawing.Size(130, 26);
             this.배치반영.TabIndex = 74;
+            this.배치반영.Tag = "배치반영";
             this.배치반영.Text = "배치반영 : 0";
+            this.배치반영.Click += new System.EventHandler(this.배치상태별조회버튼_Click);
             // 
             // Total
             // 
@@ -191,7 +193,9 @@ namespace PAS.PMP
             this.Total.Name = "Total";
             this.Total.Size = new System.Drawing.Size(132, 26);
             this.Total.TabIndex = 73;
+            this.Total.Tag = "모두";
             this.Total.Text = "Total : 0";
+            this.Total.Click += new System.EventHandler(this.배치상태별조회버튼_Click);
             // 
             // 실적반영
             // 
@@ -204,7 +208,9 @@ namespace PAS.PMP
             this.실적반영.Name = "실적반영";
             this.실적반영.Size = new System.Drawing.Size(130, 26);
             this.실적반영.TabIndex = 72;
+            this.실적반영.Tag = "실적반영";
             this.실적반영.Text = "실적반영 : 0";
+            this.실적반영.Click += new System.EventHandler(this.배치상태별조회버튼_Click);
             // 
             // 완료
             // 
@@ -217,7 +223,9 @@ namespace PAS.PMP
             this.완료.Name = "완료";
             this.완료.Size = new System.Drawing.Size(130, 26);
             this.완료.TabIndex = 71;
+            this.완료.Tag = "완료";
             this.완료.Text = "완료 : 0 ";
+            this.완료.Click += new System.EventHandler(this.배치상태별조회버튼_Click);
             // 
             // 실적작성
             // 
@@ -230,7 +238,9 @@ namespace PAS.PMP
             this.실적작성.Name = "실적작성";
             this.실적작성.Size = new System.Drawing.Size(130, 26);
             this.실적작성.TabIndex = 70;
+            this.실적작성.Tag = "실적작성";
             this.실적작성.Text = "실적작성 : 0";
+            this.실적작성.Click += new System.EventHandler(this.배치상태별조회버튼_Click);
             // 
             // ultraLabel5
             // 
@@ -274,7 +284,7 @@ namespace PAS.PMP
             this.com분류실적처리.Name = "com분류실적처리";
             this.com분류실적처리.Size = new System.Drawing.Size(144, 21);
             this.com분류실적처리.TabIndex = 87;
-            this.com분류실적처리.ValueChanged += new EventHandler(this.com분류실적처리_ValueChanged);
+            this.com분류실적처리.ValueChanged += new System.EventHandler(this.com분류실적처리_ValueChanged);
             // 
             // btn1년
             // 

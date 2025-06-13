@@ -301,19 +301,6 @@ namespace PAS.PMP
             }
         }
 
-        private bool 그리드선택유효성검사(string message, out UltraGridRow row)
-        {
-            row = null;
-            var selectedRows = this.uGrid3.Selected.Rows;
-            if (selectedRows == null || selectedRows.Count == 0)
-            {
-                Common.ErrorMessage(this.Text, "배치를 선택해 주세요.");
-                return false;
-            }
-            row = selectedRows[0];
-            return true;
-        }
-
         private bool 부모배치검사(string 배치번호, string 원배치번호, string 추가배치)
         {
             if (배치번호 == 원배치번호 || string.IsNullOrEmpty(추가배치))
@@ -370,13 +357,13 @@ namespace PAS.PMP
                 if (dt.Rows.Count > 0)
                 {
                     Common.ErrorMessage(this.Text, "동일 매장에 배송사가 중복 배정되었습니다.\r\n선택한 배치를 개시할 수 없습니다.");
-                    //if (Common.QuestionMessageBox("대상을 확인 하시겠습니까?") != DialogResult.Yes)
-                    //    return;
-                    //int num = (int)new dlgPAS00061()
-                    //{
-                    //    TITLE2 = ("배송사 중복 배정 확인 - " + s원배치번호),
-                    //    자리수초과아이템 = oDataTable.Copy()
-                    //}.ShowDialog();
+                    if (MessageBox.Show("대상을 확인 하시겠습니까?", this.Text, MessageBoxButtons.YesNo) != DialogResult.Yes)
+                        return false;
+                    var dlg = new frmTRDLG00061()
+                    {
+                        TITLE2 = "배송사 중복 배정 확인 - " + 원배치번호,
+                        자리수초과아이템 = dt.Copy()
+                    }.ShowDialog();
 
                     return false;
                 }
@@ -397,14 +384,14 @@ namespace PAS.PMP
                 관리.매장중복배정확인(dt, 분류번호, GlobalClass.장비명, 원배치번호);
                 if (dt.Rows.Count > 0)
                 {
-                    //Common.ErrorMessage(this.Text, "동일 슈트에 매장이 중복 배정되었습니다.\r\n\r\n선택한 배치를 개시할 수 없습니다.");
-                    //if (Common.QuestionMessageBox("대상을 확인 하시겠습니까?") != DialogResult.Yes)
-                    //    return;
-                    //int num = (int)new dlgPAS00061()
-                    //{
-                    //    TITLE2 = ("매장 중복 배정 확인 - " + s원배치번호),
-                    //    자리수초과아이템 = oDataTable.Copy()
-                    //}.ShowDialog();
+                    Common.ErrorMessage(this.Text, "동일 슈트에 매장이 중복 배정되었습니다.\r\n\r\n선택한 배치를 개시할 수 없습니다.");
+                    if (MessageBox.Show("대상을 확인 하시겠습니까?", this.Text, MessageBoxButtons.YesNo) != DialogResult.Yes)
+                        return false;
+                    var dlg = new frmTRDLG00061()
+                    {
+                        TITLE2 = ("매장 중복 배정 확인 - " + 원배치번호),
+                        자리수초과아이템 = dt.Copy()
+                    }.ShowDialog();
                     return false;
                 }
                 return true;
@@ -491,29 +478,29 @@ namespace PAS.PMP
 
             if (!File.Exists(targetPath))
             {
-                //Common.전역상태바.Invoke((Delegate)(new MethodInvoker(() => Common.전역상태메시지.Text = string.Empty)));
+                GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
                 Common.ErrorMessage(this.Text, "배치를 개시하는 중 문제가 발생하였습니다.\r\n\r\n### 관리자에게 문의하세요. ###");
                 return;
             }
 
             for (int i = 0; i < 60; i++)
             {
-                //Common.전역상태바.Invoke((Delegate)(new MethodInvoker(() => Common.전역상태메시지.Text = $"{i + 1}번째 시도중입니다.")));
+                GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = $"{i + 1}번째 시도중입니다.")));
                 Application.DoEvents();
 
                 var result = this.재구성_배치개시(분류번호, 월일);
                 if (result == 상태처리.TRUE)
                 {
                     분류.분류상태변경_원배치용(GlobalClass.장비명, 분류번호, 분류번호, 원배치번호, "작업중");
-                    //Common.전역상태바.Invoke((Delegate)(new MethodInvoker(() => Common.전역상태메시지.Text = $"[{s원배치번호}] 배치를 개시 하였습니다.")));
+                    GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = $"[{원배치번호}] 배치를 개시 하였습니다.")));
                     break;
                 }
 
                 if (result == 상태처리.FALSE && i == 59)
                 {
-                    //Common.전역상태바.Invoke((Delegate)(new MethodInvoker(() => Common.전역상태메시지.Text = "배치 개시 실패!!")));
+                    GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = "배치 개시 실패!!")));
                     Common.ErrorMessage(this.Text, "배치를 개시할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###");
-                    //Common.전역상태바.Invoke((Delegate)(new MethodInvoker(() => Common.전역상태메시지.Text = string.Empty)));
+                    GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
                 }
 
                 Thread.Sleep(10000);
@@ -647,7 +634,6 @@ namespace PAS.PMP
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                //usp_분류_작업요약_Get
                 분류.배치리스트조회(m_분류_작업요약Table, Convert.ToDateTime(DateTime.Now).ToString("yyyyMMdd"), 1);
 
                 List<DataRow> dataRowList = new List<DataRow>();
@@ -688,7 +674,7 @@ namespace PAS.PMP
             }
             finally
             {
-                //Common.전역상태바.Invoke((Delegate)(new MethodInvoker(() => Common.전역상태메시지.Text = string.Empty)));
+                GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
                 this.ultraCheckEditor1.Checked = false;
                 Cursor.Current = Cursors.Default;
             }
@@ -722,8 +708,15 @@ namespace PAS.PMP
         {
             try
             {
-                if (!그리드선택유효성검사("배치를 선택해 주세요.", out var row)) return;
+                var selectedRows = this.uGrid3.Selected.Rows;
+                if (selectedRows == null || selectedRows.Count == 0)
+                {
+                    Common.ErrorMessage(this.Text, "배치를 선택해 주세요.");
+                    return;
+                }
+                UltraGridRow row = selectedRows[0];
 
+                frmLoading.ShowLoading();
                 string 분류번호 = row.Cells["분류번호"].Value.ToString();
                 string 분류명 = row.Cells["분류명"].Value.ToString();
                 string 배치번호 = row.Cells["배치번호"].Value.ToString();
@@ -756,13 +749,20 @@ namespace PAS.PMP
             }
             finally
             {
+                frmLoading.CloseLoading();
                 this.조회버튼_Click((object)null, EventArgs.Empty);
             }
         }
 
         private void 배치종료_Click(object sender, EventArgs e)
         {
-            if (!그리드선택유효성검사("배치를 선택해 주세요.", out var row)) return;
+            var selectedRows = this.uGrid3.Selected.Rows;
+            if (selectedRows == null || selectedRows.Count == 0)
+            {
+                Common.ErrorMessage(this.Text, "배치를 선택해 주세요.");
+                return;
+            }
+            UltraGridRow row = selectedRows[0];
 
             string 분류번호 = row.Cells["분류번호"].Value.ToString();
             string 배치번호 = row.Cells["배치번호"].Value.ToString();
@@ -791,6 +791,7 @@ namespace PAS.PMP
             {
                 if (!재구성배치슈트중복확인(분류번호, 원배치번호)) return;
 
+                frmLoading.ShowLoading();
                 string 작업일자 = 첫작업Row["작업일자"].ToString();
                 string s월일 = 작업일자.Length >= 8 ? 작업일자.Substring(4, 4) : DateTime.Now.ToString("MMdd");
 
@@ -811,9 +812,9 @@ namespace PAS.PMP
             }
             finally
             {
+                frmLoading.CloseLoading();
                 조회버튼_Click(null, EventArgs.Empty);
             }
-
         }
 
         private void 분류종료_Click(object sender, EventArgs e)
@@ -823,7 +824,13 @@ namespace PAS.PMP
                 var 동작구분 = 동작모드.종료;
                 var 분류구분 = this.연속.Checked ? 분류방법.연속 : 분류방법.균등;
 
-                if (!그리드선택유효성검사("분류를 선택해 주세요.", out var row)) return;
+                var selectedRows = this.uGrid3.Selected.Rows;
+                if (selectedRows == null || selectedRows.Count == 0)
+                {
+                    Common.ErrorMessage(this.Text, "분류를 선택해 주세요.");
+                    return;
+                }
+                UltraGridRow row = selectedRows[0];
 
                 string 분류번호 = row.Cells["분류번호"].Value.ToString();
                 string 분류상태 = row.Cells["분류상태"].Value.ToString();
@@ -858,10 +865,10 @@ namespace PAS.PMP
                     if (!this.Connection())
                     {
                         Common.ErrorMessage(this.Text, "PAS에 연결할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###");
-                        //Common.전역상태바.Invoke((Delegate)(new MethodInvoker(() => Common.전역상태메시지.Text = string.Empty)));
+                        GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
                         break;
                     }
-                    //Common.전역상태바.Invoke((Delegate)(new MethodInvoker(() => Common.전역상태메시지.Text = $"{i + 1}번째 시도중입니다.")));
+                    GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = $"{i + 1}번째 시도중입니다.")));
                     Application.DoEvents();
                     var 결과 = this.SendReceive(분류번호, 분류명, 작업일자, 동작구분, 분류구분);
 
@@ -869,15 +876,15 @@ namespace PAS.PMP
                     {
                         분류.분류상태변경_원배치용(GlobalClass.장비명, 분류번호, 배치번호, 원배치번호, "완료");
                         분류.분류상태변경(GlobalClass.장비명, 분류번호, "종료");
-                        //Common.전역상태바.Invoke((Delegate)(new MethodInvoker(() => Common.전역상태메시지.Text = $"[{s분류번호}] 분류를 종료 하였습니다.")));
+                        GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = $"[{분류번호}] 분류를 종료 하였습니다.")));
                         return;
                     }
 
                     if (결과 == 상태처리.FALSE && i + 1 == 5)
                     {
-                        //Common.전역상태바.Invoke((Delegate)(new MethodInvoker(() => Common.전역상태메시지.Text = "분류 종료 실패!!")));
+                        GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = "분류 종료 실패!!")));
                         Common.ErrorMessage(this.Text, "분류를 종료할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###");
-                        //Common.전역상태바.Invoke((Delegate)(new MethodInvoker(() => Common.전역상태메시지.Text = string.Empty)));
+                        GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
                     }
                 }
             }
