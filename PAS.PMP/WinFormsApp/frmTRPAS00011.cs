@@ -351,10 +351,10 @@ namespace PAS.PMP
                         messageText = $@"선택한 분류번호는 {s분류번호} 입니다.분류번호가 맞습니까?";
                         if (MessageBox.Show(messageText, this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                         {
-                            //int num = (int)frmMessageBox.Show("더이상 작업을 할 수 없는 분류번호 입니다.", this.Text, false, true);
+                            frmMessageBox.Show("더이상 작업을 할 수 없는 분류번호 입니다.", this.Text, false, true);
                             return;
                         }
-                        //int num1 = (int)frmMessageBox.Show("다른 분류번호를 선택하세요.", this.Text, false, true);
+                        frmMessageBox.Show("다른 분류번호를 선택하세요.", this.Text, false, true);
                         return;
                     }
 
@@ -388,7 +388,7 @@ namespace PAS.PMP
                     {
                         if (flag && !string.IsNullOrEmpty(row1.Cells["추가배치"].Value.ToString()))
                         {
-                            //int num = (int)frmMessageBox.Show("추가 배치는 단독으로 작업할 수 없습니다.", this.Text, false, true);
+                            frmMessageBox.Show("추가 배치는 단독으로 작업할 수 없습니다.", this.Text, false, true);
                             return;
                         }
                         string s장비명 = GlobalClass.장비명;
@@ -538,12 +538,12 @@ namespace PAS.PMP
                 if (iCount > 0)
                 {
                     GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역진행상태.Value = this.uGrid2.Rows.Count)));
-                    //int num = (int)frmMessageBox.Show("선택한 배치의 작성하였습니다.", this.Text, false, true);
+                    frmMessageBox.Show("선택한 배치의 작성하였습니다.", this.Text, false, true);
                     GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역진행상태.Value = 0)));
                 }
                 else
                 {
-                    //int num = (int)frmMessageBox.Show("선택한 대상이 없습니다.", this.Text, false, true);
+                    frmMessageBox.Show("선택한 대상이 없습니다.", this.Text, false, true);
                     GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역진행상태.Value = 0)));
                 }
             }
@@ -607,11 +607,11 @@ namespace PAS.PMP
 
                 if (취소건수 > 0)
                 {
-                    //int num2 = (int)frmMessageBox.Show("선택한 항목의 배치작성이 취소 되었습니다.", this.Text, false, true);
+                    frmMessageBox.Show("선택한 항목의 배치작성이 취소 되었습니다.", this.Text, false, true);
                 }
                 else
                 {
-                    //int num3 = (int)frmMessageBox.Show("선택한 대상이 없습니다.", this.Text, false, true);
+                    frmMessageBox.Show("선택한 대상이 없습니다.", this.Text, false, true);
                 }
 
             }
