@@ -56,8 +56,8 @@ namespace PAS.PMP
 
                     switch(strTag)
                     {
-                        case "frmTRPAS00011":
-                            form = new frmTRPAS00011();
+                        case "frmTRPAS00021":
+                            form = new frmTRPAS00021();
                             break;
                         case "frmTRPAS00001":
                             form = new frmTRPAS00001();
@@ -79,6 +79,27 @@ namespace PAS.PMP
                             break;
                         case "frmTRPAS00007":
                             form = new frmTRPAS00007();
+                            break;
+                        case "frmTRPAS00011":
+                            form = new frmTRPAS00011();
+                            break;
+                        case "frmTRPAS00012":
+                            form = new frmTRPAS00012();
+                            break;
+                        case "frmTRPAS00013":
+                            form = new frmTRPAS00013();
+                            break;
+                        case "frmTRPAS00022":
+                            form = new frmTRPAS00022();
+                            break;
+                        case "frmTRPAS00023":
+                            form = new frmTRPAS00023();
+                            break;
+                        case "frmTRPAS00024":
+                            form = new frmTRPAS00024();
+                            break;
+                        case "frmTRDLG00064":
+                            form = new frmTRDLG00064();
                             break;
                         default:
                             MessageBox.Show("해당 태그에 해당하는 폼이 없습니다.");

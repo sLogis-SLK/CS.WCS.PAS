@@ -122,10 +122,11 @@ namespace PAS.PMP
             ultraTreeNode22.LeftImages.Add(((object)(resources.GetObject("ultraTreeNode22.LeftImages"))));
             _override1.Tag = "frmPAS00011";
             ultraTreeNode22.Override = _override1;
-            ultraTreeNode22.Tag = "frmTRPAS00011";
+            ultraTreeNode22.Tag = "frmTRPAS00021";
             ultraTreeNode22.Text = "배치 시작/완료";
             ultraTreeNode21.Nodes.AddRange(new Infragistics.Win.UltraWinTree.UltraTreeNode[] {
             ultraTreeNode22});
+            ultraTreeNode21.Tag = "frmTRPAS00022";
             ultraTreeNode21.Text = "PAS 준비/완료";
             ultraTreeNode23.LeftImages.Add(((object)(resources.GetObject("ultraTreeNode23.LeftImages"))));
             ultraTreeNode24.LeftImages.Add(((object)(resources.GetObject("ultraTreeNode24.LeftImages"))));
@@ -164,13 +165,17 @@ namespace PAS.PMP
             ultraTreeNode23.Text = "작업내역 확인";
             ultraTreeNode33.LeftImages.Add(((object)(resources.GetObject("ultraTreeNode33.LeftImages"))));
             ultraTreeNode34.LeftImages.Add(((object)(resources.GetObject("ultraTreeNode34.LeftImages"))));
+            ultraTreeNode34.Tag = "frmTRPAS00011";
             ultraTreeNode34.Text = "배치수신 및 생성";
             ultraTreeNode35.LeftImages.Add(((object)(resources.GetObject("ultraTreeNode35.LeftImages"))));
+            ultraTreeNode35.Tag = "frmTRDLG00064";
             ultraTreeNode35.Text = "배송사 변경 연동";
             ultraTreeNode36.Text = "---------------------";
             ultraTreeNode37.LeftImages.Add(((object)(resources.GetObject("ultraTreeNode37.LeftImages"))));
+            ultraTreeNode37.Tag = "frmTRPAS00012";
             ultraTreeNode37.Text = "실적작성/반영, 배치반영";
             ultraTreeNode38.LeftImages.Add(((object)(resources.GetObject("ultraTreeNode38.LeftImages"))));
+            ultraTreeNode38.Tag = "frmTRPAS00013";
             ultraTreeNode38.Text = "실적작성/반영, 배치반영 취소";
             ultraTreeNode33.Nodes.AddRange(new Infragistics.Win.UltraWinTree.UltraTreeNode[] {
             ultraTreeNode34,
