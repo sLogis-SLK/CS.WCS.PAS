@@ -1,6 +1,8 @@
 ﻿using Infragistics.Shared;
 using Infragistics.Win;
 using Infragistics.Win.UltraWinDock;
+using Infragistics.Win.UltraWinTabbedMdi;
+using Infragistics.Win.UltraWinToolbars;
 using Infragistics.Win.UltraWinTree;
 using System;
 using System.Collections.Generic;
@@ -18,6 +20,7 @@ namespace PAS.PMP
     public partial class MainForm : Form
     {
         private UltraTreeNode m_LastNodeFromPos = null;
+        private string _pasLine = string.Empty;
 
         public MainForm()
         {
@@ -28,13 +31,27 @@ namespace PAS.PMP
         {
 
             GlobalClass.InitializationSettings();
+            ComboBoxTool cbo = ultraToolbarsManager1.Tools["라인설정"] as ComboBoxTool;
+            foreach (var item in GlobalClass.DicPas기기)
+            {
+                cbo.ValueList.ValueListItems.Add(item.Key);
+            }
 
+            cbo.Value = GlobalClass.DefaultValuePasName;
+
+            if (cbo.SelectedItem != null)
+            {
+                if (GlobalClass.SettingsPas기기(GlobalClass.DefaultValuePasName))
+                {
+
+                }
+                else
+                {
+
+                }
+            }
         }
 
-        private void ultraTree1_AfterSelect(object sender, Infragistics.Win.UltraWinTree.SelectEventArgs e)
-        {
-
-        }
 
         private void ultraTree1_DoubleClick(object sender, EventArgs e)
         {
@@ -140,7 +157,7 @@ namespace PAS.PMP
 
         private void ultraToolbarsManager1_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
         {
-            Form frmDlg = null;
+            //Form frmDlg = null;
             DockableControlPane dcPane = this.ultraDockManager1.ControlPanes["uTreeProgram"];
 
             if (e.Tool.Key == "메뉴")
@@ -159,6 +176,29 @@ namespace PAS.PMP
             {
                 if (this.ActiveMdiChild is IToolBase)
                     ((IToolBase)this.ActiveMdiChild).OnPrint(false);
+            }
+        }
+
+        private void ultraToolbarsManager1_ToolValueChanged(object sender, ToolEventArgs e)
+        {
+            if (e.Tool.Key == "라인설정")
+            {
+                ComboBoxTool cbo = ultraToolbarsManager1.Tools["라인설정"] as ComboBoxTool;
+                _pasLine = cbo.Value.ToString();
+
+                if (GlobalClass.SettingsPas기기(_pasLine)) //기기정보 세팅
+                {
+                    // 모든창 닫기 
+                    MdiTab oTab = this.ultraTabbedMdiManager1.ActiveTab;
+                    while (oTab != null)
+                    {
+                        oTab.Close();
+                        if (oTab.Index >= 0)
+                            break;
+
+                        oTab = this.ultraTabbedMdiManager1.ActiveTab;
+                    }
+                }
             }
         }
     }

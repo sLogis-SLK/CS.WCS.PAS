@@ -31,6 +31,14 @@ namespace PAS.Core.Controls
         {
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
@@ -54,16 +62,25 @@ namespace PAS.Core.Controls
             Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             this.ultraGroupBox2 = new Infragistics.Win.Misc.UltraGroupBox();
             this.ultraGroupBox5 = new Infragistics.Win.Misc.UltraGroupBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.HOST_DB_PASSWORD = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
+            this.PAS_DB_PASSWORD = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
+            this.HOST_DB_ID = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
+            this.PAS_DB_ID = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel12 = new Infragistics.Win.Misc.UltraLabel();
+            this.HOST_DB_SERVICE = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel13 = new Infragistics.Win.Misc.UltraLabel();
+            this.PAS_DB_SERVICE = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.HOST_DB_IP = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel14 = new Infragistics.Win.Misc.UltraLabel();
+            this.PAS_DB_IP = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel15 = new Infragistics.Win.Misc.UltraLabel();
+            this.ultraLabel16 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraGroupBox3 = new Infragistics.Win.Misc.UltraGroupBox();
             this.uGrid1 = new TR_Library.Controls.uGrid();
             this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
@@ -89,27 +106,19 @@ namespace PAS.Core.Controls
             this.NAME = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel9 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel8 = new Infragistics.Win.Misc.UltraLabel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.HOST_DB_PASSWORD = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
-            this.PAS_DB_PASSWORD = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
-            this.HOST_DB_ID = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
-            this.PAS_DB_ID = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.ultraLabel12 = new Infragistics.Win.Misc.UltraLabel();
-            this.HOST_DB_SERVICE = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.ultraLabel13 = new Infragistics.Win.Misc.UltraLabel();
-            this.PAS_DB_SERVICE = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.HOST_DB_IP = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.ultraLabel14 = new Infragistics.Win.Misc.UltraLabel();
-            this.PAS_DB_IP = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.ultraLabel15 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraLabel16 = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).BeginInit();
             this.ultraGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox5)).BeginInit();
             this.ultraGroupBox5.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HOST_DB_PASSWORD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PAS_DB_PASSWORD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HOST_DB_ID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PAS_DB_ID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HOST_DB_SERVICE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PAS_DB_SERVICE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HOST_DB_IP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PAS_DB_IP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).BeginInit();
             this.ultraGroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).BeginInit();
@@ -126,15 +135,6 @@ namespace PAS.Core.Controls
             ((System.ComponentModel.ISupportInitialize)(this.PLC_PORT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PLC_IP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NAME)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.HOST_DB_PASSWORD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PAS_DB_PASSWORD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HOST_DB_ID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PAS_DB_ID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HOST_DB_SERVICE)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PAS_DB_SERVICE)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HOST_DB_IP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PAS_DB_IP)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraGroupBox2
@@ -163,6 +163,201 @@ namespace PAS.Core.Controls
             this.ultraGroupBox5.Name = "ultraGroupBox5";
             this.ultraGroupBox5.Size = new System.Drawing.Size(865, 100);
             this.ultraGroupBox5.TabIndex = 525;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.HOST_DB_PASSWORD, 3, 3);
+            this.tableLayoutPanel2.Controls.Add(this.ultraLabel1, 2, 3);
+            this.tableLayoutPanel2.Controls.Add(this.PAS_DB_PASSWORD, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.ultraLabel2, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.HOST_DB_ID, 3, 2);
+            this.tableLayoutPanel2.Controls.Add(this.ultraLabel3, 2, 2);
+            this.tableLayoutPanel2.Controls.Add(this.PAS_DB_ID, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.ultraLabel12, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.HOST_DB_SERVICE, 3, 1);
+            this.tableLayoutPanel2.Controls.Add(this.ultraLabel13, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.PAS_DB_SERVICE, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.HOST_DB_IP, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.ultraLabel14, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.PAS_DB_IP, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.ultraLabel15, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.ultraLabel16, 2, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(861, 96);
+            this.tableLayoutPanel2.TabIndex = 71;
+            // 
+            // HOST_DB_PASSWORD
+            // 
+            this.HOST_DB_PASSWORD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HOST_DB_PASSWORD.Location = new System.Drawing.Point(588, 75);
+            this.HOST_DB_PASSWORD.Name = "HOST_DB_PASSWORD";
+            this.HOST_DB_PASSWORD.Size = new System.Drawing.Size(270, 21);
+            this.HOST_DB_PASSWORD.TabIndex = 8;
+            // 
+            // ultraLabel1
+            // 
+            appearance3.TextHAlignAsString = "Right";
+            appearance3.TextVAlignAsString = "Middle";
+            this.ultraLabel1.Appearance = appearance3;
+            this.ultraLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraLabel1.Location = new System.Drawing.Point(428, 75);
+            this.ultraLabel1.Name = "ultraLabel1";
+            this.ultraLabel1.Size = new System.Drawing.Size(154, 18);
+            this.ultraLabel1.TabIndex = 82;
+            this.ultraLabel1.Text = "HOST_DB_PASSWORD :";
+            // 
+            // PAS_DB_PASSWORD
+            // 
+            this.PAS_DB_PASSWORD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PAS_DB_PASSWORD.Location = new System.Drawing.Point(153, 75);
+            this.PAS_DB_PASSWORD.Name = "PAS_DB_PASSWORD";
+            this.PAS_DB_PASSWORD.Size = new System.Drawing.Size(269, 21);
+            this.PAS_DB_PASSWORD.TabIndex = 4;
+            // 
+            // ultraLabel2
+            // 
+            appearance4.TextHAlignAsString = "Right";
+            appearance4.TextVAlignAsString = "Middle";
+            this.ultraLabel2.Appearance = appearance4;
+            this.ultraLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraLabel2.Location = new System.Drawing.Point(3, 75);
+            this.ultraLabel2.Name = "ultraLabel2";
+            this.ultraLabel2.Size = new System.Drawing.Size(144, 18);
+            this.ultraLabel2.TabIndex = 80;
+            this.ultraLabel2.Text = "PAS_DB_PASSWORD :";
+            // 
+            // HOST_DB_ID
+            // 
+            this.HOST_DB_ID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HOST_DB_ID.Location = new System.Drawing.Point(588, 51);
+            this.HOST_DB_ID.Name = "HOST_DB_ID";
+            this.HOST_DB_ID.Size = new System.Drawing.Size(270, 21);
+            this.HOST_DB_ID.TabIndex = 7;
+            // 
+            // ultraLabel3
+            // 
+            appearance5.TextHAlignAsString = "Right";
+            appearance5.TextVAlignAsString = "Middle";
+            this.ultraLabel3.Appearance = appearance5;
+            this.ultraLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraLabel3.Location = new System.Drawing.Point(428, 51);
+            this.ultraLabel3.Name = "ultraLabel3";
+            this.ultraLabel3.Size = new System.Drawing.Size(154, 18);
+            this.ultraLabel3.TabIndex = 78;
+            this.ultraLabel3.Text = "HOST_DB_ID :";
+            // 
+            // PAS_DB_ID
+            // 
+            this.PAS_DB_ID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PAS_DB_ID.Location = new System.Drawing.Point(153, 51);
+            this.PAS_DB_ID.Name = "PAS_DB_ID";
+            this.PAS_DB_ID.Size = new System.Drawing.Size(269, 21);
+            this.PAS_DB_ID.TabIndex = 3;
+            // 
+            // ultraLabel12
+            // 
+            appearance6.TextHAlignAsString = "Right";
+            appearance6.TextVAlignAsString = "Middle";
+            this.ultraLabel12.Appearance = appearance6;
+            this.ultraLabel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraLabel12.Location = new System.Drawing.Point(3, 51);
+            this.ultraLabel12.Name = "ultraLabel12";
+            this.ultraLabel12.Size = new System.Drawing.Size(144, 18);
+            this.ultraLabel12.TabIndex = 76;
+            this.ultraLabel12.Text = "PAS_DB_ID :";
+            // 
+            // HOST_DB_SERVICE
+            // 
+            this.HOST_DB_SERVICE.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HOST_DB_SERVICE.Location = new System.Drawing.Point(588, 27);
+            this.HOST_DB_SERVICE.Name = "HOST_DB_SERVICE";
+            this.HOST_DB_SERVICE.Size = new System.Drawing.Size(270, 21);
+            this.HOST_DB_SERVICE.TabIndex = 6;
+            // 
+            // ultraLabel13
+            // 
+            appearance7.TextHAlignAsString = "Right";
+            appearance7.TextVAlignAsString = "Middle";
+            this.ultraLabel13.Appearance = appearance7;
+            this.ultraLabel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraLabel13.Location = new System.Drawing.Point(428, 27);
+            this.ultraLabel13.Name = "ultraLabel13";
+            this.ultraLabel13.Size = new System.Drawing.Size(154, 18);
+            this.ultraLabel13.TabIndex = 74;
+            this.ultraLabel13.Text = "HOST_DB_SERVICE :";
+            // 
+            // PAS_DB_SERVICE
+            // 
+            this.PAS_DB_SERVICE.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PAS_DB_SERVICE.Location = new System.Drawing.Point(153, 27);
+            this.PAS_DB_SERVICE.Name = "PAS_DB_SERVICE";
+            this.PAS_DB_SERVICE.Size = new System.Drawing.Size(269, 21);
+            this.PAS_DB_SERVICE.TabIndex = 2;
+            // 
+            // HOST_DB_IP
+            // 
+            this.HOST_DB_IP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HOST_DB_IP.Location = new System.Drawing.Point(588, 3);
+            this.HOST_DB_IP.Name = "HOST_DB_IP";
+            this.HOST_DB_IP.Size = new System.Drawing.Size(270, 21);
+            this.HOST_DB_IP.TabIndex = 5;
+            // 
+            // ultraLabel14
+            // 
+            appearance8.TextHAlignAsString = "Right";
+            appearance8.TextVAlignAsString = "Middle";
+            this.ultraLabel14.Appearance = appearance8;
+            this.ultraLabel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraLabel14.Location = new System.Drawing.Point(3, 27);
+            this.ultraLabel14.Name = "ultraLabel14";
+            this.ultraLabel14.Size = new System.Drawing.Size(144, 18);
+            this.ultraLabel14.TabIndex = 69;
+            this.ultraLabel14.Text = "PAS_DB_SERVICE :";
+            // 
+            // PAS_DB_IP
+            // 
+            this.PAS_DB_IP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PAS_DB_IP.Location = new System.Drawing.Point(153, 3);
+            this.PAS_DB_IP.Name = "PAS_DB_IP";
+            this.PAS_DB_IP.Size = new System.Drawing.Size(269, 21);
+            this.PAS_DB_IP.TabIndex = 1;
+            // 
+            // ultraLabel15
+            // 
+            appearance9.TextHAlignAsString = "Right";
+            appearance9.TextTrimming = Infragistics.Win.TextTrimming.None;
+            appearance9.TextVAlignAsString = "Middle";
+            this.ultraLabel15.Appearance = appearance9;
+            this.ultraLabel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraLabel15.Location = new System.Drawing.Point(3, 3);
+            this.ultraLabel15.Name = "ultraLabel15";
+            this.ultraLabel15.Size = new System.Drawing.Size(144, 18);
+            this.ultraLabel15.TabIndex = 69;
+            this.ultraLabel15.Text = "PAS_DB_IP :";
+            // 
+            // ultraLabel16
+            // 
+            appearance10.TextHAlignAsString = "Right";
+            appearance10.TextVAlignAsString = "Middle";
+            this.ultraLabel16.Appearance = appearance10;
+            this.ultraLabel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraLabel16.Location = new System.Drawing.Point(428, 3);
+            this.ultraLabel16.Name = "ultraLabel16";
+            this.ultraLabel16.Size = new System.Drawing.Size(154, 18);
+            this.ultraLabel16.TabIndex = 69;
+            this.ultraLabel16.Text = "HOST_DB_IP :";
             // 
             // ultraGroupBox3
             // 
@@ -513,201 +708,6 @@ namespace PAS.Core.Controls
             this.ultraLabel8.TabIndex = 69;
             this.ultraLabel8.Text = "PLC_IP :";
             // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.HOST_DB_PASSWORD, 3, 3);
-            this.tableLayoutPanel2.Controls.Add(this.ultraLabel1, 2, 3);
-            this.tableLayoutPanel2.Controls.Add(this.PAS_DB_PASSWORD, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.ultraLabel2, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.HOST_DB_ID, 3, 2);
-            this.tableLayoutPanel2.Controls.Add(this.ultraLabel3, 2, 2);
-            this.tableLayoutPanel2.Controls.Add(this.PAS_DB_ID, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.ultraLabel12, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.HOST_DB_SERVICE, 3, 1);
-            this.tableLayoutPanel2.Controls.Add(this.ultraLabel13, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.PAS_DB_SERVICE, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.HOST_DB_IP, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.ultraLabel14, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.PAS_DB_IP, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.ultraLabel15, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.ultraLabel16, 2, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(861, 96);
-            this.tableLayoutPanel2.TabIndex = 71;
-            // 
-            // HOST_DB_PASSWORD
-            // 
-            this.HOST_DB_PASSWORD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HOST_DB_PASSWORD.Location = new System.Drawing.Point(588, 75);
-            this.HOST_DB_PASSWORD.Name = "HOST_DB_PASSWORD";
-            this.HOST_DB_PASSWORD.Size = new System.Drawing.Size(270, 21);
-            this.HOST_DB_PASSWORD.TabIndex = 8;
-            // 
-            // ultraLabel1
-            // 
-            appearance3.TextHAlignAsString = "Right";
-            appearance3.TextVAlignAsString = "Middle";
-            this.ultraLabel1.Appearance = appearance3;
-            this.ultraLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel1.Location = new System.Drawing.Point(428, 75);
-            this.ultraLabel1.Name = "ultraLabel1";
-            this.ultraLabel1.Size = new System.Drawing.Size(154, 18);
-            this.ultraLabel1.TabIndex = 82;
-            this.ultraLabel1.Text = "HOST_DB_PASSWORD :";
-            // 
-            // PAS_DB_PASSWORD
-            // 
-            this.PAS_DB_PASSWORD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PAS_DB_PASSWORD.Location = new System.Drawing.Point(153, 75);
-            this.PAS_DB_PASSWORD.Name = "PAS_DB_PASSWORD";
-            this.PAS_DB_PASSWORD.Size = new System.Drawing.Size(269, 21);
-            this.PAS_DB_PASSWORD.TabIndex = 4;
-            // 
-            // ultraLabel2
-            // 
-            appearance4.TextHAlignAsString = "Right";
-            appearance4.TextVAlignAsString = "Middle";
-            this.ultraLabel2.Appearance = appearance4;
-            this.ultraLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel2.Location = new System.Drawing.Point(3, 75);
-            this.ultraLabel2.Name = "ultraLabel2";
-            this.ultraLabel2.Size = new System.Drawing.Size(144, 18);
-            this.ultraLabel2.TabIndex = 80;
-            this.ultraLabel2.Text = "PAS_DB_PASSWORD :";
-            // 
-            // HOST_DB_ID
-            // 
-            this.HOST_DB_ID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HOST_DB_ID.Location = new System.Drawing.Point(588, 51);
-            this.HOST_DB_ID.Name = "HOST_DB_ID";
-            this.HOST_DB_ID.Size = new System.Drawing.Size(270, 21);
-            this.HOST_DB_ID.TabIndex = 7;
-            // 
-            // ultraLabel3
-            // 
-            appearance5.TextHAlignAsString = "Right";
-            appearance5.TextVAlignAsString = "Middle";
-            this.ultraLabel3.Appearance = appearance5;
-            this.ultraLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel3.Location = new System.Drawing.Point(428, 51);
-            this.ultraLabel3.Name = "ultraLabel3";
-            this.ultraLabel3.Size = new System.Drawing.Size(154, 18);
-            this.ultraLabel3.TabIndex = 78;
-            this.ultraLabel3.Text = "HOST_DB_ID :";
-            // 
-            // PAS_DB_ID
-            // 
-            this.PAS_DB_ID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PAS_DB_ID.Location = new System.Drawing.Point(153, 51);
-            this.PAS_DB_ID.Name = "PAS_DB_ID";
-            this.PAS_DB_ID.Size = new System.Drawing.Size(269, 21);
-            this.PAS_DB_ID.TabIndex = 3;
-            // 
-            // ultraLabel12
-            // 
-            appearance6.TextHAlignAsString = "Right";
-            appearance6.TextVAlignAsString = "Middle";
-            this.ultraLabel12.Appearance = appearance6;
-            this.ultraLabel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel12.Location = new System.Drawing.Point(3, 51);
-            this.ultraLabel12.Name = "ultraLabel12";
-            this.ultraLabel12.Size = new System.Drawing.Size(144, 18);
-            this.ultraLabel12.TabIndex = 76;
-            this.ultraLabel12.Text = "PAS_DB_ID :";
-            // 
-            // HOST_DB_SERVICE
-            // 
-            this.HOST_DB_SERVICE.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HOST_DB_SERVICE.Location = new System.Drawing.Point(588, 27);
-            this.HOST_DB_SERVICE.Name = "HOST_DB_SERVICE";
-            this.HOST_DB_SERVICE.Size = new System.Drawing.Size(270, 21);
-            this.HOST_DB_SERVICE.TabIndex = 6;
-            // 
-            // ultraLabel13
-            // 
-            appearance7.TextHAlignAsString = "Right";
-            appearance7.TextVAlignAsString = "Middle";
-            this.ultraLabel13.Appearance = appearance7;
-            this.ultraLabel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel13.Location = new System.Drawing.Point(428, 27);
-            this.ultraLabel13.Name = "ultraLabel13";
-            this.ultraLabel13.Size = new System.Drawing.Size(154, 18);
-            this.ultraLabel13.TabIndex = 74;
-            this.ultraLabel13.Text = "HOST_DB_SERVICE :";
-            // 
-            // PAS_DB_SERVICE
-            // 
-            this.PAS_DB_SERVICE.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PAS_DB_SERVICE.Location = new System.Drawing.Point(153, 27);
-            this.PAS_DB_SERVICE.Name = "PAS_DB_SERVICE";
-            this.PAS_DB_SERVICE.Size = new System.Drawing.Size(269, 21);
-            this.PAS_DB_SERVICE.TabIndex = 2;
-            // 
-            // HOST_DB_IP
-            // 
-            this.HOST_DB_IP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HOST_DB_IP.Location = new System.Drawing.Point(588, 3);
-            this.HOST_DB_IP.Name = "HOST_DB_IP";
-            this.HOST_DB_IP.Size = new System.Drawing.Size(270, 21);
-            this.HOST_DB_IP.TabIndex = 5;
-            // 
-            // ultraLabel14
-            // 
-            appearance8.TextHAlignAsString = "Right";
-            appearance8.TextVAlignAsString = "Middle";
-            this.ultraLabel14.Appearance = appearance8;
-            this.ultraLabel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel14.Location = new System.Drawing.Point(3, 27);
-            this.ultraLabel14.Name = "ultraLabel14";
-            this.ultraLabel14.Size = new System.Drawing.Size(144, 18);
-            this.ultraLabel14.TabIndex = 69;
-            this.ultraLabel14.Text = "PAS_DB_SERVICE :";
-            // 
-            // PAS_DB_IP
-            // 
-            this.PAS_DB_IP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PAS_DB_IP.Location = new System.Drawing.Point(153, 3);
-            this.PAS_DB_IP.Name = "PAS_DB_IP";
-            this.PAS_DB_IP.Size = new System.Drawing.Size(269, 21);
-            this.PAS_DB_IP.TabIndex = 1;
-            // 
-            // ultraLabel15
-            // 
-            appearance9.TextHAlignAsString = "Right";
-            appearance9.TextTrimming = Infragistics.Win.TextTrimming.None;
-            appearance9.TextVAlignAsString = "Middle";
-            this.ultraLabel15.Appearance = appearance9;
-            this.ultraLabel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel15.Location = new System.Drawing.Point(3, 3);
-            this.ultraLabel15.Name = "ultraLabel15";
-            this.ultraLabel15.Size = new System.Drawing.Size(144, 18);
-            this.ultraLabel15.TabIndex = 69;
-            this.ultraLabel15.Text = "PAS_DB_IP :";
-            // 
-            // ultraLabel16
-            // 
-            appearance10.TextHAlignAsString = "Right";
-            appearance10.TextVAlignAsString = "Middle";
-            this.ultraLabel16.Appearance = appearance10;
-            this.ultraLabel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel16.Location = new System.Drawing.Point(428, 3);
-            this.ultraLabel16.Name = "ultraLabel16";
-            this.ultraLabel16.Size = new System.Drawing.Size(154, 18);
-            this.ultraLabel16.TabIndex = 69;
-            this.ultraLabel16.Text = "HOST_DB_IP :";
-            // 
             // OutLineSettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -722,6 +722,16 @@ namespace PAS.Core.Controls
             this.ultraGroupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox5)).EndInit();
             this.ultraGroupBox5.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HOST_DB_PASSWORD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PAS_DB_PASSWORD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HOST_DB_ID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PAS_DB_ID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HOST_DB_SERVICE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PAS_DB_SERVICE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HOST_DB_IP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PAS_DB_IP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).EndInit();
             this.ultraGroupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).EndInit();
@@ -739,16 +749,6 @@ namespace PAS.Core.Controls
             ((System.ComponentModel.ISupportInitialize)(this.PLC_PORT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PLC_IP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NAME)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.HOST_DB_PASSWORD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PAS_DB_PASSWORD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HOST_DB_ID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PAS_DB_ID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HOST_DB_SERVICE)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PAS_DB_SERVICE)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HOST_DB_IP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PAS_DB_IP)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -16,15 +16,15 @@ namespace PAS.Task
             //GlobalClass.InitializationSettings();
             //작업.Pas작업.test("1");
 
-            //테스트시에는 필요함. - 나중에 필요없음
-            GlobalClass.InitializationSettings();
-            //Core.Controls.OutLineSettingForm lineSettingForm = new Core.Controls.OutLineSettingForm();
-            //Application.Run(lineSettingForm);
+            ////테스트시에는 필요함. - 나중에 필요없음
+            //GlobalClass.InitializationSettings();
+            ////Core.Controls.OutLineSettingForm lineSettingForm = new Core.Controls.OutLineSettingForm();
+            ////Application.Run(lineSettingForm);
 
-            Core.Controls.PasSettingForm form = new Core.Controls.PasSettingForm();
-            Application.Run(form);
+            //Core.Controls.PasSettingForm form = new Core.Controls.PasSettingForm();
+            //Application.Run(form);
 
-            return;
+            //return;
 
             //하나만 실행하게끔 
             bool bcreate;

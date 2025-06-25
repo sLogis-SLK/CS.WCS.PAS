@@ -149,6 +149,18 @@
     <Compile Include="WinFormsApp\Dialog\frmTRDLG00061.Designer.cs">
       <DependentUpon>frmTRDLG00061.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinFormsApp\frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmLoading.Designer.cs">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\frmMessagbox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmMessagbox.Designer.cs">
+      <DependentUpon>frmMessagbox.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinFormsApp\frmTRPAS00001.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,6 +285,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\Dialog\frmTRDLG00061.resx">
       <DependentUpon>frmTRDLG00061.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\frmLoading.resx">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\frmMessagbox.resx">
+      <DependentUpon>frmMessagbox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\frmTRPAS00001.resx">
       <DependentUpon>frmTRPAS00001.cs</DependentUpon>
