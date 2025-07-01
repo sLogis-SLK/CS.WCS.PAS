@@ -55,8 +55,6 @@ namespace PAS.SMP
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -81,6 +79,8 @@ namespace PAS.SMP
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             this.업데이트 = new Infragistics.Win.Misc.UltraButton();
             this.종료버튼 = new Infragistics.Win.Misc.UltraButton();
             this.설정버튼 = new Infragistics.Win.Misc.UltraButton();
@@ -110,6 +110,8 @@ namespace PAS.SMP
             this.시리얼포트 = new System.IO.Ports.SerialPort(this.components);
             this.ultraGroupBox5 = new Infragistics.Win.Misc.UltraGroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.uGrid2 = new TR_Library.Controls.uGrid();
+            this.uGrid1 = new TR_Library.Controls.uGrid();
             this.HeaderText = new Infragistics.Win.Misc.UltraLabel();
             this.현시간 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraGroupBox6 = new Infragistics.Win.Misc.UltraGroupBox();
@@ -117,8 +119,6 @@ namespace PAS.SMP
             this.ultraButton1 = new Infragistics.Win.Misc.UltraButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.uMessage1 = new PAS.SMP.uMessage();
-            this.uGrid2 = new TR_Library.Controls.uGrid();
-            this.uGrid1 = new TR_Library.Controls.uGrid();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
             this.ultraGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).BeginInit();
@@ -131,11 +131,11 @@ namespace PAS.SMP
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox5)).BeginInit();
             this.ultraGroupBox5.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uGrid2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox6)).BeginInit();
             this.ultraGroupBox6.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uGrid2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).BeginInit();
             this.SuspendLayout();
             // 
             // 업데이트
@@ -430,7 +430,6 @@ namespace PAS.SMP
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.uGrid2, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.uGrid1, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(35, 16);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
@@ -438,90 +437,6 @@ namespace PAS.SMP
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(910, 307);
             this.tableLayoutPanel2.TabIndex = 7;
-            // 
-            // HeaderText
-            // 
-            appearance25.BackColor = System.Drawing.Color.LightSlateGray;
-            appearance25.FontData.BoldAsString = "True";
-            appearance25.ForeColor = System.Drawing.Color.White;
-            appearance25.TextHAlignAsString = "Center";
-            appearance25.TextVAlignAsString = "Middle";
-            this.HeaderText.Appearance = appearance25;
-            this.HeaderText.Dock = System.Windows.Forms.DockStyle.Left;
-            this.HeaderText.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.HeaderText.Location = new System.Drawing.Point(3, 16);
-            this.HeaderText.Name = "HeaderText";
-            this.HeaderText.Size = new System.Drawing.Size(32, 307);
-            this.HeaderText.TabIndex = 8;
-            this.HeaderText.Text = "출\r\n\r\n하\r\n\r\n이\r\n\r\n력";
-            // 
-            // 현시간
-            // 
-            appearance26.TextHAlignAsString = "Right";
-            this.현시간.Appearance = appearance26;
-            this.현시간.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.현시간.Location = new System.Drawing.Point(0, 794);
-            this.현시간.Name = "현시간";
-            this.현시간.Size = new System.Drawing.Size(1028, 23);
-            this.현시간.TabIndex = 8;
-            this.현시간.Text = "-";
-            // 
-            // ultraGroupBox6
-            // 
-            this.ultraGroupBox6.Controls.Add(this.tableLayoutPanel3);
-            this.ultraGroupBox6.Location = new System.Drawing.Point(0, 0);
-            this.ultraGroupBox6.Name = "ultraGroupBox6";
-            this.ultraGroupBox6.Size = new System.Drawing.Size(948, 68);
-            this.ultraGroupBox6.TabIndex = 10;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 4;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.Controls.Add(this.ultraButton1, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.comboBox1, 1, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(942, 62);
-            this.tableLayoutPanel3.TabIndex = 2;
-            // 
-            // ultraButton1
-            // 
-            this.ultraButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraButton1.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Bold);
-            this.ultraButton1.Location = new System.Drawing.Point(567, 3);
-            this.ultraButton1.Name = "ultraButton1";
-            this.ultraButton1.Size = new System.Drawing.Size(182, 56);
-            this.ultraButton1.TabIndex = 1;
-            this.ultraButton1.Text = "시작";
-            this.ultraButton1.Click += new System.EventHandler(this.시작버튼_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("굴림", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(198, 10);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(10);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(356, 41);
-            this.comboBox1.TabIndex = 0;
-            // 
-            // uMessage1
-            // 
-            this.uMessage1.BackColor = System.Drawing.Color.Red;
-            this.uMessage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.uMessage1.Location = new System.Drawing.Point(269, 183);
-            this.uMessage1.Name = "uMessage1";
-            this.uMessage1.Size = new System.Drawing.Size(398, 198);
-            this.uMessage1.TabIndex = 9;
             // 
             // uGrid2
             // 
@@ -660,6 +575,90 @@ namespace PAS.SMP
             this.uGrid1.TabIndex = 0;
             this.uGrid1.Text = "uGrid1";
             // 
+            // HeaderText
+            // 
+            appearance25.BackColor = System.Drawing.Color.LightSlateGray;
+            appearance25.FontData.BoldAsString = "True";
+            appearance25.ForeColor = System.Drawing.Color.White;
+            appearance25.TextHAlignAsString = "Center";
+            appearance25.TextVAlignAsString = "Middle";
+            this.HeaderText.Appearance = appearance25;
+            this.HeaderText.Dock = System.Windows.Forms.DockStyle.Left;
+            this.HeaderText.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.HeaderText.Location = new System.Drawing.Point(3, 16);
+            this.HeaderText.Name = "HeaderText";
+            this.HeaderText.Size = new System.Drawing.Size(32, 307);
+            this.HeaderText.TabIndex = 8;
+            this.HeaderText.Text = "출\r\n\r\n하\r\n\r\n이\r\n\r\n력";
+            // 
+            // 현시간
+            // 
+            appearance26.TextHAlignAsString = "Right";
+            this.현시간.Appearance = appearance26;
+            this.현시간.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.현시간.Location = new System.Drawing.Point(0, 794);
+            this.현시간.Name = "현시간";
+            this.현시간.Size = new System.Drawing.Size(1028, 23);
+            this.현시간.TabIndex = 8;
+            this.현시간.Text = "-";
+            // 
+            // ultraGroupBox6
+            // 
+            this.ultraGroupBox6.Controls.Add(this.tableLayoutPanel3);
+            this.ultraGroupBox6.Location = new System.Drawing.Point(0, 0);
+            this.ultraGroupBox6.Name = "ultraGroupBox6";
+            this.ultraGroupBox6.Size = new System.Drawing.Size(948, 68);
+            this.ultraGroupBox6.TabIndex = 10;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 4;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.Controls.Add(this.ultraButton1, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.comboBox1, 1, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(942, 62);
+            this.tableLayoutPanel3.TabIndex = 2;
+            // 
+            // ultraButton1
+            // 
+            this.ultraButton1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraButton1.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Bold);
+            this.ultraButton1.Location = new System.Drawing.Point(567, 3);
+            this.ultraButton1.Name = "ultraButton1";
+            this.ultraButton1.Size = new System.Drawing.Size(182, 56);
+            this.ultraButton1.TabIndex = 1;
+            this.ultraButton1.Text = "시작";
+            this.ultraButton1.Click += new System.EventHandler(this.시작버튼_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("굴림", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(198, 10);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(10);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(356, 41);
+            this.comboBox1.TabIndex = 0;
+            // 
+            // uMessage1
+            // 
+            this.uMessage1.BackColor = System.Drawing.Color.Red;
+            this.uMessage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.uMessage1.Location = new System.Drawing.Point(269, 183);
+            this.uMessage1.Name = "uMessage1";
+            this.uMessage1.Size = new System.Drawing.Size(398, 198);
+            this.uMessage1.TabIndex = 9;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -685,11 +684,11 @@ namespace PAS.SMP
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox5)).EndInit();
             this.ultraGroupBox5.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.uGrid2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox6)).EndInit();
             this.ultraGroupBox6.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.uGrid2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).EndInit();
             this.ResumeLayout(false);
 
         }

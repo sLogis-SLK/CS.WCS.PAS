@@ -710,9 +710,12 @@ namespace PAS.SMP
                 if (시리얼포트?.IsOpen == true)
                     시리얼포트.Close();
 
-                //기본Default 값 저장
-                string sDefault기기 = comboBox1.SelectedItem.ToString();
-                GlobalClass.SaveDefaultValueToIni(string.Empty, sDefault기기);
+                if (comboBox1.SelectedItem != null)
+                {
+                    //기본Default 값 저장
+                    string sDefault기기 = comboBox1.SelectedItem.ToString();
+                    GlobalClass.SaveDefaultValueToIni(string.Empty, sDefault기기);
+                }
 
                 base.OnClosed(e);
             }
