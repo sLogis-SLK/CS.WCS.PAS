@@ -45,7 +45,7 @@ namespace PAS.PMP
             {
                 #region uGrid2 BindingSource 초기화
 
-                분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 0, "모두");
+                분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 0, GlobalClass.장비명);
 
 
 
@@ -60,7 +60,7 @@ namespace PAS.PMP
 
                 //#region uGrid1 BindingSource 초기화
 
-                분류.미출고상품별조회(m_분류_상품별미출고Table, "", "", "", 0);
+                분류.미출고상품별조회(m_분류_상품별미출고Table, "", "", 0);
 
                 this.m_분류_상품별미출고BS.DataSource = this.m_분류_상품별미출고Table;
                 this.uGrid1.DataSource = this.m_분류_상품별미출고BS;
@@ -105,7 +105,7 @@ namespace PAS.PMP
                 }
 
                 DataTable 상품별미출고 = new DataTable("usp_분류_미출고내역_상품별_Get");
-                분류.미출고상품별조회(상품별미출고, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), oRow["장비명"].ToString(), 1);
+                분류.미출고내역상품별출력(상품별미출고, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), oRow["슈트번호"].ToString());
 
                 if (상품별미출고.Rows.Count <= 0)
                 {
@@ -147,7 +147,7 @@ namespace PAS.PMP
                 }
 
                 DataTable 상품별미출고 = new DataTable("usp_분류_미출고내역_상품별_Get");
-                분류.미출고상품별조회(상품별미출고, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), oRow["장비명"].ToString(), 1);
+                분류.미출고상품별조회(상품별미출고, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), 1);
 
                 if (상품별미출고.Rows.Count <= 0)
                 {
@@ -205,7 +205,7 @@ namespace PAS.PMP
             try
             {
                 DataRow oRow = ((DataRowView)uGrid2.ActiveRow.ListObject).Row;
-                분류.미출고상품별조회(m_분류_상품별미출고Table, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), oRow["장비명"].ToString(), 1);
+                분류.미출고상품별조회(m_분류_상품별미출고Table, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), 1);
             }
             catch (Exception ex)
             {

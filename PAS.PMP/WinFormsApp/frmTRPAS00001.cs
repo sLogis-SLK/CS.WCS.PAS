@@ -86,7 +86,7 @@ namespace PAS.PMP
             try
             {
                 //#region uGrid3 BindingSource 초기화
-                분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.조회시작일.Value).ToString("yyyyMMdd"), 0, "모두");
+                분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.조회시작일.Value).ToString("yyyyMMdd"), 0, GlobalClass.장비명);
 
 
                 this.m_분류_작업배치그룹BS.DataSource = this.m_분류_작업배치그룹Table;
@@ -99,7 +99,7 @@ namespace PAS.PMP
                 this.uGrid3.DisplayLayout.Bands[0].Columns["등록일시"].Format = "yy-MM-dd HH:mm";
 
 
-                분류.미출고슈트별조회(m_분류_슈트별미출고Table, "", "", "", 0);
+                분류.미출고슈트별조회(m_분류_슈트별미출고Table, "", "", 0);
 
                 this.m_분류_슈트별미출고BS.DataSource = this.m_분류_슈트별미출고Table;
                 this.uGrid1.DataSource = this.m_분류_슈트별미출고BS;
@@ -113,7 +113,7 @@ namespace PAS.PMP
                 this.uGrid1.DisplayLayout.Bands[0].Columns["부족수"].CellAppearance.ForeColor = Color.Red;
 
 
-                분류.미출고슈트별상세조회(m_분류_슈트별미출고상세Table, "", "", "", "", 0);
+                분류.미출고슈트별상세조회(m_분류_슈트별미출고상세Table, "", "", "", 0);
 
                 this.m_분류_슈트별미출고상세BS.DataSource = this.m_분류_슈트별미출고상세Table;
                 this.uGrid2.DataSource = this.m_분류_슈트별미출고상세BS;
@@ -166,8 +166,7 @@ namespace PAS.PMP
                 DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
                 _배치번호 = oRow["배치번호"].ToString();
                 _분류번호 = oRow["분류번호"].ToString();
-                _장비명 = oRow["장비명"].ToString();
-                분류.미출고슈트별조회(m_분류_슈트별미출고Table, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), _장비명, 1);
+                분류.미출고슈트별조회(m_분류_슈트별미출고Table, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), 1);
             }   
             catch (Exception ex) 
             {
@@ -190,8 +189,8 @@ namespace PAS.PMP
             try
             {
                 DataRow oRow = ((DataRowView)uGrid1.ActiveRow.ListObject).Row;
-
-                분류.미출고슈트별상세조회(m_분류_슈트별미출고상세Table, _분류번호, _배치번호, oRow["슈트번호"].ToString(), _장비명, 1);
+                _장비명 = oRow["장비명"].ToString();
+                분류.미출고슈트별상세조회(m_분류_슈트별미출고상세Table, _분류번호, _배치번호, oRow["슈트번호"].ToString(), 1);
             }
             catch (Exception ex)
             {
@@ -239,7 +238,7 @@ namespace PAS.PMP
                 }
 
                 oValue3 = this.출력대상유형.Value == (object)"20" ? oRowSute["슈트번호"].ToString() : string.Empty;
-                분류.미출고내역슈트별출력(this.m_분류_미출고내역_슈트별출력용_Table, s분류번호, s배치번호, oValue3, _장비명);
+                분류.미출고내역슈트별출력(this.m_분류_미출고내역_슈트별출력용_Table, s분류번호, s배치번호, oValue3);
 
                 if (this.m_분류_미출고내역_슈트별출력용_Table == null || this.m_분류_미출고내역_슈트별출력용_Table.Rows.Count <= 0)
                 {
@@ -294,7 +293,7 @@ namespace PAS.PMP
                 }
 
                 oValue3 = this.출력대상유형.Value == (object)"20" ? oRowSute["슈트번호"].ToString() : string.Empty;
-                분류.미출고내역슈트별출력(this.m_분류_미출고내역_슈트별출력용_Table, s분류번호, s배치번호, oValue3, _장비명);
+                분류.미출고내역슈트별출력(this.m_분류_미출고내역_슈트별출력용_Table, s분류번호, s배치번호, oValue3);
 
                 if (this.m_분류_미출고내역_슈트별출력용_Table == null || this.m_분류_미출고내역_슈트별출력용_Table.Rows.Count <= 0)
                 {

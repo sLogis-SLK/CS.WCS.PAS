@@ -59,7 +59,7 @@ namespace PAS.PMP
 
                 #region uGrid1 BindingSource 초기화
 
-                분류.출하박스별패킹대상(m_출하_박스별패킹대상Table, "", "", "", 0);
+                분류.출하박스별패킹대상(m_출하_박스별패킹대상Table, "", "", 0);
 
                 this.m_출하_박스별패킹BS.DataSource = this.m_출하_박스별패킹대상Table;
                 this.uGrid1.DataSource = this.m_출하_박스별패킹BS;
@@ -183,7 +183,7 @@ namespace PAS.PMP
             try
             {
                 DataRow oRow = ((DataRowView)uGrid2.ActiveRow.ListObject).Row;
-                분류.출하박스별패킹대상(m_출하_박스별패킹대상Table, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), oRow["장비명"].ToString(), 1);
+                분류.출하박스별패킹대상(m_출하_박스별패킹대상Table, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), 1);
             } 
             catch (Exception ex)
             {

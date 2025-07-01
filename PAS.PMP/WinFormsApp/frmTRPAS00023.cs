@@ -16,5 +16,10 @@ namespace PAS.PMP
         {
             InitializeComponent();
         }
+
+        private void 연결테스트_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

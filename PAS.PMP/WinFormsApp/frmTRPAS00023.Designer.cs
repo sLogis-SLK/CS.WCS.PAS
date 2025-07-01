@@ -242,7 +242,7 @@ namespace PAS.PMP
             // 
             this.ultraTabPageControl센터.Controls.Add(this.ultraGroupBox3);
             this.ultraTabPageControl센터.Controls.Add(this.ultraGroupBox2);
-            this.ultraTabPageControl센터.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl센터.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl센터.Name = "ultraTabPageControl센터";
             this.ultraTabPageControl센터.Size = new System.Drawing.Size(750, 277);
             // 
@@ -605,7 +605,7 @@ namespace PAS.PMP
             // ultraTabPageControl브랜드
             // 
             this.ultraTabPageControl브랜드.Controls.Add(this.ultraGroupBox4);
-            this.ultraTabPageControl브랜드.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl브랜드.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl브랜드.Name = "ultraTabPageControl브랜드";
             this.ultraTabPageControl브랜드.Size = new System.Drawing.Size(750, 277);
             // 
@@ -1498,6 +1498,7 @@ namespace PAS.PMP
             this.연결테스트.Size = new System.Drawing.Size(90, 34);
             this.연결테스트.TabIndex = 7;
             this.연결테스트.Text = "연결테스트";
+            this.연결테스트.Click += new System.EventHandler(this.연결테스트_Click);
             // 
             // 저장
             // 
