@@ -129,7 +129,7 @@ namespace PAS.PMP
             );
         }
 
-        internal static void 슈트별박스풀조회(DataTable dataTable, string 분류번호, string 배치번호, string 슈트번호, string 서브슈트번호 int 구분자)
+        internal static void 슈트별박스풀조회(DataTable dataTable, string 분류번호, string 배치번호, string 슈트번호, string 서브슈트번호, int 구분자)
         {
             if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_박스바코드재발행_슈트별_Get")
             {
@@ -240,6 +240,22 @@ namespace PAS.PMP
                                 ,GlobalClass.장비명
                                 ,배치번호
                                 ,구분자 }
+                );
+
+        }
+
+        internal static void 분류작업요약(DataTable dataTable , string 배치상태, int 조회구분자)
+        {
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_작업요약_Get")
+            {
+                dataTable.TableName = "usp_분류_작업요약_Get";
+            }
+
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+                new string[] { "@장비명", "@배치상태", "@조회구분자" },
+                  new object[] { GlobalClass.장비명
+                                ,배치상태
+                                ,조회구분자 }
                 );
 
         }

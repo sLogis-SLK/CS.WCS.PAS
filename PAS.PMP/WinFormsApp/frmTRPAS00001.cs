@@ -23,7 +23,6 @@ namespace PAS.PMP
 
         string _배치번호 = "";
         string _분류번호 = "";
-        string _장비명 = "";
 
         enum enum신규입력
         {
@@ -189,7 +188,6 @@ namespace PAS.PMP
             try
             {
                 DataRow oRow = ((DataRowView)uGrid1.ActiveRow.ListObject).Row;
-                _장비명 = oRow["장비명"].ToString();
                 분류.미출고슈트별상세조회(m_분류_슈트별미출고상세Table, _분류번호, _배치번호, oRow["슈트번호"].ToString(), 1);
             }
             catch (Exception ex)
@@ -249,7 +247,7 @@ namespace PAS.PMP
                     string val = $"{this.m_분류_미출고내역_슈트별출력용_Table.Rows[0]["브랜드코드"].ToString()}:{this.m_분류_미출고내역_슈트별출력용_Table.Rows[0]["브랜드명"].ToString()}";
                     미출고내역_슈트별 미출고내역슈트별 = new 미출고내역_슈트별();
                     미출고내역슈트별.SetDataSource(this.m_분류_미출고내역_슈트별출력용_Table);
-                    미출고내역슈트별.SetParameterValue("로컬장비명", _장비명);
+                    미출고내역슈트별.SetParameterValue("로컬장비명", GlobalClass.장비명);
                     미출고내역슈트별.SetParameterValue("브랜드명", (object)val);
 
                     Common.PrintPrevView(미출고내역슈트별);

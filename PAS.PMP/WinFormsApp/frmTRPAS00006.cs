@@ -104,7 +104,7 @@ namespace PAS.PMP
 
         private void 분류_상품발송장_조회(string s분류번호, string s배치번호)
         {
-            분류.분류상품발송장조회(m_분류_상품발송장대상Table, s분류번호, s배치번호, _장비명, 1);
+            분류.분류상품발송장조회(m_분류_상품발송장대상Table, s분류번호, s배치번호, 1);
             this.tabControl1.TabPages.Clear();
             if (this.m_분류_상품발송장대상Table.Rows.Count <= 0)
             {

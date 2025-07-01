@@ -106,13 +106,13 @@ namespace PAS.PMP
 
                 #region uGrid3 BindingSource 초기화
 
-                분류.배치리스트조회(m_분류_작업요약Table, null, 0);
+                분류.분류작업요약(m_분류_작업요약Table, "모두", 0);
 
                 m_분류_작업요약BS.DataSource = m_분류_작업요약Table;
                 uGrid3.DataSource = m_분류_작업요약BS;
 
                 Common.SetGridInit(this.uGrid3, true, true, true, true, false, false);
-                Common.SetGridHiddenColumn(this.uGrid3, "순번", "관리번호", "장비구분", "배치구분코드", "출하구분코드", "분류구분", "분류구분코드",  "분류방법코드", "패턴구분코드", "분류상태코드", "배치상태코드");
+                Common.SetGridHiddenColumn(this.uGrid3, "순번", "관리번호", "배치구분코드", "출하구분코드", "분류구분", "분류구분코드",  "분류방법코드", "패턴구분코드", "분류상태코드", "배치상태코드");
                 Common.SetGridEditColumn(this.uGrid3, "선택");
 
                 #endregion
@@ -169,7 +169,7 @@ namespace PAS.PMP
             {
                 연동.조회미수신기간별(m_PAS_배치정보Table, m조회시작일자, m조회종료일자, true);
                 연동.조회수신기간별(m_연동_작업지시Table, m조회시작일자, m조회종료일자, true);
-                분류.배치리스트조회(m_분류_작업요약Table, null, 1);
+                분류.분류작업요약(m_분류_작업요약Table, "모두", 1);
                 var 삭제대상 = new List<DataRow>();
                 foreach (DataRow row in this.m_분류_작업요약Table.Rows)
                 {

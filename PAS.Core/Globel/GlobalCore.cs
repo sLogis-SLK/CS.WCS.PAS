@@ -18,7 +18,7 @@ namespace PAS.Core
 
         public static string HostDBConnectionString
         {
-            get { return $"Data Source={db접속정보.HOST_DB_IP};Initial Catalog={db접속정보.HOST_DB_SERVICE};Persist Security Info=True;User ID={db접속정보.HOST_DB_ID};Password={db접속정보.HOST_DB_PASSWORD}"; }
+            get { return $"Data Source={db접속정보.PAS_DB_IP};Initial Catalog={db접속정보.HOST_DB_SERVICE};Persist Security Info=True;User ID={db접속정보.HOST_DB_ID};Password={db접속정보.HOST_DB_PASSWORD}"; }
         }
 
         public static Dictionary<string, DataRow> DicPas기기 = new Dictionary<string, DataRow>();
