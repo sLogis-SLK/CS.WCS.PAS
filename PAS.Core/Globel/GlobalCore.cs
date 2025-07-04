@@ -64,6 +64,8 @@ namespace PAS.Core
                     saveRow.ItemArray = row.ItemArray;
                     Dic출하기기.Add(row["NAME"].ToString(), saveRow);
                 }
+
+
             }
             catch (System.Exception ex)
             {

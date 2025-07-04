@@ -62,7 +62,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
         }
 
@@ -162,7 +162,7 @@ namespace PAS.PMP
             }
             catch (SocketException ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             return false;
         }
@@ -182,7 +182,7 @@ namespace PAS.PMP
             }
             catch (SocketException ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             return false;
         }
@@ -223,7 +223,7 @@ namespace PAS.PMP
                         case 50:
                             return 상태처리.TRUE;
                         case 49:
-                            Common.ErrorMessage(this.Text, "이미 개시중인 배치 입니다.");
+                            MessageBox.Show("이미 개시중인 배치 입니다.", this.Text);
                             return 상태처리.ERROR;
                         default:
                             //Common.Log((object)e1.ToString(), (object)"[SEND]", (object)Common.H2S(bytes), (object)DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
@@ -240,7 +240,7 @@ namespace PAS.PMP
                         case 52:
                             return 상태처리.TRUE;
                         case 49:
-                            Common.ErrorMessage(this.Text, "아직 배치가 완료되지 않았습니다.\r\n\r\n컨베이어에 상품이 있는지 확인하세요.");
+                            MessageBox.Show("아직 배치가 완료되지 않았습니다.\r\n\r\n컨베이어에 상품이 있는지 확인하세요.", this.Text);
                             return 상태처리.ERROR;
                         default:
                             //Common.Log((object)e1.ToString(), (object)"[SEND]", (object)Common.H2S(bytes), (object)DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
@@ -251,7 +251,7 @@ namespace PAS.PMP
             }
             catch (SocketException ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -269,7 +269,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
                 return 상태처리.ERROR;
             }
             finally
@@ -292,7 +292,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
                 return 상태처리.ERROR;
             }
             finally
@@ -310,7 +310,7 @@ namespace PAS.PMP
                 $"배치번호='{배치번호}' AND 배치번호=원배치번호 AND 분류상태 IN ('개시', '중단')");
             if (rows.Length > 0) return true;
 
-            Common.ErrorMessage(this.Text, "선택한 배치는 단독으로 개시할 수 없습니다.\r\n부모 배치를 먼저 개시하여 주세요.");
+            MessageBox.Show("선택한 배치는 단독으로 개시할 수 없습니다.\r\n부모 배치를 먼저 개시하여 주세요.", this.Text);
             return false;
         }
 
@@ -322,14 +322,14 @@ namespace PAS.PMP
                 관리.배정할수없는슈트확인(dt, 원배치번호);
                 if (dt.Rows.Count > 0)
                 {
-                    Common.ErrorMessage(this.Text, "1번 슈트에 분류가 배정 되었습니다.\r\n선택한 배치를 개시할 수 없습니다.");
+                    MessageBox.Show("1번 슈트에 분류가 배정 되었습니다.\r\n선택한 배치를 개시할 수 없습니다.", this.Text);
                     return false;
                 }
                 return true;
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
                 return false;
             }
         }
@@ -343,7 +343,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, $"선택한 [{원배치번호}] 배치는 중복되는 아이템이 있어 개시할 수 없습니다.\r\n{ex.Message}");
+                MessageBox.Show($"선택한 [{원배치번호}] 배치는 중복되는 아이템이 있어 개시할 수 없습니다.\r\n{ex.Message}", this.Text);
                 return false;
             }
         }
@@ -356,7 +356,7 @@ namespace PAS.PMP
                 관리.배송사중복배정확인(dt, 분류번호, GlobalClass.장비명, 원배치번호);
                 if (dt.Rows.Count > 0)
                 {
-                    Common.ErrorMessage(this.Text, "동일 매장에 배송사가 중복 배정되었습니다.\r\n선택한 배치를 개시할 수 없습니다.");
+                    MessageBox.Show("동일 매장에 배송사가 중복 배정되었습니다.\r\n선택한 배치를 개시할 수 없습니다.", this.Text);
                     if (MessageBox.Show("대상을 확인 하시겠습니까?", this.Text, MessageBoxButtons.YesNo) != DialogResult.Yes)
                         return false;
                     var dlg = new frmTRDLG00061()
@@ -371,7 +371,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
                 return false;
             }
         }
@@ -384,7 +384,7 @@ namespace PAS.PMP
                 관리.매장중복배정확인(dt, 분류번호, GlobalClass.장비명, 원배치번호);
                 if (dt.Rows.Count > 0)
                 {
-                    Common.ErrorMessage(this.Text, "동일 슈트에 매장이 중복 배정되었습니다.\r\n\r\n선택한 배치를 개시할 수 없습니다.");
+                    MessageBox.Show("동일 슈트에 매장이 중복 배정되었습니다.\r\n\r\n선택한 배치를 개시할 수 없습니다.", this.Text);
                     if (MessageBox.Show("대상을 확인 하시겠습니까?", this.Text, MessageBoxButtons.YesNo) != DialogResult.Yes)
                         return false;
                     var dlg = new frmTRDLG00061()
@@ -398,7 +398,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
                 return false;
             }
         }
@@ -412,7 +412,7 @@ namespace PAS.PMP
             {
                 if (!this.Connection())
                 {
-                    Common.ErrorMessage(this.Text, "PAS에 연결할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###");
+                    MessageBox.Show("PAS에 연결할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
                     break;
                 }
 
@@ -428,7 +428,7 @@ namespace PAS.PMP
 
                 if (결과 == 상태처리.FALSE && i == 4)
                 {
-                    Common.ErrorMessage(this.Text, "배치를 개시할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###");
+                    MessageBox.Show("배치를 개시할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
                     try
                     {
                         관리.바코드중복확인취소(분류번호, GlobalClass.장비명, 원배치번호);
@@ -446,7 +446,7 @@ namespace PAS.PMP
             var rows = this.m_분류_작업요약Table.Select($"분류번호='{분류번호}' AND 순번=1");
             if (rows.Length == 0)
             {
-                Common.ErrorMessage(this.Text, "배치를 개시할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###");
+                MessageBox.Show("배치를 개시할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
                 return;
             }
 
@@ -466,20 +466,20 @@ namespace PAS.PMP
 
             if (!File.Exists(sourcePath))
             {
-                Common.ErrorMessage(this.Text, "선택한 배치가 준비되지 않습니다.\r\n배치 수신처리 및 작성이 되어있는지 확인하세요.");
+                MessageBox.Show("선택한 배치가 준비되지 않습니다.\r\n배치 수신처리 및 작성이 되어있는지 확인하세요.", this.Text);
                 return;
             }
 
             if (!파일복사(sourcePath, targetPath))
             {
-                Common.ErrorMessage(this.Text, "배치개시 준비가 되지 않았습니다.\r\n\r\n### 관리자에게 문의하세요. ###");
+                MessageBox.Show("배치개시 준비가 되지 않았습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
                 return;
             }
 
             if (!File.Exists(targetPath))
             {
                 GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
-                Common.ErrorMessage(this.Text, "배치를 개시하는 중 문제가 발생하였습니다.\r\n\r\n### 관리자에게 문의하세요. ###");
+                MessageBox.Show("배치를 개시하는 중 문제가 발생하였습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
                 return;
             }
 
@@ -499,7 +499,7 @@ namespace PAS.PMP
                 if (result == 상태처리.FALSE && i == 59)
                 {
                     GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = "배치 개시 실패!!")));
-                    Common.ErrorMessage(this.Text, "배치를 개시할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###");
+                    MessageBox.Show("배치를 개시할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
                     GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
                 }
 
@@ -549,7 +549,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
                 return false;
             }
         }
@@ -616,7 +616,7 @@ namespace PAS.PMP
 
                     case 상태처리.FALSE:
                         if (i == 59)
-                            Common.ErrorMessage(this.Text, "배치를 종료할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###");
+                            MessageBox.Show("배치를 종료할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
                         continue;
 
                     default:
@@ -670,7 +670,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -700,7 +700,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
         }
 
@@ -711,7 +711,7 @@ namespace PAS.PMP
                 var selectedRows = this.uGrid3.Selected.Rows;
                 if (selectedRows == null || selectedRows.Count == 0)
                 {
-                    Common.ErrorMessage(this.Text, "배치를 선택해 주세요.");
+                    MessageBox.Show("배치를 선택해 주세요.", this.Text);
                     return;
                 }
                 UltraGridRow row = selectedRows[0];
@@ -734,7 +734,7 @@ namespace PAS.PMP
                 string 작업중인분류번호 = this.분류_작업요약_작업중인분류번호();
                 if(분류번호 != 작업중인분류번호 && !string.IsNullOrEmpty(작업중인분류번호))
                 {
-                    Common.ErrorMessage(this.Text, "선택한 배치는 개시할 수 없습니다.");
+                    MessageBox.Show("선택한 배치는 개시할 수 없습니다.", this.Text);
                     return;
                 }
 
@@ -745,7 +745,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, "배치 개시 중 오류가 발생했습니다.\r\n\r\n" + ex.Message);
+                MessageBox.Show("배치 개시 중 오류가 발생했습니다.\r\n\r\n" + ex.Message, this.Text);
             }
             finally
             {
@@ -759,7 +759,7 @@ namespace PAS.PMP
             var selectedRows = this.uGrid3.Selected.Rows;
             if (selectedRows == null || selectedRows.Count == 0)
             {
-                Common.ErrorMessage(this.Text, "배치를 선택해 주세요.");
+                MessageBox.Show("배치를 선택해 주세요.", this.Text);
                 return;
             }
             UltraGridRow row = selectedRows[0];
@@ -771,7 +771,7 @@ namespace PAS.PMP
             DataRow[] array = this.m_분류_작업요약Table.Select($"배치번호='{배치번호}'");
             if (array != null && array.Length > 1)
             {
-                Common.ErrorMessage(this.Text, "선택한 배치는 종속된 배치가 있어서 종료를 할 수 없습니다.\r\n분류종료를 하십시오.");
+                MessageBox.Show("선택한 배치는 종속된 배치가 있어서 종료를 할 수 없습니다.\r\n분류종료를 하십시오.", this.Text);
                 return;
             }
             if (MessageBox.Show($"선택한 배치번호는 [{원배치번호}] 입니다.\r\n종료 하시겠습니까?", this.Text, MessageBoxButtons.YesNo) != DialogResult.Yes ||
@@ -783,7 +783,7 @@ namespace PAS.PMP
             var 첫작업Row = rows.Length > 0 ? rows[0] : null;
             if (첫작업Row == null)
             {
-                Common.ErrorMessage(this.Text, "배치를 종료할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###");
+                MessageBox.Show("배치를 종료할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
                 return;
             }
 
@@ -800,7 +800,7 @@ namespace PAS.PMP
 
                 if (!재구성데이터복사(원배치번호, 종료파일경로))
                 {
-                    Common.ErrorMessage(this.Text, "배치종료 준비가 되지 않았습니다.\r\n\r\n### 관리자에게 문의하세요. ###");
+                    MessageBox.Show("배치종료 준비가 되지 않았습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
                     return;
                 }
 
@@ -808,7 +808,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -827,7 +827,7 @@ namespace PAS.PMP
                 var selectedRows = this.uGrid3.Selected.Rows;
                 if (selectedRows == null || selectedRows.Count == 0)
                 {
-                    Common.ErrorMessage(this.Text, "분류를 선택해 주세요.");
+                    MessageBox.Show("분류를 선택해 주세요.", this.Text);
                     return;
                 }
                 UltraGridRow row = selectedRows[0];
@@ -840,7 +840,7 @@ namespace PAS.PMP
 
                 if (분류상태 == "준비" || 분류상태 == "종료")
                 {
-                    Common.ErrorMessage(this.Text, "선택한 분류는 종료할 수 없습니다.");
+                    MessageBox.Show("선택한 분류는 종료할 수 없습니다.", this.Text);
                     return;
                 }
                 if (MessageBox.Show("현재 분류를 모두 종료합니다.\r\n\r\n★★★ 정말로 종료 하시겠습니까? ★★★", this.Text, MessageBoxButtons.YesNo) != DialogResult.Yes) return;
@@ -849,14 +849,14 @@ namespace PAS.PMP
                 var rows = this.m_분류_작업요약Table.Select($"분류번호='{분류번호}' AND 순번=1");
                 if (rows == null || rows.Length <= 0)
                 {
-                    Common.ErrorMessage(this.Text, "분류를 종료할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###");
+                    MessageBox.Show("분류를 종료할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
                     return;
                 }
                 string 작업일자 = rows[0]["작업일자"].ToString();
 
                 if (string.IsNullOrEmpty(작업일자))
                 {
-                    Common.ErrorMessage(this.Text, "분류를 종료할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###");
+                    MessageBox.Show("분류를 종료할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
                     return;
                 }
 
@@ -864,7 +864,7 @@ namespace PAS.PMP
                 {
                     if (!this.Connection())
                     {
-                        Common.ErrorMessage(this.Text, "PAS에 연결할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###");
+                        MessageBox.Show("PAS에 연결할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
                         GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
                         break;
                     }
@@ -883,14 +883,14 @@ namespace PAS.PMP
                     if (결과 == 상태처리.FALSE && i + 1 == 5)
                     {
                         GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = "분류 종료 실패!!")));
-                        Common.ErrorMessage(this.Text, "분류를 종료할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###");
+                        MessageBox.Show("분류를 종료할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
                         GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
                     }
                 }
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {

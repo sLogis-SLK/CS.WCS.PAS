@@ -50,7 +50,8 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(Name, ex);
+
+                MessageBox.Show(ex.Message, this.Text);
             }
         }
 

@@ -86,7 +86,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(Name, ex);
+                MessageBox.Show(ex.Message, this.Text);
             }
         }
 
@@ -144,7 +144,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(Name, ex);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -158,18 +158,18 @@ namespace PAS.PMP
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                var rows = this.uGrid1.Selected.Rows;
-                if (rows == null || rows.Count == 0)
+                DataRow oRow = ((DataRowView)uGrid1.ActiveRow.ListObject).Row;
+                if (oRow == null)
                 {
-                    Common.ErrorMessage(this.Text, "배치를 선택해 주세요.");
+                    MessageBox.Show("배치를 선택해 주세요.", this.Text);
                     return;
                 }
 
-                string s배치번호 = rows[0].Cells["배치번호"].Value.ToString();
+                string s배치번호 = oRow["배치번호"].ToString();
 
                 if (MessageBox.Show($"배치번호 : {s배치번호}\r\n\r\n선택한 배치의 실적을 취소 하시겠습니까?", this.Text, MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
-                    Common.ErrorMessage(this.Text, "작업을 취소합니다!!");
+                    MessageBox.Show("작업을 취소합니다!!", this.Text);
                     return;
                 }
 
@@ -178,7 +178,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -192,22 +192,22 @@ namespace PAS.PMP
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                var rows = this.uGrid1.Selected.Rows;
-                if (rows == null || rows.Count == 0)
+                DataRow oRow = ((DataRowView)uGrid1.ActiveRow.ListObject).Row;
+                if (oRow == null)
                 {
-                    Common.ErrorMessage(this.Text, "배치를 선택해 주세요.");
+                    MessageBox.Show("배치를 선택해 주세요.", this.Text);
                     return;
                 }
 
-                string s분류번호 = rows[0].Cells["분류번호"].Value.ToString();
-                string s배치번호 = rows[0].Cells["배치번호"].Value.ToString();
+                string s분류번호 = oRow["분류번호"].ToString();
+                string s배치번호 = oRow["배치번호"].ToString();
 
                 string message =
                     $"배치번호 : {s배치번호}\r\n\r\n선택한 배치의 실적을 취소 하시겠습니까?";
 
                 if (MessageBox.Show(message, this.Text, MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
-                    Common.ErrorMessage(this.Text, "작업을 취소합니다!!");
+                    MessageBox.Show("작업을 취소합니다!!", this.Text);
                     return;
                 }
 
@@ -217,7 +217,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -231,19 +231,19 @@ namespace PAS.PMP
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                var rows = this.uGrid1.Selected.Rows;
-                if (rows == null || rows.Count == 0)
+                DataRow oRow = ((DataRowView)uGrid1.ActiveRow.ListObject).Row;
+                if (oRow == null)
                 {
-                    Common.ErrorMessage(this.Text, "배치를 선택해 주세요.");
+                    MessageBox.Show("배치를 선택해 주세요.", this.Text);
                     return;
                 }
 
-                string s분류번호 = rows[0].Cells["분류번호"].Value.ToString();
-                string s배치번호 = rows[0].Cells["배치번호"].Value.ToString();
+                string s분류번호 = oRow["분류번호"].ToString();
+                string s배치번호 = oRow["배치번호"].ToString();
 
                 if (MessageBox.Show($"배치번호 : {s배치번호}\r\n\r\n선택한 배치의 패킹실적을 취소 하시겠습니까?", this.Text, MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
-                    Common.ErrorMessage(this.Text, "작업을 취소합니다!!");
+                    MessageBox.Show("작업을 취소합니다!!", this.Text);
                     return;
                 }
                 연동.PAS배치반영취소(s배치번호);
@@ -253,7 +253,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -311,7 +311,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {

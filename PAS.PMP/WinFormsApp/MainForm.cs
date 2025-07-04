@@ -21,7 +21,6 @@ namespace PAS.PMP
     {
         private UltraTreeNode m_LastNodeFromPos = null;
         private string _pasLine = string.Empty;
-
         public MainForm()
         {
             InitializeComponent();
@@ -36,6 +35,8 @@ namespace PAS.PMP
             {
                 cbo.ValueList.ValueListItems.Add(item.Key);
             }
+
+            GlobalClass.전역상태바 = statusStrip1;
 
             cbo.Value = GlobalClass.DefaultValuePasName;
 
@@ -138,6 +139,11 @@ namespace PAS.PMP
                         DockableControlPane dcPane = this.ultraDockManager1.ControlPanes["uTreeProgram"];
                         dcPane.Close();
                         form.MdiParent = this;
+                        if (form is BaseForm)
+                        {
+                            (form as BaseForm).StatusChanged += MainForm_StatusChanged1;
+                        }
+
                         form.Show();
                         //form.WindowState = FormWindowState.Maximized;
 
@@ -147,6 +153,20 @@ namespace PAS.PMP
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void MainForm_StatusChanged1(string message)
+        {
+            if (statusStrip1.InvokeRequired)
+            {
+                // 비동기 (UI 스레드가 아님): Invoke로 처리
+                statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = message));
+            }
+            else
+            {
+                // 동기 (UI 스레드): 바로 처리
+                toolStripStatusLabel1.Text = message;
             }
         }
 

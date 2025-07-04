@@ -114,7 +114,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(Name, ex);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -130,7 +130,7 @@ namespace PAS.PMP
             {
                 if (this.uGrid1.Selected.Rows == null || this.uGrid1.Selected.Rows.Count <= 0)
                 {
-                    Common.ErrorMessage(this.Text, "배치를 선택해 주세요.");
+                    MessageBox.Show("배치를 선택해 주세요.", this.Text);
                 }
 
                 Cursor.Current = Cursors.WaitCursor;
@@ -150,7 +150,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -179,7 +179,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {

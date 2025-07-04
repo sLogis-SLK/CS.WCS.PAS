@@ -265,7 +265,6 @@ namespace PAS.PMP
             // 
             this.분류명.Location = new System.Drawing.Point(283, 9);
             this.분류명.Name = "분류명";
-            this.분류명.ReadOnly = true;
             this.분류명.Size = new System.Drawing.Size(160, 21);
             this.분류명.TabIndex = 1044;
             // 

@@ -91,12 +91,15 @@ namespace PAS.PMP
             this._MainForm_Toolbars_Dock_Area_Top = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this.windowDockingArea1 = new Infragistics.Win.UltraWinDock.WindowDockingArea();
             this.dockableWindow1 = new Infragistics.Win.UltraWinDock.DockableWindow();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.uTreeProgram)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDockManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).BeginInit();
             this.windowDockingArea1.SuspendLayout();
             this.dockableWindow1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // uTreeProgram
@@ -198,7 +201,7 @@ namespace PAS.PMP
             ultraTreeNode23,
             ultraTreeNode33,
             ultraTreeNode39});
-            this.uTreeProgram.Size = new System.Drawing.Size(243, 544);
+            this.uTreeProgram.Size = new System.Drawing.Size(243, 534);
             this.uTreeProgram.TabIndex = 4;
             this.uTreeProgram.ViewStyle = Infragistics.Win.UltraWinTree.ViewStyle.Standard;
             this.uTreeProgram.DoubleClick += new System.EventHandler(this.ultraTree1_DoubleClick);
@@ -219,7 +222,7 @@ namespace PAS.PMP
             dockableControlPane1.Text = "네비게이션";
             dockAreaPane1.Panes.AddRange(new Infragistics.Win.UltraWinDock.DockablePaneBase[] {
             dockableControlPane1});
-            dockAreaPane1.Size = new System.Drawing.Size(243, 562);
+            dockAreaPane1.Size = new System.Drawing.Size(243, 552);
             this.ultraDockManager1.DockAreas.AddRange(new Infragistics.Win.UltraWinDock.DockAreaPane[] {
             dockAreaPane1});
             this.ultraDockManager1.HostControl = this;
@@ -228,29 +231,29 @@ namespace PAS.PMP
             // _MainFormUnpinnedTabAreaLeft
             // 
             this._MainFormUnpinnedTabAreaLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this._MainFormUnpinnedTabAreaLeft.Font = new System.Drawing.Font("굴림", 4F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this._MainFormUnpinnedTabAreaLeft.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this._MainFormUnpinnedTabAreaLeft.Location = new System.Drawing.Point(0, 35);
             this._MainFormUnpinnedTabAreaLeft.Name = "_MainFormUnpinnedTabAreaLeft";
             this._MainFormUnpinnedTabAreaLeft.Owner = this.ultraDockManager1;
             this._MainFormUnpinnedTabAreaLeft.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this._MainFormUnpinnedTabAreaLeft.Size = new System.Drawing.Size(0, 574);
+            this._MainFormUnpinnedTabAreaLeft.Size = new System.Drawing.Size(0, 552);
             this._MainFormUnpinnedTabAreaLeft.TabIndex = 10;
             // 
             // _MainFormUnpinnedTabAreaRight
             // 
             this._MainFormUnpinnedTabAreaRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this._MainFormUnpinnedTabAreaRight.Font = new System.Drawing.Font("굴림", 4F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this._MainFormUnpinnedTabAreaRight.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this._MainFormUnpinnedTabAreaRight.Location = new System.Drawing.Point(1054, 35);
             this._MainFormUnpinnedTabAreaRight.Name = "_MainFormUnpinnedTabAreaRight";
             this._MainFormUnpinnedTabAreaRight.Owner = this.ultraDockManager1;
             this._MainFormUnpinnedTabAreaRight.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this._MainFormUnpinnedTabAreaRight.Size = new System.Drawing.Size(0, 574);
+            this._MainFormUnpinnedTabAreaRight.Size = new System.Drawing.Size(0, 552);
             this._MainFormUnpinnedTabAreaRight.TabIndex = 11;
             // 
             // _MainFormUnpinnedTabAreaTop
             // 
             this._MainFormUnpinnedTabAreaTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this._MainFormUnpinnedTabAreaTop.Font = new System.Drawing.Font("굴림", 4F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this._MainFormUnpinnedTabAreaTop.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this._MainFormUnpinnedTabAreaTop.Location = new System.Drawing.Point(0, 35);
             this._MainFormUnpinnedTabAreaTop.Name = "_MainFormUnpinnedTabAreaTop";
             this._MainFormUnpinnedTabAreaTop.Owner = this.ultraDockManager1;
@@ -261,8 +264,8 @@ namespace PAS.PMP
             // _MainFormUnpinnedTabAreaBottom
             // 
             this._MainFormUnpinnedTabAreaBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._MainFormUnpinnedTabAreaBottom.Font = new System.Drawing.Font("굴림", 4F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this._MainFormUnpinnedTabAreaBottom.Location = new System.Drawing.Point(0, 609);
+            this._MainFormUnpinnedTabAreaBottom.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this._MainFormUnpinnedTabAreaBottom.Location = new System.Drawing.Point(0, 587);
             this._MainFormUnpinnedTabAreaBottom.Name = "_MainFormUnpinnedTabAreaBottom";
             this._MainFormUnpinnedTabAreaBottom.Owner = this.ultraDockManager1;
             this._MainFormUnpinnedTabAreaBottom.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -271,7 +274,7 @@ namespace PAS.PMP
             // 
             // _MainFormAutoHideControl
             // 
-            this._MainFormAutoHideControl.Font = new System.Drawing.Font("굴림", 4F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this._MainFormAutoHideControl.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this._MainFormAutoHideControl.Location = new System.Drawing.Point(0, 35);
             this._MainFormAutoHideControl.Name = "_MainFormAutoHideControl";
             this._MainFormAutoHideControl.Owner = this.ultraDockManager1;
@@ -285,9 +288,9 @@ namespace PAS.PMP
             this._MainForm_Toolbars_Dock_Area_Right.BackColor = System.Drawing.SystemColors.Control;
             this._MainForm_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right;
             this._MainForm_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
-            this._MainForm_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1054, 47);
+            this._MainForm_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1054, 35);
             this._MainForm_Toolbars_Dock_Area_Right.Name = "_MainForm_Toolbars_Dock_Area_Right";
-            this._MainForm_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(0, 562);
+            this._MainForm_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(0, 552);
             this._MainForm_Toolbars_Dock_Area_Right.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // ultraToolbarsManager1
@@ -349,9 +352,9 @@ namespace PAS.PMP
             this._MainForm_Toolbars_Dock_Area_Left.BackColor = System.Drawing.SystemColors.Control;
             this._MainForm_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left;
             this._MainForm_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
-            this._MainForm_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 47);
+            this._MainForm_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 35);
             this._MainForm_Toolbars_Dock_Area_Left.Name = "_MainForm_Toolbars_Dock_Area_Left";
-            this._MainForm_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(0, 562);
+            this._MainForm_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(0, 552);
             this._MainForm_Toolbars_Dock_Area_Left.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // _MainForm_Toolbars_Dock_Area_Bottom
@@ -360,7 +363,7 @@ namespace PAS.PMP
             this._MainForm_Toolbars_Dock_Area_Bottom.BackColor = System.Drawing.SystemColors.Control;
             this._MainForm_Toolbars_Dock_Area_Bottom.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Bottom;
             this._MainForm_Toolbars_Dock_Area_Bottom.ForeColor = System.Drawing.SystemColors.ControlText;
-            this._MainForm_Toolbars_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 609);
+            this._MainForm_Toolbars_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 587);
             this._MainForm_Toolbars_Dock_Area_Bottom.Name = "_MainForm_Toolbars_Dock_Area_Bottom";
             this._MainForm_Toolbars_Dock_Area_Bottom.Size = new System.Drawing.Size(1054, 0);
             this._MainForm_Toolbars_Dock_Area_Bottom.ToolbarsManager = this.ultraToolbarsManager1;
@@ -373,19 +376,19 @@ namespace PAS.PMP
             this._MainForm_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText;
             this._MainForm_Toolbars_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._MainForm_Toolbars_Dock_Area_Top.Name = "_MainForm_Toolbars_Dock_Area_Top";
-            this._MainForm_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1054, 47);
+            this._MainForm_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1054, 35);
             this._MainForm_Toolbars_Dock_Area_Top.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // windowDockingArea1
             // 
             this.windowDockingArea1.Controls.Add(this.dockableWindow1);
             this.windowDockingArea1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.windowDockingArea1.Font = new System.Drawing.Font("굴림", 4F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.windowDockingArea1.Location = new System.Drawing.Point(0, 47);
+            this.windowDockingArea1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.windowDockingArea1.Location = new System.Drawing.Point(0, 35);
             this.windowDockingArea1.Name = "windowDockingArea1";
             this.windowDockingArea1.Owner = this.ultraDockManager1;
             this.windowDockingArea1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.windowDockingArea1.Size = new System.Drawing.Size(248, 562);
+            this.windowDockingArea1.Size = new System.Drawing.Size(248, 552);
             this.windowDockingArea1.TabIndex = 23;
             // 
             // dockableWindow1
@@ -394,8 +397,24 @@ namespace PAS.PMP
             this.dockableWindow1.Location = new System.Drawing.Point(0, 0);
             this.dockableWindow1.Name = "dockableWindow1";
             this.dockableWindow1.Owner = this.ultraDockManager1;
-            this.dockableWindow1.Size = new System.Drawing.Size(243, 562);
-            this.dockableWindow1.TabIndex = 29;
+            this.dockableWindow1.Size = new System.Drawing.Size(243, 552);
+            this.dockableWindow1.TabIndex = 35;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 587);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1054, 22);
+            this.statusStrip1.TabIndex = 32;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(121, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // MainForm
             // 
@@ -411,6 +430,7 @@ namespace PAS.PMP
             this.Controls.Add(this._MainForm_Toolbars_Dock_Area_Left);
             this.Controls.Add(this._MainForm_Toolbars_Dock_Area_Right);
             this.Controls.Add(this._MainForm_Toolbars_Dock_Area_Bottom);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this._MainForm_Toolbars_Dock_Area_Top);
             this.IsMdiContainer = true;
             this.Name = "MainForm";
@@ -423,7 +443,10 @@ namespace PAS.PMP
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).EndInit();
             this.windowDockingArea1.ResumeLayout(false);
             this.dockableWindow1.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -443,6 +466,8 @@ namespace PAS.PMP
         private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _MainForm_Toolbars_Dock_Area_Top;
         private Infragistics.Win.UltraWinDock.WindowDockingArea windowDockingArea1;
         private Infragistics.Win.UltraWinDock.DockableWindow dockableWindow1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 

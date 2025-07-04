@@ -54,12 +54,13 @@ namespace PAS.PMP
                 분류.슈트조정_슈트별현황_Get(this.m_분류_슈트조정_슈트별현황Table, this.원배치번호, 1);
                 this.m_분류_슈트조정_슈트별현황_변경Table = this.m_분류_슈트조정_슈트별현황Table.Clone();
                 m_분류_슈트조정_슈트별현황BS.DataSource = this.m_분류_슈트조정_슈트별현황Table;
+                m_분류_슈트조정_슈트별현황_변경BS.DataSource = this.m_분류_슈트조정_슈트별현황_변경Table;
                 uGrid1.DataSource = m_분류_슈트조정_슈트별현황BS;
+                uGrid3.DataSource = m_분류_슈트조정_슈트별현황_변경BS;
 
                 Common.SetGridInit(this.uGrid1, true, true, true, true, false, false);
                 Common.SetGridHiddenColumn(this.uGrid1, null);
-                Common.SetGridEditColumn(this.uGrid1, "선택");
-
+                Common.SetGridEditColumn(this.uGrid1, null);
                 #endregion
 
                 #region uGrid2 BindingSource 초기화
@@ -94,7 +95,7 @@ namespace PAS.PMP
 
                 Common.SetGridInit(this.uGrid2, true, true, true, true, false, false);
                 Common.SetGridHiddenColumn(this.uGrid2, null);
-                Common.SetGridEditColumn(this.uGrid2, "선택");
+                Common.SetGridEditColumn(this.uGrid2, null);
 
                 #endregion
 
@@ -105,7 +106,7 @@ namespace PAS.PMP
 
                 Common.SetGridInit(this.uGrid3, true, true, true, true, false, false);
                 Common.SetGridHiddenColumn(this.uGrid3, null);
-                Common.SetGridEditColumn(this.uGrid3, "선택");
+                Common.SetGridEditColumn(this.uGrid3, null);
 
                 this.uGrid3.DisplayLayout.Bands[0].Columns["조정슈트"].CellAppearance.BackColor = SystemColors.Info;
                 this.uGrid3.DisplayLayout.Bands[0].Columns["조정슈트"].CellAppearance.ForeColor = Color.Red;
@@ -114,7 +115,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(Name, ex);
+                MessageBox.Show(ex.Message, this.Text);
             }
         }
 
@@ -131,7 +132,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(Name, ex);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -155,28 +156,29 @@ namespace PAS.PMP
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                if (this.uGrid1.Selected.Rows == null || this.uGrid1.Selected.Rows.Count <= 0)
+                DataRow oRow1 = ((DataRowView)uGrid1.ActiveRow.ListObject).Row;
+                if (this.uGrid1.ActiveRow == null || this.uGrid1.ActiveRow.Index < 0)
                 {
-                    Common.ErrorMessage(this.Text, "대상 슈트를 선택하세요.");
+                    MessageBox.Show("대상 슈트를 선택하세요.", this.Text);
                     return;
                 }
 
-                if (this.uGrid2.Selected.Rows == null || this.uGrid2.Selected.Rows.Count <= 0)
+                if (this.uGrid2.ActiveRow == null || this.uGrid2.ActiveRow.Index < 0)
                 {
-                    Common.ErrorMessage(this.Text, "가용 슈트를 선택하세요.");
+                    MessageBox.Show("가용 슈트를 선택하세요.", this.Text);
                     return;
                 }
 
                 int 요청수량 = Convert.ToInt32((object)this.textBox1.Text);
-                int 대상슈트인덱스 = this.uGrid1.Selected.Rows[0].Index;
-                int 가용슈트인덱스 = this.uGrid2.Selected.Rows[0].Index;
+                int 대상슈트인덱스 = this.uGrid1.ActiveRow.Index;
+                int 가용슈트인덱스 = this.uGrid2.ActiveRow.Index;
                 int 대상슈트수 = this.uGrid1.Rows.Count - 대상슈트인덱스;
                 int 가용슈트수 = this.uGrid2.Rows.Count - 가용슈트인덱스;
                 if (요청수량 != 대상슈트수 && 요청수량 > 대상슈트수)
                     요청수량 = 대상슈트수;
                 if (요청수량 > this.uGrid2.Rows.Count)
                 {
-                    Common.ErrorMessage(this.Text, string.Format("대상 슈트수가 가용 슈트수의 최대 허용치를 벗어납니다.\r\n조정 가능한 가용 슈트의 수는 {0}개 입니다."));
+                    MessageBox.Show(string.Format("대상 슈트수가 가용 슈트수의 최대 허용치를 벗어납니다.\r\n조정 가능한 가용 슈트의 수는 {0}개 입니다."), this.Text);
                     this.textBox1.Text = this.uGrid2.Rows.Count.ToString();
                     this.textBox1.SelectAll();
                     return;
@@ -184,7 +186,7 @@ namespace PAS.PMP
 
                 if (대상슈트수 > 가용슈트수)
                 {
-                    Common.ErrorMessage(this.Text, "대상 슈트수가 가용 슈트수를 초과합니다.");
+                    MessageBox.Show("대상 슈트수가 가용 슈트수를 초과합니다.", this.Text);
                     return;
                 }
 
@@ -237,7 +239,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -253,13 +255,13 @@ namespace PAS.PMP
                 Cursor.Current = Cursors.WaitCursor;
                 if (this.uGrid3.Rows.Count <= 0)
                 {
-                    Common.ErrorMessage(this.Text, "반영할 내용이 없습니다.");
+                    MessageBox.Show("반영할 내용이 없습니다.", this.Text);
                     return;
                 }
                     
                 if (string.IsNullOrEmpty(this.원배치번호))
                 {
-                    Common.ErrorMessage(this.Text, "배치번호 값이 없습니다.");
+                    MessageBox.Show("배치번호 값이 없습니다.", this.Text);
                     return;
                 }
 
@@ -267,8 +269,8 @@ namespace PAS.PMP
                 DataTable dataTable = new DataTable("슈트조정TABLE");
                 dataTable.Columns.Add("슈트번호", typeof(string));
                 dataTable.Columns.Add("조정슈트", typeof(string));
-                foreach (DataGridViewRow row in (IEnumerable)this.uGrid3.Rows)
-                    dataTable.Rows.Add((object)row.Cells["슈트번호"].Value.ToString(), (object)row.Cells["조정슈트"].Value.ToString());
+                foreach (UltraGridRow row in this.uGrid3.Rows)
+                    dataTable.Rows.Add(row.Cells["슈트번호"].Value.ToString(), row.Cells["조정슈트"].Value.ToString());
                 using (StringWriter writer = new StringWriter())
                 {
                     dataTable.WriteXml(writer);
@@ -281,7 +283,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {

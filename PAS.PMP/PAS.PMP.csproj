@@ -73,7 +73,7 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\InitializeForm.cs">
+    <Compile Include="Controls\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Globel\GlobalClass.cs" />

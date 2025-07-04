@@ -242,7 +242,7 @@ namespace PAS.PMP
             // 
             this.ultraTabPageControl센터.Controls.Add(this.ultraGroupBox3);
             this.ultraTabPageControl센터.Controls.Add(this.ultraGroupBox2);
-            this.ultraTabPageControl센터.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl센터.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl센터.Name = "ultraTabPageControl센터";
             this.ultraTabPageControl센터.Size = new System.Drawing.Size(750, 277);
             // 
@@ -605,7 +605,7 @@ namespace PAS.PMP
             // ultraTabPageControl브랜드
             // 
             this.ultraTabPageControl브랜드.Controls.Add(this.ultraGroupBox4);
-            this.ultraTabPageControl브랜드.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl브랜드.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl브랜드.Name = "ultraTabPageControl브랜드";
             this.ultraTabPageControl브랜드.Size = new System.Drawing.Size(750, 277);
             // 

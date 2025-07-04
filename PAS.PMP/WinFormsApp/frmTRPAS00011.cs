@@ -16,7 +16,7 @@ using TR_Common;
 
 namespace PAS.PMP
 {
-    public partial class frmTRPAS00011 : Form
+    public partial class frmTRPAS00011 : BaseForm
     {
         #region 폼개체 선언부
 
@@ -120,7 +120,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Name, ex);
+                MessageBox.Show(ex.Message, this.Text);
             }
         }
 
@@ -167,6 +167,8 @@ namespace PAS.PMP
         {
             try
             {
+              
+                
                 연동.조회미수신기간별(m_PAS_배치정보Table, m조회시작일자, m조회종료일자, true);
                 연동.조회수신기간별(m_연동_작업지시Table, m조회시작일자, m조회종료일자, true);
                 분류.분류작업요약(m_분류_작업요약Table, "모두", 1);
@@ -182,18 +184,24 @@ namespace PAS.PMP
                     this.m_분류_작업요약Table.Rows.Remove(row);
 
                 this.m_분류_작업요약Table.AcceptChanges();
-
-                if (this.m_분류_작업요약Table.Rows.Count <= 0 || this.uGrid3.Selected.Rows == null || this.uGrid3.Selected.Rows.Count <= 0)
-                    return;
-
-                this.분류명.Text = this.uGrid3.Selected.Rows[0].Cells["분류명"].Value.ToString();
-
-                string 배치상태 = this.uGrid3.Selected.Rows[0].Cells["배치상태"].Value.ToString();
-                this.작성취소버튼.Enabled = (배치상태 == "생성" || 배치상태 == "수신");
+                DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
+                if (this.m_분류_작업요약Table.Rows.Count <= 0 || oRow == null)
+                {
+                    this.분류명.Value = string.Empty;
+                    this.com출하구분.Text = string.Empty;
+                } else
+                {
+                    DataRow oRow1 = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
+                    this.분류명.Text = oRow1["분류명"].ToString();
+                    if (oRow1["배치상태"].ToString() == "생성" || oRow1["배치상태"].ToString() == "수신")
+                        this.작성취소버튼.Enabled = true;
+                    else
+                        this.작성취소버튼.Enabled = false;
+                }
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex);
+                MessageBox.Show(ex.Message, this.Text);
             }
         }
 
@@ -217,7 +225,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -227,13 +235,14 @@ namespace PAS.PMP
 
         private void 슈트조정버튼_Click(object sender, EventArgs e)
         {
-            if (this.uGrid2.Selected.Rows == null || this.uGrid2.Selected.Rows.Count <= 0)
+            DataRow[] oCheckedRows = this.m_연동_작업지시Table.Select("선택=true");
+            if (oCheckedRows == null || oCheckedRows.Length <= 0)
             {
-                Common.ErrorMessage(this.Text, "조정할 배치를 선택하세요.");
+                MessageBox.Show("조정할 배치를 선택하세요.", this.Text);
             }
             else
             {
-                string 원배치번호 = this.uGrid2.Selected.Rows[0].Cells["원배치번호"].Value.ToString();
+                string 원배치번호 = oCheckedRows[0]["원배치번호"].ToString();
                 var dlg = new frmTRDLG00002() { 원배치번호 = 원배치번호 }.ShowDialog();
             }
         }
@@ -246,7 +255,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex);
+                MessageBox.Show(ex.Message, this.Text);
             }
         }
 
@@ -269,7 +278,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -279,18 +288,57 @@ namespace PAS.PMP
 
         private void 작업조회버튼_Click(object sender, EventArgs e)
         {
-            분류.배치리스트조회(m_분류_작업요약Table, null, 1);
+            Cursor = Cursors.WaitCursor;
+            try
+            {
+                분류.분류작업요약(m_분류_작업요약Table, "모두", 1);
+                List<DataRow> dataRowList = new List<DataRow>();
+                foreach (DataRow row in (InternalDataCollectionBase)this.m_분류_작업요약Table.Rows)
+                {
+                    if ((row["분류상태"].ToString() == "종료" || row["분류상태"].ToString() == "중단") && !dataRowList.Contains(row))
+                        dataRowList.Add(row);
+                }
+                foreach (DataRow row in dataRowList.ToArray())
+                    this.m_분류_작업요약Table.Rows.Remove(row);
+                this.m_분류_작업요약Table.AcceptChanges();
+
+
+                DataRow oRow1 = null;
+                if (this.m_분류_작업요약Table.Rows.Count <= 0 || this.uGrid3.ActiveRow == null || this.uGrid3.ActiveRow.Index <= 0)
+                {
+                    return;
+                }
+                else
+                {
+                    oRow1 = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
+                }
+                this.분류명.Text = oRow1["분류명"].ToString();
+                if (oRow1["배치상태"].ToString() == "생성" || oRow1["배치상태"].ToString() == "수신")
+                    this.작성취소버튼.Enabled = true;
+                else
+                    this.작성취소버튼.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+
+        
         }
 
         private void 출하위치변경버튼_Click(object sender, EventArgs e)
         {
-            var rows = this.uGrid3.Selected.Rows;
-            if (rows == null || rows.Count <= 0)
+            DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
+            if (oRow == null)
             {
-                Common.ErrorMessage(this.Text, "변경할 대상을 선택해 주세요.");
+                MessageBox.Show("변경할 대상을 선택해 주세요.", this.Text);
             }
 
-            string 분류번호 = rows[0].Cells["분류번호"].Value?.ToString();
+            string 분류번호 = oRow["분류번호"].ToString();
 
             var dlg = new frmTRDLG00063() { 분류번호 = 분류번호, 출하위치 = this.com출하구분.Text }.ShowDialog();
 
@@ -299,14 +347,14 @@ namespace PAS.PMP
 
         private void 배치명변경버튼_Click(object sender, EventArgs e)
         {
-            var rows = this.uGrid3.Selected.Rows;
-            if (rows == null || rows.Count <= 0)
+            DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
+            if (oRow == null)
             {
-                Common.ErrorMessage(this.Text, "변경할 배치를 선택해 주세요.");
+                MessageBox.Show("변경할 배치를 선택해 주세요.", this.Text);
             }
 
-            string 배치번호 = rows[0].Cells["배치번호"].Value.ToString();
-            string 배치명 = rows[0].Cells["배치명"].Value.ToString();
+            string 배치번호 = oRow["배치번호"].ToString();
+            string 배치명 = oRow["배치명"].ToString();
 
             var dlg = new frmTRDLG00062() { 배치번호 = 배치번호, 배치명 = 배치명 }.ShowDialog();
 
@@ -338,13 +386,13 @@ namespace PAS.PMP
                 if (this.m_분류_작업요약Table.Rows.Count > 0 &&
                     MessageBox.Show(messageText, this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != DialogResult.No)
                 {
-                    var rows = this.uGrid3.Selected.Rows;
-                    if (rows == null || rows.Count <= 0)
+                    DataRow rows = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
+                    if (this.uGrid3.ActiveRow == null || this.uGrid3.ActiveRow.Index < 0)
                     {
-                        Common.ErrorMessage(this.Text, "변경할 배치를 선택해 주세요.");
+                        MessageBox.Show("변경할 배치를 선택해 주세요.", this.Text);
                     }
 
-                    s분류번호 = rows[0].Cells["분류번호"].Value.ToString();
+                    s분류번호 = rows["분류번호"].ToString();
                     DataRow[] dataRowArray1 = this.m_분류_작업요약Table.Select($"분류번호='{s분류번호}'");
                     if (dataRowArray1 == null || dataRowArray1.Length <= 0)
                     {
@@ -379,10 +427,11 @@ namespace PAS.PMP
                 int iCount = 0;
                 DataTable dataTable1 = new DataTable();
                 bool flag = s분류번호 == string.Empty;
-                GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역진행상태.Visible = true)));
-                GlobalClass.전역진행상태.Maximum = this.uGrid2.Rows.Count;
+                this.StatusText("새로고침");
+                //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역진행상태.Visible = true)));
+                //GlobalClass.전역진행상태.Maximum = this.uGrid2.Rows.Count;
 
-                foreach (DataGridViewRow row1 in (IEnumerable)this.uGrid2.Rows)
+                foreach (UltraGridRow row1 in this.uGrid2.Rows)
                 {
                     if (row1.Cells["선택"].Value.ToString() == bool.TrueString)
                     {
@@ -454,7 +503,7 @@ namespace PAS.PMP
 
                             if (dtExceedLength.Rows.Count > 0)
                             {
-                                Common.ErrorMessage(this.Text, "상품코드 자리수가 40을 초과한 대상이 있습니다.\r\n\r\n배치 작성을 취소합니다.");
+                                MessageBox.Show("상품코드 자리수가 40을 초과한 대상이 있습니다.\r\n\r\n배치 작성을 취소합니다.", this.Text);
                                 if (MessageBox.Show("대상을 확인 하시겠습니까?", this.Text, MessageBoxButtons.YesNo) == DialogResult.Yes)
                                 {
                                     new frmTRDLG00061()
@@ -473,13 +522,13 @@ namespace PAS.PMP
                             var utf8Bytes = Command.GetStringToUTF8(s분류명);
                             if (utf8Bytes.Length > 20)
                             {
-                                Common.ErrorMessage(this.Text, "분류명의 길이가 너무 길어 배치 작성을 취소 합니다.");
+                                MessageBox.Show("분류명의 길이가 너무 길어 배치 작성을 취소 합니다.", this.Text);
                                 return;
                             }
 
                             if (Encoding.Default.GetString(utf8Bytes) != s분류명)
                             {
-                                Common.ErrorMessage(this.Text, "분류명이 허용 자리수를 초과합니다.");
+                                MessageBox.Show("분류명이 허용 자리수를 초과합니다.", this.Text);
                                 return;
                             }
 
@@ -515,7 +564,7 @@ namespace PAS.PMP
 
                             if (dtExceedLength.Rows.Count > 0)
                             {
-                                Common.ErrorMessage(this.Text, "상품코드 자리수가 40을 초과한 대상이 있습니다.");
+                                MessageBox.Show("상품코드 자리수가 40을 초과한 대상이 있습니다.", this.Text);
                                 if (MessageBox.Show("대상을 확인 하시겠습니까?", this.Text, MessageBoxButtons.YesNo) == DialogResult.Yes)
                                 {
                                     new frmTRDLG00061()
@@ -530,30 +579,31 @@ namespace PAS.PMP
                             MakeData.MakeREBUILD(GlobalClass.PATH_STARTUP + "\\TEMP", s월일, s원배치번호, 재구성구분.배치, 재구성리스트.ToArray());
                         }
                         ++iCount;
-                        GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역진행상태.Value = iCount)));
+                        //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역진행상태.Value = iCount)));
                         Application.DoEvents();
 
                     }
                 }
                 if (iCount > 0)
                 {
-                    GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역진행상태.Value = this.uGrid2.Rows.Count)));
+
+                    //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역진행상태.Value = this.uGrid2.Rows.Count)));
                     frmMessageBox.Show("선택한 배치의 작성하였습니다.", this.Text, false, true);
-                    GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역진행상태.Value = 0)));
+                    //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역진행상태.Value = 0)));
                 }
                 else
                 {
                     frmMessageBox.Show("선택한 대상이 없습니다.", this.Text, false, true);
-                    GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역진행상태.Value = 0)));
+                    //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역진행상태.Value = 0)));
                 }
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
-                GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역진행상태.Visible = false)));
+                //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역진행상태.Visible = false)));
                 this.조회버튼_Click((object)null, EventArgs.Empty);
             }
         }
@@ -582,12 +632,12 @@ namespace PAS.PMP
                 if (rows.Length > 0)
                 {
                     string s배치리스트 = string.Join(Environment.NewLine, rows.Select(row => row["배치번호"].ToString()));
-                    Common.ErrorMessage(this.Text, $"{s배치리스트}{Environment.NewLine}나열된 배치는 이미 진행중이거나 완료된\r\n배치이므로 작성 취소를 할 수 없습니다.\r\n\r\n대상을 다시 선택하세요.");
+                    MessageBox.Show($"{s배치리스트}{Environment.NewLine}나열된 배치는 이미 진행중이거나 완료된\r\n배치이므로 작성 취소를 할 수 없습니다.\r\n\r\n대상을 다시 선택하세요.", this.Text);
                     return;
                 }
 
                 Dictionary<string, string> dictionary = new Dictionary<string, string>();
-                foreach (UltraGridRow row in (IEnumerable)this.uGrid3.Rows)
+                foreach (UltraGridRow row in this.uGrid3.Rows)
                 {
                     if (row.Cells["선택"].Value.ToString() == bool.TrueString && (row.Cells["배치상태"].Value.ToString() == "생성" || row.Cells["배치상태"].Value.ToString() == "수신") && !dictionary.ContainsKey(row.Cells["원배치번호"].Value.ToString()))
                         dictionary.Add(row.Cells["원배치번호"].Value.ToString(), row.Cells["배치번호"].Value.ToString());
@@ -617,7 +667,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -631,23 +681,32 @@ namespace PAS.PMP
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                var element = uGrid3.DisplayLayout.UIElement.ElementFromPoint(new Point(e.X, e.Y));
-                var cell = element.GetContext(typeof(UltraGridCell)) as UltraGridCell;
-                if (cell == null)
-                    return;
+                DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
 
-                var row = cell.Row;
-                string s분류명 = string.Empty;
+                if (oRow == null)
+                {
+                    MessageBox.Show("삭제할 배치를 선택하세요.", this.Text);
+                    return;
+                }
 
                 if (this.m_분류_작업요약Table.Rows.Count > 0)
-                    s분류명 = row.Cells["분류명"].Value?.ToString() ?? string.Empty;
-                    this.com출하구분.Text = row.Cells["출하구분"].Value?.ToString() ?? string.Empty;
+                    this.분류명.Value = oRow["분류명"].ToString() ?? string.Empty;
+                    this.com출하구분.Text = oRow["출하구분"].ToString() ?? string.Empty;
 
-                this.작성취소버튼.Enabled = (s분류명 == "생성" || this.com출하구분.Text == "수신");
+                if (oRow["배치상태"].ToString() == "생성" || oRow["배치상태"].ToString() == "수신")
+                {
+                    this.작성취소버튼.Enabled = true;
+                }
+                else
+                {
+                    this.작성취소버튼.Enabled = false;
+                }
+
+                
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {

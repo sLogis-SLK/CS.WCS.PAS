@@ -252,9 +252,10 @@ namespace PAS.PMP
             }
 
             TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
-                new string[] { "@장비명", "@배치상태", "@조회구분자" },
+                new string[] { "@장비명", "@배치상태", "@작업일자", "@조회구분자" },
                   new object[] { GlobalClass.장비명
                                 ,배치상태
+                                ,null
                                 ,조회구분자 }
                 );
 
@@ -520,13 +521,16 @@ namespace PAS.PMP
                 using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
                 {
                     DbParameterCollection oParams = null;
-                    oScope.Initialize("usp_분류_작업요약생성_Set", "@분류명", "@장비명", "@작업일자", "@배치번호", "@원배치번호",
-                        "@배치명", "@배치구분", "@분류구분", "@출하구분", "@패턴구분", "@지시수", "@슈트수", "@분류번호");
-                    oScope.Update(out oParams, 분류명, 장비명, 작업일자, 배치번호, 원배치번호, 배치명, 배치구분, 분류구분, 출하구분, 패턴구분, 지시수, 슈트수, 분류번호);
+                    oScope.Initialize("usp_분류_작업요약생성_Set", new string[] { "@분류명", "@장비명", "@작업일자", "@배치번호", "@원배치번호",
+                        "@배치명", "@배치구분", "@분류구분", "@출하구분", "@패턴구분", "@지시수", "@슈트수" });
+                    oScope.SetParams(ParameterDirection.Output, new string[] { "@분류번호" });
+
+                    oScope.Update(out oParams,
+                        new object[] { 분류명, 장비명, 작업일자, 배치번호, 원배치번호, 배치명, 배치구분, 분류구분, 출하구분, 패턴구분, 지시수, 슈트수, 분류번호 });
 
                     if (oParams != null && oParams.Count > 0 && oParams.Contains("@분류번호"))
                     {
-                        분류번호 = oParams["@분류번호"].Value?.ToString();
+                        분류번호 = oParams["@분류번호"].Value.ToString();
                     }
 
                     oScope.Commit();
@@ -534,7 +538,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -637,7 +641,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage("수신취소 오류", ex.Message);
+                MessageBox.Show(ex.Message);
             }
 
             return 취소건수;

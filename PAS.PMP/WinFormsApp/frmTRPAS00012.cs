@@ -86,7 +86,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(Name, ex);
+                MessageBox.Show(ex.Message, this.Text);
             }
         }
 
@@ -141,7 +141,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(Name, ex);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -153,16 +153,16 @@ namespace PAS.PMP
         {
             try
             {
-                var rows = this.uGrid1.Selected.Rows;
-                if (rows == null || rows.Count == 0)
+                DataRow oRow = ((DataRowView)uGrid1.ActiveRow.ListObject).Row;
+                if (oRow == null)
                 {
-                    Common.ErrorMessage(this.Text, "배치를 선택해 주세요.");
+                    MessageBox.Show("배치를 선택해 주세요.", this.Text);
                     return;
                 }
 
-                string s분류번호 = rows[0].Cells["분류번호"].Value.ToString();
-                string s배치번호 = rows[0].Cells["배치번호"].Value.ToString();
-                string s배치구분 = rows[0].Cells["배치구분"].Value.ToString();
+                string s분류번호 = oRow["분류번호"].ToString();
+                string s배치번호 = oRow["배치번호"].ToString();
+                string s배치구분 = oRow["배치구분"].ToString();
 
                 if (s배치구분 == "반품")
                 {
@@ -191,7 +191,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -204,19 +204,19 @@ namespace PAS.PMP
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                var rows = this.uGrid1.Selected.Rows;
-                if (rows == null || rows.Count == 0)
+                DataRow oRow = ((DataRowView)uGrid1.ActiveRow.ListObject).Row;
+                if (oRow == null)
                 {
-                    Common.ErrorMessage(this.Text, "배치를 선택해 주세요.");
+                    MessageBox.Show("배치를 선택해 주세요.", this.Text);
                     return;
                 }
 
-                string s배치번호 = rows[0].Cells["배치번호"].Value.ToString();
-                string s분류번호 = rows[0].Cells["분류번호"].Value.ToString();
+                string s배치번호 = oRow["배치번호"].ToString();
+                string s분류번호 = oRow["분류번호"].ToString();
 
                 if (MessageBox.Show($"배치번호 : {s배치번호}\r\n\r\n선택한 배치의 실적을 작성 하시겠습니까?", this.Text, MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
-                    Common.ErrorMessage(this.Text, "작업을 취소합니다!!");
+                    MessageBox.Show("작업을 취소합니다!!", this.Text);
                     return;
                 }
 
@@ -224,7 +224,7 @@ namespace PAS.PMP
 
                 if (this.m_분류_실적작성내용Table.Rows.Count <= 0)
                 {
-                    Common.ErrorMessage(this.Text, "작업한 내용이 없습니다.");
+                    MessageBox.Show("작업한 내용이 없습니다.", this.Text);
                 }
                 else
                 {
@@ -235,7 +235,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);   
             }
             finally
             {
@@ -249,20 +249,20 @@ namespace PAS.PMP
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                var rows = this.uGrid1.Selected.Rows;
-                if (rows == null || rows.Count == 0)
+                DataRow oRow = ((DataRowView)uGrid1.ActiveRow.ListObject).Row;
+                if (oRow == null)
                 {
-                    Common.ErrorMessage(this.Text, "배치를 선택해 주세요.");
+                    MessageBox.Show("배치를 선택해 주세요.", this.Text);
                     return;
                 }
 
-                string s분류번호 = rows[0].Cells["분류번호"].Value.ToString();
-                string s배치번호 = rows[0].Cells["배치번호"].Value.ToString();
-                string s배치상태 = rows[0].Cells["배치상태"].Value.ToString();
+                string s분류번호 = oRow["분류번호"].ToString();
+                string s배치번호 = oRow["배치번호"].ToString();
+                string s배치상태 = oRow["배치상태"].ToString();
 
                 if (s배치상태 == "완료")
                 {
-                    Common.ErrorMessage(this.Text, "선택한 배치는 실적작성이 되지 않았습니다.");
+                    MessageBox.Show("선택한 배치는 실적작성이 되지 않았습니다.", this.Text);
                     return;
                 }
 
@@ -279,7 +279,7 @@ namespace PAS.PMP
 
                 if (MessageBox.Show(message, this.Text, MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
-                    Common.ErrorMessage(this.Text, "작업을 취소합니다!!");
+                    MessageBox.Show("작업을 취소합니다!!", this.Text);
                     return;
                 }
 
@@ -298,7 +298,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -315,7 +315,7 @@ namespace PAS.PMP
                 var rows = this.uGrid1.Selected.Rows;
                 if (rows == null || rows.Count == 0)
                 {
-                    Common.ErrorMessage(this.Text, "배치를 선택해 주세요.");
+                    MessageBox.Show("배치를 선택해 주세요.", this.Text);
                     return;
                 }
 
@@ -324,7 +324,7 @@ namespace PAS.PMP
 
                 if (MessageBox.Show($"배치번호 : {s배치번호}\r\n\r\n선택한 배치의 패킹실적을 작성 하시겠습니까?", this.Text, MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
-                    Common.ErrorMessage(this.Text, "작업을 취소합니다!!");
+                    MessageBox.Show("작업을 취소합니다!!", this.Text);
                     return;
                 }
 
@@ -342,7 +342,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
@@ -400,7 +400,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-                Common.ErrorMessage(this.Text, ex.Message);
+                MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
