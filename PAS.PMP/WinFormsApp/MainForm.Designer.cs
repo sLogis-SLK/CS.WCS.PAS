@@ -192,6 +192,7 @@ namespace PAS.PMP
             ultraTreeNode33.Text = "WMS 연동";
             ultraTreeNode39.LeftImages.Add(((object)(resources.GetObject("ultraTreeNode39.LeftImages"))));
             ultraTreeNode40.LeftImages.Add(((object)(resources.GetObject("ultraTreeNode40.LeftImages"))));
+            ultraTreeNode40.Tag = "frmTRPAS00022";
             ultraTreeNode40.Text = "데이터 백업/관리";
             ultraTreeNode39.Nodes.AddRange(new Infragistics.Win.UltraWinTree.UltraTreeNode[] {
             ultraTreeNode40});

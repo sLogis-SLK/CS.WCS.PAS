@@ -131,6 +131,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WinFormsApp\Dialog\frmTRDLG00001.Designer.cs" />
+    <Compile Include="WinFormsApp\Dialog\frmTRDLG00064.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\Dialog\frmTRDLG00064.Designer.cs">
+      <DependentUpon>frmTRDLG00064.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinFormsApp\Dialog\frmTRDLG00063.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,12 +221,6 @@
     <Compile Include="WinFormsApp\Dialog\frmTRDLG00002.Designer.cs">
       <DependentUpon>frmTRDLG00002.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinFormsApp\Dialog\frmTRDLG00064.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinFormsApp\Dialog\frmTRDLG00064.Designer.cs">
-      <DependentUpon>frmTRDLG00064.cs</DependentUpon>
-    </Compile>
     <Compile Include="WinFormsApp\frmTRPAS00012.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,6 +277,9 @@
       <LastGenOutput>미출고내역_슈트별1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\Dialog\frmTRDLG00001.resx" />
+    <EmbeddedResource Include="WinFormsApp\Dialog\frmTRDLG00064.resx">
+      <DependentUpon>frmTRDLG00064.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\Dialog\frmTRDLG00063.resx">
       <DependentUpon>frmTRDLG00063.cs</DependentUpon>
     </EmbeddedResource>
@@ -318,9 +321,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\Dialog\frmTRDLG00002.resx">
       <DependentUpon>frmTRDLG00002.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinFormsApp\Dialog\frmTRDLG00064.resx">
-      <DependentUpon>frmTRDLG00064.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\frmTRPAS00012.resx">
       <DependentUpon>frmTRPAS00012.cs</DependentUpon>

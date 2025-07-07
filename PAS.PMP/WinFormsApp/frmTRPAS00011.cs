@@ -4,10 +4,8 @@ using PAS.PMP.Models;
 using PAS.PMP.PasWCS;
 using PAS.PMP.Utils;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -184,16 +182,21 @@ namespace PAS.PMP
                     this.m_분류_작업요약Table.Rows.Remove(row);
 
                 this.m_분류_작업요약Table.AcceptChanges();
-                DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
-                if (this.m_분류_작업요약Table.Rows.Count <= 0 || oRow == null)
+                if (this.m_분류_작업요약Table.Rows.Count <= 0 || this.uGrid3.Selected.Rows == null || this.uGrid3.Selected.Rows.Count <= 0)
                 {
                     this.분류명.Value = string.Empty;
                     this.com출하구분.Text = string.Empty;
-                } else
+                } 
+                else
                 {
                     DataRow oRow1 = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
-                    this.분류명.Text = oRow1["분류명"].ToString();
-                    if (oRow1["배치상태"].ToString() == "생성" || oRow1["배치상태"].ToString() == "수신")
+
+                    string 분류명 = oRow1["분류명"].ToString();
+                    string 배치상태 = oRow1["배치상태"].ToString();
+
+                    this.분류명.Text = 분류명;
+
+                    if (배치상태 == "생성" || 배치상태 == "수신")
                         this.작성취소버튼.Enabled = true;
                     else
                         this.작성취소버튼.Enabled = false;
@@ -302,18 +305,19 @@ namespace PAS.PMP
                     this.m_분류_작업요약Table.Rows.Remove(row);
                 this.m_분류_작업요약Table.AcceptChanges();
 
-
-                DataRow oRow1 = null;
                 if (this.m_분류_작업요약Table.Rows.Count <= 0 || this.uGrid3.ActiveRow == null || this.uGrid3.ActiveRow.Index <= 0)
                 {
                     return;
                 }
-                else
-                {
-                    oRow1 = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
-                }
-                this.분류명.Text = oRow1["분류명"].ToString();
-                if (oRow1["배치상태"].ToString() == "생성" || oRow1["배치상태"].ToString() == "수신")
+
+                DataRow oRow1 = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
+
+                string 분류명 = oRow1["분류명"].ToString();
+                string 배치상태 = oRow1["배치상태"].ToString();
+
+                this.분류명.Text = 분류명;
+
+                if (배치상태 == "생성" || 배치상태 == "수신")
                     this.작성취소버튼.Enabled = true;
                 else
                     this.작성취소버튼.Enabled = false;
@@ -332,33 +336,59 @@ namespace PAS.PMP
 
         private void 출하위치변경버튼_Click(object sender, EventArgs e)
         {
-            DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
-            if (oRow == null)
+            try
             {
-                MessageBox.Show("변경할 대상을 선택해 주세요.", this.Text);
+                DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
+                if (oRow == null)
+                {
+                    MessageBox.Show("변경할 대상을 선택해 주세요.", this.Text);
+                }
+
+                string 분류번호 = oRow["분류번호"].ToString();
+
+                var dlg = new frmTRDLG00063() { 분류번호 = 분류번호, 출하위치 = this.com출하구분.Text }.ShowDialog();
+
+                this.작업조회버튼_Click((object)null, EventArgs.Empty);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text);
+                Cursor = Cursors.Default;
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
             }
 
-            string 분류번호 = oRow["분류번호"].ToString();
-
-            var dlg = new frmTRDLG00063() { 분류번호 = 분류번호, 출하위치 = this.com출하구분.Text }.ShowDialog();
-
-            this.작업조회버튼_Click((object)null, EventArgs.Empty);
         }
 
         private void 배치명변경버튼_Click(object sender, EventArgs e)
         {
-            DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
-            if (oRow == null)
+            try
             {
-                MessageBox.Show("변경할 배치를 선택해 주세요.", this.Text);
+                DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
+                if (oRow == null)
+                {
+                    MessageBox.Show("변경할 배치를 선택해 주세요.", this.Text);
+                }
+
+                string 배치번호 = oRow["배치번호"].ToString();
+                string 배치명 = oRow["배치명"].ToString();
+
+                var dlg = new frmTRDLG00062() { 배치번호 = 배치번호, 배치명 = 배치명 }.ShowDialog();
+
+                this.작업조회버튼_Click((object)null, EventArgs.Empty);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text);
+                Cursor = Cursors.Default;
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
             }
 
-            string 배치번호 = oRow["배치번호"].ToString();
-            string 배치명 = oRow["배치명"].ToString();
-
-            var dlg = new frmTRDLG00062() { 배치번호 = 배치번호, 배치명 = 배치명 }.ShowDialog();
-
-            this.작업조회버튼_Click((object)null, EventArgs.Empty);
         }
 
         private void 배치작성버튼_Click(object sender, EventArgs e)
@@ -689,10 +719,15 @@ namespace PAS.PMP
                     return;
                 }
 
-                if (this.m_분류_작업요약Table.Rows.Count > 0)
-                    this.분류명.Value = oRow["분류명"].ToString() ?? string.Empty;
-                    this.com출하구분.Text = oRow["출하구분"].ToString() ?? string.Empty;
+                string 분류명 = oRow["분류명"].ToString() ?? string.Empty;
+                string 출하구분 = oRow["출하구분"].ToString() ?? string.Empty;
 
+                if (this.m_분류_작업요약Table.Rows.Count > 0)
+                {
+                    this.분류명.Value = 분류명;
+                    this.com출하구분.Text = 출하구분;
+                }
+                    
                 if (oRow["배치상태"].ToString() == "생성" || oRow["배치상태"].ToString() == "수신")
                 {
                     this.작성취소버튼.Enabled = true;

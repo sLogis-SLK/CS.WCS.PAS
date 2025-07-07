@@ -1,23 +1,15 @@
 ﻿using Infragistics.Win.UltraWinGrid;
-using PAS.Core;
-using PAS.PMP;
 using PAS.PMP.PasWCS;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TR_Common;
-using TR_Library.Controls;
 
 namespace PAS.PMP
 {
-    public partial class frmTRDLG00064: Form
+    public partial class frmTRDLG00064 : Form
     {
         #region 폼개체 선언부
 
@@ -75,7 +67,7 @@ namespace PAS.PMP
 
                 Common.SetGridInit(this.uGrid2, true, true, true, true, false, false);
                 Common.SetGridHiddenColumn(this.uGrid2, null);
-                Common.SetGridEditColumn(this.uGrid2, "선택");
+                //Common.SetGridEditColumn(this.uGrid2, "선택");
 
                 #endregion
 
@@ -88,7 +80,7 @@ namespace PAS.PMP
 
                 Common.SetGridInit(this.uGrid3, true, true, true, true, false, false);
                 Common.SetGridHiddenColumn(this.uGrid3, null);
-                Common.SetGridEditColumn(this.uGrid3, "선택");
+                //Common.SetGridEditColumn(this.uGrid3, "선택");
 
                 #endregion
             }
@@ -145,7 +137,7 @@ namespace PAS.PMP
 
                     관리.배송사변경_Set(s배치번호, XML);
                 }
-                
+
                 MessageBox.Show("배송사 변경이 완료되었습니다.", this.Text, MessageBoxButtons.OK);
             }
             catch (Exception ex)

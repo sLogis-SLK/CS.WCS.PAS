@@ -93,13 +93,11 @@ namespace PAS.Task
                 PAS기기콤보.SelectedItem = GlobalClass.DefaultValuePasName;
                 if (PAS기기콤보.SelectedItem != null)
                 {
-                    if (GlobalClass.SettingsPas기기(GlobalClass.DefaultValuePasName)) //DefaultValuePasName 세팅
+                    if (!GlobalClass.SettingsPas기기(GlobalClass.DefaultValuePasName)) //DefaultValuePasName 세팅
                     {
-                        //성공
-                    }
-                    else
-                    {
-                        //실패
+                        // 설정 실패
+                        MessageBox.Show("PAS 기기 환경설정에 실패했습니다.\n수동으로 기기를 선택해 주세요.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        PAS기기콤보.SelectedItem = null;
                     }
                 }
 
@@ -115,7 +113,7 @@ namespace PAS.Task
 
         }
 
-        protected override void OnClosed(EventArgs e)
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("PAS 동작에 심각한 문제가 발생 할 수 있습니다.\r\n그래도 종료 하시겠습니까?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
@@ -127,9 +125,12 @@ namespace PAS.Task
 
                     모니터링종료(); //각종쓰레드 종료
 
-                    //기본Default 값 저장
-                    string sPAS기기 = PAS기기콤보.SelectedItem.ToString();
-                    GlobalClass.SaveDefaultValueToIni(sPAS기기, string.Empty);
+                    if (PAS기기콤보.SelectedItem != null)
+                    {
+                        //기본Default 값 저장
+                        string sPAS기기 = PAS기기콤보.SelectedItem.ToString();
+                        GlobalClass.SaveDefaultValueToIni(sPAS기기, string.Empty);
+                    }
 
                     //Process.GetCurrentProcess().Kill();
                     base.OnClosed(e);
@@ -141,8 +142,8 @@ namespace PAS.Task
             }
             else
             {
-                //미종료
-                //e.Cancel = true;
+                // 사용자가 종료를 취소함
+                e.Cancel = true;
             }
         }
 

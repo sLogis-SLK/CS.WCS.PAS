@@ -14,14 +14,9 @@ namespace PAS.PMP
 
         private DataTable m_분류_작업요약_배치그룹별Table = new DataTable("usp_분류_작업요약_배치그룹별_Get");
         private DataTable m_분류_실적작성대상Table = new DataTable("usp_분류_실적작성대상_Get");
-        private DataTable m_분류_실적작성내용Table = new DataTable("usp_분류_실적작성내용_Get");
-        private DataTable m_분류_실적작성대상_중간Table = new DataTable("usp_분류_실적작성대상_중간_Get");
-        private DataTable m_출하_배치반영Table = new DataTable("usp_출하_배치반영_Get");
 
         private BindingSource m_분류_작업요약_배치그룹별BS = new BindingSource();
         private BindingSource m_분류_실적작성대상BS = new BindingSource();
-        private BindingSource m_분류_실적작성내용BS = new BindingSource();
-        private BindingSource m_출하_배치반영BS = new BindingSource();
 
         private string m작업일자
         {
@@ -61,7 +56,7 @@ namespace PAS.PMP
                 uGrid1.DataSource = m_분류_작업요약_배치그룹별BS;
 
                 Common.SetGridInit(this.uGrid1, true, true, true, true, false, false);
-                Common.SetGridHiddenColumn(this.uGrid1, "분류구분", "패턴구분", "분류상태", "서브슈트번호", "선택", "순번", "관리번호", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "분류방법코드", "패턴구분코드", "분류상태코드", "배치상태코드");
+                Common.SetGridHiddenColumn(this.uGrid1, "분류구분", "패턴구분", "분류상태", "선택", "순번", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "분류방법코드", "패턴구분코드", "분류상태코드", "배치상태코드");
                 Common.SetGridEditColumn(this.uGrid1, "선택");
 
                 #endregion
@@ -75,7 +70,7 @@ namespace PAS.PMP
 
                 Common.SetGridInit(this.uGrid2, true, true, true, true, false, false);
                 Common.SetGridHiddenColumn(this.uGrid2, "일련번호", "계산용");
-                Common.SetGridEditColumn(this.uGrid2, "선택");
+                //Common.SetGridEditColumn(this.uGrid2, "선택");
                 Common.uGridSummarySet(this.uGrid2, SummaryType.Sum, "지시수", "실적수", "부족수");
 
                 this.uGrid2.DisplayLayout.Bands[0].Columns["부족수"].CellAppearance.BackColor = SystemColors.Info;

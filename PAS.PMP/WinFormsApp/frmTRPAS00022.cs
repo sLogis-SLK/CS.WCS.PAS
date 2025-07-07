@@ -66,7 +66,7 @@ namespace PAS.PMP
                 Common.SetGridHiddenColumn(this.uGrid3, "분류상태코드", "배치상태코드");
                 Common.SetGridEditColumn(this.uGrid3, null);
 
-                this.uGrid3.DisplayLayout.Bands[0].Columns["등록일시"].Format = "yy-MM-dd HH:mm";
+                //this.uGrid3.DisplayLayout.Bands[0].Columns["등록일시"].Format = "yy-MM-dd HH:mm";
 
             }
             catch (Exception ex)

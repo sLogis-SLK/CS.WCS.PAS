@@ -47,7 +47,7 @@ namespace PAS.PMP
         {
             try
             {
-                분류.배치리스트조회(m_분류_작업요약Table, Convert.ToDateTime(DateTime.Now).ToString("yyyyMMdd"), 0);
+                분류.분류작업요약(m_분류_작업요약Table, Convert.ToDateTime(DateTime.Now).ToString("yyyyMMdd"), 0);
 
 
                 this.m_분류_작업요약BS.DataSource = this.m_분류_작업요약Table;
@@ -478,29 +478,29 @@ namespace PAS.PMP
 
             if (!File.Exists(targetPath))
             {
-                GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
+                //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
                 MessageBox.Show("배치를 개시하는 중 문제가 발생하였습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
                 return;
             }
 
             for (int i = 0; i < 60; i++)
             {
-                GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = $"{i + 1}번째 시도중입니다.")));
+                //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = $"{i + 1}번째 시도중입니다.")));
                 Application.DoEvents();
 
                 var result = this.재구성_배치개시(분류번호, 월일);
                 if (result == 상태처리.TRUE)
                 {
                     분류.분류상태변경_원배치용(GlobalClass.장비명, 분류번호, 분류번호, 원배치번호, "작업중");
-                    GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = $"[{원배치번호}] 배치를 개시 하였습니다.")));
+                    //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = $"[{원배치번호}] 배치를 개시 하였습니다.")));
                     break;
                 }
 
                 if (result == 상태처리.FALSE && i == 59)
                 {
-                    GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = "배치 개시 실패!!")));
+                    //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = "배치 개시 실패!!")));
                     MessageBox.Show("배치를 개시할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
-                    GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
+                    //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
                 }
 
                 Thread.Sleep(10000);
@@ -634,7 +634,7 @@ namespace PAS.PMP
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                분류.배치리스트조회(m_분류_작업요약Table, Convert.ToDateTime(DateTime.Now).ToString("yyyyMMdd"), 1);
+                분류.분류작업요약(m_분류_작업요약Table, Convert.ToDateTime(DateTime.Now).ToString("yyyyMMdd"), 1);
 
                 List<DataRow> dataRowList = new List<DataRow>();
                 var 배치상태값 = new HashSet<string> { "이관", "완료", "실적작성", "실적반영", "배치반영" };
@@ -674,7 +674,7 @@ namespace PAS.PMP
             }
             finally
             {
-                GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
+                //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
                 this.ultraCheckEditor1.Checked = false;
                 Cursor.Current = Cursors.Default;
             }
@@ -865,10 +865,10 @@ namespace PAS.PMP
                     if (!this.Connection())
                     {
                         MessageBox.Show("PAS에 연결할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
-                        GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
+                        //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
                         break;
                     }
-                    GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = $"{i + 1}번째 시도중입니다.")));
+                    //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = $"{i + 1}번째 시도중입니다.")));
                     Application.DoEvents();
                     var 결과 = this.SendReceive(분류번호, 분류명, 작업일자, 동작구분, 분류구분);
 
@@ -876,15 +876,15 @@ namespace PAS.PMP
                     {
                         분류.분류상태변경_원배치용(GlobalClass.장비명, 분류번호, 배치번호, 원배치번호, "완료");
                         분류.분류상태변경(GlobalClass.장비명, 분류번호, "종료");
-                        GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = $"[{분류번호}] 분류를 종료 하였습니다.")));
+                        //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = $"[{분류번호}] 분류를 종료 하였습니다.")));
                         return;
                     }
 
                     if (결과 == 상태처리.FALSE && i + 1 == 5)
                     {
-                        GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = "분류 종료 실패!!")));
+                        //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = "분류 종료 실패!!")));
                         MessageBox.Show("분류를 종료할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
-                        GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
+                        //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = string.Empty)));
                     }
                 }
             }

@@ -282,6 +282,7 @@ namespace PAS.Task
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
+            this.FormClosing += MainForm_FormClosing;
 
         }
 

@@ -44,7 +44,7 @@ namespace PAS.PMP
 
                 Common.SetGridInit(this.uGrid1, true, true, true, true, false, false);
                 Common.SetGridHiddenColumn(this.uGrid1, null);
-                Common.SetGridEditColumn(this.uGrid1, "선택");
+                //Common.SetGridEditColumn(this.uGrid1, "선택");
 
                 #endregion
             }
