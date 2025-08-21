@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using TR_Common;
+using TR_Library.Controls;
 
 namespace PAS.PMP
 {
@@ -408,6 +409,9 @@ namespace PAS.PMP
             var 동작구분 = 동작모드.개시;
             var 분류구분 = this.연속.Checked ? 분류방법.연속 : 분류방법.균등;
 
+            //분류.분류상태변경(GlobalClass.장비명, 분류번호, "개시");
+            //분류.분류상태변경_원배치용(GlobalClass.장비명, 분류번호, 배치번호, 원배치번호, "작업중");
+
             for (int i = 0; i < 5; i++)
             {
                 if (!this.Connection())
@@ -482,6 +486,7 @@ namespace PAS.PMP
                 MessageBox.Show("배치를 개시하는 중 문제가 발생하였습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
                 return;
             }
+            this.재구성_배치개시(분류번호, 월일);
 
             for (int i = 0; i < 60; i++)
             {
@@ -634,7 +639,8 @@ namespace PAS.PMP
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                분류.분류작업요약(m_분류_작업요약Table, Convert.ToDateTime(DateTime.Now).ToString("yyyyMMdd"), 1);
+                //분류.분류작업요약(m_분류_작업요약Table, Convert.ToDateTime(DateTime.Now).ToString("yyyyMMdd"), 1);
+                분류.분류작업요약(m_분류_작업요약Table, "모두", 1);
 
                 List<DataRow> dataRowList = new List<DataRow>();
                 var 배치상태값 = new HashSet<string> { "이관", "완료", "실적작성", "실적반영", "배치반영" };
@@ -708,22 +714,22 @@ namespace PAS.PMP
         {
             try
             {
-                var selectedRows = this.uGrid3.Selected.Rows;
-                if (selectedRows == null || selectedRows.Count == 0)
+                DataRow selectedRows = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
+                //var selectedRows = this.uGrid3.Selected.Rows;
+                if (selectedRows == null)
                 {
                     MessageBox.Show("배치를 선택해 주세요.", this.Text);
                     return;
                 }
-                UltraGridRow row = selectedRows[0];
 
                 frmLoading.ShowLoading();
-                string 분류번호 = row.Cells["분류번호"].Value.ToString();
-                string 분류명 = row.Cells["분류명"].Value.ToString();
-                string 배치번호 = row.Cells["배치번호"].Value.ToString();
-                string 원배치번호 = row.Cells["원배치번호"].Value.ToString();
-                string 추가배치 = row.Cells["추가배치"].Value.ToString();
-                string 순번 = row.Cells["순번"].Value.ToString();
-                string 작업일자 = row.Cells["작업일자"].Value.ToString();
+                string 분류번호 = selectedRows["분류번호"].ToString();
+                string 분류명 = selectedRows["분류명"].ToString();
+                string 배치번호 = selectedRows["배치번호"].ToString();
+                string 원배치번호 = selectedRows["원배치번호"].ToString();
+                string 추가배치 = selectedRows["추가배치"].ToString();
+                string 순번 = selectedRows["순번"].ToString();
+                string 작업일자 = selectedRows["작업일자"].ToString();
 
                 if (!부모배치검사(배치번호, 원배치번호, 추가배치)) return;
                 if (!중복슈트확인(원배치번호)) return;
@@ -750,23 +756,23 @@ namespace PAS.PMP
             finally
             {
                 frmLoading.CloseLoading();
-                this.조회버튼_Click((object)null, EventArgs.Empty);
+                //this.조회버튼_Click((object)null, EventArgs.Empty);
             }
         }
 
         private void 배치종료_Click(object sender, EventArgs e)
         {
-            var selectedRows = this.uGrid3.Selected.Rows;
-            if (selectedRows == null || selectedRows.Count == 0)
+            //var selectedRows = this.uGrid3.Selected.Rows;
+            DataRow selectedRows = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
+            if (selectedRows == null)
             {
                 MessageBox.Show("배치를 선택해 주세요.", this.Text);
                 return;
             }
-            UltraGridRow row = selectedRows[0];
 
-            string 분류번호 = row.Cells["분류번호"].Value.ToString();
-            string 배치번호 = row.Cells["배치번호"].Value.ToString();
-            string 원배치번호 = row.Cells["원배치번호"].Value.ToString();
+            string 분류번호 = selectedRows["분류번호"].ToString();
+            string 배치번호 = selectedRows["배치번호"].ToString();
+            string 원배치번호 = selectedRows["원배치번호"].ToString();
 
             DataRow[] array = this.m_분류_작업요약Table.Select($"배치번호='{배치번호}'");
             if (array != null && array.Length > 1)
@@ -804,7 +810,7 @@ namespace PAS.PMP
                     return;
                 }
 
-                배치종료(분류번호, 배치번호, 원배치번호, 종료파일경로);
+                //배치종료(분류번호, 배치번호, 원배치번호, 종료파일경로);
             }
             catch (Exception ex)
             {
@@ -824,19 +830,18 @@ namespace PAS.PMP
                 var 동작구분 = 동작모드.종료;
                 var 분류구분 = this.연속.Checked ? 분류방법.연속 : 분류방법.균등;
 
-                var selectedRows = this.uGrid3.Selected.Rows;
-                if (selectedRows == null || selectedRows.Count == 0)
+                DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
+                if (oRow == null)
                 {
                     MessageBox.Show("분류를 선택해 주세요.", this.Text);
                     return;
                 }
-                UltraGridRow row = selectedRows[0];
 
-                string 분류번호 = row.Cells["분류번호"].Value.ToString();
-                string 분류상태 = row.Cells["분류상태"].Value.ToString();
-                string 분류명 = row.Cells["분류명"].Value.ToString();
-                string 배치번호 = row.Cells["배치번호"].Value.ToString();
-                string 원배치번호 = row.Cells["원배치번호"].Value.ToString();
+                string 분류번호 = oRow["분류번호"].ToString();
+                string 분류상태 = oRow["분류상태"].ToString();
+                string 분류명 = oRow["분류명"].ToString();
+                string 배치번호 = oRow["배치번호"].ToString();
+                string 원배치번호 = oRow["원배치번호"].ToString();
 
                 if (분류상태 == "준비" || 분류상태 == "종료")
                 {
@@ -859,6 +864,9 @@ namespace PAS.PMP
                     MessageBox.Show("분류를 종료할 수 없습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
                     return;
                 }
+
+                //분류.분류상태변경_원배치용(GlobalClass.장비명, 분류번호, 배치번호, 원배치번호, "완료");
+                //분류.분류상태변경(GlobalClass.장비명, 분류번호, "종료");
 
                 for (int i = 0; i < 5; i++)
                 {

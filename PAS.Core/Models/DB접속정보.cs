@@ -12,13 +12,13 @@ namespace PAS.Core
 
         internal void SetDataRow(DataRow row)
         {
-            //PAS_DB_IP = row["PAS_DB_IP"].ToString();
-            PAS_DB_IP = "112.216.239.253,4222";
+            PAS_DB_IP = row["PAS_DB_IP"].ToString();
+            //PAS_DB_IP = "112.216.239.253,4222";
             PAS_DB_SERVICE = row["PAS_DB_SERVICE"].ToString();
             PAS_DB_ID = row["PAS_DB_ID"].ToString();
             PAS_DB_PASSWORD = row["PAS_DB_PASSWORD"].ToString();
-            //HOST_DB_IP = row["HOST_DB_IP"].ToString();
-            HOST_DB_IP = "112.216.239.253,4222";
+            HOST_DB_IP = row["HOST_DB_IP"].ToString();
+            //HOST_DB_IP = "112.216.239.253,4222";
             HOST_DB_SERVICE = row["HOST_DB_SERVICE"].ToString();
             HOST_DB_ID = row["HOST_DB_ID"].ToString();
             HOST_DB_PASSWORD = row["HOST_DB_PASSWORD"].ToString();

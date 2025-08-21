@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using TR_Common;
+using TR_Library.Controls;
 
 namespace PAS.PMP
 {
@@ -151,20 +152,17 @@ namespace PAS.PMP
             }
         }
 
-        private void uGrid1_MouseUp(object sender, MouseEventArgs e)
+
+        private void uGrid1_AfterRowActivate(object sender, EventArgs e)
         {
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                var element = uGrid1.DisplayLayout.UIElement.ElementFromPoint(new Point(e.X, e.Y));
-                var cell = element.GetContext(typeof(UltraGridCell)) as UltraGridCell;
-                if (cell == null)
-                    return;
+                DataRow oRow = ((DataRowView)uGrid1.ActiveRow.ListObject).Row;
 
-                var row = cell.Row;
                 string s배치번호 = string.Empty;
                 if (this.m_분류_작업요약_배치그룹별Table.Rows.Count > 0)
-                    s배치번호 = row.Cells["배치번호"].Value?.ToString() ?? string.Empty;
+                    s배치번호 = oRow["배치번호"].ToString() ?? string.Empty;
 
                 연동.PAS배송사변경(m_PAS_배송사변경Table, s배치번호, 1);
                 관리.배송사변경_Get(m_PAS_배송사변경Table, s배치번호, 1);
@@ -180,5 +178,6 @@ namespace PAS.PMP
         }
 
         #endregion
+
     }
 }

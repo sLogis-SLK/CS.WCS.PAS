@@ -126,6 +126,7 @@ namespace PAS.PMP
                     Common.SetGridInit(myGrid, false, false, true, true, false, false);
                     pasTabPage.Controls.Add(myGrid);
                     this.tabControl1.TabPages.Add(pasTabPage);
+                    pasTabPage.Text = s배송사명;
                     this.m_분류_상품발송장대상Table.Select($"배송사명='{s배송사명}'");
                     pasTabPage.DataSource = this.분류_상품발송장_배송사별(s배송사명, this.m_분류_상품발송장대상Table);
                     myGrid.DataSource = (object) pasTabPage.DataSource;

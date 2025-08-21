@@ -62,7 +62,6 @@ namespace PAS.PMP
             this.조회버튼 = new Infragistics.Win.Misc.UltraButton();
             this.닫기버튼 = new Infragistics.Win.Misc.UltraButton();
             this.중간실적반영버튼 = new Infragistics.Win.Misc.UltraButton();
-            this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.배치반영버튼 = new Infragistics.Win.Misc.UltraButton();
@@ -72,12 +71,15 @@ namespace PAS.PMP
             this.실적전송버튼 = new Infragistics.Win.Misc.UltraButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.uGrid2 = new TR_Library.Controls.uGrid();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.panel4 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.작업일자)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uGrid2)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // uGrid1
@@ -180,15 +182,6 @@ namespace PAS.PMP
             this.중간실적반영버튼.Text = "WMS 중간실적 반영";
             this.중간실적반영버튼.Click += new System.EventHandler(this.중간실적반영버튼_Click);
             // 
-            // splitter1
-            // 
-            this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter1.Location = new System.Drawing.Point(0, 245);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(1000, 3);
-            this.splitter1.TabIndex = 16;
-            this.splitter1.TabStop = false;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
@@ -276,9 +269,6 @@ namespace PAS.PMP
             // 
             // uGrid2
             // 
-            this.uGrid2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             appearance14.BackColor = System.Drawing.SystemColors.Window;
             appearance14.BorderColor = System.Drawing.SystemColors.InactiveCaption;
             this.uGrid2.DisplayLayout.Appearance = appearance14;
@@ -338,18 +328,37 @@ namespace PAS.PMP
             this.uGrid2.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.uGrid2.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.uGrid2.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
-            this.uGrid2.Location = new System.Drawing.Point(6, 250);
+            this.uGrid2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uGrid2.Location = new System.Drawing.Point(0, 0);
             this.uGrid2.Name = "uGrid2";
-            this.uGrid2.Size = new System.Drawing.Size(988, 348);
+            this.uGrid2.Size = new System.Drawing.Size(1000, 362);
             this.uGrid2.TabIndex = 0;
             this.uGrid2.Text = "uGrid2";
+            // 
+            // splitter1
+            // 
+            this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitter1.Location = new System.Drawing.Point(0, 245);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(1000, 3);
+            this.splitter1.TabIndex = 18;
+            this.splitter1.TabStop = false;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.uGrid2);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 248);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1000, 362);
+            this.panel4.TabIndex = 19;
             // 
             // frmTRPAS00012
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 610);
-            this.Controls.Add(this.uGrid2);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
@@ -363,6 +372,7 @@ namespace PAS.PMP
             ((System.ComponentModel.ISupportInitialize)(this.작업일자)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uGrid2)).EndInit();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -373,7 +383,6 @@ namespace PAS.PMP
         private Infragistics.Win.Misc.UltraButton 조회버튼;
         private Infragistics.Win.Misc.UltraButton 닫기버튼;
         private Infragistics.Win.Misc.UltraButton 중간실적반영버튼;
-        private System.Windows.Forms.Splitter splitter1;
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
@@ -382,5 +391,7 @@ namespace PAS.PMP
         private Infragistics.Win.Misc.UltraButton 실적작성버튼;
         private Infragistics.Win.Misc.UltraLabel ultraLabel1;
         private TR_Library.Controls.uCalendarCombo 작업일자;
+        private Splitter splitter1;
+        private Panel panel4;
     }
 }

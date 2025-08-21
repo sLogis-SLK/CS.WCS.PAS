@@ -217,7 +217,7 @@ namespace PAS.PMP
             this.uGrid3.Size = new System.Drawing.Size(1374, 308);
             this.uGrid3.TabIndex = 0;
             this.uGrid3.Text = "uGrid1";
-            this.uGrid3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.uGrid3_MouseUp);
+            this.uGrid3.AfterRowActivate += new System.EventHandler(this.uGrid3_AfterRowActivate);
             // 
             // ultraGroupBox6
             // 

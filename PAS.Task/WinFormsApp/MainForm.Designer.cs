@@ -30,7 +30,6 @@ namespace PAS.Task
         private void InitializeComponent()
         {
             this.PAS기기콤보 = new System.Windows.Forms.ComboBox();
-            this.시작버튼 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -46,6 +45,7 @@ namespace PAS.Task
             this.오류라벨1 = new System.Windows.Forms.Label();
             this.사용라벨1 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.시작버튼 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -61,16 +61,6 @@ namespace PAS.Task
             this.PAS기기콤보.Name = "PAS기기콤보";
             this.PAS기기콤보.Size = new System.Drawing.Size(223, 32);
             this.PAS기기콤보.TabIndex = 1;
-            // 
-            // 시작버튼
-            // 
-            this.시작버튼.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.시작버튼.Location = new System.Drawing.Point(226, 17);
-            this.시작버튼.Name = "시작버튼";
-            this.시작버튼.Size = new System.Drawing.Size(105, 33);
-            this.시작버튼.TabIndex = 2;
-            this.시작버튼.Text = "시작";
-            this.시작버튼.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -268,6 +258,16 @@ namespace PAS.Task
             this.label1.Text = "PAS";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // 시작버튼
+            // 
+            this.시작버튼.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.시작버튼.Location = new System.Drawing.Point(226, 17);
+            this.시작버튼.Name = "시작버튼";
+            this.시작버튼.Size = new System.Drawing.Size(105, 33);
+            this.시작버튼.TabIndex = 2;
+            this.시작버튼.Text = "시작";
+            this.시작버튼.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -282,14 +282,12 @@ namespace PAS.Task
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.FormClosing += MainForm_FormClosing;
 
         }
 
         #endregion
 
         private System.Windows.Forms.ComboBox PAS기기콤보;
-        private System.Windows.Forms.Button 시작버튼;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -305,6 +303,7 @@ namespace PAS.Task
         private System.Windows.Forms.Label 오류라벨1;
         private System.Windows.Forms.Label 사용라벨1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button 시작버튼;
     }
 }
 

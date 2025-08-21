@@ -156,7 +156,7 @@ namespace PAS.PMP
             this.uGrid1.Size = new System.Drawing.Size(800, 140);
             this.uGrid1.TabIndex = 3;
             this.uGrid1.Text = "uGrid1";
-            this.uGrid1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.uGrid1_MouseUp);
+            this.uGrid1.AfterRowActivate += new System.EventHandler(this.uGrid1_AfterRowActivate);
             // 
             // 조회버튼
             // 
@@ -204,8 +204,8 @@ namespace PAS.PMP
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.panel2);
@@ -374,7 +374,7 @@ namespace PAS.PMP
             // 
             // panel4
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel4.Controls.Add(this.조회버튼);

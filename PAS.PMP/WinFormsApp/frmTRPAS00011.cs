@@ -437,7 +437,7 @@ namespace PAS.PMP
                     }
 
                     DataRow[] dataRowArray2 = this.m_분류_작업요약Table.Select($"분류번호='{s분류번호}' AND 분류상태 IN ('종료')");
-                    if (dataRowArray2 == null || dataRowArray2.Length <= 0)
+                    if (dataRowArray2 != null && dataRowArray2.Length > 0)
                     {
                         messageText = @"더이상 작업을 할 수 없는 분류번호 입니다.
                                     새 분류번호로 작업 하시겠습니까?";
@@ -706,7 +706,7 @@ namespace PAS.PMP
             }
         }
 
-        private void uGrid3_MouseUp(object sender, MouseEventArgs e)
+        private void uGrid3_AfterRowActivate(object sender, EventArgs e)
         {
             try
             {
@@ -727,7 +727,7 @@ namespace PAS.PMP
                     this.분류명.Value = 분류명;
                     this.com출하구분.Text = 출하구분;
                 }
-                    
+
                 if (oRow["배치상태"].ToString() == "생성" || oRow["배치상태"].ToString() == "수신")
                 {
                     this.작성취소버튼.Enabled = true;
@@ -737,7 +737,7 @@ namespace PAS.PMP
                     this.작성취소버튼.Enabled = false;
                 }
 
-                
+
             }
             catch (Exception ex)
             {
@@ -749,7 +749,9 @@ namespace PAS.PMP
             }
         }
 
+
         #endregion
+
 
     }
 }

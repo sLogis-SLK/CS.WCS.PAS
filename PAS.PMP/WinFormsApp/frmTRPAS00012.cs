@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using TR_Common;
+using TR_Library.Controls;
 
 namespace PAS.PMP
 {
@@ -100,7 +101,7 @@ namespace PAS.PMP
             {
                 Cursor.Current = Cursors.WaitCursor;
                 string 배치번호 = string.Empty;
-                분류.배치리스트조회(m_분류_작업요약_배치그룹별Table, null, 1);
+                분류.배치리스트조회(m_분류_작업요약_배치그룹별Table, m작업일자, 1);
                 if (this.m_분류_작업요약_배치그룹별Table.Rows.Count > 0)
                 {
                     배치번호 = this.m_분류_작업요약_배치그룹별Table.Rows[0]["배치번호"].ToString();
@@ -312,15 +313,15 @@ namespace PAS.PMP
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                var rows = this.uGrid1.Selected.Rows;
-                if (rows == null || rows.Count == 0)
+                DataRow rows = ((DataRowView)uGrid1.ActiveRow.ListObject).Row;
+                if (rows == null)
                 {
                     MessageBox.Show("배치를 선택해 주세요.", this.Text);
                     return;
                 }
 
-                string s분류번호 = rows[0].Cells["분류번호"].Value.ToString();
-                string s배치번호 = rows[0].Cells["배치번호"].Value.ToString();
+                string s분류번호 = rows["분류번호"].ToString();
+                string s배치번호 = rows["배치번호"].ToString();
 
                 if (MessageBox.Show($"배치번호 : {s배치번호}\r\n\r\n선택한 배치의 패킹실적을 작성 하시겠습니까?", this.Text, MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
