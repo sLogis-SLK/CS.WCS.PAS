@@ -92,7 +92,7 @@ namespace PAS.PMP
 
         private void 조회_Click(object sender, EventArgs e)
         {
-            분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 1, "모두");
+            분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 1);
         }
 
         private void uGrid2_AfterRowActivate(object sender, EventArgs e)
@@ -163,14 +163,15 @@ namespace PAS.PMP
                 return;
             }
 
-            frmTRDLG00001 oDlg = (frmTRDLG00001)FormProvider.T1.CreateForm("frmTRDLG00001");
-            DialogResult oResult = oDlg.ShowDialog();
+            frmTRDLG00001 dialog = new frmTRDLG00001();
 
+            // 모달로 다이얼로그 표시
+            DialogResult oResult = dialog.ShowDialog();
             if (oResult == DialogResult.OK)
             {
                 bool flag1;
                 bool flag2;
-                switch (oDlg.선택값)
+                switch (dialog.선택값)
                 {
                     case 1:
                         flag1 = true;
@@ -207,7 +208,7 @@ namespace PAS.PMP
                         DataTable oDataTable2 = new DataTable("usp_분류_박스풀작성_Set");
                         oScope.Initialize("usp_분류_박스풀작성_Set", "@분류번호", "@장비명", "@슈트번호", "@마지막박스여부");
 
-                        foreach (DataGridViewRow row in (IEnumerable)this.uGrid1.Rows)
+                        foreach (UltraGridRow row in this.uGrid1.Rows)
                         {
                             if (row.Cells["선택"].Value.ToString() == bool.TrueString)
                             {
@@ -242,7 +243,7 @@ namespace PAS.PMP
                                     switch (s배치구분)
                                     {
                                         case "패키지":
-                                            Libs.GetPrintScript2(Libs.GetPrinterName("피키지"), s박스바코드, s박스바코드구분, oClient, oDataTable2.Copy());
+                                            Libs.GetPrintScript2(Libs.GetPrinterName("패키지"), s박스바코드, s박스바코드구분, oClient, oDataTable2.Copy());
                                             break;
                                         case "반품":
                                             s패턴구분 = num <= 3 ? "반품유형1" : "반품유형2";

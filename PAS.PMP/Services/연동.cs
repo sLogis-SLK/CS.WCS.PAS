@@ -22,7 +22,7 @@ namespace PAS.PMP.PasWCS
 
         public static void 조회수신기간별(DataTable 관리Table, string 조회시작일자, string 조회종료일자, bool 데이터조회여부)
         {
-            관리Table.TableName = "usp_연동_작업지시_Get";
+            관리Table.TableName = "usp_연동_작업지시_Get_JHG";
 
             TlkTranscope.GetData(관리Table, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
                 new string[] { "@기간앞", "@기간뒤", "@조회구분자" }, 조회시작일자, 조회종료일자, 데이터조회여부 ? 1 : 0);

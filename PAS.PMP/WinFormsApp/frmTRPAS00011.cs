@@ -19,8 +19,8 @@ namespace PAS.PMP
         #region 폼개체 선언부
 
         private DataTable m_PAS_배치정보Table = new DataTable("usp_PAS_배치정보_Get");
-        private DataTable m_연동_작업지시Table = new DataTable("usp_연동_작업지시_Get");
-        private DataTable m_분류_작업요약Table = new DataTable("usp_분류_작업요약_Get");
+        private DataTable m_연동_작업지시Table = new DataTable("usp_연동_작업지시_Get_JHG");
+        private DataTable m_분류_작업요약Table = new DataTable("usp_분류_작업요약_Get_JHG");
 
         private BindingSource m_PAS_배치정보BS = new BindingSource();
         private BindingSource m_연동_작업지시BS = new BindingSource();
@@ -104,7 +104,7 @@ namespace PAS.PMP
 
                 #region uGrid3 BindingSource 초기화
 
-                분류.분류작업요약(m_분류_작업요약Table, "모두", 0);
+                분류.분류작업요약(m_분류_작업요약Table, "모두", m조회시작일자, m조회종료일자, 0);
 
                 m_분류_작업요약BS.DataSource = m_분류_작업요약Table;
                 uGrid3.DataSource = m_분류_작업요약BS;
@@ -169,7 +169,7 @@ namespace PAS.PMP
                 
                 연동.조회미수신기간별(m_PAS_배치정보Table, m조회시작일자, m조회종료일자, true);
                 연동.조회수신기간별(m_연동_작업지시Table, m조회시작일자, m조회종료일자, true);
-                분류.분류작업요약(m_분류_작업요약Table, "모두", 1);
+                분류.분류작업요약(m_분류_작업요약Table, "모두", m조회시작일자, m조회종료일자, 1);
                 var 삭제대상 = new List<DataRow>();
                 foreach (DataRow row in this.m_분류_작업요약Table.Rows)
                 {
@@ -294,7 +294,7 @@ namespace PAS.PMP
             Cursor = Cursors.WaitCursor;
             try
             {
-                분류.분류작업요약(m_분류_작업요약Table, "모두", 1);
+                분류.분류작업요약(m_분류_작업요약Table, "모두", m조회시작일자, m조회종료일자, 1);
                 List<DataRow> dataRowList = new List<DataRow>();
                 foreach (DataRow row in (InternalDataCollectionBase)this.m_분류_작업요약Table.Rows)
                 {
@@ -493,7 +493,7 @@ namespace PAS.PMP
                             s월일 = DateTime.Now.ToString("MMdd");
                         }
                       
-                        분류.작업요약생성(s분류명, s장비명, s작업일자, s배치번호, s원배치번호, s배치명, s배치구분, s분류구분, s출하구분, s패턴구분, 지시수, s슈트수, out s분류번호);
+                        분류.작업요약생성(s분류명, s장비명, s작업일자, s배치번호, s원배치번호, s배치명, s배치구분코드, s분류구분코드, s출하구분, s패턴구분, 지시수, s슈트수, out s분류번호);
 
                         if (string.IsNullOrEmpty(s분류번호))
                             break;
@@ -501,9 +501,9 @@ namespace PAS.PMP
                         {
                             flag = false;
 
-                            DataTable dtE = new DataTable("usp_분류_배치작성_Get");
-                            DataTable dtC = new DataTable("usp_분류_배치작성_Get");
-                            DataTable dtS = new DataTable("usp_분류_배치작성_Get");
+                            DataTable dtE = new DataTable("usp_분류_배치작성_Get_JHG");
+                            DataTable dtC = new DataTable("usp_분류_배치작성_Get_JHG");
+                            DataTable dtS = new DataTable("usp_분류_배치작성_Get_JHG");
 
                             분류.배치작성(dtE, GlobalClass.장비명, s배치번호, s원배치번호, "E");
                             분류.배치작성(dtC, GlobalClass.장비명, s배치번호, s원배치번호, "C");
@@ -514,7 +514,7 @@ namespace PAS.PMP
                                 row["슈트번호"].ToString(), string.Empty, string.Empty, "1",
                                 row["지시수"].ToString(), string.Empty, string.Empty, string.Empty, string.Empty, string.Empty))
                             .ToList();
-
+                            
                             DataTable dtExceedLength = dtS.Clone();
 
                             var sortqList = new List<Sortq>();

@@ -44,7 +44,7 @@ namespace PAS.PMP
             {
                 #region uGrid2 BindingSource 초기화
 
-                분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 0, "모두");
+                분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 0);
 
 
                 this.m_분류_작업배치그룹BS.DataSource = this.m_분류_작업배치그룹Table;
@@ -81,7 +81,7 @@ namespace PAS.PMP
 
         public void OnPrint(bool bPrevView)
         {
-            frmTRDLG00001 oDlg = (frmTRDLG00001)FormProvider.T1.CreateForm("frmTRDLG00001");
+            frmTRDLG00001 oDlg = new frmTRDLG00001();
             DialogResult oResult = oDlg.ShowDialog();
 
             if (oResult == DialogResult.OK)
@@ -122,7 +122,7 @@ namespace PAS.PMP
                     string empty1 = string.Empty;
                     string empty2 = string.Empty;
                     string empty3 = string.Empty;
-                    foreach (DataGridViewRow row in (IEnumerable)this.uGrid1.Rows)
+                    foreach (UltraGridRow row in this.uGrid1.Rows)
                     {
                         if (row.Cells["선택"].Value.ToString() == bool.TrueString)
                         {

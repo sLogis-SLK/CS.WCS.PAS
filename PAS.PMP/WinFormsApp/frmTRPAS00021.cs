@@ -20,7 +20,7 @@ namespace PAS.PMP
     public partial class frmTRPAS00021 : Form
     {
         #region 폼개체 선언부
-        private DataTable m_분류_작업요약Table = new DataTable("usp_분류_작업요약_Get");
+        private DataTable m_분류_작업요약Table = new DataTable("usp_분류_작업요약_Get_JHG");
         private BindingSource m_분류_작업요약BS = new BindingSource();
 
         private Socket socket;
@@ -48,7 +48,7 @@ namespace PAS.PMP
         {
             try
             {
-                분류.분류작업요약(m_분류_작업요약Table, Convert.ToDateTime(DateTime.Now).ToString("yyyyMMdd"), 0);
+                분류.분류작업요약(m_분류_작업요약Table, "모두", DateTime.Now.AddDays(-4).ToString("yyyyMMdd"), DateTime.Now.ToString("yyyyMMdd"), 0);
 
 
                 this.m_분류_작업요약BS.DataSource = this.m_분류_작업요약Table;
@@ -486,7 +486,6 @@ namespace PAS.PMP
                 MessageBox.Show("배치를 개시하는 중 문제가 발생하였습니다.\r\n\r\n### 관리자에게 문의하세요. ###", this.Text);
                 return;
             }
-            this.재구성_배치개시(분류번호, 월일);
 
             for (int i = 0; i < 60; i++)
             {
@@ -640,7 +639,7 @@ namespace PAS.PMP
             {
                 Cursor.Current = Cursors.WaitCursor;
                 //분류.분류작업요약(m_분류_작업요약Table, Convert.ToDateTime(DateTime.Now).ToString("yyyyMMdd"), 1);
-                분류.분류작업요약(m_분류_작업요약Table, "모두", 1);
+                분류.분류작업요약(m_분류_작업요약Table, "모두", DateTime.Now.AddDays(-7).ToString("yyyyMMdd"), DateTime.Now.AddDays(2).ToString("yyyyMMdd"), 1);
 
                 List<DataRow> dataRowList = new List<DataRow>();
                 var 배치상태값 = new HashSet<string> { "이관", "완료", "실적작성", "실적반영", "배치반영" };

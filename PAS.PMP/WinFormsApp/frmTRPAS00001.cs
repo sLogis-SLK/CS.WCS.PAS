@@ -204,7 +204,7 @@ namespace PAS.PMP
 
         private void 조회_Click(object sender, EventArgs e)
         {
-            분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.조회시작일.Value).ToString("yyyyMMdd"), 1, "모두");
+            분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.조회시작일.Value).ToString("yyyyMMdd"), 1);
         }
 
         public void OnPrint(bool bPrevView)

@@ -244,18 +244,19 @@ namespace PAS.PMP
 
         }
 
-        internal static void 분류작업요약(DataTable dataTable , string 배치상태, int 조회구분자)
+        internal static void 분류작업요약(DataTable dataTable , string 배치상태, string 작업시작일, string 작업종료일, int 조회구분자)
         {
-            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_작업요약_Get")
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_작업요약_Get_JHG")
             {
-                dataTable.TableName = "usp_분류_작업요약_Get";
+                dataTable.TableName = "usp_분류_작업요약_Get_JHG";
             }
 
             TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
-                new string[] { "@장비명", "@배치상태", "@작업일자", "@조회구분자" },
+                new string[] { "@장비명", "@배치상태", "@작업시작일자", "@작업종료일자", "@조회구분자" },
                   new object[] { GlobalClass.장비명
                                 ,배치상태
-                                ,null
+                                ,작업시작일
+                                ,작업종료일
                                 ,조회구분자 }
                 );
 
@@ -580,9 +581,9 @@ namespace PAS.PMP
 
         internal static void 배치작성(DataTable dataTable, string 장비명, string 배치번호, string 원배치번호, string 구분)
         {
-            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_배치작성_Get")
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_배치작성_Get_JHG")
             {
-                dataTable.TableName = "usp_분류_배치작성_Get";
+                dataTable.TableName = "usp_분류_배치작성_Get_JHG";
             }
 
             TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
