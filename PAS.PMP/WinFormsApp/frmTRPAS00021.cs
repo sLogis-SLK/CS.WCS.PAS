@@ -55,7 +55,7 @@ namespace PAS.PMP
                 this.uGrid3.DataSource = this.m_분류_작업요약BS;
 
                 Common.SetGridInit(this.uGrid3, false, false, true, true, false, false);
-                Common.SetGridHiddenColumn(this.uGrid3, "실적수", "분류구분", "패턴구분", "분류상태", "완료일시", "선택", "순번", "관리번호", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "분류방법코드", "패턴구분코드", "분류상태코드", "배치상태코드");
+                Common.SetGridHiddenColumn(this.uGrid3, "실적수", "분류구분", "패턴구분", "분류상태", "완료일시", "선택", "관리번호", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "분류방법코드", "패턴구분코드", "분류상태코드", "배치상태코드");
                 Common.SetGridEditColumn(this.uGrid3, null);
 
                 this.uGrid3.DisplayLayout.Bands[0].Columns["등록일시"].Format = "yy-MM-dd HH:mm";
@@ -466,7 +466,7 @@ namespace PAS.PMP
             }
 
             string sourcePath = $"{GlobalClass.PATH_STARTUP}\\TEMP\\{원배치번호}_REBUILD.DAT";
-            string targetPath = $"{GlobalClass.LOCAL_FOLDER}\\DATA\\DATE{월일}\\{원배치번호}\\REBUILD.DAT";
+            string targetPath = $"{GlobalClass.LOCAL_FOLDER}\\DATA\\DATE{월일}\\{분류번호}\\REBUILD.DAT";
 
             if (!File.Exists(sourcePath))
             {
@@ -737,7 +737,7 @@ namespace PAS.PMP
                 if (!매장중복배정확인(분류번호, 원배치번호)) return;
 
                 string 작업중인분류번호 = this.분류_작업요약_작업중인분류번호();
-                if(분류번호 != 작업중인분류번호 && !string.IsNullOrEmpty(작업중인분류번호))
+                if (분류번호 != 작업중인분류번호 && !string.IsNullOrEmpty(작업중인분류번호))
                 {
                     MessageBox.Show("선택한 배치는 개시할 수 없습니다.", this.Text);
                     return;

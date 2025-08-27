@@ -60,18 +60,18 @@ namespace PAS.PMP
         }
 
 
-        internal static void 미출고내역상품별출력(DataTable dataTable, string 분류번호, string 배치번호, string 슈트번호)
+        internal static void 미출고내역상품별출력(DataTable dataTable, string 분류번호, string 배치번호, string 조회구분자)
         {
             if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_미출고내역_상품별_Get")
             {
                 dataTable.TableName = "usp_분류_미출고내역_상품별_Get";
             }
             TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
-              new string[] { "@분류번호", "@장비명", "@배치번호", "@슈트번호" },
+              new string[] { "@분류번호", "@장비명", "@배치번호", "@조회구분자" },
                 new object[] { 분류번호
                                     ,GlobalClass.장비명
                                     ,배치번호
-                                    ,슈트번호
+                                    ,조회구분자
                                 }
       );
 
@@ -325,8 +325,8 @@ namespace PAS.PMP
             if (dataTable == null || dataTable.Rows.Count <= 0)
                 return false;
 
-            PAS환경설정 pasSetting = new PAS환경설정();
-            string[] strArray = pasSetting.BARCODE_PRINTER_LIST.Split(new string[1]
+            GlobalClass pasSetting = new GlobalClass();
+            string[] strArray = GlobalClass.BARCODE_PRINTER_LIST.Split(new string[1]
             {
                     "|"
             }, StringSplitOptions.RemoveEmptyEntries);
@@ -398,10 +398,10 @@ namespace PAS.PMP
                new string[] { "@배치번호", "@슈트번호", },
                new object[] { s배치번호, s슈트번호 });
 
-            if (dataTable == null || dataTable.Rows.Count <= 0)
-                return false;
-            PAS환경설정 pasSetting = new PAS환경설정();
-            string[] strArray = pasSetting.BARCODE_PRINTER_LIST.Split(new string[1]
+            //if (dataTable == null || dataTable.Rows.Count <= 0)
+            //    return false;
+            GlobalClass pasSetting = new GlobalClass();
+            string[] strArray = GlobalClass.BARCODE_PRINTER_LIST.Split(new string[1]
             {
                     "|"
             }, StringSplitOptions.RemoveEmptyEntries);
@@ -513,7 +513,7 @@ namespace PAS.PMP
         }
 
         internal static void 작업요약생성(string 분류명, string 장비명, string 작업일자, string 배치번호, string 원배치번호,
-            string 배치명, string 배치구분, string 분류구분, string 출하구분, string 패턴구분, int 지시수, string 슈트수, out string 분류번호)
+            string 배치명, string 배치구분, string 분류구분, string 출하구분, string 패턴구분, int 지시수, string 슈트수, string 기본분류번호, out string 분류번호)
         {
             분류번호 = null;
 
@@ -522,18 +522,23 @@ namespace PAS.PMP
                 using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
                 {
                     DbParameterCollection oParams = null;
-                    oScope.Initialize("usp_분류_작업요약생성_Set", new string[] { "@분류명", "@장비명", "@작업일자", "@배치번호", "@원배치번호",
-                        "@배치명", "@배치구분", "@분류구분", "@출하구분", "@패턴구분", "@지시수", "@슈트수" });
-                    oScope.SetParams(ParameterDirection.Output, new string[] { "@분류번호" });
 
+                    // 모든 파라미터 등록 (분류번호 포함)
+                    oScope.Initialize("usp_분류_작업요약생성_Set_JHG", new string[] {
+                    "@분류명", "@장비명", "@작업일자", "@배치번호", "@원배치번호",
+                    "@배치명", "@배치구분", "@분류구분", "@출하구분", "@패턴구분", "@지시수", "@슈트수", "@기본분류번호" });
+
+                    // 분류번호를 InputOutput으로 설정
+                    oScope.SetParams(ParameterDirection.InputOutput, new string[] { "@분류번호" });
+
+                    // 모든 값 전달 (분류번호 포함)
                     oScope.Update(out oParams,
-                        new object[] { 분류명, 장비명, 작업일자, 배치번호, 원배치번호, 배치명, 배치구분, 분류구분, 출하구분, 패턴구분, 지시수, 슈트수, 분류번호 });
+                        new object[] { 분류명, 장비명, 작업일자, 배치번호, 원배치번호, 배치명, 배치구분, 분류구분, 출하구분, 패턴구분, 지시수, 슈트수, 기본분류번호, 분류번호 });
 
                     if (oParams != null && oParams.Count > 0 && oParams.Contains("@분류번호"))
                     {
-                        분류번호 = oParams["@분류번호"].Value.ToString();
+                        분류번호 = oParams["@분류번호"].Value?.ToString();
                     }
-
                     oScope.Commit();
                 }
             }

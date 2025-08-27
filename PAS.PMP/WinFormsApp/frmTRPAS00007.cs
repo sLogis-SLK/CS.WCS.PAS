@@ -61,11 +61,17 @@ namespace PAS.PMP
 
                 분류.출하박스별패킹대상(m_출하_박스별패킹대상Table, "", "", 0);
 
+                this.m_출하_박스별패킹BS.CurrentChanged += (s, e) => this.uGrid1.Refresh();
+
                 this.m_출하_박스별패킹BS.DataSource = this.m_출하_박스별패킹대상Table;
                 this.uGrid1.DataSource = this.m_출하_박스별패킹BS;
+
+                this.uGrid1.Refresh();
+                this.uGrid1.Update();
+
                 Common.SetGridInit(this.uGrid1, false, false, true, true, false, false);
                 Common.SetGridHiddenColumn(this.uGrid1, "배치번호", "슈트번호");
-                Common.SetGridEditColumn(this.uGrid1, null);
+                Common.SetGridEditColumn(this.uGrid1, "선택");
 
                 #endregion
             }
@@ -118,6 +124,7 @@ namespace PAS.PMP
                     }
 
                     Cursor.Current = Cursors.WaitCursor;
+                    this.uGrid1.PerformAction(UltraGridAction.CommitRow);
 
                     string empty1 = string.Empty;
                     string empty2 = string.Empty;
@@ -137,7 +144,7 @@ namespace PAS.PMP
                         }
                     }
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -198,7 +205,7 @@ namespace PAS.PMP
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in (IEnumerable)this.uGrid1.Rows)
+            foreach (UltraGridRow row in this.uGrid1.Rows)
             {
                 if (row.Tag == null || !(row.Tag.ToString() == "요약"))
                     row.Cells["선택"].Value = (object)this.checkBox1.Checked;

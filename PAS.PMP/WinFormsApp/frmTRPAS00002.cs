@@ -105,7 +105,7 @@ namespace PAS.PMP
                 }
 
                 DataTable 상품별미출고 = new DataTable("usp_분류_미출고내역_상품별_Get");
-                분류.미출고내역상품별출력(상품별미출고, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), oRow["슈트번호"].ToString());
+                분류.미출고내역상품별출력(상품별미출고, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), "1");
 
                 if (상품별미출고.Rows.Count <= 0)
                 {

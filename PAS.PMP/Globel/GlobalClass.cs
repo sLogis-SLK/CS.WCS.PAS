@@ -24,6 +24,11 @@ namespace PAS.PMP
 
         internal static string CHUTES_ERROR { get => pas환경설정.CHUTES_ERROR; }
 
+        internal static string BARCODE_PRINTER_LIST { get => pas환경설정.BARCODE_PRINTER_LIST; }
+
+        public int PrinterIndex { get; set; }
+
+
         public static string GetEmptyString(string s, int iCapacity)
         {
             return string.Format($"{{0,-{(object)iCapacity}}}", (object)s).Substring(0, iCapacity);

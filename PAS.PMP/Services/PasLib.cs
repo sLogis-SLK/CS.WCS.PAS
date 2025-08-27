@@ -1,15 +1,18 @@
-﻿using System;
+﻿using PAS.Core;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing.Printing;
 using System.IO;
+using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using TR_Common;
+using System.Threading.Tasks;
 
-namespace PAS.Core
+namespace PAS.PMP.Services
 {
-    public class Libs
+    internal class PasLib
     {
         public static string GetPrinterName(string s슈트번호)
         {
@@ -17,8 +20,7 @@ namespace PAS.Core
             string printerName = new PrinterSettings().PrinterName;
             try
             {
-                PAS환경설정 pasSetting = new PAS환경설정();
-                string[] strArray1 = pasSetting.BARCODE_PRINTER_LIST.Split(new string[1]
+                string[] strArray1 = GlobalClass.BARCODE_PRINTER_LIST.Split(new string[1]
                 {
                     "|"
                 }, StringSplitOptions.RemoveEmptyEntries);
@@ -86,12 +88,12 @@ namespace PAS.Core
         }
 
         private static void DataTableVerify(
-                   DataTable oDataTable,
-                   int idx,
-                   ref string s스타일,
-                   ref string s색상,
-                   ref string s사이즈,
-                   ref string s내품수)
+                 DataTable oDataTable,
+                 int idx,
+                 ref string s스타일,
+                 ref string s색상,
+                 ref string s사이즈,
+                 ref string s내품수)
         {
             try
             {
@@ -252,4 +254,6 @@ namespace PAS.Core
             }
         }
     }
+
+   
 }

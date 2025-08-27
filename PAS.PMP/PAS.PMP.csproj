@@ -116,6 +116,7 @@
     <Compile Include="Report\패킹내역_박스별.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\PasLib.cs" />
     <Compile Include="Services\WCSHelper.cs" />
     <Compile Include="Services\관리.cs" />
     <Compile Include="Services\분류.cs" />

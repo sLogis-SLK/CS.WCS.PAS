@@ -8,6 +8,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using PAS.PMP.Report;
+using PAS.PMP.Services;
 
 namespace PAS.PMP
 {
@@ -355,11 +356,11 @@ namespace PAS.PMP
                 switch (s배치구분)
                 {
                     case "패키지":
-                        string printerName1 = Libs.GetPrinterName("패키지");
+                        string printerName1 = PasLib.GetPrinterName("패키지");
                         DataTable oDataTable = this.m_분류_박스재발행_슈트별상세Table.Copy();
                         oDataTable.Rows.RemoveAt(0);
                         oDataTable.AcceptChanges();
-                        Libs.GetPrintScript2(printerName1, s박스바코드, s박스바코드구분, oClient, oDataTable);
+                        PasLib.GetPrintScript2(printerName1, s박스바코드, s박스바코드구분, oClient, oDataTable);
                         return;
                     case "반품":
                     case "멀티반품":
@@ -370,7 +371,7 @@ namespace PAS.PMP
                 if (string.IsNullOrEmpty(str7) || !(str7 != "0") || !(str5 == "1"))
                     return;
 
-                string printScript = Libs.GetPrintScript(s패턴구분, s배치구분, i박스풀대상수);
+                string printScript = PasLib.GetPrintScript(s패턴구분, s배치구분, i박스풀대상수);
                 string str8;
                 switch (s패턴구분)
                 {
@@ -416,7 +417,7 @@ namespace PAS.PMP
                         break;
                 }
 
-                string printerName2 = Libs.GetPrinterName(s슈트번호);
+                string printerName2 = PasLib.GetPrinterName(s슈트번호);
                 TcpClient tcpClient1;
                 if (oClient != null)
                 {

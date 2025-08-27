@@ -460,6 +460,7 @@ namespace PAS.PMP
                 this.StatusText("새로고침");
                 //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역진행상태.Visible = true)));
                 //GlobalClass.전역진행상태.Maximum = this.uGrid2.Rows.Count;
+                this.uGrid2.PerformAction(UltraGridAction.CommitRow);
 
                 foreach (UltraGridRow row1 in this.uGrid2.Rows)
                 {
@@ -493,7 +494,7 @@ namespace PAS.PMP
                             s월일 = DateTime.Now.ToString("MMdd");
                         }
                       
-                        분류.작업요약생성(s분류명, s장비명, s작업일자, s배치번호, s원배치번호, s배치명, s배치구분코드, s분류구분코드, s출하구분, s패턴구분, 지시수, s슈트수, out s분류번호);
+                        분류.작업요약생성(s분류명, s장비명, s작업일자, s배치번호, s원배치번호, s배치명, s배치구분코드, s분류구분코드, s출하구분, s패턴구분, 지시수, s슈트수, s분류번호, out s분류번호);
 
                         if (string.IsNullOrEmpty(s분류번호))
                             break;
@@ -667,6 +668,7 @@ namespace PAS.PMP
                 }
 
                 Dictionary<string, string> dictionary = new Dictionary<string, string>();
+                this.uGrid3.PerformAction(UltraGridAction.CommitRow);
                 foreach (UltraGridRow row in this.uGrid3.Rows)
                 {
                     if (row.Cells["선택"].Value.ToString() == bool.TrueString && (row.Cells["배치상태"].Value.ToString() == "생성" || row.Cells["배치상태"].Value.ToString() == "수신") && !dictionary.ContainsKey(row.Cells["원배치번호"].Value.ToString()))

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using DbProvider;
 using Infragistics.Win.UltraWinGrid;
 using PAS.Core;
+using PAS.PMP.Services;
 using PAS.PMP.WinFormsApp.Dialog;
 using TR_Common;
 using TR_Provider;
@@ -124,7 +125,7 @@ namespace PAS.PMP
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in (IEnumerable)this.uGrid1.Rows)
+            foreach (UltraGridRow row in this.uGrid1.Rows)
             {
                 if (row.Tag == null || !(row.Tag.ToString() == "요약"))
                     row.Cells["선택"].Value = (object)this.checkBox1.Checked;
@@ -137,6 +138,9 @@ namespace PAS.PMP
 
         private void 박스발행_Click(object sender, EventArgs e)
         {
+
+            string printerName = PasLib.GetPrinterName("4");
+
             string empty1 = string.Empty;
             string empty2 = string.Empty;
             string empty3 = string.Empty;
@@ -207,7 +211,7 @@ namespace PAS.PMP
                     {
                         DataTable oDataTable2 = new DataTable("usp_분류_박스풀작성_Set");
                         oScope.Initialize("usp_분류_박스풀작성_Set", "@분류번호", "@장비명", "@슈트번호", "@마지막박스여부");
-
+                        this.uGrid1.PerformAction(UltraGridAction.CommitRow);
                         foreach (UltraGridRow row in this.uGrid1.Rows)
                         {
                             if (row.Cells["선택"].Value.ToString() == bool.TrueString)
@@ -243,7 +247,7 @@ namespace PAS.PMP
                                     switch (s배치구분)
                                     {
                                         case "패키지":
-                                            Libs.GetPrintScript2(Libs.GetPrinterName("패키지"), s박스바코드, s박스바코드구분, oClient, oDataTable2.Copy());
+                                            PasLib.GetPrintScript2(PasLib.GetPrinterName("패키지"), s박스바코드, s박스바코드구분, oClient, oDataTable2.Copy());
                                             break;
                                         case "반품":
                                             s패턴구분 = num <= 3 ? "반품유형1" : "반품유형2";
@@ -251,7 +255,7 @@ namespace PAS.PMP
                                         default:
                                             if (!string.IsNullOrEmpty(str3) && str3 != "0" && str5 == "1")
                                             {
-                                                string printScript = Libs.GetPrintScript(s패턴구분, s배치구분, count);
+                                                string printScript = PasLib.GetPrintScript(s패턴구분, s배치구분, count);
                                                 string str10;
                                                 switch (s패턴구분)
                                                 {
@@ -296,7 +300,7 @@ namespace PAS.PMP
                                                         str10 = string.Format(printScript, (object)str2, (object)s슈트번호, (object)str3, (object)s박스바코드);
                                                         break;
                                                 }
-                                                string printerName = Libs.GetPrinterName(s슈트번호);
+                                                //string printerName = PasLib.GetPrinterName(s슈트번호);
                                                 if (oClient != null)
                                                 {
                                                     oClient.Close();
