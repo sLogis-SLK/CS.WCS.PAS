@@ -117,8 +117,8 @@ namespace PAS.PMP.PasWCS
             {
                 using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.HostDBConnectionString), IsolationLevel.ReadCommitted))
                 {
-                    oScope.Initialize("usp_PAS_실적반영_Set", "@배치번호", "@XML");
-                    oScope.Update(배치번호, XML);
+                    oScope.Initialize("usp_PAS_실적반영_Set", "@배치번호", "@상태", "@XML");
+                    oScope.Update(배치번호, null, XML);
                     oScope.Commit();
                 }
             }

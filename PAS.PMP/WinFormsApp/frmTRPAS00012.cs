@@ -288,7 +288,7 @@ namespace PAS.PMP
                 {
                     var dataTable = m_분류_실적작성대상Table.Copy();
                     dataTable.TableName = "실적TABLE";
-                    dataTable.WriteXml(writer);
+                    dataTable.WriteXml((TextWriter) writer);
                     string xml = writer.ToString();
 
                     연동.PAS실적반영(s배치번호, xml);

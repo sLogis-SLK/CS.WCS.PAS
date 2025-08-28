@@ -215,7 +215,8 @@ public class frmPAS00062 : Form
             {
               dataTable.WriteXml((TextWriter) writer);
               DbProvider.Excute(Common.ConnectionString(DB연결구분.시스템), "usp_PAS_실적반영_Set", DbProvider.GetParameter("@배치번호", (object) oValue2, ParameterDirection.Input), DbProvider.GetParameter("@XML", (object) writer.ToString(), ParameterDirection.Input));
-              DbProvider.Excute(Common.ConnectionString(), "usp_분류_배치상태변경_Set", DbProvider.GetParameter("@장비명", (object) Common.Setting.NAME, ParameterDirection.Input), DbProvider.GetParameter("@분류번호", (object) oValue1, ParameterDirection.Input), DbProvider.GetParameter("@배치번호", (object) oValue2, ParameterDirection.Input), DbProvider.GetParameter("@배치상태", (object) "실적반영", ParameterDirection.Input));
+              DbProvider.Excute(Common.ConnectionString(), "usp_분류_배치상태변경_Set", DbProvider.GetParameter("@장비명", (object) Common.Setting.NAME, ParameterDirection.Input), DbProvider.GetParameter("@분류번호", (object) oValue1, ParameterDirection.Input), DbProvider.GetParameter("@배치번호",
+                  (object) oValue2, ParameterDirection.Input), DbProvider.GetParameter("@배치상태", (object) "실적반영", ParameterDirection.Input));
             }
             Common.OkMessageBox("실적 전송이 완료되었습니다.");
           }
