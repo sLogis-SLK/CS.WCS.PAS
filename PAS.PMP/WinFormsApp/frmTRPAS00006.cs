@@ -12,7 +12,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace PAS.PMP
 {
-    public partial class frmTRPAS00006 : Form, IToolBase
+    public partial class frmTRPAS00006 : BaseForm, IToolBase
     {
         #region 폼개체 선언부
 

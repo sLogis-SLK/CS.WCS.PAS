@@ -6,7 +6,7 @@ using TR_Common;
 
 namespace PAS.PMP
 {
-    public partial class frmLoading : Form
+    public partial class frmLoading : BaseForm
     {
         #region 폼개체 선언부
 

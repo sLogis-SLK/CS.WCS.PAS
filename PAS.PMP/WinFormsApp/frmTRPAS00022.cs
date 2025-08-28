@@ -11,7 +11,7 @@ using TR_Common;
 
 namespace PAS.PMP
 {
-    public partial class frmTRPAS00022 : Form
+    public partial class frmTRPAS00022 : BaseForm
     {
         #region 폼개체 선언부
         private DataTable m_관리_분류실적_백업Table = new DataTable("usp_관리_분류실적_백업_Get");

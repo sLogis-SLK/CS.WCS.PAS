@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace PAS.PMP.WinFormsApp.Dialog
 {
-    public partial class frmTRDLG00001 : Form
+    public partial class frmTRDLG00001 : BaseForm
     {
         public int 선택값 { get; set; }
 

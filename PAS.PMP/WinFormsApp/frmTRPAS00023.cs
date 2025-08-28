@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace PAS.PMP
 {
-    public partial class frmTRPAS00023 : Form
+    public partial class frmTRPAS00023 : BaseForm
     {
         public frmTRPAS00023()
         {

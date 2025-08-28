@@ -1,23 +1,16 @@
-﻿using Infragistics.Shared;
-using Infragistics.Win;
-using Infragistics.Win.UltraWinDock;
+﻿using Infragistics.Win.UltraWinDock;
 using Infragistics.Win.UltraWinTabbedMdi;
 using Infragistics.Win.UltraWinToolbars;
 using Infragistics.Win.UltraWinTree;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using TR_Common;
 
 namespace PAS.PMP
 {
-    public partial class MainForm : Form
+    public partial class MainForm : BaseForm
     {
         private UltraTreeNode m_LastNodeFromPos = null;
         private string _pasLine = string.Empty;
@@ -28,6 +21,35 @@ namespace PAS.PMP
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            string path_AppStyling = Application.StartupPath + @"\uStyle.isl";
+            if (File.Exists(path_AppStyling))
+            {
+                //Infragistics.Win.AppStyling.StyleManager.Load(path_AppStyling);
+            }
+
+
+            Color 색상 = Color.FromArgb(221, 235, 247);
+
+            //색상 = System.Drawing.Color.LightSteelBlue;
+            //색상 = Color.FromArgb(0, 99, 177);
+            //색상 = Color.FromArgb(0, 204, 106);
+            //색상 = Color.FromArgb(176, 196, 222);
+            //색상 = Color.FromArgb(198, 224, 180);
+            //색상 = Color.FromArgb(221, 235, 247);
+            //색상 = Color.FromArgb(255, 242, 204);
+            //색상 = Color.FromArgb(130, 188, 0);
+            //색상 = Color.FromArgb(0, 65, 106);
+
+            _MainForm_Toolbars_Dock_Area_Right.BackColor = 색상;
+            _MainForm_Toolbars_Dock_Area_Top.BackColor = 색상;
+            _MainForm_Toolbars_Dock_Area_Bottom.BackColor = 색상;
+            ultraToolbarsManager1.Appearance.BackColor = 색상;
+
+            ultraTabbedMdiManager1.TabSettings.ActiveTabAppearance.BackColor = 색상;      //Color.Blue;
+            ultraTabbedMdiManager1.TabSettings.ActiveTabAppearance.ForeColor = Color.Black;   //Color.White;
+            ultraTabbedMdiManager1.TabSettings.ActiveTabAppearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
+
+            //ultraDockManager1.floatin
 
             GlobalClass.InitializationSettings();
             ComboBoxTool cbo = ultraToolbarsManager1.Tools["라인설정"] as ComboBoxTool;

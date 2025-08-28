@@ -119,6 +119,7 @@ namespace PAS.PMP
             ultraTreeColumnSet1.NullText = "aa";
             ultraTreeColumnSet1.TipStyleCell = Infragistics.Win.UltraWinTree.TipStyleCell.Show;
             this.uTreeProgram.ColumnSettings.RootColumnSet = ultraTreeColumnSet1;
+            this.uTreeProgram.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uTreeProgram.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uTreeProgram.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.uTreeProgram.Location = new System.Drawing.Point(0, 18);
@@ -202,7 +203,7 @@ namespace PAS.PMP
             ultraTreeNode33,
             ultraTreeNode39});
             this.uTreeProgram.SettingsKey = "PAS관리프로그램.uTreeProgram";
-            this.uTreeProgram.Size = new System.Drawing.Size(243, 391);
+            this.uTreeProgram.Size = new System.Drawing.Size(243, 366);
             this.uTreeProgram.TabIndex = 4;
             this.uTreeProgram.ViewStyle = Infragistics.Win.UltraWinTree.ViewStyle.Standard;
             this.uTreeProgram.DoubleClick += new System.EventHandler(this.ultraTree1_DoubleClick);
@@ -223,7 +224,7 @@ namespace PAS.PMP
             dockableControlPane1.Text = "네비게이션";
             dockAreaPane1.Panes.AddRange(new Infragistics.Win.UltraWinDock.DockablePaneBase[] {
             dockableControlPane1});
-            dockAreaPane1.Size = new System.Drawing.Size(243, 409);
+            dockAreaPane1.Size = new System.Drawing.Size(243, 384);
             this.ultraDockManager1.DockAreas.AddRange(new Infragistics.Win.UltraWinDock.DockAreaPane[] {
             dockAreaPane1});
             this.ultraDockManager1.HostControl = this;
@@ -289,9 +290,9 @@ namespace PAS.PMP
             this._MainForm_Toolbars_Dock_Area_Right.BackColor = System.Drawing.SystemColors.Control;
             this._MainForm_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right;
             this._MainForm_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
-            this._MainForm_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(749, 35);
+            this._MainForm_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(749, 60);
             this._MainForm_Toolbars_Dock_Area_Right.Name = "_MainForm_Toolbars_Dock_Area_Right";
-            this._MainForm_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(0, 409);
+            this._MainForm_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(0, 384);
             this._MainForm_Toolbars_Dock_Area_Right.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // ultraToolbarsManager1
@@ -301,6 +302,7 @@ namespace PAS.PMP
             this.ultraToolbarsManager1.DockWithinContainerBaseType = typeof(System.Windows.Forms.Form);
             this.ultraToolbarsManager1.ImageSizeLarge = new System.Drawing.Size(40, 28);
             this.ultraToolbarsManager1.ImageSizeSmall = new System.Drawing.Size(28, 24);
+            this.ultraToolbarsManager1.LockToolbars = true;
             ultraToolbar1.DockedColumn = 0;
             ultraToolbar1.DockedRow = 0;
             ultraToolbar1.IsMainMenuBar = true;
@@ -318,19 +320,19 @@ namespace PAS.PMP
             stateButtonTool6.SharedPropsInternal.AppearancesSmall.Appearance = appearance2;
             stateButtonTool6.SharedPropsInternal.Caption = "라인변경";
             stateButtonTool6.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            appearance3.Image = global::PAS.PMP.Properties.Resources.MenuIcon_2x;
+            appearance3.Image = global::PAS.PMP.Properties.Resources.네비게이션;
             stateButtonTool10.SharedPropsInternal.AppearancesLarge.Appearance = appearance3;
             appearance4.Image = global::PAS.PMP.Properties.Resources.MenuIcon;
             stateButtonTool10.SharedPropsInternal.AppearancesSmall.Appearance = appearance4;
             stateButtonTool10.SharedPropsInternal.Caption = "메뉴";
             stateButtonTool10.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            appearance5.Image = global::PAS.PMP.Properties.Resources.save_icon_2x;
+            appearance5.Image = global::PAS.PMP.Properties.Resources.확인;
             stateButtonTool11.SharedPropsInternal.AppearancesLarge.Appearance = appearance5;
             appearance6.Image = global::PAS.PMP.Properties.Resources.save_icon;
             stateButtonTool11.SharedPropsInternal.AppearancesSmall.Appearance = appearance6;
             stateButtonTool11.SharedPropsInternal.Caption = "저장";
             stateButtonTool11.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            appearance7.Image = global::PAS.PMP.Properties.Resources.printer_icon_2x;
+            appearance7.Image = global::PAS.PMP.Properties.Resources.프린트;
             stateButtonTool12.SharedPropsInternal.AppearancesLarge.Appearance = appearance7;
             appearance8.Image = global::PAS.PMP.Properties.Resources.printer_icon;
             stateButtonTool12.SharedPropsInternal.AppearancesSmall.Appearance = appearance8;
@@ -353,9 +355,9 @@ namespace PAS.PMP
             this._MainForm_Toolbars_Dock_Area_Left.BackColor = System.Drawing.SystemColors.Control;
             this._MainForm_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left;
             this._MainForm_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
-            this._MainForm_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 35);
+            this._MainForm_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 60);
             this._MainForm_Toolbars_Dock_Area_Left.Name = "_MainForm_Toolbars_Dock_Area_Left";
-            this._MainForm_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(0, 409);
+            this._MainForm_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(0, 384);
             this._MainForm_Toolbars_Dock_Area_Left.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // _MainForm_Toolbars_Dock_Area_Bottom
@@ -377,7 +379,7 @@ namespace PAS.PMP
             this._MainForm_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText;
             this._MainForm_Toolbars_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._MainForm_Toolbars_Dock_Area_Top.Name = "_MainForm_Toolbars_Dock_Area_Top";
-            this._MainForm_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(749, 35);
+            this._MainForm_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(749, 60);
             this._MainForm_Toolbars_Dock_Area_Top.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // windowDockingArea1
@@ -385,11 +387,11 @@ namespace PAS.PMP
             this.windowDockingArea1.Controls.Add(this.dockableWindow1);
             this.windowDockingArea1.Dock = System.Windows.Forms.DockStyle.Left;
             this.windowDockingArea1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.windowDockingArea1.Location = new System.Drawing.Point(0, 35);
+            this.windowDockingArea1.Location = new System.Drawing.Point(0, 60);
             this.windowDockingArea1.Name = "windowDockingArea1";
             this.windowDockingArea1.Owner = this.ultraDockManager1;
             this.windowDockingArea1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.windowDockingArea1.Size = new System.Drawing.Size(248, 409);
+            this.windowDockingArea1.Size = new System.Drawing.Size(248, 384);
             this.windowDockingArea1.TabIndex = 23;
             // 
             // dockableWindow1
@@ -398,7 +400,7 @@ namespace PAS.PMP
             this.dockableWindow1.Location = new System.Drawing.Point(0, 0);
             this.dockableWindow1.Name = "dockableWindow1";
             this.dockableWindow1.Owner = this.ultraDockManager1;
-            this.dockableWindow1.Size = new System.Drawing.Size(243, 409);
+            this.dockableWindow1.Size = new System.Drawing.Size(243, 384);
             this.dockableWindow1.TabIndex = 35;
             // 
             // statusStrip1
@@ -415,8 +417,8 @@ namespace PAS.PMP
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(121, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(184, 17);
+            this.toolStripStatusLabel1.Text = "PAS 관리프로그램을 실행합니다.";
             // 
             // MainForm
             // 
@@ -434,6 +436,7 @@ namespace PAS.PMP
             this.Controls.Add(this._MainForm_Toolbars_Dock_Area_Bottom);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this._MainForm_Toolbars_Dock_Area_Top);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

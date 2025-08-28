@@ -20,5 +20,29 @@ namespace PAS.PMP
                 StatusChanged(messgeText);
             }
         }
+
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
+            this.SuspendLayout();
+            // 
+            // BaseForm
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "BaseForm";
+            this.ResumeLayout(false);
+
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.ResumeLayout(false);
+            base.OnShown(e);
+            StatusText(string.Empty);
+        }
     }
 }

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace PAS.PMP
 {
-    public partial class frmTRDLG00063 : Form
+    public partial class frmTRDLG00063 : BaseForm
     {
         #region 폼개체 선언부
 

@@ -12,7 +12,7 @@ using PAS.PMP.Services;
 
 namespace PAS.PMP
 {
-    public partial class frmTRPAS00003 : Form, IToolBase
+    public partial class frmTRPAS00003 : BaseForm, IToolBase
     {
         #region 폼개체 선언부
 

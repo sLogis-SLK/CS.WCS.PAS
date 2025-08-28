@@ -11,7 +11,7 @@ using TR_Library.Controls;
 
 namespace PAS.PMP.WinFormsApp
 {
-    public partial class frmTRPASTEST : Form
+    public partial class frmTRPASTEST : BaseForm
     {
         public frmTRPASTEST()
         {

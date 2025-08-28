@@ -17,7 +17,7 @@ using TR_Library.Controls;
 
 namespace PAS.PMP
 {
-    public partial class frmTRPAS00021 : Form
+    public partial class frmTRPAS00021 : BaseForm
     {
         #region 폼개체 선언부
         private DataTable m_분류_작업요약Table = new DataTable("usp_분류_작업요약_Get_JHG");

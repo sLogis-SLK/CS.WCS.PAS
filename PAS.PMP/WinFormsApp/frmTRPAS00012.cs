@@ -10,7 +10,7 @@ using TR_Library.Controls;
 
 namespace PAS.PMP
 {
-    public partial class frmTRPAS00012: Form
+    public partial class frmTRPAS00012 : BaseForm
     {
         #region 폼개체 선언부
 

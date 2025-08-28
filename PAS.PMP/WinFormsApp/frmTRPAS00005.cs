@@ -16,7 +16,7 @@ using TR_Provider;
 
 namespace PAS.PMP
 {
-    public partial class frmTRPAS00005 : Form
+    public partial class frmTRPAS00005 : BaseForm
     {
         #region 폼개체 선언부
 
