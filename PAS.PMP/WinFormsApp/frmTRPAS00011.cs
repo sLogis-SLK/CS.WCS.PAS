@@ -338,6 +338,10 @@ namespace PAS.PMP
         {
             try
             {
+                if (uGrid3 == null)
+                {
+                    MessageBox.Show("변경할 대상이 없습니다..", this.Text);
+                }
                 DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
                 if (oRow == null)
                 {
@@ -723,11 +727,11 @@ namespace PAS.PMP
 
                 string 분류명 = oRow["분류명"].ToString() ?? string.Empty;
                 string 출하구분 = oRow["출하구분"].ToString() ?? string.Empty;
-
+                int index = FindItemIndex(출하구분);
                 if (this.m_분류_작업요약Table.Rows.Count > 0)
                 {
                     this.분류명.Value = 분류명;
-                    this.com출하구분.Text = 출하구분;
+                    this.com출하구분.SelectedIndex = index;
                 }
 
                 if (oRow["배치상태"].ToString() == "생성" || oRow["배치상태"].ToString() == "수신")
@@ -753,7 +757,21 @@ namespace PAS.PMP
 
 
         #endregion
-
+        private int FindItemIndex(string value)
+        {
+            for (int i = 0; i < this.com출하구분.Items.Count; i++)
+            {
+                var item = this.com출하구분.Items[i];
+                if (item.DataValue?.ToString() == value ||
+                    item.DisplayText == value)
+                {
+                    return i;
+                }
+            }
+            return -1; // 못 찾음
+        }
 
     }
+
+
 }

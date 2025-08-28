@@ -217,10 +217,12 @@ namespace PAS.PMP
             this.균등.Name = "균등";
             this.균등.Size = new System.Drawing.Size(70, 20);
             this.균등.TabIndex = 71;
+            this.균등.TabStop = false;
             this.균등.Text = "균등";
             // 
             // 연속
             // 
+            this.연속.Checked = true;
             this.연속.Location = new System.Drawing.Point(95, 16);
             this.연속.Name = "연속";
             this.연속.Size = new System.Drawing.Size(70, 20);

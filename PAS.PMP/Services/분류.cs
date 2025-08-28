@@ -325,7 +325,6 @@ namespace PAS.PMP
             if (dataTable == null || dataTable.Rows.Count <= 0)
                 return false;
 
-            GlobalClass pasSetting = new GlobalClass();
             string[] strArray = GlobalClass.BARCODE_PRINTER_LIST.Split(new string[1]
             {
                     "|"
@@ -336,8 +335,8 @@ namespace PAS.PMP
                 MessageBox.Show("설정된 프린터가 없습니다.");
                 return false;
             }
-            if (pasSetting.PrinterIndex >= strArray.Length)
-                pasSetting.PrinterIndex = 0;
+            if (GlobalClass.PrinterIndex >= strArray.Length)
+                GlobalClass.PrinterIndex = 0;
 
             try
             {
@@ -363,7 +362,7 @@ namespace PAS.PMP
 
                 try
                 {
-                    reportClass.PrintOptions.PrinterName = strArray[pasSetting.PrinterIndex++];
+                    reportClass.PrintOptions.PrinterName = strArray[GlobalClass.PrinterIndex++];
                 }
                 catch
                 {
@@ -379,7 +378,7 @@ namespace PAS.PMP
             }
             finally
             {
-                ++pasSetting.PrinterIndex;
+                ++GlobalClass.PrinterIndex;
             }
         }
 
@@ -400,7 +399,6 @@ namespace PAS.PMP
 
             //if (dataTable == null || dataTable.Rows.Count <= 0)
             //    return false;
-            GlobalClass pasSetting = new GlobalClass();
             string[] strArray = GlobalClass.BARCODE_PRINTER_LIST.Split(new string[1]
             {
                     "|"
@@ -411,8 +409,8 @@ namespace PAS.PMP
                 MessageBox.Show("설정된 프린터가 없습니다.");
                 return false;
             }
-            if (pasSetting.PrinterIndex >= strArray.Length)
-                pasSetting.PrinterIndex = 0;
+            if (GlobalClass.PrinterIndex >= strArray.Length)
+                GlobalClass.PrinterIndex = 0;
 
             try
             {
@@ -466,7 +464,7 @@ namespace PAS.PMP
                     return false;
                 try
                 {
-                    reportClass.PrintOptions.PrinterName = strArray[pasSetting.PrinterIndex++];
+                    reportClass.PrintOptions.PrinterName = strArray[GlobalClass.PrinterIndex++];
                 }
                 catch
                 {
@@ -482,7 +480,7 @@ namespace PAS.PMP
             }
             finally
             {
-                ++pasSetting.PrinterIndex;
+                ++GlobalClass.PrinterIndex;
             }
         }
 
@@ -515,7 +513,7 @@ namespace PAS.PMP
         internal static void 작업요약생성(string 분류명, string 장비명, string 작업일자, string 배치번호, string 원배치번호,
             string 배치명, string 배치구분, string 분류구분, string 출하구분, string 패턴구분, int 지시수, string 슈트수, string 기본분류번호, out string 분류번호)
         {
-            분류번호 = null;
+            분류번호 = string.Empty;
 
             try
             {
@@ -534,6 +532,21 @@ namespace PAS.PMP
                     // 모든 값 전달 (분류번호 포함)
                     oScope.Update(out oParams,
                         new object[] { 분류명, 장비명, 작업일자, 배치번호, 원배치번호, 배치명, 배치구분, 분류구분, 출하구분, 패턴구분, 지시수, 슈트수, 기본분류번호, 분류번호 });
+                    
+                    /*
+                     
+                    // 모든 파라미터 등록 (분류번호 포함) - 기존프로시저 활용하는 방법
+                    oScope.Initialize("usp_분류_작업요약생성_Set", new string[] {
+                    "@분류명", "@장비명", "@작업일자", "@배치번호", "@원배치번호",
+                    "@배치명", "@배치구분", "@분류구분", "@출하구분", "@패턴구분", "@지시수", "@슈트수" });
+
+                    // 분류번호를 InputOutput으로 설정
+                    oScope.SetParams(ParameterDirection.InputOutput, 기본분류번호, new string[] { "@분류번호" });
+
+                    // 모든 값 전달 (분류번호 포함)
+                    oScope.Update(out oParams, new object[] { 분류명, 장비명, 작업일자, 배치번호, 원배치번호, 배치명, 배치구분, 분류구분, 출하구분, 패턴구분, 지시수, 슈트수 });
+
+                     */
 
                     if (oParams != null && oParams.Count > 0 && oParams.Contains("@분류번호"))
                     {

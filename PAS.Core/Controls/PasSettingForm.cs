@@ -169,6 +169,7 @@ namespace PAS.Core.Controls
             DialogResult = DialogResult.OK;
             this.Close();
         }
+
         private void 삭제버튼_Click(object sender, EventArgs e)
         {
             string msgText = "정말 삭제 하시겠습니까?\r\n\r\n삭제시 되돌릴수 없습니다.";

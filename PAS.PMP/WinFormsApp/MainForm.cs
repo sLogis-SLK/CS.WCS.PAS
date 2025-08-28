@@ -60,6 +60,10 @@ namespace PAS.PMP
             string strGubun = string.Empty;
             string strType = string.Empty;
             string strFormNm = string.Empty;
+
+            if (uTreeProgram?.SelectedNodes == null || uTreeProgram.SelectedNodes.Count == 0)
+                return;
+
             try
             {
                 UltraTreeNode selectedNode = uTreeProgram.SelectedNodes.Count > 0

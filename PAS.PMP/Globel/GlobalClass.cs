@@ -26,7 +26,11 @@ namespace PAS.PMP
 
         internal static string BARCODE_PRINTER_LIST { get => pas환경설정.BARCODE_PRINTER_LIST; }
 
-        public int PrinterIndex { get; set; }
+        public static int PrinterIndex
+        {
+            get => pas환경설정.PrinterIndex; 
+            set => pas환경설정.PrinterIndex = value;
+        }
 
 
         public static string GetEmptyString(string s, int iCapacity)
