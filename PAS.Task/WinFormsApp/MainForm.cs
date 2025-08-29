@@ -75,6 +75,9 @@ namespace PAS.Task
             base.OnLoad(e);
             if (DesignMode) return;
 
+            컨트롤꾸미기();
+
+            //return;
             //여기서는 기본 정보만 세팅함.
             try
             {
@@ -110,6 +113,50 @@ namespace PAS.Task
                 MessageBox.Show("초기화에 실패하였습니다. \r\n재실행하시기 바랍니다.\r\n\r\n오류내용 : " + ex.Message, this.Text);
                 시작버튼.Enabled = false;
             }
+
+        }
+
+        private void 컨트롤꾸미기()
+        {
+            시작버튼.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            시작버튼.BackColor = Color.FromArgb(0, 120, 215);
+            시작버튼.ForeColor = Color.White;
+            시작버튼.FlatStyle = FlatStyle.Flat;
+            시작버튼.FlatAppearance.BorderSize = 0;
+
+            시작버튼.MouseEnter += (s, e) => 시작버튼.BackColor = Color.FromArgb(0, 100, 180);
+            시작버튼.MouseLeave += (s, e) => 시작버튼.BackColor = Color.FromArgb(0, 120, 215);
+
+
+            label1.Font = new Font("Segoe UI", 18, FontStyle.Bold);
+            label4.Font = new Font("Segoe UI", 18, FontStyle.Bold);
+            label7.Font = new Font("Segoe UI", 18, FontStyle.Bold);
+            label10.Font = new Font("Segoe UI", 18, FontStyle.Bold);
+
+            //사용라벨1.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+            //사용라벨2.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+            //사용라벨3.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+            //사용라벨4.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+
+            //오류라벨1.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+            //오류라벨2.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+            //오류라벨3.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+            //오류라벨4.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+
+            PAS기기콤보.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+            PAS기기콤보.DropDownStyle = ComboBoxStyle.DropDownList;
+            PAS기기콤보.FlatStyle = FlatStyle.Flat;
+            PAS기기콤보.BackColor = Color.White;
+            PAS기기콤보.ForeColor = Color.Black;
+
+
+            groupBox1.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            groupBox1.ForeColor = Color.DimGray;
+            groupBox1.BackColor = Color.White;
+
+            groupBox2.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            groupBox2.ForeColor = Color.DimGray;
+            groupBox2.BackColor = Color.White;
 
         }
 

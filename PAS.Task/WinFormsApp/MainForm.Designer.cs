@@ -29,8 +29,10 @@ namespace PAS.Task
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.PAS기기콤보 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.시작버튼 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.오류라벨4 = new System.Windows.Forms.Label();
@@ -45,7 +47,6 @@ namespace PAS.Task
             this.오류라벨1 = new System.Windows.Forms.Label();
             this.사용라벨1 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.시작버튼 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -59,7 +60,7 @@ namespace PAS.Task
             this.PAS기기콤보.FormattingEnabled = true;
             this.PAS기기콤보.Location = new System.Drawing.Point(3, 17);
             this.PAS기기콤보.Name = "PAS기기콤보";
-            this.PAS기기콤보.Size = new System.Drawing.Size(223, 32);
+            this.PAS기기콤보.Size = new System.Drawing.Size(226, 32);
             this.PAS기기콤보.TabIndex = 1;
             // 
             // groupBox1
@@ -69,18 +70,28 @@ namespace PAS.Task
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(334, 53);
+            this.groupBox1.Size = new System.Drawing.Size(324, 60);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pas기기선택";
+            // 
+            // 시작버튼
+            // 
+            this.시작버튼.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.시작버튼.Location = new System.Drawing.Point(229, 17);
+            this.시작버튼.Name = "시작버튼";
+            this.시작버튼.Size = new System.Drawing.Size(92, 40);
+            this.시작버튼.TabIndex = 2;
+            this.시작버튼.Text = "시작";
+            this.시작버튼.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tableLayoutPanel1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 53);
+            this.groupBox2.Location = new System.Drawing.Point(0, 60);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(334, 158);
+            this.groupBox2.Size = new System.Drawing.Size(324, 161);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "모니터링";
@@ -111,7 +122,7 @@ namespace PAS.Task
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(328, 138);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(318, 141);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // 오류라벨4
@@ -119,9 +130,9 @@ namespace PAS.Task
             this.오류라벨4.AutoSize = true;
             this.오류라벨4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.오류라벨4.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.오류라벨4.Location = new System.Drawing.Point(281, 102);
+            this.오류라벨4.Location = new System.Drawing.Point(276, 105);
             this.오류라벨4.Name = "오류라벨4";
-            this.오류라벨4.Size = new System.Drawing.Size(44, 36);
+            this.오류라벨4.Size = new System.Drawing.Size(39, 36);
             this.오류라벨4.TabIndex = 11;
             this.오류라벨4.Text = "○";
             this.오류라벨4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -131,9 +142,9 @@ namespace PAS.Task
             this.사용라벨4.AutoSize = true;
             this.사용라벨4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.사용라벨4.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.사용라벨4.Location = new System.Drawing.Point(232, 102);
+            this.사용라벨4.Location = new System.Drawing.Point(232, 105);
             this.사용라벨4.Name = "사용라벨4";
-            this.사용라벨4.Size = new System.Drawing.Size(43, 36);
+            this.사용라벨4.Size = new System.Drawing.Size(38, 36);
             this.사용라벨4.TabIndex = 10;
             this.사용라벨4.Text = "○";
             this.사용라벨4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -143,7 +154,7 @@ namespace PAS.Task
             this.label10.AutoSize = true;
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label10.Location = new System.Drawing.Point(3, 102);
+            this.label10.Location = new System.Drawing.Point(3, 105);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(223, 36);
             this.label10.TabIndex = 9;
@@ -155,9 +166,9 @@ namespace PAS.Task
             this.오류라벨3.AutoSize = true;
             this.오류라벨3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.오류라벨3.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.오류라벨3.Location = new System.Drawing.Point(281, 68);
+            this.오류라벨3.Location = new System.Drawing.Point(276, 70);
             this.오류라벨3.Name = "오류라벨3";
-            this.오류라벨3.Size = new System.Drawing.Size(44, 34);
+            this.오류라벨3.Size = new System.Drawing.Size(39, 35);
             this.오류라벨3.TabIndex = 8;
             this.오류라벨3.Text = "○";
             this.오류라벨3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -167,9 +178,9 @@ namespace PAS.Task
             this.사용라벨3.AutoSize = true;
             this.사용라벨3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.사용라벨3.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.사용라벨3.Location = new System.Drawing.Point(232, 68);
+            this.사용라벨3.Location = new System.Drawing.Point(232, 70);
             this.사용라벨3.Name = "사용라벨3";
-            this.사용라벨3.Size = new System.Drawing.Size(43, 34);
+            this.사용라벨3.Size = new System.Drawing.Size(38, 35);
             this.사용라벨3.TabIndex = 7;
             this.사용라벨3.Text = "○";
             this.사용라벨3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -179,9 +190,9 @@ namespace PAS.Task
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.Location = new System.Drawing.Point(3, 68);
+            this.label7.Location = new System.Drawing.Point(3, 70);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(223, 34);
+            this.label7.Size = new System.Drawing.Size(223, 35);
             this.label7.TabIndex = 6;
             this.label7.Text = "실적관리 서버";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -191,9 +202,9 @@ namespace PAS.Task
             this.오류라벨2.AutoSize = true;
             this.오류라벨2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.오류라벨2.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.오류라벨2.Location = new System.Drawing.Point(281, 34);
+            this.오류라벨2.Location = new System.Drawing.Point(276, 35);
             this.오류라벨2.Name = "오류라벨2";
-            this.오류라벨2.Size = new System.Drawing.Size(44, 34);
+            this.오류라벨2.Size = new System.Drawing.Size(39, 35);
             this.오류라벨2.TabIndex = 5;
             this.오류라벨2.Text = "○";
             this.오류라벨2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -203,9 +214,9 @@ namespace PAS.Task
             this.사용라벨2.AutoSize = true;
             this.사용라벨2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.사용라벨2.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.사용라벨2.Location = new System.Drawing.Point(232, 34);
+            this.사용라벨2.Location = new System.Drawing.Point(232, 35);
             this.사용라벨2.Name = "사용라벨2";
-            this.사용라벨2.Size = new System.Drawing.Size(43, 34);
+            this.사용라벨2.Size = new System.Drawing.Size(38, 35);
             this.사용라벨2.TabIndex = 4;
             this.사용라벨2.Text = "○";
             this.사용라벨2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -215,9 +226,9 @@ namespace PAS.Task
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(3, 34);
+            this.label4.Location = new System.Drawing.Point(3, 35);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(223, 34);
+            this.label4.Size = new System.Drawing.Size(223, 35);
             this.label4.TabIndex = 3;
             this.label4.Text = "숫자 표시기";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -227,9 +238,9 @@ namespace PAS.Task
             this.오류라벨1.AutoSize = true;
             this.오류라벨1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.오류라벨1.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.오류라벨1.Location = new System.Drawing.Point(281, 0);
+            this.오류라벨1.Location = new System.Drawing.Point(276, 0);
             this.오류라벨1.Name = "오류라벨1";
-            this.오류라벨1.Size = new System.Drawing.Size(44, 34);
+            this.오류라벨1.Size = new System.Drawing.Size(39, 35);
             this.오류라벨1.TabIndex = 2;
             this.오류라벨1.Text = "○";
             this.오류라벨1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -241,7 +252,7 @@ namespace PAS.Task
             this.사용라벨1.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.사용라벨1.Location = new System.Drawing.Point(232, 0);
             this.사용라벨1.Name = "사용라벨1";
-            this.사용라벨1.Size = new System.Drawing.Size(43, 34);
+            this.사용라벨1.Size = new System.Drawing.Size(38, 35);
             this.사용라벨1.TabIndex = 1;
             this.사용라벨1.Text = "○";
             this.사용라벨1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -253,30 +264,24 @@ namespace PAS.Task
             this.label1.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(223, 34);
+            this.label1.Size = new System.Drawing.Size(223, 35);
             this.label1.TabIndex = 0;
             this.label1.Text = "PAS";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // 시작버튼
-            // 
-            this.시작버튼.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.시작버튼.Location = new System.Drawing.Point(226, 17);
-            this.시작버튼.Name = "시작버튼";
-            this.시작버튼.Size = new System.Drawing.Size(105, 33);
-            this.시작버튼.TabIndex = 2;
-            this.시작버튼.Text = "시작";
-            this.시작버튼.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 211);
+            this.ClientSize = new System.Drawing.Size(324, 221);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(340, 260);
+            this.MinimumSize = new System.Drawing.Size(340, 260);
             this.Name = "MainForm";
             this.Text = "Task Monitoring";
+            this.TopMost = true;
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);

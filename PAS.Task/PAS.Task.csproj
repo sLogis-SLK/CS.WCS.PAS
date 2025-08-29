@@ -116,5 +116,8 @@
     <Folder Include="Library\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
