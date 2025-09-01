@@ -68,9 +68,9 @@ namespace PAS.PMP
             Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTRDLG00064));
             this.uGrid1 = new TR_Library.Controls.uGrid();
             this.조회버튼 = new Infragistics.Win.Misc.UltraButton();
-            this.닫기버튼 = new Infragistics.Win.Misc.UltraButton();
             this.저장버튼 = new Infragistics.Win.Misc.UltraButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.splitter2 = new System.Windows.Forms.Splitter();
@@ -153,34 +153,27 @@ namespace PAS.PMP
             this.uGrid1.Dock = System.Windows.Forms.DockStyle.Top;
             this.uGrid1.Location = new System.Drawing.Point(0, 0);
             this.uGrid1.Name = "uGrid1";
-            this.uGrid1.Size = new System.Drawing.Size(800, 140);
+            this.uGrid1.Size = new System.Drawing.Size(1039, 140);
             this.uGrid1.TabIndex = 3;
             this.uGrid1.Text = "uGrid1";
             this.uGrid1.AfterRowActivate += new System.EventHandler(this.uGrid1_AfterRowActivate);
             // 
             // 조회버튼
             // 
-            this.조회버튼.Location = new System.Drawing.Point(524, 5);
+            this.조회버튼.Dock = System.Windows.Forms.DockStyle.Right;
+            this.조회버튼.Location = new System.Drawing.Point(859, 0);
             this.조회버튼.Name = "조회버튼";
-            this.조회버튼.Size = new System.Drawing.Size(90, 34);
+            this.조회버튼.Size = new System.Drawing.Size(90, 45);
             this.조회버튼.TabIndex = 2;
             this.조회버튼.Text = "조회";
             this.조회버튼.Click += new System.EventHandler(this.조회버튼_Click);
             // 
-            // 닫기버튼
-            // 
-            this.닫기버튼.Location = new System.Drawing.Point(704, 5);
-            this.닫기버튼.Name = "닫기버튼";
-            this.닫기버튼.Size = new System.Drawing.Size(90, 34);
-            this.닫기버튼.TabIndex = 5;
-            this.닫기버튼.Text = "닫 기";
-            this.닫기버튼.Click += new System.EventHandler(this.닫기버튼_Click);
-            // 
             // 저장버튼
             // 
-            this.저장버튼.Location = new System.Drawing.Point(614, 5);
+            this.저장버튼.Dock = System.Windows.Forms.DockStyle.Right;
+            this.저장버튼.Location = new System.Drawing.Point(949, 0);
             this.저장버튼.Name = "저장버튼";
-            this.저장버튼.Size = new System.Drawing.Size(90, 34);
+            this.저장버튼.Size = new System.Drawing.Size(90, 45);
             this.저장버튼.TabIndex = 6;
             this.저장버튼.Text = "변경내용 반영";
             this.저장버튼.Click += new System.EventHandler(this.저장버튼_Click);
@@ -190,7 +183,7 @@ namespace PAS.PMP
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
             this.splitter1.Location = new System.Drawing.Point(0, 140);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(800, 3);
+            this.splitter1.Size = new System.Drawing.Size(1039, 3);
             this.splitter1.TabIndex = 16;
             this.splitter1.TabStop = false;
             // 
@@ -198,7 +191,7 @@ namespace PAS.PMP
             // 
             this.splitter2.Location = new System.Drawing.Point(350, 0);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(3, 412);
+            this.splitter2.Size = new System.Drawing.Size(3, 438);
             this.splitter2.TabIndex = 17;
             this.splitter2.TabStop = false;
             // 
@@ -212,7 +205,7 @@ namespace PAS.PMP
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 600);
+            this.panel1.Size = new System.Drawing.Size(1039, 626);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -220,9 +213,10 @@ namespace PAS.PMP
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.splitter1);
             this.panel2.Controls.Add(this.uGrid1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 45);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 555);
+            this.panel2.Size = new System.Drawing.Size(1039, 581);
             this.panel2.TabIndex = 16;
             // 
             // panel3
@@ -233,7 +227,7 @@ namespace PAS.PMP
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 143);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(800, 412);
+            this.panel3.Size = new System.Drawing.Size(1039, 438);
             this.panel3.TabIndex = 17;
             // 
             // uGrid3
@@ -300,7 +294,7 @@ namespace PAS.PMP
             this.uGrid3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uGrid3.Location = new System.Drawing.Point(353, 0);
             this.uGrid3.Name = "uGrid3";
-            this.uGrid3.Size = new System.Drawing.Size(447, 412);
+            this.uGrid3.Size = new System.Drawing.Size(686, 438);
             this.uGrid3.TabIndex = 1;
             this.uGrid3.Text = "uGrid3";
             // 
@@ -368,29 +362,28 @@ namespace PAS.PMP
             this.uGrid2.Dock = System.Windows.Forms.DockStyle.Left;
             this.uGrid2.Location = new System.Drawing.Point(0, 0);
             this.uGrid2.Name = "uGrid2";
-            this.uGrid2.Size = new System.Drawing.Size(350, 412);
+            this.uGrid2.Size = new System.Drawing.Size(350, 438);
             this.uGrid2.TabIndex = 0;
             this.uGrid2.Text = "uGrid2";
             // 
             // panel4
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel4.Controls.Add(this.조회버튼);
             this.panel4.Controls.Add(this.저장버튼);
-            this.panel4.Controls.Add(this.닫기버튼);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(800, 45);
+            this.panel4.Size = new System.Drawing.Size(1039, 45);
             this.panel4.TabIndex = 1;
             // 
             // frmTRDLG00064
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1039, 626);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmTRDLG00064";
             this.Tag = "TRDLG00064";
             this.Text = "배송사 변경(TRDLG00064)";
@@ -410,7 +403,6 @@ namespace PAS.PMP
         private TR_Library.Controls.uGrid uGrid3;
         private TR_Library.Controls.uGrid uGrid2;
         private Infragistics.Win.Misc.UltraButton 조회버튼;
-        private Infragistics.Win.Misc.UltraButton 닫기버튼;
         private Infragistics.Win.Misc.UltraButton 저장버튼;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Splitter splitter2;

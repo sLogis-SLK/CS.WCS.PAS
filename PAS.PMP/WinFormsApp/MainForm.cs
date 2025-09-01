@@ -2,6 +2,7 @@
 using Infragistics.Win.UltraWinTabbedMdi;
 using Infragistics.Win.UltraWinToolbars;
 using Infragistics.Win.UltraWinTree;
+using PAS.PMP.WinFormsApp;
 using System;
 using System.Drawing;
 using System.IO;
@@ -86,6 +87,12 @@ namespace PAS.PMP
             if (uTreeProgram?.SelectedNodes == null || uTreeProgram.SelectedNodes.Count == 0)
                 return;
 
+            if (string.IsNullOrEmpty(GlobalClass.장비명))
+            {
+                MessageBox.Show("상단에 PAS Line 을 선택해주세요.");
+                return;
+            }
+
             try
             {
                 UltraTreeNode selectedNode = uTreeProgram.SelectedNodes.Count > 0
@@ -123,6 +130,9 @@ namespace PAS.PMP
                             break;
                         case "frmTRPAS00007":
                             form = new frmTRPAS00007();
+                            break;
+                        case "frmTRPAS00008":
+                            form = new frmTRPAS00008();
                             break;
                         case "frmTRPAS00011":
                             form = new frmTRPAS00011();

@@ -55,7 +55,7 @@ namespace PAS.PMP
                 m_분류_작업요약_배치그룹별BS.DataSource = m_분류_작업요약_배치그룹별Table;
                 uGrid1.DataSource = m_분류_작업요약_배치그룹별BS;
 
-                Common.SetGridInit(this.uGrid1, true, true, true, true, false, false);
+                Common.SetGridInit(this.uGrid1, true, true, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid1, "분류구분", "패턴구분", "분류상태", "선택", "순번", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "분류방법코드", "패턴구분코드", "분류상태코드", "배치상태코드");
                 Common.SetGridEditColumn(this.uGrid1, "선택");
 
@@ -68,7 +68,7 @@ namespace PAS.PMP
                 m_분류_실적작성대상BS.DataSource = m_분류_실적작성대상Table;
                 uGrid2.DataSource = m_분류_실적작성대상BS;
 
-                Common.SetGridInit(this.uGrid2, true, true, true, true, false, false);
+                Common.SetGridInit(this.uGrid2, true, true, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid2, "일련번호", "계산용");
                 //Common.SetGridEditColumn(this.uGrid2, "선택");
                 Common.uGridSummarySet(this.uGrid2, SummaryType.Sum, "지시수", "실적수", "부족수");

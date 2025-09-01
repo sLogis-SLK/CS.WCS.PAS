@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Net.Sockets;
 using System.Text;
@@ -59,8 +60,8 @@ namespace PAS.PMP
                 this.m_분류_작업배치그룹BS.DataSource = this.m_분류_작업배치그룹Table;
                 this.uGrid2.DataSource = this.m_분류_작업배치그룹BS;
 
-                Common.SetGridInit(this.uGrid2, false, false, true, true, false, false);
-                Common.SetGridHiddenColumn(this.uGrid2, "분류구분", "패턴구분", "분류상태", "완료일시", "선택", "순번", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "패턴구분코드", "분류상태코드", "배치상태코드");
+                Common.SetGridInit(this.uGrid2, false, false, true, false, false, false);
+                Common.SetGridHiddenColumn(this.uGrid2, "분류방법코드", "분류구분", "패턴구분", "분류상태", "완료일시", "선택", "순번", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "패턴구분코드", "분류상태코드", "배치상태코드");
                 Common.SetGridEditColumn(this.uGrid2, null);
 
                 this.uGrid2.DisplayLayout.Bands[0].Columns["등록일시"].Format = "yy-MM-dd HH:mm";
@@ -74,11 +75,11 @@ namespace PAS.PMP
                 this.m_분류_마지막박스내역BS.DataSource = this.m_분류_마지막박스내역Table;
                 this.uGrid1.DataSource = this.m_분류_마지막박스내역BS;
 
-                Common.SetGridInit(this.uGrid1, false, false, true, true, false, false);
+                Common.SetGridInit(this.uGrid1, false, false, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid1, "분류번호", "배치번호", "서브슈트번호");
                 Common.SetGridEditColumn(this.uGrid1, "선택");
                 Common.uGridSummarySet(this.uGrid1, Infragistics.Win.UltraWinGrid.SummaryType.Sum, "실적수");
-
+                this.uGrid1.DisplayLayout.Override.SummaryValueAppearance.ForeColor = Color.Red;
                 #endregion
             }
             catch (Exception ex)
@@ -93,7 +94,9 @@ namespace PAS.PMP
 
         private void 조회_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 1);
+            Cursor = Cursors.Default;
         }
 
         private void uGrid2_AfterRowActivate(object sender, EventArgs e)
@@ -336,6 +339,7 @@ namespace PAS.PMP
                         }
                         catch (Exception ex)
                         {
+                            Cursor.Current = Cursors.Default;
                             try
                             {
                                 oScope.Rollback();
@@ -359,7 +363,10 @@ namespace PAS.PMP
                     MessageBox.Show(ex.Message);
                     Cursor.Current = Cursors.Default;
                 }
-                finally { Cursor.Current = Cursors.Default; }
+                finally { 
+                    Cursor.Current = Cursors.Default;
+                    조회_Click((object)null, EventArgs.Empty);
+                }
             }
             else
             {

@@ -101,6 +101,7 @@ namespace PAS.PMP
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab5 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTRPAS00023));
             this.ultraTabPageControl센터 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBox3 = new Infragistics.Win.Misc.UltraGroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -1562,6 +1563,7 @@ namespace PAS.PMP
             this.ClientSize = new System.Drawing.Size(754, 341);
             this.Controls.Add(this.ultraTabControl1);
             this.Controls.Add(this.ultraGroupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(770, 380);
             this.MinimumSize = new System.Drawing.Size(770, 380);
             this.Name = "frmTRPAS00023";

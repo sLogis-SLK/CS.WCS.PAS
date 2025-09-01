@@ -83,7 +83,7 @@ namespace PAS.PMP
                 m_PAS_배치정보BS.DataSource = m_PAS_배치정보Table;
                 uGrid1.DataSource = m_PAS_배치정보BS;
 
-                Common.SetGridInit(this.uGrid1, true, true, true, true, false, false);
+                Common.SetGridInit(this.uGrid1, true, true, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid1, "센터코드", "장비구분", "배치구분코드", "분류구분", "분류구분코드", "출하구분코드", "출력여부코드");
                 Common.SetGridEditColumn(this.uGrid1, "선택");
 
@@ -96,7 +96,7 @@ namespace PAS.PMP
                 m_연동_작업지시BS.DataSource = m_연동_작업지시Table;
                 uGrid2.DataSource = m_연동_작업지시BS;
 
-                Common.SetGridInit(this.uGrid2, true, true, true, true, false, false);
+                Common.SetGridInit(this.uGrid2, true, true, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid2, "브랜드명", "센터코드", "장비구분", "배치구분코드", "분류구분", "분류구분코드", "출하구분코드", "출력여부코드");
                 Common.SetGridEditColumn(this.uGrid2, "선택");
 
@@ -109,7 +109,7 @@ namespace PAS.PMP
                 m_분류_작업요약BS.DataSource = m_분류_작업요약Table;
                 uGrid3.DataSource = m_분류_작업요약BS;
 
-                Common.SetGridInit(this.uGrid3, true, true, true, true, false, false);
+                Common.SetGridInit(this.uGrid3, true, true, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid3, "순번", "관리번호", "배치구분코드", "출하구분코드", "분류구분", "분류구분코드",  "분류방법코드", "패턴구분코드", "분류상태코드", "배치상태코드");
                 Common.SetGridEditColumn(this.uGrid3, "선택");
 
@@ -163,10 +163,11 @@ namespace PAS.PMP
 
         private void 조회버튼_Click(object sender, EventArgs e)
         {
+         
             try
             {
-              
-                
+
+                Cursor = Cursors.WaitCursor;
                 연동.조회미수신기간별(m_PAS_배치정보Table, m조회시작일자, m조회종료일자, true);
                 연동.조회수신기간별(m_연동_작업지시Table, m조회시작일자, m조회종료일자, true);
                 분류.분류작업요약(m_분류_작업요약Table, "모두", m조회시작일자, m조회종료일자, 1);
@@ -185,7 +186,7 @@ namespace PAS.PMP
                 if (this.m_분류_작업요약Table.Rows.Count <= 0 || this.uGrid3.Selected.Rows == null || this.uGrid3.Selected.Rows.Count <= 0)
                 {
                     this.분류명.Value = string.Empty;
-                    this.com출하구분.Text = string.Empty;
+                    //this.com출하구분.Text = string.Empty;
                 } 
                 else
                 {
@@ -204,13 +205,20 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
+                Cursor = Cursors.Default;
                 MessageBox.Show(ex.Message, this.Text);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
             }
         }
 
         private void 수신버튼_Click(object sender, EventArgs e)
         {
             if (m_PAS_배치정보Table == null) return;
+
+            Cursor = Cursors.WaitCursor;
             try
             {
                 var datas = m_PAS_배치정보Table.AsEnumerable()
@@ -228,10 +236,12 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
+                Cursor = Cursors.Default;
                 MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
+                Cursor = Cursors.Default;
                 this.조회버튼_Click((object)null, EventArgs.Empty);
             }
         }
@@ -252,22 +262,29 @@ namespace PAS.PMP
 
         private void 새로고침버튼_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             try
             {
                 연동.조회수신기간별(m_연동_작업지시Table, m조회시작일자, m조회종료일자, true);
             }
             catch (Exception ex)
-            {
+            {   Cursor = Cursors.Default;
                 MessageBox.Show(ex.Message, this.Text);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
             }
         }
 
         private void 수신취소버튼_Click(object sender, EventArgs e)
         {
             if (m_연동_작업지시Table == null) return;
+
+            Cursor = Cursors.WaitCursor;
             try
             {
-                var datas = m_PAS_배치정보Table.AsEnumerable()
+                var datas = m_연동_작업지시Table.AsEnumerable()
                 .Where(row => row.Field<bool>("선택"))
                 .Select(row => row.Field<string>("원배치번호"))
                 .Distinct().ToList();
@@ -281,10 +298,12 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
+                Cursor = Cursors.Default;
                 MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
+                Cursor = Cursors.Default;
                 this.조회버튼_Click((object)null, EventArgs.Empty);
             }
         }
@@ -324,6 +343,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
+                Cursor = Cursors.Default;
                 MessageBox.Show(ex.Message);
             }
             finally
@@ -400,6 +420,9 @@ namespace PAS.PMP
             string s분류명 = m분류명.Trim();
             string s분류번호 = string.Empty;
             string messageText = string.Empty;
+
+            Cursor = Cursors.WaitCursor;
+
             try
             {
                 if (string.IsNullOrEmpty(s분류명))
@@ -475,6 +498,7 @@ namespace PAS.PMP
                             frmMessageBox.Show("추가 배치는 단독으로 작업할 수 없습니다.", this.Text, false, true);
                             return;
                         }
+
                         string s장비명 = GlobalClass.장비명;
                         string s작업일자 = row1.Cells["작업일자"].Value.ToString();
                         string s배치번호 = row1.Cells["배치번호"].Value.ToString();
@@ -635,9 +659,11 @@ namespace PAS.PMP
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, this.Text);
+                Cursor = Cursors.Default;
             }
             finally
             {
+                Cursor = Cursors.Default;
                 //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역진행상태.Visible = false)));
                 this.조회버튼_Click((object)null, EventArgs.Empty);
             }
@@ -649,7 +675,6 @@ namespace PAS.PMP
             {
                 if (MessageBox.Show("분류번호 단위로 배치 작성을 취소합니다.\r\n계속 진행 하시겠습니까?", this.Text, MessageBoxButtons.YesNo) != DialogResult.Yes)
                     return;
-
                 this.m_분류_작업요약BS.EndEdit();
                 this.m_분류_작업요약Table.AcceptChanges();
 
@@ -703,6 +728,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, this.Text);
             }
             finally
@@ -747,6 +773,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, this.Text);
             }
             finally

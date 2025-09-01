@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using PAS.PMP.Report;
 using PAS.PMP.Services;
+using System.Drawing;
 
 namespace PAS.PMP
 {
@@ -65,8 +66,8 @@ namespace PAS.PMP
                 this.m_분류_작업배치그룹BS.DataSource = this.m_분류_작업배치그룹Table;
                 this.uGrid4.DataSource = this.m_분류_작업배치그룹BS;
 
-                Common.SetGridInit(this.uGrid4, false, false, true, true, false, false);
-                Common.SetGridHiddenColumn(this.uGrid4, "분류구분", "패턴구분", "분류상태", "완료일시", "선택", "순번", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "패턴구분코드", "분류상태코드", "배치상태코드");
+                Common.SetGridInit(this.uGrid4, false, false, true, false, false, false);
+                Common.SetGridHiddenColumn(this.uGrid4, "분류방법코드", "분류구분", "패턴구분", "분류상태", "완료일시", "선택", "순번", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "패턴구분코드", "분류상태코드", "배치상태코드");
                 Common.SetGridEditColumn(this.uGrid4, null);
 
                 #endregion
@@ -78,12 +79,12 @@ namespace PAS.PMP
                 this.m_분류_박스재발행BS.DataSource = this.m_분류_박스재발행Table;
                 this.uGrid1.DataSource = this.m_분류_박스재발행BS;
 
-                Common.SetGridInit(this.uGrid1, false, false, true, true, false, false);
+                Common.SetGridInit(this.uGrid1, false, false, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid1, "분류번호", "배치번호", "서브슈트번호", "배치구분코드", "배치구분", "출력여부");
                 Common.SetGridEditColumn(this.uGrid1, null);
 
                 Common.uGridSummarySet(this.uGrid1, Infragistics.Win.UltraWinGrid.SummaryType.Sum, "내품수");
-
+                this.uGrid1.DisplayLayout.Override.SummaryValueAppearance.ForeColor = Color.Red;
                 #endregion
 
                 #region uGrid2 BindingSource 초기화
@@ -93,12 +94,12 @@ namespace PAS.PMP
                 this.m_분류_박스재발행슈트별BS.DataSource = this.m_분류_박스재발행_슈트별Table;
                 this.uGrid2.DataSource = this.m_분류_박스재발행슈트별BS;
 
-                Common.SetGridInit(this.uGrid2, false, false, true, true, false, false);
+                Common.SetGridInit(this.uGrid2, false, false, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid2, "분류번호", "배치번호", "슈트번호", "서브슈트번호", "박스바코드", "박스바코드구분");
 
                 Common.SetGridEditColumn(this.uGrid2, null);
                 Common.uGridSummarySet(this.uGrid2, Infragistics.Win.UltraWinGrid.SummaryType.Sum, "내품수");
-
+                this.uGrid2.DisplayLayout.Override.SummaryValueAppearance.ForeColor = Color.Red;
                 #endregion
 
                 #region uGrid3 BindingSource 초기화
@@ -108,7 +109,7 @@ namespace PAS.PMP
                 this.m_분류_박스재발행슈트별상세BS.DataSource = this.m_분류_박스재발행_슈트별상세Table;
                 this.uGrid3.DataSource = this.m_분류_박스재발행슈트별상세BS;
 
-                Common.SetGridInit(this.uGrid3, false, false, true, true, false, false);
+                Common.SetGridInit(this.uGrid3, false, false, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid3, "IDX", "아이템코드", "조정", "잔여", "센터코드", "센터명", "배치명");
 
                 Common.SetGridEditColumn(this.uGrid3, null);
@@ -454,8 +455,7 @@ namespace PAS.PMP
             }
         }
 
+
         #endregion
-
-
     }
 }

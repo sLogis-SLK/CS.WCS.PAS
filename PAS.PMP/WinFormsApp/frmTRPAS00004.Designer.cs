@@ -95,11 +95,11 @@ namespace PAS.PMP
             Infragistics.Win.Appearance appearance63 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance64 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance65 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTRPAS00004));
             this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
             this.작업일자 = new TR_Library.Controls.uCalendarCombo();
             this.ultraLabel11 = new Infragistics.Win.Misc.UltraLabel();
             this.조회 = new Infragistics.Win.Misc.UltraButton();
-            this.닫기 = new Infragistics.Win.Misc.UltraButton();
             this.ultraGroupBox2 = new Infragistics.Win.Misc.UltraGroupBox();
             this.uGrid4 = new TR_Library.Controls.uGrid();
             this.splitter1 = new System.Windows.Forms.Splitter();
@@ -119,6 +119,8 @@ namespace PAS.PMP
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.박스이동 = new Infragistics.Win.Misc.UltraButton();
             this.ultraGroupBox3 = new Infragistics.Win.Misc.UltraGroupBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
             this.ultraGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.작업일자)).BeginInit();
@@ -138,6 +140,8 @@ namespace PAS.PMP
             ((System.ComponentModel.ISupportInitialize)(this.박스번호리스트)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).BeginInit();
             this.ultraGroupBox3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // ultraGroupBox1
@@ -146,20 +150,19 @@ namespace PAS.PMP
             appearance1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ultraGroupBox1.Appearance = appearance1;
             this.ultraGroupBox1.BorderStyle = Infragistics.Win.Misc.GroupBoxBorderStyle.RectangularSolid;
-            this.ultraGroupBox1.Controls.Add(this.작업일자);
-            this.ultraGroupBox1.Controls.Add(this.ultraLabel11);
+            this.ultraGroupBox1.Controls.Add(this.panel5);
+            this.ultraGroupBox1.Controls.Add(this.panel4);
             this.ultraGroupBox1.Controls.Add(this.조회);
-            this.ultraGroupBox1.Controls.Add(this.닫기);
             this.ultraGroupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultraGroupBox1.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
-            this.ultraGroupBox1.Size = new System.Drawing.Size(1375, 44);
+            this.ultraGroupBox1.Size = new System.Drawing.Size(1375, 40);
             this.ultraGroupBox1.TabIndex = 1027;
             // 
             // 작업일자
             // 
             this.작업일자.DateButtons.Add(dateButton1);
-            this.작업일자.Location = new System.Drawing.Point(85, 9);
+            this.작업일자.Location = new System.Drawing.Point(6, 9);
             this.작업일자.Name = "작업일자";
             this.작업일자.NonAutoSizeHeight = 21;
             this.작업일자.Size = new System.Drawing.Size(121, 21);
@@ -174,34 +177,25 @@ namespace PAS.PMP
             this.ultraLabel11.Appearance = appearance2;
             this.ultraLabel11.Location = new System.Drawing.Point(11, 9);
             this.ultraLabel11.Name = "ultraLabel11";
-            this.ultraLabel11.Size = new System.Drawing.Size(66, 29);
+            this.ultraLabel11.Size = new System.Drawing.Size(57, 25);
             this.ultraLabel11.TabIndex = 6;
             this.ultraLabel11.Text = "작업일자";
             // 
             // 조회
             // 
-            this.조회.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.조회.Location = new System.Drawing.Point(1177, 12);
+            this.조회.Dock = System.Windows.Forms.DockStyle.Right;
+            this.조회.Location = new System.Drawing.Point(1283, 2);
             this.조회.Name = "조회";
-            this.조회.Size = new System.Drawing.Size(90, 25);
+            this.조회.Size = new System.Drawing.Size(90, 36);
             this.조회.TabIndex = 4;
             this.조회.Text = "조회";
             this.조회.Click += new System.EventHandler(this.조회_Click);
-            // 
-            // 닫기
-            // 
-            this.닫기.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.닫기.Location = new System.Drawing.Point(1273, 12);
-            this.닫기.Name = "닫기";
-            this.닫기.Size = new System.Drawing.Size(90, 25);
-            this.닫기.TabIndex = 5;
-            this.닫기.Text = "닫기";
             // 
             // ultraGroupBox2
             // 
             this.ultraGroupBox2.Controls.Add(this.uGrid4);
             this.ultraGroupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ultraGroupBox2.Location = new System.Drawing.Point(0, 44);
+            this.ultraGroupBox2.Location = new System.Drawing.Point(0, 40);
             this.ultraGroupBox2.Name = "ultraGroupBox2";
             this.ultraGroupBox2.Size = new System.Drawing.Size(1375, 250);
             this.ultraGroupBox2.TabIndex = 1028;
@@ -280,7 +274,7 @@ namespace PAS.PMP
             // 
             this.splitter1.Cursor = System.Windows.Forms.Cursors.HSplit;
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter1.Location = new System.Drawing.Point(0, 294);
+            this.splitter1.Location = new System.Drawing.Point(0, 290);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(1375, 3);
             this.splitter1.TabIndex = 1030;
@@ -302,7 +296,7 @@ namespace PAS.PMP
             this.ultraPanel1.ClientArea.Controls.Add(this.splitter2);
             this.ultraPanel1.Location = new System.Drawing.Point(3, 3);
             this.ultraPanel1.Name = "ultraPanel1";
-            this.ultraPanel1.Size = new System.Drawing.Size(1369, 642);
+            this.ultraPanel1.Size = new System.Drawing.Size(1369, 646);
             this.ultraPanel1.TabIndex = 1028;
             // 
             // panel3
@@ -311,7 +305,7 @@ namespace PAS.PMP
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(777, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(592, 642);
+            this.panel3.Size = new System.Drawing.Size(592, 646);
             this.panel3.TabIndex = 8;
             // 
             // uGrid3
@@ -378,7 +372,7 @@ namespace PAS.PMP
             this.uGrid3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uGrid3.Location = new System.Drawing.Point(0, 0);
             this.uGrid3.Name = "uGrid3";
-            this.uGrid3.Size = new System.Drawing.Size(592, 642);
+            this.uGrid3.Size = new System.Drawing.Size(592, 646);
             this.uGrid3.TabIndex = 0;
             this.uGrid3.Text = "uGrid3";
             this.uGrid3.AfterCellUpdate += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.uGrid3_AfterCellUpdate);
@@ -387,7 +381,7 @@ namespace PAS.PMP
             // 
             this.splitter4.Location = new System.Drawing.Point(774, 0);
             this.splitter4.Name = "splitter4";
-            this.splitter4.Size = new System.Drawing.Size(3, 642);
+            this.splitter4.Size = new System.Drawing.Size(3, 646);
             this.splitter4.TabIndex = 7;
             this.splitter4.TabStop = false;
             // 
@@ -397,7 +391,7 @@ namespace PAS.PMP
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(478, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(296, 642);
+            this.panel2.Size = new System.Drawing.Size(296, 646);
             this.panel2.TabIndex = 6;
             // 
             // uGrid2
@@ -464,7 +458,7 @@ namespace PAS.PMP
             this.uGrid2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uGrid2.Location = new System.Drawing.Point(0, 0);
             this.uGrid2.Name = "uGrid2";
-            this.uGrid2.Size = new System.Drawing.Size(296, 642);
+            this.uGrid2.Size = new System.Drawing.Size(296, 646);
             this.uGrid2.TabIndex = 0;
             this.uGrid2.Text = "uGrid2";
             this.uGrid2.AfterRowActivate += new System.EventHandler(this.uGrid2_AfterRowActivate);
@@ -473,7 +467,7 @@ namespace PAS.PMP
             // 
             this.splitter3.Location = new System.Drawing.Point(475, 0);
             this.splitter3.Name = "splitter3";
-            this.splitter3.Size = new System.Drawing.Size(3, 642);
+            this.splitter3.Size = new System.Drawing.Size(3, 646);
             this.splitter3.TabIndex = 5;
             this.splitter3.TabStop = false;
             // 
@@ -483,7 +477,7 @@ namespace PAS.PMP
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(3, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(472, 642);
+            this.panel1.Size = new System.Drawing.Size(472, 646);
             this.panel1.TabIndex = 4;
             // 
             // uGrid1
@@ -550,7 +544,7 @@ namespace PAS.PMP
             this.uGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uGrid1.Location = new System.Drawing.Point(0, 0);
             this.uGrid1.Name = "uGrid1";
-            this.uGrid1.Size = new System.Drawing.Size(472, 642);
+            this.uGrid1.Size = new System.Drawing.Size(472, 646);
             this.uGrid1.TabIndex = 0;
             this.uGrid1.Text = "uGrid1";
             this.uGrid1.AfterRowActivate += new System.EventHandler(this.uGrid1_AfterRowActivate);
@@ -559,7 +553,7 @@ namespace PAS.PMP
             // 
             this.splitter2.Location = new System.Drawing.Point(0, 0);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(3, 642);
+            this.splitter2.Size = new System.Drawing.Size(3, 646);
             this.splitter2.TabIndex = 3;
             this.splitter2.TabStop = false;
             // 
@@ -575,7 +569,7 @@ namespace PAS.PMP
             this.ultraPanel2.ClientArea.Controls.Add(this.ultraLabel1);
             this.ultraPanel2.ClientArea.Controls.Add(this.박스이동);
             this.ultraPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ultraPanel2.Location = new System.Drawing.Point(3, 646);
+            this.ultraPanel2.Location = new System.Drawing.Point(3, 650);
             this.ultraPanel2.Name = "ultraPanel2";
             this.ultraPanel2.Size = new System.Drawing.Size(1369, 37);
             this.ultraPanel2.TabIndex = 1029;
@@ -677,10 +671,28 @@ namespace PAS.PMP
             this.ultraGroupBox3.Controls.Add(this.ultraPanel2);
             this.ultraGroupBox3.Controls.Add(this.ultraPanel1);
             this.ultraGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraGroupBox3.Location = new System.Drawing.Point(0, 294);
+            this.ultraGroupBox3.Location = new System.Drawing.Point(0, 290);
             this.ultraGroupBox3.Name = "ultraGroupBox3";
-            this.ultraGroupBox3.Size = new System.Drawing.Size(1375, 686);
+            this.ultraGroupBox3.Size = new System.Drawing.Size(1375, 690);
             this.ultraGroupBox3.TabIndex = 1029;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.ultraLabel11);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel4.Location = new System.Drawing.Point(2, 2);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(71, 36);
+            this.panel4.TabIndex = 8;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.작업일자);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel5.Location = new System.Drawing.Point(73, 2);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(143, 36);
+            this.panel5.TabIndex = 9;
             // 
             // frmTRPAS00004
             // 
@@ -690,13 +702,13 @@ namespace PAS.PMP
             this.Controls.Add(this.ultraGroupBox3);
             this.Controls.Add(this.ultraGroupBox2);
             this.Controls.Add(this.ultraGroupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmTRPAS00004";
             this.Tag = "TRPAS00004";
             this.Text = "박스상품이동(TRPAS00004)";
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).EndInit();
             this.ultraGroupBox1.ResumeLayout(false);
-            this.ultraGroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.작업일자)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).EndInit();
             this.ultraGroupBox2.ResumeLayout(false);
@@ -715,6 +727,9 @@ namespace PAS.PMP
             ((System.ComponentModel.ISupportInitialize)(this.박스번호리스트)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).EndInit();
             this.ultraGroupBox3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -722,7 +737,6 @@ namespace PAS.PMP
         #endregion
 
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox1;
-        private Infragistics.Win.Misc.UltraButton 닫기;
         private Infragistics.Win.Misc.UltraButton 조회;
         private Infragistics.Win.Misc.UltraLabel ultraLabel11;
         private TR_Library.Controls.uCalendarCombo 작업일자;
@@ -745,5 +759,7 @@ namespace PAS.PMP
         private TR_Library.Controls.uGrid uGrid2;
         private System.Windows.Forms.Panel panel3;
         private TR_Library.Controls.uGrid uGrid3;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel4;
     }
 }

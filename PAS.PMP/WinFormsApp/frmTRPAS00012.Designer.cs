@@ -58,9 +58,9 @@ namespace PAS.PMP
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTRPAS00012));
             this.uGrid1 = new TR_Library.Controls.uGrid();
             this.조회버튼 = new Infragistics.Win.Misc.UltraButton();
-            this.닫기버튼 = new Infragistics.Win.Misc.UltraButton();
             this.중간실적반영버튼 = new Infragistics.Win.Misc.UltraButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -155,29 +155,21 @@ namespace PAS.PMP
             // 
             // 조회버튼
             // 
-            this.조회버튼.Location = new System.Drawing.Point(529, 8);
+            this.조회버튼.Dock = System.Windows.Forms.DockStyle.Right;
+            this.조회버튼.Location = new System.Drawing.Point(538, 0);
             this.조회버튼.Name = "조회버튼";
-            this.조회버튼.Size = new System.Drawing.Size(90, 29);
+            this.조회버튼.Size = new System.Drawing.Size(90, 45);
             this.조회버튼.TabIndex = 2;
             this.조회버튼.Text = "조회";
             this.조회버튼.Click += new System.EventHandler(this.조회버튼_Click);
             // 
-            // 닫기버튼
-            // 
-            this.닫기버튼.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.닫기버튼.Location = new System.Drawing.Point(870, 8);
-            this.닫기버튼.Name = "닫기버튼";
-            this.닫기버튼.Size = new System.Drawing.Size(120, 29);
-            this.닫기버튼.TabIndex = 5;
-            this.닫기버튼.Text = "닫 기";
-            this.닫기버튼.Click += new System.EventHandler(this.닫기버튼_Click);
-            // 
             // 중간실적반영버튼
             // 
-            this.중간실적반영버튼.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.중간실적반영버튼.Location = new System.Drawing.Point(750, 8);
+            this.중간실적반영버튼.AutoSize = true;
+            this.중간실적반영버튼.Dock = System.Windows.Forms.DockStyle.Right;
+            this.중간실적반영버튼.Location = new System.Drawing.Point(874, 0);
             this.중간실적반영버튼.Name = "중간실적반영버튼";
-            this.중간실적반영버튼.Size = new System.Drawing.Size(120, 29);
+            this.중간실적반영버튼.Size = new System.Drawing.Size(126, 45);
             this.중간실적반영버튼.TabIndex = 6;
             this.중간실적반영버튼.Text = "WMS 중간실적 반영";
             this.중간실적반영버튼.Click += new System.EventHandler(this.중간실적반영버튼_Click);
@@ -197,12 +189,12 @@ namespace PAS.PMP
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.조회버튼);
+            this.panel2.Controls.Add(this.실적작성버튼);
+            this.panel2.Controls.Add(this.실적전송버튼);
             this.panel2.Controls.Add(this.배치반영버튼);
             this.panel2.Controls.Add(this.작업일자);
             this.panel2.Controls.Add(this.ultraLabel1);
-            this.panel2.Controls.Add(this.실적작성버튼);
-            this.panel2.Controls.Add(this.실적전송버튼);
-            this.panel2.Controls.Add(this.조회버튼);
             this.panel2.Location = new System.Drawing.Point(6, 6);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(988, 45);
@@ -210,9 +202,10 @@ namespace PAS.PMP
             // 
             // 배치반영버튼
             // 
-            this.배치반영버튼.Location = new System.Drawing.Point(862, 8);
+            this.배치반영버튼.Dock = System.Windows.Forms.DockStyle.Right;
+            this.배치반영버튼.Location = new System.Drawing.Point(868, 0);
             this.배치반영버튼.Name = "배치반영버튼";
-            this.배치반영버튼.Size = new System.Drawing.Size(120, 29);
+            this.배치반영버튼.Size = new System.Drawing.Size(120, 45);
             this.배치반영버튼.TabIndex = 1;
             this.배치반영버튼.Text = "WMS 패킹반영";
             this.배치반영버튼.Click += new System.EventHandler(this.배치반영버튼_Click);
@@ -240,18 +233,20 @@ namespace PAS.PMP
             // 
             // 실적작성버튼
             // 
-            this.실적작성버튼.Location = new System.Drawing.Point(620, 8);
+            this.실적작성버튼.Dock = System.Windows.Forms.DockStyle.Right;
+            this.실적작성버튼.Location = new System.Drawing.Point(628, 0);
             this.실적작성버튼.Name = "실적작성버튼";
-            this.실적작성버튼.Size = new System.Drawing.Size(120, 29);
+            this.실적작성버튼.Size = new System.Drawing.Size(120, 45);
             this.실적작성버튼.TabIndex = 3;
             this.실적작성버튼.Text = "PAS 실적작성";
             this.실적작성버튼.Click += new System.EventHandler(this.실적작성버튼_Click);
             // 
             // 실적전송버튼
             // 
-            this.실적전송버튼.Location = new System.Drawing.Point(741, 8);
+            this.실적전송버튼.Dock = System.Windows.Forms.DockStyle.Right;
+            this.실적전송버튼.Location = new System.Drawing.Point(748, 0);
             this.실적전송버튼.Name = "실적전송버튼";
-            this.실적전송버튼.Size = new System.Drawing.Size(120, 29);
+            this.실적전송버튼.Size = new System.Drawing.Size(120, 45);
             this.실적전송버튼.TabIndex = 2;
             this.실적전송버튼.Text = "WMS 실적반영";
             this.실적전송버튼.Click += new System.EventHandler(this.실적전송버튼_Click);
@@ -260,7 +255,6 @@ namespace PAS.PMP
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel3.Controls.Add(this.중간실적반영버튼);
-            this.panel3.Controls.Add(this.닫기버튼);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
@@ -362,6 +356,7 @@ namespace PAS.PMP
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmTRPAS00012";
             this.Tag = "TRPAS00012";
             this.Text = "실적작성/반영, 배치반영(TRPAS00012)";
@@ -371,6 +366,7 @@ namespace PAS.PMP
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.작업일자)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uGrid2)).EndInit();
             this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -381,7 +377,6 @@ namespace PAS.PMP
         private TR_Library.Controls.uGrid uGrid1;
         private TR_Library.Controls.uGrid uGrid2;
         private Infragistics.Win.Misc.UltraButton 조회버튼;
-        private Infragistics.Win.Misc.UltraButton 닫기버튼;
         private Infragistics.Win.Misc.UltraButton 중간실적반영버튼;
         private Panel panel1;
         private Panel panel2;

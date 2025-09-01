@@ -1,4 +1,5 @@
-﻿using Infragistics.Win.UltraWinGrid;
+﻿using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
 using PAS.PMP.PasWCS;
 using System;
 using System.Collections;
@@ -47,31 +48,55 @@ namespace PAS.PMP
 
         private void SetDataTableBindingInit()
         {
+            Cursor.Current = Cursors.WaitCursor;
             try
             {
-                #region uGrid1 BindingSource 초기화
+                #region uGrid1,2 BindingSource 초기화
 
                 분류.슈트조정_슈트별현황_Get(this.m_분류_슈트조정_슈트별현황Table, this.원배치번호, 1);
+
                 this.m_분류_슈트조정_슈트별현황_변경Table = this.m_분류_슈트조정_슈트별현황Table.Clone();
                 m_분류_슈트조정_슈트별현황BS.DataSource = this.m_분류_슈트조정_슈트별현황Table;
                 m_분류_슈트조정_슈트별현황_변경BS.DataSource = this.m_분류_슈트조정_슈트별현황_변경Table;
                 uGrid1.DataSource = m_분류_슈트조정_슈트별현황BS;
-                uGrid3.DataSource = m_분류_슈트조정_슈트별현황_변경BS;
+                uGrid2.DataSource = m_분류_슈트조정_슈트별현황_변경BS;
 
-                Common.SetGridInit(this.uGrid1, true, true, true, true, false, false);
+                Common.SetGridInit(this.uGrid1, true, true, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid1, null);
                 Common.SetGridEditColumn(this.uGrid1, null);
+
+            
+                //Font font = new Font(this.uGrid2.Font.Name, this.uGrid2.Font.Size, FontStyle.Bold);
+                //foreach (var column in this.uGrid2.DisplayLayout.Bands[0].Columns)
+                //{
+                //    // 컬럼 작업
+                //    string headerText = column.Header.Caption;
+                //    column.Hidden = false;
+
+                //    if (column.Header.Caption == "조정슈트")
+                //    {
+                //        column.CellAppearance.BackColor = SystemColors.Info;
+                //        column.CellAppearance.ForeColor = Color.Red;
+                //        column.CellAppearance.FontData.Name = font.Name;
+                //        column.CellAppearance.FontData.SizeInPoints = font.Size;
+                //        column.CellAppearance.FontData.Bold = DefaultableBoolean.True;
+                //    }
+                //}
+
+                Common.SetGridInit(this.uGrid2, true, true, true, false, false, false);
+                Common.SetGridHiddenColumn(this.uGrid2, null);
+                Common.SetGridEditColumn(this.uGrid2, null);
+
                 #endregion
 
-                #region uGrid2 BindingSource 초기화
+                #region uGrid3 BindingSource 초기화
 
                 분류.슈트조정_가용슈트_조회(this.m_분류_슈트조정_가용슈트Table, GlobalClass.장비명, 1);
 
-                m_분류_슈트조정_가용슈트BS.DataSource = m_분류_슈트조정_가용슈트Table;
-                uGrid2.DataSource = m_분류_슈트조정_가용슈트BS;
+               
+                //if (this.m_분류_슈트조정_가용슈트Table.Rows.Count > 0)
+                //    return;
 
-                if (this.m_분류_슈트조정_가용슈트Table.Rows.Count > 0)
-                    return;
 
                 var 사용중인슈트번호 = new HashSet<string>(
                     m_분류_슈트조정_슈트별현황Table.AsEnumerable()
@@ -91,31 +116,28 @@ namespace PAS.PMP
                             this.m_분류_슈트조정_가용슈트Table.Rows.Add((object)(index + 1).ToString("D3"));
                     }
                 }
+
+                m_분류_슈트조정_가용슈트BS.DataSource = m_분류_슈트조정_가용슈트Table;
+                uGrid3.DataSource = m_분류_슈트조정_가용슈트BS;
                 this.m_분류_슈트조정_가용슈트Table.AcceptChanges();
 
-                Common.SetGridInit(this.uGrid2, true, true, true, true, false, false);
-                Common.SetGridHiddenColumn(this.uGrid2, null);
-                Common.SetGridEditColumn(this.uGrid2, null);
-
-                #endregion
-
-                #region uGrid3 BindingSource 초기화
-
-                m_분류_슈트조정_슈트별현황_변경BS.DataSource = m_분류_슈트조정_슈트별현황_변경Table;
-                uGrid3.DataSource = m_분류_슈트조정_슈트별현황_변경BS;
-
-                Common.SetGridInit(this.uGrid3, true, true, true, true, false, false);
+                Common.SetGridInit(this.uGrid3, true, true, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid3, null);
                 Common.SetGridEditColumn(this.uGrid3, null);
-
-                this.uGrid3.DisplayLayout.Bands[0].Columns["조정슈트"].CellAppearance.BackColor = SystemColors.Info;
-                this.uGrid3.DisplayLayout.Bands[0].Columns["조정슈트"].CellAppearance.ForeColor = Color.Red;
 
                 #endregion
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, this.Text);
+            }
+            finally
+            {
+                this.textBox1.Focus();
+                this.textBox1.SelectAll();
+                this.ultraLabel4.Text = $"( 대상 : {this.uGrid1.Rows.Count}, 가용 : {this.uGrid3.Rows.Count}, 조정 : {this.uGrid2.Rows.Count} )";
+                Cursor.Current = Cursors.Default;
             }
         }
 
@@ -125,22 +147,7 @@ namespace PAS.PMP
 
         private void 조회버튼_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Cursor.Current = Cursors.WaitCursor;
-                SetDataTableBindingInit();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text);
-            }
-            finally
-            {
-                this.textBox1.Focus();
-                this.textBox1.SelectAll();
-                this.ultraLabel4.Text = $"( 대상 : {this.uGrid1.Rows.Count}, 가용 : {this.uGrid1.Rows.Count}, 조정 : {this.uGrid1.Rows.Count} )";
-                Cursor.Current = Cursors.Default;
-            }
+            SetDataTableBindingInit();
         }
 
         private void 닫기버튼_Click(object sender, EventArgs e) => this.DialogResult = DialogResult.OK;
@@ -163,7 +170,7 @@ namespace PAS.PMP
                     return;
                 }
 
-                if (this.uGrid2.ActiveRow == null || this.uGrid2.ActiveRow.Index < 0)
+                if (this.uGrid3.ActiveRow == null || this.uGrid3.ActiveRow.Index < 0)
                 {
                     MessageBox.Show("가용 슈트를 선택하세요.", this.Text);
                     return;
@@ -171,12 +178,12 @@ namespace PAS.PMP
 
                 int 요청수량 = Convert.ToInt32((object)this.textBox1.Text);
                 int 대상슈트인덱스 = this.uGrid1.ActiveRow.Index;
-                int 가용슈트인덱스 = this.uGrid2.ActiveRow.Index;
+                int 가용슈트인덱스 = this.uGrid3.ActiveRow.Index;
                 int 대상슈트수 = this.uGrid1.Rows.Count - 대상슈트인덱스;
-                int 가용슈트수 = this.uGrid2.Rows.Count - 가용슈트인덱스;
+                int 가용슈트수 = this.uGrid3.Rows.Count - 가용슈트인덱스;
                 if (요청수량 != 대상슈트수 && 요청수량 > 대상슈트수)
                     요청수량 = 대상슈트수;
-                if (요청수량 > this.uGrid2.Rows.Count)
+                if (요청수량 > this.uGrid3.Rows.Count)
                 {
                     MessageBox.Show(string.Format("대상 슈트수가 가용 슈트수의 최대 허용치를 벗어납니다.\r\n조정 가능한 가용 슈트의 수는 {0}개 입니다."), this.Text);
                     this.textBox1.Text = this.uGrid2.Rows.Count.ToString();
@@ -197,7 +204,7 @@ namespace PAS.PMP
                 for (int i = 0; i < 요청수량; i++)
                 {
                     var 대상Row = uGrid1.Rows[대상슈트인덱스 + i];
-                    var 가용Row = uGrid2.Rows[대상슈트인덱스 + i + 인덱스차이];
+                    var 가용Row = uGrid3.Rows[대상슈트인덱스 + i + 인덱스차이];
 
                     m_분류_슈트조정_슈트별현황_변경Table.Rows.Add(
                         대상Row.Cells["슈트번호"].Value.ToString(),
@@ -235,15 +242,16 @@ namespace PAS.PMP
                 }
 
                 uGrid1.UpdateData();
-                uGrid2.UpdateData();
+                uGrid3.UpdateData();
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, this.Text);
             }
             finally
             {
-                this.ultraLabel4.Text = $"( 대상 : {this.uGrid1.Rows.Count}, 가용 : {this.uGrid2.Rows.Count}, 조정 : {this.uGrid3.Rows.Count} )";
+                this.ultraLabel4.Text = $"( 대상 : {this.uGrid1.Rows.Count}, 가용 : {this.uGrid3.Rows.Count}, 조정 : {this.uGrid2.Rows.Count} )";
                 Cursor.Current = Cursors.Default;
             }
         }
@@ -253,7 +261,7 @@ namespace PAS.PMP
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                if (this.uGrid3.Rows.Count <= 0)
+                if (this.uGrid2.Rows.Count <= 0)
                 {
                     MessageBox.Show("반영할 내용이 없습니다.", this.Text);
                     return;
@@ -269,7 +277,7 @@ namespace PAS.PMP
                 DataTable dataTable = new DataTable("슈트조정TABLE");
                 dataTable.Columns.Add("슈트번호", typeof(string));
                 dataTable.Columns.Add("조정슈트", typeof(string));
-                foreach (UltraGridRow row in this.uGrid3.Rows)
+                foreach (UltraGridRow row in this.uGrid2.Rows)
                     dataTable.Rows.Add(row.Cells["슈트번호"].Value.ToString(), row.Cells["조정슈트"].Value.ToString());
                 using (StringWriter writer = new StringWriter())
                 {

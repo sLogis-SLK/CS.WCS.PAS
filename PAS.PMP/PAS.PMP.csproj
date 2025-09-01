@@ -210,6 +210,12 @@
     <Compile Include="WinFormsApp\frmTRPAS00007.Designer.cs">
       <DependentUpon>frmTRPAS00007.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00008.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\frmTRPAS00008.Designer.cs">
+      <DependentUpon>frmTRPAS00008.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinFormsApp\frmTRPAS00011.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -319,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\frmTRPAS00007.resx">
       <DependentUpon>frmTRPAS00007.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\frmTRPAS00008.resx">
+      <DependentUpon>frmTRPAS00008.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\frmTRPAS00011.resx">
       <DependentUpon>frmTRPAS00011.cs</DependentUpon>

@@ -29,6 +29,20 @@ namespace PAS.PMP
             );
         }
 
+        internal static void 출하미발행대상조회(DataTable dataTable, string 분류번호, string 작업일자, int 구분자)
+        {
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_출하_미발행박스_Get")
+            {
+                dataTable.TableName = "usp_출하_미발행박스_Get";
+            }
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+                new string[] { "@분류번호", "@작업일자", "@조회구분자" },
+                new object[] { 분류번호
+                               ,작업일자
+                               ,구분자 }
+            );
+        }
+
         internal static void 미출고슈트별조회(DataTable dataTable, string 분류번호, string 배치번호, int 구분자)
         {
             if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_미출고내역_슈트별_Get")

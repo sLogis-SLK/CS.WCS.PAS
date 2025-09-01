@@ -57,6 +57,7 @@ namespace PAS.PMP
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTRPAS00005));
             this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
             this.조회 = new Infragistics.Win.Misc.UltraButton();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -64,12 +65,14 @@ namespace PAS.PMP
             this.작업일자 = new TR_Library.Controls.uCalendarCombo();
             this.ultraLabel11 = new Infragistics.Win.Misc.UltraLabel();
             this.박스발행 = new Infragistics.Win.Misc.UltraButton();
-            this.닫기 = new Infragistics.Win.Misc.UltraButton();
             this.ultraGroupBox2 = new Infragistics.Win.Misc.UltraGroupBox();
             this.uGrid2 = new TR_Library.Controls.uGrid();
             this.ultraGroupBox3 = new Infragistics.Win.Misc.UltraGroupBox();
             this.uGrid1 = new TR_Library.Controls.uGrid();
             this.splitter1 = new System.Windows.Forms.Splitter();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
             this.ultraGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.작업일자)).BeginInit();
@@ -79,6 +82,9 @@ namespace PAS.PMP
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).BeginInit();
             this.ultraGroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // ultraGroupBox1
@@ -87,13 +93,12 @@ namespace PAS.PMP
             appearance1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ultraGroupBox1.Appearance = appearance1;
             this.ultraGroupBox1.BorderStyle = Infragistics.Win.Misc.GroupBoxBorderStyle.RectangularSolid;
-            this.ultraGroupBox1.Controls.Add(this.조회);
             this.ultraGroupBox1.Controls.Add(this.checkBox1);
-            this.ultraGroupBox1.Controls.Add(this.ultraLabel12);
-            this.ultraGroupBox1.Controls.Add(this.작업일자);
-            this.ultraGroupBox1.Controls.Add(this.ultraLabel11);
+            this.ultraGroupBox1.Controls.Add(this.panel3);
+            this.ultraGroupBox1.Controls.Add(this.panel2);
+            this.ultraGroupBox1.Controls.Add(this.panel1);
+            this.ultraGroupBox1.Controls.Add(this.조회);
             this.ultraGroupBox1.Controls.Add(this.박스발행);
-            this.ultraGroupBox1.Controls.Add(this.닫기);
             this.ultraGroupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultraGroupBox1.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
@@ -102,10 +107,10 @@ namespace PAS.PMP
             // 
             // 조회
             // 
-            this.조회.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.조회.Location = new System.Drawing.Point(1069, 12);
+            this.조회.Dock = System.Windows.Forms.DockStyle.Right;
+            this.조회.Location = new System.Drawing.Point(1181, 2);
             this.조회.Name = "조회";
-            this.조회.Size = new System.Drawing.Size(90, 25);
+            this.조회.Size = new System.Drawing.Size(90, 40);
             this.조회.TabIndex = 10;
             this.조회.Text = "조회";
             this.조회.Click += new System.EventHandler(this.조회_Click);
@@ -113,9 +118,10 @@ namespace PAS.PMP
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(279, 15);
+            this.checkBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.checkBox1.Location = new System.Drawing.Point(278, 2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.Size = new System.Drawing.Size(15, 40);
             this.checkBox1.TabIndex = 9;
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -127,16 +133,16 @@ namespace PAS.PMP
             appearance2.ForeColor = System.Drawing.Color.White;
             appearance2.TextVAlignAsString = "Middle";
             this.ultraLabel12.Appearance = appearance2;
-            this.ultraLabel12.Location = new System.Drawing.Point(219, 9);
+            this.ultraLabel12.Location = new System.Drawing.Point(6, 8);
             this.ultraLabel12.Name = "ultraLabel12";
-            this.ultraLabel12.Size = new System.Drawing.Size(66, 28);
+            this.ultraLabel12.Size = new System.Drawing.Size(57, 28);
             this.ultraLabel12.TabIndex = 8;
             this.ultraLabel12.Text = "전체선택";
             // 
             // 작업일자
             // 
             this.작업일자.DateButtons.Add(dateButton1);
-            this.작업일자.Location = new System.Drawing.Point(85, 9);
+            this.작업일자.Location = new System.Drawing.Point(6, 11);
             this.작업일자.Name = "작업일자";
             this.작업일자.NonAutoSizeHeight = 21;
             this.작업일자.Size = new System.Drawing.Size(121, 21);
@@ -149,30 +155,21 @@ namespace PAS.PMP
             appearance3.ForeColor = System.Drawing.Color.White;
             appearance3.TextVAlignAsString = "Middle";
             this.ultraLabel11.Appearance = appearance3;
-            this.ultraLabel11.Location = new System.Drawing.Point(11, 9);
+            this.ultraLabel11.Location = new System.Drawing.Point(10, 8);
             this.ultraLabel11.Name = "ultraLabel11";
-            this.ultraLabel11.Size = new System.Drawing.Size(66, 29);
+            this.ultraLabel11.Size = new System.Drawing.Size(58, 29);
             this.ultraLabel11.TabIndex = 6;
             this.ultraLabel11.Text = "작업일자";
             // 
             // 박스발행
             // 
-            this.박스발행.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.박스발행.Location = new System.Drawing.Point(1165, 12);
+            this.박스발행.Dock = System.Windows.Forms.DockStyle.Right;
+            this.박스발행.Location = new System.Drawing.Point(1271, 2);
             this.박스발행.Name = "박스발행";
-            this.박스발행.Size = new System.Drawing.Size(107, 25);
+            this.박스발행.Size = new System.Drawing.Size(107, 40);
             this.박스발행.TabIndex = 4;
             this.박스발행.Text = "마지막박스 발행";
             this.박스발행.Click += new System.EventHandler(this.박스발행_Click);
-            // 
-            // 닫기
-            // 
-            this.닫기.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.닫기.Location = new System.Drawing.Point(1278, 12);
-            this.닫기.Name = "닫기";
-            this.닫기.Size = new System.Drawing.Size(90, 25);
-            this.닫기.TabIndex = 5;
-            this.닫기.Text = "닫기";
             // 
             // ultraGroupBox2
             // 
@@ -341,6 +338,33 @@ namespace PAS.PMP
             this.splitter1.TabIndex = 1030;
             this.splitter1.TabStop = false;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ultraLabel11);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(72, 40);
+            this.panel1.TabIndex = 11;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.작업일자);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(74, 2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(136, 40);
+            this.panel2.TabIndex = 12;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.ultraLabel12);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(210, 2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(68, 40);
+            this.panel3.TabIndex = 13;
+            // 
             // frmTRPAS00005
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -349,6 +373,7 @@ namespace PAS.PMP
             this.Controls.Add(this.ultraGroupBox3);
             this.Controls.Add(this.ultraGroupBox2);
             this.Controls.Add(this.ultraGroupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmTRPAS00005";
             this.Tag = "TRPAS00005";
@@ -363,6 +388,10 @@ namespace PAS.PMP
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).EndInit();
             this.ultraGroupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -370,7 +399,6 @@ namespace PAS.PMP
         #endregion
 
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox1;
-        private Infragistics.Win.Misc.UltraButton 닫기;
         private Infragistics.Win.Misc.UltraButton 박스발행;
         private Infragistics.Win.Misc.UltraLabel ultraLabel11;
         private TR_Library.Controls.uCalendarCombo 작업일자;
@@ -382,5 +410,8 @@ namespace PAS.PMP
         private Infragistics.Win.Misc.UltraButton 조회;
         private System.Windows.Forms.CheckBox checkBox1;
         private TR_Library.Controls.uGrid uGrid2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
     }
 }

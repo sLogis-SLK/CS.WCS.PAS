@@ -62,7 +62,7 @@ namespace PAS.PMP
                 this.m_관리_분류실적_백업BS.DataSource = this.m_관리_분류실적_백업Table;
                 this.uGrid3.DataSource = this.m_관리_분류실적_백업BS;
 
-                Common.SetGridInit(this.uGrid3, false, false, true, true, false, false);
+                Common.SetGridInit(this.uGrid3, false, false, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid3, "분류상태코드", "배치상태코드");
                 Common.SetGridEditColumn(this.uGrid3, null);
 

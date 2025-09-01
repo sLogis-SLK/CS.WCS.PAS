@@ -50,8 +50,8 @@ namespace PAS.PMP
                 this.m_분류_작업배치그룹BS.DataSource = this.m_분류_작업배치그룹Table;
                 this.uGrid2.DataSource = this.m_분류_작업배치그룹BS;
 
-                Common.SetGridInit(this.uGrid2, false, false, true, true, false, false);
-                Common.SetGridHiddenColumn(this.uGrid2, "분류구분", "패턴구분", "분류상태", "완료일시", "선택", "순번", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "패턴구분코드", "분류상태코드", "배치상태코드");
+                Common.SetGridInit(this.uGrid2, false, false, true, false, false, false);
+                Common.SetGridHiddenColumn(this.uGrid2, "분류방법코드", "분류구분", "패턴구분", "분류상태", "완료일시", "선택", "순번", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "패턴구분코드", "분류상태코드", "배치상태코드");
                 Common.SetGridEditColumn(this.uGrid2, null);
 
                 this.uGrid2.DisplayLayout.Bands[0].Columns["등록일시"].Format = "yy-MM-dd HH:mm";
@@ -69,7 +69,7 @@ namespace PAS.PMP
                 this.uGrid1.Refresh();
                 this.uGrid1.Update();
 
-                Common.SetGridInit(this.uGrid1, false, false, true, true, false, false);
+                Common.SetGridInit(this.uGrid1, false, false, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid1, "배치번호", "슈트번호");
                 Common.SetGridEditColumn(this.uGrid1, "선택");
 

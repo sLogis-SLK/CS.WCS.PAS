@@ -78,7 +78,7 @@ namespace PAS.PMP.PasWCS
                     oScopeOP.Initialize("usp_연동_수신취소_Set", "@원배치번호");
                     oScopeOP.Update(배치번호);
 
-                    oScopeWCSIF.Initialize("usp_PAS_배치반영취소_Set", "@원배치번호");
+                    oScopeWCSIF.Initialize("usp_PAS_배치수신취소_Set", "@원배치번호");
                     oScopeWCSIF.Update(배치번호);
                 }
 

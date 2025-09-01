@@ -52,8 +52,8 @@ namespace PAS.PMP
                 this.m_분류_작업배치그룹BS.DataSource = this.m_분류_작업배치그룹Table;
                 this.uGrid2.DataSource = this.m_분류_작업배치그룹BS;
 
-                Common.SetGridInit(this.uGrid2, false, false, true, true, false, false);
-                Common.SetGridHiddenColumn(this.uGrid2, "분류구분", "패턴구분", "분류상태", "완료일시", "선택", "순번", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "패턴구분코드", "분류상태코드", "배치상태코드");
+                Common.SetGridInit(this.uGrid2, false, false, true, false, false, false);
+                Common.SetGridHiddenColumn(this.uGrid2, "분류방법코드", "분류구분", "패턴구분", "분류상태", "완료일시", "선택", "순번", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "패턴구분코드", "분류상태코드", "배치상태코드");
                 Common.SetGridEditColumn(this.uGrid2, null);
 
                 #endregion
@@ -65,10 +65,11 @@ namespace PAS.PMP
                 this.m_분류_상품별미출고BS.DataSource = this.m_분류_상품별미출고Table;
                 this.uGrid1.DataSource = this.m_분류_상품별미출고BS;
 
-                Common.SetGridInit(this.uGrid1, false, false, true, true, false, false);
+                Common.SetGridInit(this.uGrid1, false, false, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid1, "브랜드코드", "브랜드명", "분류번호", "배치번호");
                 Common.SetGridEditColumn(this.uGrid1, null);
                 Common.uGridSummarySet(this.uGrid1, Infragistics.Win.UltraWinGrid.SummaryType.Sum, "지시수", "실적수", "부족수");
+                this.uGrid1.DisplayLayout.Override.SummaryValueAppearance.ForeColor = Color.Red;
                 //#endregion
 
                 this.uGrid1.DisplayLayout.Bands[0].Columns["부족수"].CellAppearance.BackColor = SystemColors.Info;
@@ -218,8 +219,7 @@ namespace PAS.PMP
             }
         }
 
+
         #endregion
-
-
     }
 }

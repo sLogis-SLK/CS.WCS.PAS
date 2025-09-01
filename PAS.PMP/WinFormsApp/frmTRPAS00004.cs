@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
+using Infragistics.Win.UltraWinEditors;
 using Infragistics.Win.UltraWinGrid;
 using PAS.Core;
 using TR_Common;
@@ -63,8 +65,8 @@ namespace PAS.PMP
                 this.m_분류_작업배치그룹BS.DataSource = this.m_분류_작업배치그룹Table;
                 this.uGrid4.DataSource = this.m_분류_작업배치그룹BS;
 
-                Common.SetGridInit(this.uGrid4, false, false, true, true, false, false);
-                Common.SetGridHiddenColumn(this.uGrid4, "분류구분", "패턴구분", "분류상태", "완료일시", "선택", "순번", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "패턴구분코드", "분류상태코드", "배치상태코드");
+                Common.SetGridInit(this.uGrid4, false, false, true, false, false, false);
+                Common.SetGridHiddenColumn(this.uGrid4, "분류방법코드", "분류구분", "패턴구분", "분류상태", "완료일시", "선택", "순번", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "패턴구분코드", "분류상태코드", "배치상태코드");
                 Common.SetGridEditColumn(this.uGrid4, null);
 
                 #endregion
@@ -76,12 +78,12 @@ namespace PAS.PMP
                 this.m_분류_박스재발행BS.DataSource = this.m_분류_박스재발행Table;
                 this.uGrid1.DataSource = this.m_분류_박스재발행BS;
 
-                Common.SetGridInit(this.uGrid1, false, false, true, true, false, false);
+                Common.SetGridInit(this.uGrid1, false, false, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid1, "분류번호", "배치번호", "서브슈트번호", "배치구분코드", "배치구분", "출력여부");
                 Common.SetGridEditColumn(this.uGrid1, null);
 
                 Common.uGridSummarySet(this.uGrid1, Infragistics.Win.UltraWinGrid.SummaryType.Sum, "내품수");
-
+                this.uGrid1.DisplayLayout.Override.SummaryValueAppearance.ForeColor = Color.Red;
                 #endregion
 
                 #region uGrid2 BindingSource 초기화
@@ -91,12 +93,12 @@ namespace PAS.PMP
                 this.m_분류_박스재발행슈트별BS.DataSource = this.m_분류_박스재발행_슈트별Table;
                 this.uGrid2.DataSource = this.m_분류_박스재발행슈트별BS;
 
-                Common.SetGridInit(this.uGrid2, false, false, true, true, false, false);
+                Common.SetGridInit(this.uGrid2, false, false, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid2, "분류번호", "배치번호", "슈트번호", "서브슈트번호", "박스바코드", "박스바코드구분");
 
                 Common.SetGridEditColumn(this.uGrid2, null);
                 Common.uGridSummarySet(this.uGrid2, Infragistics.Win.UltraWinGrid.SummaryType.Sum, "내품수");
-
+                this.uGrid2.DisplayLayout.Override.SummaryValueAppearance.ForeColor = Color.Red;
                 this.박스번호리스트.DataSource = null;
                 #endregion
 
@@ -107,7 +109,7 @@ namespace PAS.PMP
                 this.m_분류_박스재발행슈트별상세BS.DataSource = this.m_분류_박스재발행_슈트별상세Table;
                 this.uGrid3.DataSource = this.m_분류_박스재발행슈트별상세BS;
 
-                Common.SetGridInit(this.uGrid3, false, false, true, true, false, false);
+                Common.SetGridInit(this.uGrid3, false, false, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid3, "IDX", "아이템코드", "브랜드코드", "브랜드명", "센터코드", "센터명", "배치명");
 
                 Common.SetGridEditColumn(this.uGrid3, "조정");
@@ -154,6 +156,12 @@ namespace PAS.PMP
 
             // 박스번호 리스트업
             this.박스번호리스트.DataSource = getBoxListup();
+
+            if (this.박스번호리스트.Rows.Count <= 0)
+                return;
+            this.박스번호리스트.ActiveRow = this.박스번호리스트.Rows[0];
+
+
         }
 
         private void uGrid2_AfterRowActivate(object sender, EventArgs e)
@@ -169,6 +177,9 @@ namespace PAS.PMP
             DataTable sourceTable = m_분류_박스재발행_슈트별Table;
 
             var distinctTable = sourceTable.DefaultView.ToTable(true, "박스번호");
+            DataRow emptyRow = distinctTable.NewRow();
+            emptyRow["박스번호"] = ""; // 또는 DBNull.Value
+            distinctTable.Rows.InsertAt(emptyRow, 0);
             return distinctTable;
 
         }
@@ -178,8 +189,7 @@ namespace PAS.PMP
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                m_분류_박스재발행슈트별BS.EndEdit();
-
+                m_분류_박스재발행슈트별상세BS.EndEdit();
                 DataRow[] dataRowArray = this.m_분류_박스재발행_슈트별상세Table.Select("수량 <> 잔여");
                 if (dataRowArray == null || dataRowArray.Length <= 0)
                 {
@@ -187,9 +197,14 @@ namespace PAS.PMP
                     return;
                 }
 
+                if (this.uGrid2.ActiveRow == null || this.uGrid3.ActiveRow.Index < 0)
+                {
+                    MessageBox.Show("이동할 대상이 없습니다.");
+                    return;
+                }
+
+
                 string empty1 = string.Empty;
-                string empty2 = string.Empty;
-                string empty3 = string.Empty;
 
                 if (_배치번호 == "")
                 {
@@ -203,13 +218,13 @@ namespace PAS.PMP
                     return;
                 }
 
-                if (_박스번호 == "")
-                {
-                    MessageBox.Show("박스번호를 선택하세요.");
-                    return;
-                }
+                //if (_박스번호 == "")
+                //{
+                //    MessageBox.Show("박스번호를 선택하세요.");
+                //    return;
+                //}
 
-                if (string.IsNullOrEmpty(this.박스번호리스트.Text))
+                if (string.IsNullOrEmpty(_박스번호))
                 {
                     MessageBox.Show("이동할 대상 박스를 선택하세요.");
                     return;
@@ -220,7 +235,7 @@ namespace PAS.PMP
                     MessageBox.Show("선택한 슈트는 테블릿 분류 대상입니다.\r\n\r\n박스 이동을 할 수 없습니다.");
                     return;
                 }
-
+                string empty3 = string.Empty;
                 분류.출하상품이동생성(dataRowArray, _배치번호, _슈트번호, _박스번호, this.박스번호리스트.Text);
             }
             catch (Exception ex)

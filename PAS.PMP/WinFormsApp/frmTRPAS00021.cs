@@ -54,7 +54,7 @@ namespace PAS.PMP
                 this.m_분류_작업요약BS.DataSource = this.m_분류_작업요약Table;
                 this.uGrid3.DataSource = this.m_분류_작업요약BS;
 
-                Common.SetGridInit(this.uGrid3, false, false, true, true, false, false);
+                Common.SetGridInit(this.uGrid3, false, false, true, false, false, false);
                 Common.SetGridHiddenColumn(this.uGrid3, "실적수", "분류구분", "패턴구분", "분류상태", "완료일시", "선택", "관리번호", "장비명", "배치구분코드", "출하구분코드", "분류구분코드", "분류방법코드", "패턴구분코드", "분류상태코드", "배치상태코드");
                 Common.SetGridEditColumn(this.uGrid3, null);
 
@@ -675,6 +675,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, this.Text);
             }
             finally
@@ -755,7 +756,8 @@ namespace PAS.PMP
             finally
             {
                 frmLoading.CloseLoading();
-                //this.조회버튼_Click((object)null, EventArgs.Empty);
+                MessageBox.Show("배치 개시 완료되었습니다.\r\n\r\n", this.Text);
+                this.조회버튼_Click((object)null, EventArgs.Empty);
             }
         }
 
