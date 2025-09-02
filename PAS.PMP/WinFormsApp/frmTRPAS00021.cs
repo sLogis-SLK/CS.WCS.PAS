@@ -130,14 +130,14 @@ namespace PAS.PMP
             if (분류상태 == "개시")
             {
                 this.배치개시버튼.Enabled = !특정배치상태 && 배치상태 != "작업중";
-                this.배치종료버튼.Enabled = 배치상태 == "작업중";
+                //this.배치종료버튼.Enabled = 배치상태 == "작업중";
                 this.연속.Enabled = false;
                 this.균등.Enabled = false;
             }
             else
             {
                 this.배치개시버튼.Enabled = true;
-                this.배치종료버튼.Enabled = false;
+                //this.배치종료버튼.Enabled = false;
                 this.연속.Enabled = true;
                 this.균등.Enabled = true;
             }

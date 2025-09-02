@@ -78,8 +78,6 @@ namespace PAS.PMP
                 this.uGrid1.DisplayLayout.Bands[0].Columns["지시수"].CellAppearance.ForeColor = Color.Red;
                 this.uGrid1.DisplayLayout.Bands[0].Columns["실적수"].CellAppearance.BackColor = SystemColors.Info;
                 this.uGrid1.DisplayLayout.Bands[0].Columns["실적수"].CellAppearance.ForeColor = Color.Red;
-
-                this.출력대상유형.Value = "10";
             }
             catch (Exception ex)
             {

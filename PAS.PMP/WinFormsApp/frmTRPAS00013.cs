@@ -95,7 +95,7 @@ namespace PAS.PMP
             {
                 Cursor.Current = Cursors.WaitCursor;
                 string 배치번호 = string.Empty;
-                분류.배치리스트조회(m_분류_작업요약_배치그룹별Table, null, 1);
+                분류.배치리스트조회조건부(m_분류_작업요약_배치그룹별Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), "모두", 1);
                 if (this.m_분류_작업요약_배치그룹별Table.Rows.Count > 0)
                 {
                     배치번호 = this.m_분류_작업요약_배치그룹별Table.Rows[0]["배치번호"].ToString();

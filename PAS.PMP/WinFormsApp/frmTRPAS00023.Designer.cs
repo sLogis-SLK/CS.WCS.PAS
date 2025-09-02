@@ -245,7 +245,7 @@ namespace PAS.PMP
             this.ultraTabPageControl센터.Controls.Add(this.ultraGroupBox2);
             this.ultraTabPageControl센터.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl센터.Name = "ultraTabPageControl센터";
-            this.ultraTabPageControl센터.Size = new System.Drawing.Size(750, 277);
+            this.ultraTabPageControl센터.Size = new System.Drawing.Size(738, 255);
             // 
             // ultraGroupBox3
             // 
@@ -253,7 +253,7 @@ namespace PAS.PMP
             this.ultraGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraGroupBox3.Location = new System.Drawing.Point(0, 203);
             this.ultraGroupBox3.Name = "ultraGroupBox3";
-            this.ultraGroupBox3.Size = new System.Drawing.Size(750, 74);
+            this.ultraGroupBox3.Size = new System.Drawing.Size(738, 52);
             this.ultraGroupBox3.TabIndex = 26;
             this.ultraGroupBox3.Text = "탐색 시간설정";
             // 
@@ -278,7 +278,7 @@ namespace PAS.PMP
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(744, 53);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(732, 31);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // ultraLabel12
@@ -289,7 +289,7 @@ namespace PAS.PMP
             this.ultraLabel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel12.Location = new System.Drawing.Point(3, 3);
             this.ultraLabel12.Name = "ultraLabel12";
-            this.ultraLabel12.Size = new System.Drawing.Size(100, 20);
+            this.ultraLabel12.Size = new System.Drawing.Size(98, 9);
             this.ultraLabel12.TabIndex = 0;
             this.ultraLabel12.Text = "PAS";
             // 
@@ -299,26 +299,26 @@ namespace PAS.PMP
             appearance2.TextVAlignAsString = "Middle";
             this.숫자표시기.Appearance = appearance2;
             this.숫자표시기.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.숫자표시기.Location = new System.Drawing.Point(3, 29);
+            this.숫자표시기.Location = new System.Drawing.Point(3, 18);
             this.숫자표시기.Name = "숫자표시기";
-            this.숫자표시기.Size = new System.Drawing.Size(100, 21);
+            this.숫자표시기.Size = new System.Drawing.Size(98, 10);
             this.숫자표시기.TabIndex = 1;
             this.숫자표시기.Text = "주소";
             // 
             // txtPAS
             // 
             this.txtPAS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPAS.Location = new System.Drawing.Point(109, 3);
+            this.txtPAS.Location = new System.Drawing.Point(107, 3);
             this.txtPAS.Name = "txtPAS";
-            this.txtPAS.Size = new System.Drawing.Size(100, 21);
+            this.txtPAS.Size = new System.Drawing.Size(98, 21);
             this.txtPAS.TabIndex = 10;
             // 
             // txt숫자표시기
             // 
             this.txt숫자표시기.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt숫자표시기.Location = new System.Drawing.Point(109, 29);
+            this.txt숫자표시기.Location = new System.Drawing.Point(107, 18);
             this.txt숫자표시기.Name = "txt숫자표시기";
-            this.txt숫자표시기.Size = new System.Drawing.Size(100, 21);
+            this.txt숫자표시기.Size = new System.Drawing.Size(98, 21);
             this.txt숫자표시기.TabIndex = 11;
             // 
             // ultraGroupBox2
@@ -327,7 +327,7 @@ namespace PAS.PMP
             this.ultraGroupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultraGroupBox2.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBox2.Name = "ultraGroupBox2";
-            this.ultraGroupBox2.Size = new System.Drawing.Size(750, 203);
+            this.ultraGroupBox2.Size = new System.Drawing.Size(738, 203);
             this.ultraGroupBox2.TabIndex = 25;
             this.ultraGroupBox2.Text = "기본설정";
             // 
@@ -374,7 +374,7 @@ namespace PAS.PMP
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(744, 182);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(732, 182);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // ultraLabel1
@@ -385,7 +385,7 @@ namespace PAS.PMP
             this.ultraLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel1.Location = new System.Drawing.Point(3, 3);
             this.ultraLabel1.Name = "ultraLabel1";
-            this.ultraLabel1.Size = new System.Drawing.Size(100, 24);
+            this.ultraLabel1.Size = new System.Drawing.Size(98, 24);
             this.ultraLabel1.TabIndex = 0;
             this.ultraLabel1.Text = "라인명";
             // 
@@ -397,7 +397,7 @@ namespace PAS.PMP
             this.ultraLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel2.Location = new System.Drawing.Point(3, 33);
             this.ultraLabel2.Name = "ultraLabel2";
-            this.ultraLabel2.Size = new System.Drawing.Size(100, 24);
+            this.ultraLabel2.Size = new System.Drawing.Size(98, 24);
             this.ultraLabel2.TabIndex = 1;
             this.ultraLabel2.Text = "주소";
             // 
@@ -409,7 +409,7 @@ namespace PAS.PMP
             this.ultraLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel3.Location = new System.Drawing.Point(3, 63);
             this.ultraLabel3.Name = "ultraLabel3";
-            this.ultraLabel3.Size = new System.Drawing.Size(100, 24);
+            this.ultraLabel3.Size = new System.Drawing.Size(98, 24);
             this.ultraLabel3.TabIndex = 2;
             this.ultraLabel3.Text = "슈트수";
             // 
@@ -421,7 +421,7 @@ namespace PAS.PMP
             this.ultraLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel4.Location = new System.Drawing.Point(3, 93);
             this.ultraLabel4.Name = "ultraLabel4";
-            this.ultraLabel4.Size = new System.Drawing.Size(100, 24);
+            this.ultraLabel4.Size = new System.Drawing.Size(98, 24);
             this.ultraLabel4.TabIndex = 3;
             this.ultraLabel4.Text = "로컬폴더";
             // 
@@ -433,7 +433,7 @@ namespace PAS.PMP
             this.ultraLabel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel5.Location = new System.Drawing.Point(3, 123);
             this.ultraLabel5.Name = "ultraLabel5";
-            this.ultraLabel5.Size = new System.Drawing.Size(100, 24);
+            this.ultraLabel5.Size = new System.Drawing.Size(98, 24);
             this.ultraLabel5.TabIndex = 4;
             this.ultraLabel5.Text = "공유폴더";
             // 
@@ -445,7 +445,7 @@ namespace PAS.PMP
             this.ultraLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel6.Location = new System.Drawing.Point(3, 153);
             this.ultraLabel6.Name = "ultraLabel6";
-            this.ultraLabel6.Size = new System.Drawing.Size(100, 26);
+            this.ultraLabel6.Size = new System.Drawing.Size(98, 26);
             this.ultraLabel6.TabIndex = 5;
             this.ultraLabel6.Text = "계정";
             // 
@@ -455,9 +455,9 @@ namespace PAS.PMP
             appearance9.TextVAlignAsString = "Middle";
             this.ultraLabel7.Appearance = appearance9;
             this.ultraLabel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel7.Location = new System.Drawing.Point(215, 33);
+            this.ultraLabel7.Location = new System.Drawing.Point(211, 33);
             this.ultraLabel7.Name = "ultraLabel7";
-            this.ultraLabel7.Size = new System.Drawing.Size(100, 24);
+            this.ultraLabel7.Size = new System.Drawing.Size(98, 24);
             this.ultraLabel7.TabIndex = 6;
             this.ultraLabel7.Text = "포트";
             // 
@@ -467,9 +467,9 @@ namespace PAS.PMP
             appearance10.TextVAlignAsString = "Middle";
             this.ultraLabel8.Appearance = appearance10;
             this.ultraLabel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel8.Location = new System.Drawing.Point(215, 63);
+            this.ultraLabel8.Location = new System.Drawing.Point(211, 63);
             this.ultraLabel8.Name = "ultraLabel8";
-            this.ultraLabel8.Size = new System.Drawing.Size(100, 24);
+            this.ultraLabel8.Size = new System.Drawing.Size(98, 24);
             this.ultraLabel8.TabIndex = 7;
             this.ultraLabel8.Text = "부합슈트";
             // 
@@ -479,9 +479,9 @@ namespace PAS.PMP
             appearance11.TextVAlignAsString = "Middle";
             this.ultraLabel9.Appearance = appearance11;
             this.ultraLabel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel9.Location = new System.Drawing.Point(427, 63);
+            this.ultraLabel9.Location = new System.Drawing.Point(419, 63);
             this.ultraLabel9.Name = "ultraLabel9";
-            this.ultraLabel9.Size = new System.Drawing.Size(100, 24);
+            this.ultraLabel9.Size = new System.Drawing.Size(98, 24);
             this.ultraLabel9.TabIndex = 8;
             this.ultraLabel9.Text = "초과슈트";
             // 
@@ -491,94 +491,94 @@ namespace PAS.PMP
             appearance12.TextVAlignAsString = "Middle";
             this.ultraLabel10.Appearance = appearance12;
             this.ultraLabel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel10.Location = new System.Drawing.Point(215, 153);
+            this.ultraLabel10.Location = new System.Drawing.Point(211, 153);
             this.ultraLabel10.Name = "ultraLabel10";
-            this.ultraLabel10.Size = new System.Drawing.Size(100, 26);
+            this.ultraLabel10.Size = new System.Drawing.Size(98, 26);
             this.ultraLabel10.TabIndex = 9;
             this.ultraLabel10.Text = "암호";
             // 
             // txt라인명
             // 
             this.txt라인명.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt라인명.Location = new System.Drawing.Point(109, 3);
+            this.txt라인명.Location = new System.Drawing.Point(107, 3);
             this.txt라인명.Name = "txt라인명";
-            this.txt라인명.Size = new System.Drawing.Size(100, 21);
+            this.txt라인명.Size = new System.Drawing.Size(98, 21);
             this.txt라인명.TabIndex = 10;
             // 
             // txt주소
             // 
             this.txt주소.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt주소.Location = new System.Drawing.Point(109, 33);
+            this.txt주소.Location = new System.Drawing.Point(107, 33);
             this.txt주소.Name = "txt주소";
-            this.txt주소.Size = new System.Drawing.Size(100, 21);
+            this.txt주소.Size = new System.Drawing.Size(98, 21);
             this.txt주소.TabIndex = 11;
             // 
             // txt포트
             // 
             this.txt포트.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt포트.Location = new System.Drawing.Point(321, 33);
+            this.txt포트.Location = new System.Drawing.Point(315, 33);
             this.txt포트.Name = "txt포트";
-            this.txt포트.Size = new System.Drawing.Size(100, 21);
+            this.txt포트.Size = new System.Drawing.Size(98, 21);
             this.txt포트.TabIndex = 12;
             // 
             // txt슈트수
             // 
             this.txt슈트수.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt슈트수.Location = new System.Drawing.Point(109, 63);
+            this.txt슈트수.Location = new System.Drawing.Point(107, 63);
             this.txt슈트수.Name = "txt슈트수";
-            this.txt슈트수.Size = new System.Drawing.Size(100, 21);
+            this.txt슈트수.Size = new System.Drawing.Size(98, 21);
             this.txt슈트수.TabIndex = 13;
             // 
             // txt부합슈트
             // 
             this.txt부합슈트.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt부합슈트.Location = new System.Drawing.Point(321, 63);
+            this.txt부합슈트.Location = new System.Drawing.Point(315, 63);
             this.txt부합슈트.Name = "txt부합슈트";
-            this.txt부합슈트.Size = new System.Drawing.Size(100, 21);
+            this.txt부합슈트.Size = new System.Drawing.Size(98, 21);
             this.txt부합슈트.TabIndex = 14;
             // 
             // txt로컬폴더
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.txt로컬폴더, 4);
             this.txt로컬폴더.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt로컬폴더.Location = new System.Drawing.Point(109, 93);
+            this.txt로컬폴더.Location = new System.Drawing.Point(107, 93);
             this.txt로컬폴더.Name = "txt로컬폴더";
-            this.txt로컬폴더.Size = new System.Drawing.Size(418, 21);
+            this.txt로컬폴더.Size = new System.Drawing.Size(410, 21);
             this.txt로컬폴더.TabIndex = 15;
             // 
             // txt공유폴더
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.txt공유폴더, 4);
             this.txt공유폴더.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt공유폴더.Location = new System.Drawing.Point(109, 123);
+            this.txt공유폴더.Location = new System.Drawing.Point(107, 123);
             this.txt공유폴더.Name = "txt공유폴더";
-            this.txt공유폴더.Size = new System.Drawing.Size(418, 21);
+            this.txt공유폴더.Size = new System.Drawing.Size(410, 21);
             this.txt공유폴더.TabIndex = 16;
             // 
             // txt계정
             // 
             this.txt계정.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt계정.Location = new System.Drawing.Point(109, 153);
+            this.txt계정.Location = new System.Drawing.Point(107, 153);
             this.txt계정.Name = "txt계정";
-            this.txt계정.Size = new System.Drawing.Size(100, 21);
+            this.txt계정.Size = new System.Drawing.Size(98, 21);
             this.txt계정.TabIndex = 17;
             // 
             // txt암호
             // 
             this.txt암호.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt암호.Location = new System.Drawing.Point(321, 153);
+            this.txt암호.Location = new System.Drawing.Point(315, 153);
             this.txt암호.Name = "txt암호";
             this.txt암호.PasswordChar = '*';
-            this.txt암호.Size = new System.Drawing.Size(100, 21);
+            this.txt암호.Size = new System.Drawing.Size(98, 21);
             this.txt암호.TabIndex = 18;
             this.txt암호.UseSystemPasswordChar = true;
             // 
             // txt초과슈트
             // 
             this.txt초과슈트.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt초과슈트.Location = new System.Drawing.Point(533, 63);
+            this.txt초과슈트.Location = new System.Drawing.Point(523, 63);
             this.txt초과슈트.Name = "txt초과슈트";
-            this.txt초과슈트.Size = new System.Drawing.Size(100, 21);
+            this.txt초과슈트.Size = new System.Drawing.Size(98, 21);
             this.txt초과슈트.TabIndex = 19;
             // 
             // ultraLabel11
@@ -588,27 +588,27 @@ namespace PAS.PMP
             this.ultraLabel11.Appearance = appearance13;
             this.tableLayoutPanel1.SetColumnSpan(this.ultraLabel11, 2);
             this.ultraLabel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel11.Location = new System.Drawing.Point(533, 123);
+            this.ultraLabel11.Location = new System.Drawing.Point(523, 123);
             this.ultraLabel11.Name = "ultraLabel11";
-            this.ultraLabel11.Size = new System.Drawing.Size(208, 24);
+            this.ultraLabel11.Size = new System.Drawing.Size(206, 24);
             this.ultraLabel11.TabIndex = 20;
             this.ultraLabel11.Text = "ex) \\\\SEIGYO-PC\\Data";
             // 
             // 폴더찾기
             // 
             this.폴더찾기.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.폴더찾기.Location = new System.Drawing.Point(533, 93);
+            this.폴더찾기.Location = new System.Drawing.Point(523, 93);
             this.폴더찾기.Name = "폴더찾기";
-            this.폴더찾기.Size = new System.Drawing.Size(100, 24);
+            this.폴더찾기.Size = new System.Drawing.Size(98, 24);
             this.폴더찾기.TabIndex = 21;
             this.폴더찾기.Text = "폴더";
             // 
             // ultraTabPageControl브랜드
             // 
             this.ultraTabPageControl브랜드.Controls.Add(this.ultraGroupBox4);
-            this.ultraTabPageControl브랜드.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl브랜드.Location = new System.Drawing.Point(-4375, -4444);
             this.ultraTabPageControl브랜드.Name = "ultraTabPageControl브랜드";
-            this.ultraTabPageControl브랜드.Size = new System.Drawing.Size(750, 277);
+            this.ultraTabPageControl브랜드.Size = new System.Drawing.Size(738, 255);
             // 
             // ultraGroupBox4
             // 
@@ -616,7 +616,7 @@ namespace PAS.PMP
             this.ultraGroupBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultraGroupBox4.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBox4.Name = "ultraGroupBox4";
-            this.ultraGroupBox4.Size = new System.Drawing.Size(750, 274);
+            this.ultraGroupBox4.Size = new System.Drawing.Size(738, 274);
             this.ultraGroupBox4.TabIndex = 26;
             this.ultraGroupBox4.Text = "기본설정 (코텍 전용)";
             // 
@@ -649,7 +649,7 @@ namespace PAS.PMP
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(744, 253);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(732, 253);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // ultraLabel13
@@ -660,7 +660,7 @@ namespace PAS.PMP
             this.ultraLabel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel13.Location = new System.Drawing.Point(3, 3);
             this.ultraLabel13.Name = "ultraLabel13";
-            this.ultraLabel13.Size = new System.Drawing.Size(100, 25);
+            this.ultraLabel13.Size = new System.Drawing.Size(98, 25);
             this.ultraLabel13.TabIndex = 0;
             this.ultraLabel13.Text = "주소";
             // 
@@ -672,16 +672,16 @@ namespace PAS.PMP
             this.ultraLabel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel14.Location = new System.Drawing.Point(3, 34);
             this.ultraLabel14.Name = "ultraLabel14";
-            this.ultraLabel14.Size = new System.Drawing.Size(100, 25);
+            this.ultraLabel14.Size = new System.Drawing.Size(98, 25);
             this.ultraLabel14.TabIndex = 1;
             this.ultraLabel14.Text = "구성";
             // 
             // txt숫자표시기주소
             // 
             this.txt숫자표시기주소.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt숫자표시기주소.Location = new System.Drawing.Point(109, 3);
+            this.txt숫자표시기주소.Location = new System.Drawing.Point(107, 3);
             this.txt숫자표시기주소.Name = "txt숫자표시기주소";
-            this.txt숫자표시기주소.Size = new System.Drawing.Size(100, 21);
+            this.txt숫자표시기주소.Size = new System.Drawing.Size(98, 21);
             this.txt숫자표시기주소.TabIndex = 10;
             // 
             // txt숫자표시기포트
@@ -689,17 +689,17 @@ namespace PAS.PMP
             appearance16.TextHAlignAsString = "Left";
             appearance16.TextVAlignAsString = "Middle";
             this.txt숫자표시기포트.Appearance = appearance16;
-            this.txt숫자표시기포트.Location = new System.Drawing.Point(215, 3);
+            this.txt숫자표시기포트.Location = new System.Drawing.Point(211, 3);
             this.txt숫자표시기포트.Name = "txt숫자표시기포트";
-            this.txt숫자표시기포트.Size = new System.Drawing.Size(100, 25);
+            this.txt숫자표시기포트.Size = new System.Drawing.Size(98, 23);
             this.txt숫자표시기포트.TabIndex = 22;
             this.txt숫자표시기포트.Text = "포트";
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(321, 3);
+            this.textBox11.Location = new System.Drawing.Point(315, 3);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 21);
+            this.textBox11.Size = new System.Drawing.Size(98, 21);
             this.textBox11.TabIndex = 23;
             // 
             // ugrid숫자표시기구성
@@ -765,10 +765,10 @@ namespace PAS.PMP
             this.ugrid숫자표시기구성.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.ugrid숫자표시기구성.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.ugrid숫자표시기구성.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ugrid숫자표시기구성.Location = new System.Drawing.Point(109, 34);
+            this.ugrid숫자표시기구성.Location = new System.Drawing.Point(107, 34);
             this.ugrid숫자표시기구성.Name = "ugrid숫자표시기구성";
             this.tableLayoutPanel3.SetRowSpan(this.ugrid숫자표시기구성, 7);
-            this.ugrid숫자표시기구성.Size = new System.Drawing.Size(632, 216);
+            this.ugrid숫자표시기구성.Size = new System.Drawing.Size(622, 216);
             this.ugrid숫자표시기구성.TabIndex = 1035;
             this.ugrid숫자표시기구성.Text = "uGrid3";
             // 
@@ -776,9 +776,9 @@ namespace PAS.PMP
             // 
             this.ultraTabPageControl소속.Controls.Add(this.ultraGroupBox5);
             this.ultraTabPageControl소속.Controls.Add(this.ultraGroupBox6);
-            this.ultraTabPageControl소속.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl소속.Location = new System.Drawing.Point(-4375, -4444);
             this.ultraTabPageControl소속.Name = "ultraTabPageControl소속";
-            this.ultraTabPageControl소속.Size = new System.Drawing.Size(750, 277);
+            this.ultraTabPageControl소속.Size = new System.Drawing.Size(738, 255);
             // 
             // ultraGroupBox5
             // 
@@ -786,7 +786,7 @@ namespace PAS.PMP
             this.ultraGroupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraGroupBox5.Location = new System.Drawing.Point(0, 131);
             this.ultraGroupBox5.Name = "ultraGroupBox5";
-            this.ultraGroupBox5.Size = new System.Drawing.Size(750, 146);
+            this.ultraGroupBox5.Size = new System.Drawing.Size(738, 124);
             this.ultraGroupBox5.TabIndex = 28;
             this.ultraGroupBox5.Text = "상위 시스템 데이터베이스";
             // 
@@ -817,7 +817,7 @@ namespace PAS.PMP
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(744, 125);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(732, 103);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // ultraLabel15
@@ -828,7 +828,7 @@ namespace PAS.PMP
             this.ultraLabel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel15.Location = new System.Drawing.Point(3, 3);
             this.ultraLabel15.Name = "ultraLabel15";
-            this.ultraLabel15.Size = new System.Drawing.Size(100, 25);
+            this.ultraLabel15.Size = new System.Drawing.Size(98, 19);
             this.ultraLabel15.TabIndex = 0;
             this.ultraLabel15.Text = "주소";
             // 
@@ -838,9 +838,9 @@ namespace PAS.PMP
             appearance30.TextVAlignAsString = "Middle";
             this.ultraLabel16.Appearance = appearance30;
             this.ultraLabel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel16.Location = new System.Drawing.Point(3, 34);
+            this.ultraLabel16.Location = new System.Drawing.Point(3, 28);
             this.ultraLabel16.Name = "ultraLabel16";
-            this.ultraLabel16.Size = new System.Drawing.Size(100, 25);
+            this.ultraLabel16.Size = new System.Drawing.Size(98, 19);
             this.ultraLabel16.TabIndex = 1;
             this.ultraLabel16.Text = "서비스명";
             // 
@@ -850,9 +850,9 @@ namespace PAS.PMP
             appearance31.TextVAlignAsString = "Middle";
             this.ultraLabel21.Appearance = appearance31;
             this.ultraLabel21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel21.Location = new System.Drawing.Point(3, 65);
+            this.ultraLabel21.Location = new System.Drawing.Point(3, 53);
             this.ultraLabel21.Name = "ultraLabel21";
-            this.ultraLabel21.Size = new System.Drawing.Size(100, 25);
+            this.ultraLabel21.Size = new System.Drawing.Size(98, 19);
             this.ultraLabel21.TabIndex = 2;
             this.ultraLabel21.Text = "계정";
             // 
@@ -862,9 +862,9 @@ namespace PAS.PMP
             appearance32.TextVAlignAsString = "Middle";
             this.ultraLabel22.Appearance = appearance32;
             this.ultraLabel22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraLabel22.Location = new System.Drawing.Point(3, 96);
+            this.ultraLabel22.Location = new System.Drawing.Point(3, 78);
             this.ultraLabel22.Name = "ultraLabel22";
-            this.ultraLabel22.Size = new System.Drawing.Size(100, 26);
+            this.ultraLabel22.Size = new System.Drawing.Size(98, 22);
             this.ultraLabel22.TabIndex = 3;
             this.ultraLabel22.Text = "암호";
             // 
@@ -872,37 +872,37 @@ namespace PAS.PMP
             // 
             this.tableLayoutPanel4.SetColumnSpan(this.txt데이터베이스상위주소, 2);
             this.txt데이터베이스상위주소.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt데이터베이스상위주소.Location = new System.Drawing.Point(109, 3);
+            this.txt데이터베이스상위주소.Location = new System.Drawing.Point(107, 3);
             this.txt데이터베이스상위주소.Name = "txt데이터베이스상위주소";
-            this.txt데이터베이스상위주소.Size = new System.Drawing.Size(206, 21);
+            this.txt데이터베이스상위주소.Size = new System.Drawing.Size(202, 21);
             this.txt데이터베이스상위주소.TabIndex = 10;
             // 
             // txt데이터베이스상위서비스명
             // 
             this.tableLayoutPanel4.SetColumnSpan(this.txt데이터베이스상위서비스명, 2);
             this.txt데이터베이스상위서비스명.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt데이터베이스상위서비스명.Location = new System.Drawing.Point(109, 34);
+            this.txt데이터베이스상위서비스명.Location = new System.Drawing.Point(107, 28);
             this.txt데이터베이스상위서비스명.Name = "txt데이터베이스상위서비스명";
-            this.txt데이터베이스상위서비스명.Size = new System.Drawing.Size(206, 21);
+            this.txt데이터베이스상위서비스명.Size = new System.Drawing.Size(202, 21);
             this.txt데이터베이스상위서비스명.TabIndex = 11;
             // 
             // txt데이터베이스상위계정
             // 
             this.tableLayoutPanel4.SetColumnSpan(this.txt데이터베이스상위계정, 2);
             this.txt데이터베이스상위계정.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt데이터베이스상위계정.Location = new System.Drawing.Point(109, 65);
+            this.txt데이터베이스상위계정.Location = new System.Drawing.Point(107, 53);
             this.txt데이터베이스상위계정.Name = "txt데이터베이스상위계정";
-            this.txt데이터베이스상위계정.Size = new System.Drawing.Size(206, 21);
+            this.txt데이터베이스상위계정.Size = new System.Drawing.Size(202, 21);
             this.txt데이터베이스상위계정.TabIndex = 13;
             // 
             // txt데이터베이스상위암호
             // 
             this.tableLayoutPanel4.SetColumnSpan(this.txt데이터베이스상위암호, 2);
             this.txt데이터베이스상위암호.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt데이터베이스상위암호.Location = new System.Drawing.Point(109, 96);
+            this.txt데이터베이스상위암호.Location = new System.Drawing.Point(107, 78);
             this.txt데이터베이스상위암호.Name = "txt데이터베이스상위암호";
             this.txt데이터베이스상위암호.PasswordChar = '*';
-            this.txt데이터베이스상위암호.Size = new System.Drawing.Size(206, 21);
+            this.txt데이터베이스상위암호.Size = new System.Drawing.Size(202, 21);
             this.txt데이터베이스상위암호.TabIndex = 15;
             this.txt데이터베이스상위암호.UseSystemPasswordChar = true;
             // 
@@ -912,7 +912,7 @@ namespace PAS.PMP
             this.ultraGroupBox6.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultraGroupBox6.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBox6.Name = "ultraGroupBox6";
-            this.ultraGroupBox6.Size = new System.Drawing.Size(750, 131);
+            this.ultraGroupBox6.Size = new System.Drawing.Size(738, 131);
             this.ultraGroupBox6.TabIndex = 27;
             this.ultraGroupBox6.Text = "PAS 데이터베이스";
             // 
@@ -943,7 +943,7 @@ namespace PAS.PMP
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(744, 110);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(732, 110);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // ultraLabel17
@@ -954,7 +954,7 @@ namespace PAS.PMP
             this.ultraLabel17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel17.Location = new System.Drawing.Point(3, 3);
             this.ultraLabel17.Name = "ultraLabel17";
-            this.ultraLabel17.Size = new System.Drawing.Size(100, 21);
+            this.ultraLabel17.Size = new System.Drawing.Size(98, 21);
             this.ultraLabel17.TabIndex = 0;
             this.ultraLabel17.Text = "주소";
             // 
@@ -966,7 +966,7 @@ namespace PAS.PMP
             this.ultraLabel18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel18.Location = new System.Drawing.Point(3, 30);
             this.ultraLabel18.Name = "ultraLabel18";
-            this.ultraLabel18.Size = new System.Drawing.Size(100, 21);
+            this.ultraLabel18.Size = new System.Drawing.Size(98, 21);
             this.ultraLabel18.TabIndex = 1;
             this.ultraLabel18.Text = "라인명";
             // 
@@ -978,7 +978,7 @@ namespace PAS.PMP
             this.ultraLabel19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel19.Location = new System.Drawing.Point(3, 57);
             this.ultraLabel19.Name = "ultraLabel19";
-            this.ultraLabel19.Size = new System.Drawing.Size(100, 21);
+            this.ultraLabel19.Size = new System.Drawing.Size(98, 21);
             this.ultraLabel19.TabIndex = 2;
             this.ultraLabel19.Text = "계정";
             // 
@@ -990,7 +990,7 @@ namespace PAS.PMP
             this.ultraLabel20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel20.Location = new System.Drawing.Point(3, 84);
             this.ultraLabel20.Name = "ultraLabel20";
-            this.ultraLabel20.Size = new System.Drawing.Size(100, 23);
+            this.ultraLabel20.Size = new System.Drawing.Size(98, 23);
             this.ultraLabel20.TabIndex = 3;
             this.ultraLabel20.Text = "암호";
             // 
@@ -998,46 +998,46 @@ namespace PAS.PMP
             // 
             this.tableLayoutPanel5.SetColumnSpan(this.txt데이터베이스pas주소, 2);
             this.txt데이터베이스pas주소.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt데이터베이스pas주소.Location = new System.Drawing.Point(109, 3);
+            this.txt데이터베이스pas주소.Location = new System.Drawing.Point(107, 3);
             this.txt데이터베이스pas주소.Name = "txt데이터베이스pas주소";
-            this.txt데이터베이스pas주소.Size = new System.Drawing.Size(206, 21);
+            this.txt데이터베이스pas주소.Size = new System.Drawing.Size(202, 21);
             this.txt데이터베이스pas주소.TabIndex = 10;
             // 
             // txt데이터베이스pas라인명
             // 
             this.tableLayoutPanel5.SetColumnSpan(this.txt데이터베이스pas라인명, 2);
             this.txt데이터베이스pas라인명.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt데이터베이스pas라인명.Location = new System.Drawing.Point(109, 30);
+            this.txt데이터베이스pas라인명.Location = new System.Drawing.Point(107, 30);
             this.txt데이터베이스pas라인명.Name = "txt데이터베이스pas라인명";
-            this.txt데이터베이스pas라인명.Size = new System.Drawing.Size(206, 21);
+            this.txt데이터베이스pas라인명.Size = new System.Drawing.Size(202, 21);
             this.txt데이터베이스pas라인명.TabIndex = 11;
             // 
             // txt데이터베이스pas계정
             // 
             this.tableLayoutPanel5.SetColumnSpan(this.txt데이터베이스pas계정, 2);
             this.txt데이터베이스pas계정.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt데이터베이스pas계정.Location = new System.Drawing.Point(109, 57);
+            this.txt데이터베이스pas계정.Location = new System.Drawing.Point(107, 57);
             this.txt데이터베이스pas계정.Name = "txt데이터베이스pas계정";
-            this.txt데이터베이스pas계정.Size = new System.Drawing.Size(206, 21);
+            this.txt데이터베이스pas계정.Size = new System.Drawing.Size(202, 21);
             this.txt데이터베이스pas계정.TabIndex = 13;
             // 
             // txt데이터베이스pas암호
             // 
             this.tableLayoutPanel5.SetColumnSpan(this.txt데이터베이스pas암호, 2);
             this.txt데이터베이스pas암호.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt데이터베이스pas암호.Location = new System.Drawing.Point(109, 84);
+            this.txt데이터베이스pas암호.Location = new System.Drawing.Point(107, 84);
             this.txt데이터베이스pas암호.Name = "txt데이터베이스pas암호";
             this.txt데이터베이스pas암호.PasswordChar = '*';
-            this.txt데이터베이스pas암호.Size = new System.Drawing.Size(206, 21);
+            this.txt데이터베이스pas암호.Size = new System.Drawing.Size(202, 21);
             this.txt데이터베이스pas암호.TabIndex = 15;
             this.txt데이터베이스pas암호.UseSystemPasswordChar = true;
             // 
             // ultraTabPageControl1
             // 
             this.ultraTabPageControl1.Controls.Add(this.ultraGroupBox7);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-4375, -4444);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(750, 277);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(738, 255);
             // 
             // ultraGroupBox7
             // 
@@ -1045,7 +1045,7 @@ namespace PAS.PMP
             this.ultraGroupBox7.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultraGroupBox7.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBox7.Name = "ultraGroupBox7";
-            this.ultraGroupBox7.Size = new System.Drawing.Size(750, 274);
+            this.ultraGroupBox7.Size = new System.Drawing.Size(738, 274);
             this.ultraGroupBox7.TabIndex = 27;
             this.ultraGroupBox7.Text = "바코드 프린터";
             // 
@@ -1079,16 +1079,16 @@ namespace PAS.PMP
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(744, 253);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(732, 253);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // com프린터
             // 
             this.tableLayoutPanel6.SetColumnSpan(this.com프린터, 2);
             this.com프린터.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.com프린터.Location = new System.Drawing.Point(109, 3);
+            this.com프린터.Location = new System.Drawing.Point(107, 3);
             this.com프린터.Name = "com프린터";
-            this.com프린터.Size = new System.Drawing.Size(206, 21);
+            this.com프린터.Size = new System.Drawing.Size(202, 21);
             this.com프린터.TabIndex = 1038;
             // 
             // ultraLabel23
@@ -1099,7 +1099,7 @@ namespace PAS.PMP
             this.ultraLabel23.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel23.Location = new System.Drawing.Point(3, 3);
             this.ultraLabel23.Name = "ultraLabel23";
-            this.ultraLabel23.Size = new System.Drawing.Size(100, 25);
+            this.ultraLabel23.Size = new System.Drawing.Size(98, 25);
             this.ultraLabel23.TabIndex = 0;
             this.ultraLabel23.Text = "프린터";
             // 
@@ -1111,7 +1111,7 @@ namespace PAS.PMP
             this.ultraLabel24.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel24.Location = new System.Drawing.Point(3, 34);
             this.ultraLabel24.Name = "ultraLabel24";
-            this.ultraLabel24.Size = new System.Drawing.Size(100, 25);
+            this.ultraLabel24.Size = new System.Drawing.Size(98, 25);
             this.ultraLabel24.TabIndex = 1;
             this.ultraLabel24.Text = "슈트범위";
             // 
@@ -1177,10 +1177,10 @@ namespace PAS.PMP
             this.ugrid바코드프린터.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.ugrid바코드프린터.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.ugrid바코드프린터.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
-            this.ugrid바코드프린터.Location = new System.Drawing.Point(109, 65);
+            this.ugrid바코드프린터.Location = new System.Drawing.Point(107, 65);
             this.ugrid바코드프린터.Name = "ugrid바코드프린터";
             this.tableLayoutPanel6.SetRowSpan(this.ugrid바코드프린터, 6);
-            this.ugrid바코드프린터.Size = new System.Drawing.Size(631, 185);
+            this.ugrid바코드프린터.Size = new System.Drawing.Size(622, 170);
             this.ugrid바코드프린터.TabIndex = 1035;
             this.ugrid바코드프린터.Text = "uGrid3";
             // 
@@ -1192,7 +1192,7 @@ namespace PAS.PMP
             this.ultraLabel26.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel26.Location = new System.Drawing.Point(3, 65);
             this.ultraLabel26.Name = "ultraLabel26";
-            this.ultraLabel26.Size = new System.Drawing.Size(100, 25);
+            this.ultraLabel26.Size = new System.Drawing.Size(98, 25);
             this.ultraLabel26.TabIndex = 1036;
             this.ultraLabel26.Text = "리스트";
             // 
@@ -1203,10 +1203,10 @@ namespace PAS.PMP
             this.panel1.Controls.Add(this.com슈트범위끝);
             this.panel1.Controls.Add(this.com슈트범위시작);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(106, 31);
+            this.panel1.Location = new System.Drawing.Point(104, 31);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(212, 31);
+            this.panel1.Size = new System.Drawing.Size(208, 31);
             this.panel1.TabIndex = 1037;
             // 
             // ultraLabel25
@@ -1242,16 +1242,16 @@ namespace PAS.PMP
             this.panel2.Controls.Add(this.btn바코드프린터삭제);
             this.panel2.Controls.Add(this.btn바코드프린터모두삭제);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(318, 31);
+            this.panel2.Location = new System.Drawing.Point(312, 31);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(426, 31);
+            this.panel2.Size = new System.Drawing.Size(420, 31);
             this.panel2.TabIndex = 1039;
             // 
             // btn바코드프린터추가
             // 
             this.btn바코드프린터추가.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn바코드프린터추가.Location = new System.Drawing.Point(66, 0);
+            this.btn바코드프린터추가.Location = new System.Drawing.Point(60, 0);
             this.btn바코드프린터추가.Name = "btn바코드프린터추가";
             this.btn바코드프린터추가.Size = new System.Drawing.Size(90, 31);
             this.btn바코드프린터추가.TabIndex = 9;
@@ -1260,7 +1260,7 @@ namespace PAS.PMP
             // btn바코드프린터수정
             // 
             this.btn바코드프린터수정.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn바코드프린터수정.Location = new System.Drawing.Point(156, 0);
+            this.btn바코드프린터수정.Location = new System.Drawing.Point(150, 0);
             this.btn바코드프린터수정.Name = "btn바코드프린터수정";
             this.btn바코드프린터수정.Size = new System.Drawing.Size(90, 31);
             this.btn바코드프린터수정.TabIndex = 8;
@@ -1269,7 +1269,7 @@ namespace PAS.PMP
             // btn바코드프린터삭제
             // 
             this.btn바코드프린터삭제.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn바코드프린터삭제.Location = new System.Drawing.Point(246, 0);
+            this.btn바코드프린터삭제.Location = new System.Drawing.Point(240, 0);
             this.btn바코드프린터삭제.Name = "btn바코드프린터삭제";
             this.btn바코드프린터삭제.Size = new System.Drawing.Size(90, 31);
             this.btn바코드프린터삭제.TabIndex = 7;
@@ -1278,7 +1278,7 @@ namespace PAS.PMP
             // btn바코드프린터모두삭제
             // 
             this.btn바코드프린터모두삭제.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn바코드프린터모두삭제.Location = new System.Drawing.Point(336, 0);
+            this.btn바코드프린터모두삭제.Location = new System.Drawing.Point(330, 0);
             this.btn바코드프린터모두삭제.Name = "btn바코드프린터모두삭제";
             this.btn바코드프린터모두삭제.Size = new System.Drawing.Size(90, 31);
             this.btn바코드프린터모두삭제.TabIndex = 6;
@@ -1287,9 +1287,9 @@ namespace PAS.PMP
             // ultraTabPageControl2
             // 
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBox8);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(-4375, -4444);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(750, 277);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(738, 255);
             // 
             // ultraGroupBox8
             // 
@@ -1297,7 +1297,7 @@ namespace PAS.PMP
             this.ultraGroupBox8.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultraGroupBox8.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBox8.Name = "ultraGroupBox8";
-            this.ultraGroupBox8.Size = new System.Drawing.Size(750, 274);
+            this.ultraGroupBox8.Size = new System.Drawing.Size(738, 274);
             this.ultraGroupBox8.TabIndex = 27;
             this.ultraGroupBox8.Text = "거래명세서 프린터";
             // 
@@ -1330,7 +1330,7 @@ namespace PAS.PMP
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(744, 253);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(732, 253);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
             // panel3
@@ -1340,16 +1340,16 @@ namespace PAS.PMP
             this.panel3.Controls.Add(this.btn거래명세서삭제);
             this.panel3.Controls.Add(this.btn거래명세서모두삭제);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(318, 0);
+            this.panel3.Location = new System.Drawing.Point(312, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(426, 31);
+            this.panel3.Size = new System.Drawing.Size(420, 31);
             this.panel3.TabIndex = 1040;
             // 
             // btn거래명세서추가
             // 
             this.btn거래명세서추가.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn거래명세서추가.Location = new System.Drawing.Point(156, 0);
+            this.btn거래명세서추가.Location = new System.Drawing.Point(150, 0);
             this.btn거래명세서추가.Name = "btn거래명세서추가";
             this.btn거래명세서추가.Size = new System.Drawing.Size(90, 31);
             this.btn거래명세서추가.TabIndex = 9;
@@ -1358,7 +1358,7 @@ namespace PAS.PMP
             // btn거래명세서삭제
             // 
             this.btn거래명세서삭제.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn거래명세서삭제.Location = new System.Drawing.Point(246, 0);
+            this.btn거래명세서삭제.Location = new System.Drawing.Point(240, 0);
             this.btn거래명세서삭제.Name = "btn거래명세서삭제";
             this.btn거래명세서삭제.Size = new System.Drawing.Size(90, 31);
             this.btn거래명세서삭제.TabIndex = 7;
@@ -1367,7 +1367,7 @@ namespace PAS.PMP
             // btn거래명세서모두삭제
             // 
             this.btn거래명세서모두삭제.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn거래명세서모두삭제.Location = new System.Drawing.Point(336, 0);
+            this.btn거래명세서모두삭제.Location = new System.Drawing.Point(330, 0);
             this.btn거래명세서모두삭제.Name = "btn거래명세서모두삭제";
             this.btn거래명세서모두삭제.Size = new System.Drawing.Size(90, 31);
             this.btn거래명세서모두삭제.TabIndex = 6;
@@ -1377,9 +1377,9 @@ namespace PAS.PMP
             // 
             this.tableLayoutPanel7.SetColumnSpan(this.com거래명세서프린터, 2);
             this.com거래명세서프린터.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.com거래명세서프린터.Location = new System.Drawing.Point(109, 3);
+            this.com거래명세서프린터.Location = new System.Drawing.Point(107, 3);
             this.com거래명세서프린터.Name = "com거래명세서프린터";
-            this.com거래명세서프린터.Size = new System.Drawing.Size(206, 21);
+            this.com거래명세서프린터.Size = new System.Drawing.Size(202, 21);
             this.com거래명세서프린터.TabIndex = 1039;
             // 
             // ultraLabel27
@@ -1390,7 +1390,7 @@ namespace PAS.PMP
             this.ultraLabel27.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel27.Location = new System.Drawing.Point(3, 3);
             this.ultraLabel27.Name = "ultraLabel27";
-            this.ultraLabel27.Size = new System.Drawing.Size(100, 25);
+            this.ultraLabel27.Size = new System.Drawing.Size(98, 25);
             this.ultraLabel27.TabIndex = 0;
             this.ultraLabel27.Text = "프린터";
             // 
@@ -1402,7 +1402,7 @@ namespace PAS.PMP
             this.ultraLabel28.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraLabel28.Location = new System.Drawing.Point(3, 34);
             this.ultraLabel28.Name = "ultraLabel28";
-            this.ultraLabel28.Size = new System.Drawing.Size(100, 25);
+            this.ultraLabel28.Size = new System.Drawing.Size(98, 25);
             this.ultraLabel28.TabIndex = 1;
             this.ultraLabel28.Text = "리스트";
             // 
@@ -1469,10 +1469,10 @@ namespace PAS.PMP
             this.ugrid거래명세서리스트.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.ugrid거래명세서리스트.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.ugrid거래명세서리스트.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ugrid거래명세서리스트.Location = new System.Drawing.Point(109, 34);
+            this.ugrid거래명세서리스트.Location = new System.Drawing.Point(107, 34);
             this.ugrid거래명세서리스트.Name = "ugrid거래명세서리스트";
             this.tableLayoutPanel7.SetRowSpan(this.ugrid거래명세서리스트, 7);
-            this.ugrid거래명세서리스트.Size = new System.Drawing.Size(632, 216);
+            this.ugrid거래명세서리스트.Size = new System.Drawing.Size(622, 216);
             this.ugrid거래명세서리스트.TabIndex = 1035;
             this.ugrid거래명세서리스트.Text = "uGrid3";
             // 
@@ -1488,13 +1488,13 @@ namespace PAS.PMP
             this.ultraGroupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultraGroupBox1.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
-            this.ultraGroupBox1.Size = new System.Drawing.Size(754, 38);
+            this.ultraGroupBox1.Size = new System.Drawing.Size(742, 38);
             this.ultraGroupBox1.TabIndex = 1029;
             // 
             // 연결테스트
             // 
             this.연결테스트.Dock = System.Windows.Forms.DockStyle.Right;
-            this.연결테스트.Location = new System.Drawing.Point(482, 2);
+            this.연결테스트.Location = new System.Drawing.Point(470, 2);
             this.연결테스트.Name = "연결테스트";
             this.연결테스트.Size = new System.Drawing.Size(90, 34);
             this.연결테스트.TabIndex = 7;
@@ -1504,7 +1504,7 @@ namespace PAS.PMP
             // 저장
             // 
             this.저장.Dock = System.Windows.Forms.DockStyle.Right;
-            this.저장.Location = new System.Drawing.Point(572, 2);
+            this.저장.Location = new System.Drawing.Point(560, 2);
             this.저장.Name = "저장";
             this.저장.Size = new System.Drawing.Size(90, 34);
             this.저장.TabIndex = 6;
@@ -1513,7 +1513,7 @@ namespace PAS.PMP
             // 닫기
             // 
             this.닫기.Dock = System.Windows.Forms.DockStyle.Right;
-            this.닫기.Location = new System.Drawing.Point(662, 2);
+            this.닫기.Location = new System.Drawing.Point(650, 2);
             this.닫기.Name = "닫기";
             this.닫기.Size = new System.Drawing.Size(90, 34);
             this.닫기.TabIndex = 5;
@@ -1531,7 +1531,7 @@ namespace PAS.PMP
             this.ultraTabControl1.Location = new System.Drawing.Point(0, 38);
             this.ultraTabControl1.Name = "ultraTabControl1";
             this.ultraTabControl1.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.ultraTabControl1.Size = new System.Drawing.Size(754, 303);
+            this.ultraTabControl1.Size = new System.Drawing.Size(742, 281);
             this.ultraTabControl1.TabIndex = 1033;
             ultraTab3.TabPage = this.ultraTabPageControl센터;
             ultraTab3.Text = "PAS";
@@ -1554,18 +1554,18 @@ namespace PAS.PMP
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(750, 277);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(738, 255);
             // 
             // frmTRPAS00023
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 341);
+            this.ClientSize = new System.Drawing.Size(742, 319);
             this.Controls.Add(this.ultraTabControl1);
             this.Controls.Add(this.ultraGroupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(770, 380);
-            this.MinimumSize = new System.Drawing.Size(770, 380);
+            this.MaximumSize = new System.Drawing.Size(763, 358);
+            this.MinimumSize = new System.Drawing.Size(755, 358);
             this.Name = "frmTRPAS00023";
             this.Text = "환경설정(frmTRPAS00023)";
             this.ultraTabPageControl센터.ResumeLayout(false);

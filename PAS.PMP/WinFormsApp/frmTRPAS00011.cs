@@ -63,7 +63,7 @@ namespace PAS.PMP
         {
             base.OnShown(e);
 
-            시작일자.Value = DateTime.Now.AddDays(-7);
+            시작일자.Value = DateTime.Now;
             종료일자.Value = DateTime.Now;
             SetDataTableBindingInit();
         }

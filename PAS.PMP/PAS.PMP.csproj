@@ -264,12 +264,6 @@
     <Compile Include="WinFormsApp\frmTRPAS00024.Designer.cs">
       <DependentUpon>frmTRPAS00024.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinFormsApp\frmTRPASTEST.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinFormsApp\frmTRPASTEST.Designer.cs">
-      <DependentUpon>frmTRPASTEST.cs</DependentUpon>
-    </Compile>
     <Compile Include="WinFormsApp\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -349,9 +343,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\frmTRPAS00023.resx">
       <DependentUpon>frmTRPAS00023.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinFormsApp\frmTRPASTEST.resx">
-      <DependentUpon>frmTRPASTEST.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinFormsApp\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

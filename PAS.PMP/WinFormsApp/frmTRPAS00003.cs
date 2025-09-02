@@ -147,7 +147,7 @@ namespace PAS.PMP
                 string oValue = string.Empty;
 
                 oValue = 출력대상유형.Value.ToString() != "20" ? "" : _슈트번호;
-                분류.박스별패킹내역(this.m_분류_박스별패킹내역Table, _분류번호, _배치번호, _슈트번호);
+                분류.박스별패킹내역(this.m_분류_박스별패킹내역Table, _분류번호, _배치번호, oValue);
                 if (this.m_분류_박스별패킹내역Table == null || this.m_분류_박스별패킹내역Table.Rows.Count <= 0)
                 {
                     MessageBox.Show("출력할 대상이 없습니다.");
@@ -192,7 +192,7 @@ namespace PAS.PMP
                 string oValue = string.Empty;
 
                 oValue = 출력대상유형.Value.ToString() != "20" ? "" : _슈트번호;
-                분류.박스별패킹내역(this.m_분류_박스별패킹내역Table, _분류번호, _배치번호, _슈트번호);
+                분류.박스별패킹내역(this.m_분류_박스별패킹내역Table, _분류번호, _배치번호, oValue);
                 if (this.m_분류_박스별패킹내역Table == null || this.m_분류_박스별패킹내역Table.Rows.Count <= 0)
                 {
                     MessageBox.Show("출력할 대상이 없습니다.");
@@ -210,10 +210,10 @@ namespace PAS.PMP
                 Common.SetGridEditColumn(uGrid5, null);
                 BindingSource myBinding = new BindingSource();
                 myBinding.DataSource = m_분류_박스별패킹내역Table;
-                this.uGrid4.DataSource = myBinding;
+                this.uGrid5.DataSource = myBinding;
 
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                    this.uGridExcelExporter1.ExportAsync(uGrid4, saveFileDialog1.FileName);
+                    this.uGridExcelExporter1.ExportAsync(uGrid5, saveFileDialog1.FileName);
             }
             catch (Exception ex)
             {
@@ -267,6 +267,32 @@ namespace PAS.PMP
         {
             DataRow oRow = ((DataRowView)uGrid2.ActiveRow.ListObject).Row;
             분류.슈트별박스풀상세조회(m_분류_박스재발행_슈트별상세Table, _분류번호, _배치번호, _슈트번호, _서브슈트번호, oRow["박스번호"].ToString(), 1);
+        }
+
+        private void 박스풀_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+
+            if (_슈트번호 == null)
+            {
+                MessageBox.Show("슈트번호를 선택하세요.");
+                return;
+            }
+
+            try
+            {
+                string s마지막박스여부 = "0";
+                분류.박스풀(_분류번호, GlobalClass.장비명, _슈트번호, s마지막박스여부);
+            }
+            catch (Exception ex)
+            {
+                Cursor.Current = Cursors.Default;
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
         }
 
         private void 재발행_Click(object sender, EventArgs e)
@@ -456,6 +482,9 @@ namespace PAS.PMP
         }
 
 
+
         #endregion
+
+       
     }
 }

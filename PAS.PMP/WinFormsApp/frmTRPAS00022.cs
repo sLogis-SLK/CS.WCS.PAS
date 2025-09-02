@@ -16,8 +16,15 @@ namespace PAS.PMP
         #region 폼개체 선언부
         private DataTable m_관리_분류실적_백업Table = new DataTable("usp_관리_분류실적_백업_Get");
         private BindingSource m_관리_분류실적_백업BS = new BindingSource();
-        string 조회시작일 = "";
-        string 조회종료일 = "";
+        private string m조회시작일자
+        {
+            get { return (Convert.ToDateTime(this.ucl조회시작일.Value)).ToString("yyyyMMdd"); }
+        }
+
+        private string m조회종료일자
+        {
+            get { return (Convert.ToDateTime(this.ucl조회종료일.Value)).ToString("yyyyMMdd"); }
+        }
 
         private string 배치상태값 { get; set; }
 
@@ -28,8 +35,6 @@ namespace PAS.PMP
         public frmTRPAS00022()
         {
             InitializeComponent();
-            this.조회시작일 = Convert.ToDateTime(this.ucl조회시작일.Value).ToString("yyyyMMdd");
-            this.조회종료일 = Convert.ToDateTime(this.ucl조회종료일.Value).ToString("yyyyMMdd");
             var valueList = ValueListUtil.ValueItemList.ValueList_분류실적처리();
             var comboItems = valueList.ValueListItems
                 .Cast<ValueListItem>()
@@ -46,6 +51,8 @@ namespace PAS.PMP
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
+            ucl조회시작일.Value = DateTime.Now;
+            ucl조회종료일.Value = DateTime.Now;
             SetDataTableBindingInit();
         }
 
@@ -57,7 +64,7 @@ namespace PAS.PMP
         {
             try
             {
-                관리.분류실적백업_Get(m_관리_분류실적_백업Table, 조회시작일, 조회종료일, GlobalClass.장비명, "모두", 0);
+                관리.분류실적백업_Get(m_관리_분류실적_백업Table, m조회시작일자, m조회종료일자, GlobalClass.장비명, "모두", 0);
 
                 this.m_관리_분류실적_백업BS.DataSource = this.m_관리_분류실적_백업Table;
                 this.uGrid3.DataSource = this.m_관리_분류실적_백업BS;
@@ -87,7 +94,7 @@ namespace PAS.PMP
 
                 
                 this.배치상태값 = "모두";
-                관리.분류실적백업_Get(m_관리_분류실적_백업Table, 조회시작일, 조회종료일, GlobalClass.장비명, "모두", 1);
+                관리.분류실적백업_Get(m_관리_분류실적_백업Table, m조회시작일자, m조회종료일자, GlobalClass.장비명, "모두", 1);
 
                 int 완료 = 0;
                 int 실적작성 = 0;
@@ -170,7 +177,7 @@ namespace PAS.PMP
                 if (ulabel.Tag == null)
                     return;
                 this.배치상태값 = ulabel.Tag.ToString();
-                관리.분류실적백업_Get(m_관리_분류실적_백업Table, 조회시작일, 조회종료일, GlobalClass.장비명, "모두", 0);
+                관리.분류실적백업_Get(m_관리_분류실적_백업Table, m조회시작일자, m조회종료일자, GlobalClass.장비명, "모두", 0);
             }
             catch (Exception ex)
             {
@@ -189,7 +196,7 @@ namespace PAS.PMP
                 Cursor.Current = Cursors.WaitCursor;
                 if (string.IsNullOrEmpty(this.배치상태값))
                     this.배치상태값 = "모두";
-                관리.분류실적백업_Set(조회시작일, 조회종료일, GlobalClass.장비명, this.배치상태값, this.com분류실적처리.Text);
+                관리.분류실적백업_Set(m조회시작일자, m조회종료일자, GlobalClass.장비명, this.배치상태값, this.com분류실적처리.Text);
                 if (!(this.com분류실적처리.Text == "삭제"))
                     return;
                 foreach (DataRow row in (InternalDataCollectionBase)this.m_관리_분류실적_백업Table.Rows)

@@ -212,9 +212,6 @@ namespace PAS.PMP
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-
-             
-
                 DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
 
                 if (oRow == null)

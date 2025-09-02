@@ -1,12 +1,14 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using DbProvider;
 using PAS.Core;
+using PAS.PMP.Services;
 using PAS.PMP.Utils;
 using System;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.IO;
+using System.Net.Sockets;
 using System.Windows.Forms;
 using TR_Common;
 
@@ -24,6 +26,21 @@ namespace PAS.PMP
                 new string[] { "@장비명", "@배치상태", "@작업일자", "@조회구분자" },
                 new object[] { 장비명 == "" ? GlobalClass.장비명 : 장비명
                                ,"모두"
+                               ,s조회시작일자
+                               ,구분자 }
+            );
+        }
+
+        internal static void 배치리스트조회조건부(DataTable dataTable, string s조회시작일자, string s조건부, int 구분자, string 장비명 = "")
+        {
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_작업요약_배치그룹별_Get")
+            {
+                dataTable.TableName = "usp_분류_작업요약_배치그룹별_Get";
+            }
+            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+                new string[] { "@장비명", "@배치상태", "@작업일자", "@조회구분자" },
+                new object[] { 장비명 == "" ? GlobalClass.장비명 : 장비명
+                               ,s조건부 == "" ? "모두" : s조건부
                                ,s조회시작일자
                                ,구분자 }
             );
@@ -717,10 +734,18 @@ namespace PAS.PMP
                 dataTable.TableName = "usp_분류_실적작성내용_Get";
             }
 
-            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
-            new string[] { "@분류번호", "@장비명", "@배치번호" },
-            new object[] { 분류번호, 장비명, 배치번호 }
-            );
+            try
+            {
+                TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+                    new string[] { "@분류번호", "@장비명", "@배치번호" },
+                    new object[] { 분류번호, 장비명, 배치번호 }
+                    );
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+          
         }
 
         internal static void 실적작성(string 분류번호, string 장비명, string 배치번호)
@@ -736,7 +761,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -747,10 +772,18 @@ namespace PAS.PMP
                 dataTable.TableName = "usp_출하_배치반영_Get";
             }
 
-            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
-            new string[] { "@분류번호", "@장비명", "@배치번호", "@조회구분자" },
-            new object[] { 분류번호, 장비명, 배치번호, 조회구분자 }
-            );
+            try
+            {
+                TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+                   new string[] { "@분류번호", "@장비명", "@배치번호", "@조회구분자" },
+                   new object[] { 분류번호, 장비명, 배치번호, 조회구분자 }
+                   );
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         internal static void 실적작성대상_중간(DataTable dataTable, string 배치번호)
@@ -760,10 +793,17 @@ namespace PAS.PMP
                 dataTable.TableName = "usp_분류_실적작성대상_중간_Get";
             }
 
-            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
-            new string[] { "@배치번호" },
-            new object[] { 배치번호 }
-            );
+            try
+            {
+                TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+                   new string[] { "@배치번호" },
+                   new object[] { 배치번호 }
+                   );
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         internal static void 실적작성취소(string 배치번호)
@@ -779,7 +819,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -789,11 +829,18 @@ namespace PAS.PMP
             {
                 dataTable.TableName = "usp_분류_슈트조정_슈트별현황_Get";
             }
+            try
+            {
+                TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+                   new string[] { "@원배치번호", "@조회구분자" },
+                   new object[] { 원배치번호, 조회구분자 }
+                   );
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
-            new string[] { "@원배치번호", "@조회구분자" },
-            new object[] { 원배치번호, 조회구분자 }
-            );
         }
 
         internal static void 슈트조정_가용슈트_조회(DataTable dataTable, string 장비명, int 조회구분자)
@@ -803,10 +850,18 @@ namespace PAS.PMP
                 dataTable.TableName = "usp_분류_슈트조정_가용슈트_Get";
             }
 
-            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
-            new string[] { "@장비명", "@조회구분자" },
-            new object[] { 장비명, 조회구분자 }
-            );
+            try
+            {
+                TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+                   new string[] { "@장비명", "@조회구분자" },
+                   new object[] { 장비명, 조회구분자 }
+                );
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
         }
 
         internal static void 슈트조정_슈트별현황_Set(string 장비명, string 원배치번호, string XML)
@@ -822,8 +877,35 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
+
+        internal static void 박스풀(string s분류번호, string s장비명, string s슈트번호, string s마지막박스여부)
+        {
+            try
+            {
+                DataTable dt = new DataTable("usp_분류_박스풀작성_Set");
+                using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
+                {
+                    oScope.Initialize("usp_분류_박스풀작성_Set", "@분류번호", "@장비명", "@슈트번호", "@마지막박스여부");
+                    oScope.Fill(dt, s분류번호, s장비명, s슈트번호, s마지막박스여부);
+
+                    TcpClient oClient = new TcpClient(); //임시
+                                                         //Commit전에 출력
+                    bool 출력여부 = PasLib.출력(s슈트번호, dt, oClient);
+                    if (출력여부)
+                        oScope.Commit();
+                    else
+                        oScope.Rollback();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
     }
 }

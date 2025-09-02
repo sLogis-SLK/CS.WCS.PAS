@@ -58,9 +58,9 @@ namespace PAS.PMP
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTRPAS00013));
             this.uGrid1 = new TR_Library.Controls.uGrid();
             this.조회버튼 = new Infragistics.Win.Misc.UltraButton();
-            this.닫기버튼 = new Infragistics.Win.Misc.UltraButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -69,20 +69,18 @@ namespace PAS.PMP
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.실적작성취소버튼 = new Infragistics.Win.Misc.UltraButton();
             this.실적전송취소버튼 = new Infragistics.Win.Misc.UltraButton();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.uGrid2 = new TR_Library.Controls.uGrid();
             ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.작업일자)).BeginInit();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uGrid2)).BeginInit();
             this.SuspendLayout();
             // 
             // uGrid1
             // 
-            this.uGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.uGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             appearance1.BackColor = System.Drawing.SystemColors.Window;
             appearance1.BorderColor = System.Drawing.SystemColors.InactiveCaption;
@@ -143,38 +141,31 @@ namespace PAS.PMP
             this.uGrid1.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.uGrid1.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.uGrid1.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
-            this.uGrid1.Location = new System.Drawing.Point(6, 57);
+            this.uGrid1.Location = new System.Drawing.Point(14, 128);
+            this.uGrid1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.uGrid1.Name = "uGrid1";
-            this.uGrid1.Size = new System.Drawing.Size(988, 137);
+            this.uGrid1.Size = new System.Drawing.Size(2258, 308);
             this.uGrid1.TabIndex = 3;
             this.uGrid1.Text = "uGrid1";
             this.uGrid1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.uGrid1_MouseUp);
             // 
             // 조회버튼
             // 
-            this.조회버튼.Location = new System.Drawing.Point(529, 8);
+            this.조회버튼.Location = new System.Drawing.Point(1209, 18);
+            this.조회버튼.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.조회버튼.Name = "조회버튼";
-            this.조회버튼.Size = new System.Drawing.Size(90, 29);
+            this.조회버튼.Size = new System.Drawing.Size(206, 65);
             this.조회버튼.TabIndex = 2;
             this.조회버튼.Text = "조회";
             this.조회버튼.Click += new System.EventHandler(this.조회버튼_Click);
             // 
-            // 닫기버튼
-            // 
-            this.닫기버튼.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.닫기버튼.Location = new System.Drawing.Point(870, 8);
-            this.닫기버튼.Name = "닫기버튼";
-            this.닫기버튼.Size = new System.Drawing.Size(120, 29);
-            this.닫기버튼.TabIndex = 5;
-            this.닫기버튼.Text = "닫 기";
-            this.닫기버튼.Click += new System.EventHandler(this.닫기버튼_Click);
-            // 
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter1.Location = new System.Drawing.Point(0, 245);
+            this.splitter1.Location = new System.Drawing.Point(0, 450);
+            this.splitter1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(1000, 3);
+            this.splitter1.Size = new System.Drawing.Size(2286, 7);
             this.splitter1.TabIndex = 16;
             this.splitter1.TabStop = false;
             // 
@@ -184,14 +175,15 @@ namespace PAS.PMP
             this.panel1.Controls.Add(this.uGrid1);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 45);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1000, 200);
+            this.panel1.Size = new System.Drawing.Size(2286, 450);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.배치반영취소버튼);
             this.panel2.Controls.Add(this.작업일자);
@@ -199,16 +191,18 @@ namespace PAS.PMP
             this.panel2.Controls.Add(this.실적작성취소버튼);
             this.panel2.Controls.Add(this.실적전송취소버튼);
             this.panel2.Controls.Add(this.조회버튼);
-            this.panel2.Location = new System.Drawing.Point(6, 6);
+            this.panel2.Location = new System.Drawing.Point(14, 14);
+            this.panel2.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(988, 45);
+            this.panel2.Size = new System.Drawing.Size(2258, 101);
             this.panel2.TabIndex = 16;
             // 
-            // 배치반영버튼
+            // 배치반영취소버튼
             // 
-            this.배치반영취소버튼.Location = new System.Drawing.Point(862, 8);
+            this.배치반영취소버튼.Location = new System.Drawing.Point(1970, 18);
+            this.배치반영취소버튼.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.배치반영취소버튼.Name = "배치반영취소버튼";
-            this.배치반영취소버튼.Size = new System.Drawing.Size(120, 29);
+            this.배치반영취소버튼.Size = new System.Drawing.Size(274, 65);
             this.배치반영취소버튼.TabIndex = 1;
             this.배치반영취소버튼.Text = "WMS 패킹반영 취소";
             this.배치반영취소버튼.Click += new System.EventHandler(this.배치반영취소버튼_Click);
@@ -216,10 +210,11 @@ namespace PAS.PMP
             // 작업일자
             // 
             this.작업일자.DateButtons.Add(dateButton1);
-            this.작업일자.Location = new System.Drawing.Point(82, 12);
+            this.작업일자.Location = new System.Drawing.Point(187, 27);
+            this.작업일자.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.작업일자.Name = "작업일자";
             this.작업일자.NonAutoSizeHeight = 21;
-            this.작업일자.Size = new System.Drawing.Size(100, 21);
+            this.작업일자.Size = new System.Drawing.Size(229, 35);
             this.작업일자.TabIndex = 4;
             // 
             // ultraLabel1
@@ -228,44 +223,37 @@ namespace PAS.PMP
             appearance13.TextVAlignAsString = "Middle";
             this.ultraLabel1.Appearance = appearance13;
             this.ultraLabel1.AutoSize = true;
-            this.ultraLabel1.Location = new System.Drawing.Point(11, 15);
+            this.ultraLabel1.Location = new System.Drawing.Point(25, 34);
+            this.ultraLabel1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.ultraLabel1.Name = "ultraLabel1";
-            this.ultraLabel1.Size = new System.Drawing.Size(62, 16);
+            this.ultraLabel1.Size = new System.Drawing.Size(315, 79);
             this.ultraLabel1.TabIndex = 17;
             this.ultraLabel1.Text = ">작업일자";
             // 
-            // 실적작성버튼
+            // 실적작성취소버튼
             // 
-            this.실적작성취소버튼.Location = new System.Drawing.Point(620, 8);
+            this.실적작성취소버튼.Location = new System.Drawing.Point(1417, 18);
+            this.실적작성취소버튼.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.실적작성취소버튼.Name = "실적작성취소버튼";
-            this.실적작성취소버튼.Size = new System.Drawing.Size(120, 29);
+            this.실적작성취소버튼.Size = new System.Drawing.Size(274, 65);
             this.실적작성취소버튼.TabIndex = 3;
             this.실적작성취소버튼.Text = "PAS 실적작성 취소";
             this.실적작성취소버튼.Click += new System.EventHandler(this.실적작성취소버튼_Click);
             // 
-            // 실적전송버튼
+            // 실적전송취소버튼
             // 
-            this.실적전송취소버튼.Location = new System.Drawing.Point(741, 8);
+            this.실적전송취소버튼.Location = new System.Drawing.Point(1694, 18);
+            this.실적전송취소버튼.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.실적전송취소버튼.Name = "실적전송취소버튼";
-            this.실적전송취소버튼.Size = new System.Drawing.Size(120, 29);
+            this.실적전송취소버튼.Size = new System.Drawing.Size(274, 65);
             this.실적전송취소버튼.TabIndex = 2;
             this.실적전송취소버튼.Text = "WMS 실적반영 취소";
             this.실적전송취소버튼.Click += new System.EventHandler(this.실적전송취소버튼_Click);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel3.Controls.Add(this.닫기버튼);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1000, 45);
-            this.panel3.TabIndex = 17;
-            // 
             // uGrid2
             // 
-            this.uGrid2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.uGrid2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             appearance14.BackColor = System.Drawing.SystemColors.Window;
             appearance14.BorderColor = System.Drawing.SystemColors.InactiveCaption;
@@ -326,21 +314,23 @@ namespace PAS.PMP
             this.uGrid2.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.uGrid2.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.uGrid2.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
-            this.uGrid2.Location = new System.Drawing.Point(6, 250);
+            this.uGrid2.Location = new System.Drawing.Point(14, 562);
+            this.uGrid2.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.uGrid2.Name = "uGrid2";
-            this.uGrid2.Size = new System.Drawing.Size(988, 348);
+            this.uGrid2.Size = new System.Drawing.Size(2258, 783);
             this.uGrid2.TabIndex = 0;
             this.uGrid2.Text = "uGrid2";
             // 
             // frmTRPAS00013
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 610);
+            this.ClientSize = new System.Drawing.Size(2286, 1372);
             this.Controls.Add(this.uGrid2);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.Name = "frmTRPAS00013";
             this.Tag = "TRPAS00013";
             this.Text = "실적작성/반영, 배치반영 취소(TRPAS00013)";
@@ -349,7 +339,6 @@ namespace PAS.PMP
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.작업일자)).EndInit();
-            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uGrid2)).EndInit();
             this.ResumeLayout(false);
 
@@ -359,11 +348,9 @@ namespace PAS.PMP
         private TR_Library.Controls.uGrid uGrid1;
         private TR_Library.Controls.uGrid uGrid2;
         private Infragistics.Win.Misc.UltraButton 조회버튼;
-        private Infragistics.Win.Misc.UltraButton 닫기버튼;
         private System.Windows.Forms.Splitter splitter1;
         private Panel panel1;
         private Panel panel2;
-        private Panel panel3;
         private Infragistics.Win.Misc.UltraButton 배치반영취소버튼;
         private Infragistics.Win.Misc.UltraButton 실적전송취소버튼;
         private Infragistics.Win.Misc.UltraButton 실적작성취소버튼;
