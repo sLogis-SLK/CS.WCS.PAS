@@ -57,27 +57,27 @@ namespace PAS.PMP
             Infragistics.Win.UltraWinTree.UltraTreeNode ultraTreeNode39 = new Infragistics.Win.UltraWinTree.UltraTreeNode();
             Infragistics.Win.UltraWinTree.UltraTreeNode ultraTreeNode40 = new Infragistics.Win.UltraWinTree.UltraTreeNode();
             Infragistics.Win.UltraWinTree.UltraTreeNode ultraTreeNode2 = new Infragistics.Win.UltraWinTree.UltraTreeNode();
-            Infragistics.Win.UltraWinDock.DockAreaPane dockAreaPane1 = new Infragistics.Win.UltraWinDock.DockAreaPane(Infragistics.Win.UltraWinDock.DockedLocation.DockedLeft, new System.Guid("834b5ffa-09ac-4fa5-994f-3e65b5fa1278"));
-            Infragistics.Win.UltraWinDock.DockableControlPane dockableControlPane1 = new Infragistics.Win.UltraWinDock.DockableControlPane(new System.Guid("ed1122e5-a720-45e5-ac2a-f3bf17b10e7a"), new System.Guid("00000000-0000-0000-0000-000000000000"), -1, new System.Guid("834b5ffa-09ac-4fa5-994f-3e65b5fa1278"), -1);
-            Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("UltraToolbar1");
+            Infragistics.Win.UltraWinDock.DockAreaPane dockAreaPane2 = new Infragistics.Win.UltraWinDock.DockAreaPane(Infragistics.Win.UltraWinDock.DockedLocation.DockedLeft, new System.Guid("834b5ffa-09ac-4fa5-994f-3e65b5fa1278"));
+            Infragistics.Win.UltraWinDock.DockableControlPane dockableControlPane2 = new Infragistics.Win.UltraWinDock.DockableControlPane(new System.Guid("ed1122e5-a720-45e5-ac2a-f3bf17b10e7a"), new System.Guid("00000000-0000-0000-0000-000000000000"), -1, new System.Guid("834b5ffa-09ac-4fa5-994f-3e65b5fa1278"), -1);
+            Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar2 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("UltraToolbar1");
             Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool7 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("메뉴", "");
             Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool8 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("저장", "");
             Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool9 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("인쇄", "");
             Infragistics.Win.UltraWinToolbars.ComboBoxTool comboBoxTool1 = new Infragistics.Win.UltraWinToolbars.ComboBoxTool("라인설정");
             Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool6 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("라인변경", "");
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool10 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("메뉴", "");
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool11 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("저장", "");
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool12 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("인쇄", "");
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ComboBoxTool comboBoxTool2 = new Infragistics.Win.UltraWinToolbars.ComboBoxTool("라인설정");
-            Infragistics.Win.ValueList valueList1 = new Infragistics.Win.ValueList(0);
+            Infragistics.Win.ValueList valueList2 = new Infragistics.Win.ValueList(0);
             this.uTreeProgram = new Infragistics.Win.UltraWinTree.UltraTree();
             this.ultraTabbedMdiManager1 = new Infragistics.Win.UltraWinTabbedMdi.UltraTabbedMdiManager(this.components);
             this.ultraDockManager1 = new Infragistics.Win.UltraWinDock.UltraDockManager(this.components);
@@ -223,21 +223,22 @@ namespace PAS.PMP
             // ultraTabbedMdiManager1
             // 
             this.ultraTabbedMdiManager1.MdiParent = this;
+            this.ultraTabbedMdiManager1.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.ultraTabbedMdiManager1.ViewStyle = Infragistics.Win.UltraWinTabbedMdi.ViewStyle.VisualStudio2005;
             // 
             // ultraDockManager1
             // 
             this.ultraDockManager1.CompressUnpinnedTabs = false;
-            dockableControlPane1.Control = this.uTreeProgram;
-            dockableControlPane1.Key = "uTreeProgram";
-            dockableControlPane1.OriginalControlBounds = new System.Drawing.Rectangle(375, 121, 260, 299);
-            dockableControlPane1.Size = new System.Drawing.Size(100, 100);
-            dockableControlPane1.Text = "네비게이션";
-            dockAreaPane1.Panes.AddRange(new Infragistics.Win.UltraWinDock.DockablePaneBase[] {
-            dockableControlPane1});
-            dockAreaPane1.Size = new System.Drawing.Size(243, 505);
+            dockableControlPane2.Control = this.uTreeProgram;
+            dockableControlPane2.Key = "uTreeProgram";
+            dockableControlPane2.OriginalControlBounds = new System.Drawing.Rectangle(375, 121, 260, 299);
+            dockableControlPane2.Size = new System.Drawing.Size(100, 100);
+            dockableControlPane2.Text = "네비게이션";
+            dockAreaPane2.Panes.AddRange(new Infragistics.Win.UltraWinDock.DockablePaneBase[] {
+            dockableControlPane2});
+            dockAreaPane2.Size = new System.Drawing.Size(243, 505);
             this.ultraDockManager1.DockAreas.AddRange(new Infragistics.Win.UltraWinDock.DockAreaPane[] {
-            dockAreaPane1});
+            dockAreaPane2});
             this.ultraDockManager1.HostControl = this;
             this.ultraDockManager1.ShowPinButton = false;
             // 
@@ -245,29 +246,29 @@ namespace PAS.PMP
             // 
             this._MainFormUnpinnedTabAreaLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this._MainFormUnpinnedTabAreaLeft.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this._MainFormUnpinnedTabAreaLeft.Location = new System.Drawing.Point(0, 47);
+            this._MainFormUnpinnedTabAreaLeft.Location = new System.Drawing.Point(0, 35);
             this._MainFormUnpinnedTabAreaLeft.Name = "_MainFormUnpinnedTabAreaLeft";
             this._MainFormUnpinnedTabAreaLeft.Owner = this.ultraDockManager1;
             this._MainFormUnpinnedTabAreaLeft.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this._MainFormUnpinnedTabAreaLeft.Size = new System.Drawing.Size(0, 493);
+            this._MainFormUnpinnedTabAreaLeft.Size = new System.Drawing.Size(0, 505);
             this._MainFormUnpinnedTabAreaLeft.TabIndex = 10;
             // 
             // _MainFormUnpinnedTabAreaRight
             // 
             this._MainFormUnpinnedTabAreaRight.Dock = System.Windows.Forms.DockStyle.Right;
             this._MainFormUnpinnedTabAreaRight.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this._MainFormUnpinnedTabAreaRight.Location = new System.Drawing.Point(1290, 47);
+            this._MainFormUnpinnedTabAreaRight.Location = new System.Drawing.Point(1290, 35);
             this._MainFormUnpinnedTabAreaRight.Name = "_MainFormUnpinnedTabAreaRight";
             this._MainFormUnpinnedTabAreaRight.Owner = this.ultraDockManager1;
             this._MainFormUnpinnedTabAreaRight.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this._MainFormUnpinnedTabAreaRight.Size = new System.Drawing.Size(0, 493);
+            this._MainFormUnpinnedTabAreaRight.Size = new System.Drawing.Size(0, 505);
             this._MainFormUnpinnedTabAreaRight.TabIndex = 11;
             // 
             // _MainFormUnpinnedTabAreaTop
             // 
             this._MainFormUnpinnedTabAreaTop.Dock = System.Windows.Forms.DockStyle.Top;
             this._MainFormUnpinnedTabAreaTop.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this._MainFormUnpinnedTabAreaTop.Location = new System.Drawing.Point(0, 47);
+            this._MainFormUnpinnedTabAreaTop.Location = new System.Drawing.Point(0, 35);
             this._MainFormUnpinnedTabAreaTop.Name = "_MainFormUnpinnedTabAreaTop";
             this._MainFormUnpinnedTabAreaTop.Owner = this.ultraDockManager1;
             this._MainFormUnpinnedTabAreaTop.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -314,43 +315,43 @@ namespace PAS.PMP
             this.ultraToolbarsManager1.ImageSizeLarge = new System.Drawing.Size(40, 28);
             this.ultraToolbarsManager1.ImageSizeSmall = new System.Drawing.Size(28, 24);
             this.ultraToolbarsManager1.LockToolbars = true;
-            ultraToolbar1.DockedColumn = 0;
-            ultraToolbar1.DockedRow = 0;
-            ultraToolbar1.IsMainMenuBar = true;
-            ultraToolbar1.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            ultraToolbar2.DockedColumn = 0;
+            ultraToolbar2.DockedRow = 0;
+            ultraToolbar2.IsMainMenuBar = true;
+            ultraToolbar2.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             stateButtonTool7,
             stateButtonTool8,
             stateButtonTool9,
             comboBoxTool1});
-            ultraToolbar1.Text = "UltraToolbar1";
+            ultraToolbar2.Text = "UltraToolbar1";
             this.ultraToolbarsManager1.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
-            ultraToolbar1});
-            appearance1.Image = global::PAS.PMP.Properties.Resources.MenuIcon_2x;
-            stateButtonTool6.SharedPropsInternal.AppearancesLarge.Appearance = appearance1;
-            appearance2.Image = global::PAS.PMP.Properties.Resources.MenuIcon_2x;
-            stateButtonTool6.SharedPropsInternal.AppearancesSmall.Appearance = appearance2;
+            ultraToolbar2});
+            appearance9.Image = global::PAS.PMP.Properties.Resources.MenuIcon_2x;
+            stateButtonTool6.SharedPropsInternal.AppearancesLarge.Appearance = appearance9;
+            appearance10.Image = global::PAS.PMP.Properties.Resources.MenuIcon_2x;
+            stateButtonTool6.SharedPropsInternal.AppearancesSmall.Appearance = appearance10;
             stateButtonTool6.SharedPropsInternal.Caption = "라인변경";
             stateButtonTool6.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            appearance3.Image = global::PAS.PMP.Properties.Resources.네비게이션;
-            stateButtonTool10.SharedPropsInternal.AppearancesLarge.Appearance = appearance3;
-            appearance4.Image = global::PAS.PMP.Properties.Resources.MenuIcon;
-            stateButtonTool10.SharedPropsInternal.AppearancesSmall.Appearance = appearance4;
+            appearance11.Image = global::PAS.PMP.Properties.Resources.네비게이션;
+            stateButtonTool10.SharedPropsInternal.AppearancesLarge.Appearance = appearance11;
+            appearance12.Image = global::PAS.PMP.Properties.Resources.MenuIcon;
+            stateButtonTool10.SharedPropsInternal.AppearancesSmall.Appearance = appearance12;
             stateButtonTool10.SharedPropsInternal.Caption = "메뉴";
             stateButtonTool10.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            appearance5.Image = global::PAS.PMP.Properties.Resources.확인;
-            stateButtonTool11.SharedPropsInternal.AppearancesLarge.Appearance = appearance5;
-            appearance6.Image = global::PAS.PMP.Properties.Resources.save_icon;
-            stateButtonTool11.SharedPropsInternal.AppearancesSmall.Appearance = appearance6;
+            appearance13.Image = global::PAS.PMP.Properties.Resources.확인;
+            stateButtonTool11.SharedPropsInternal.AppearancesLarge.Appearance = appearance13;
+            appearance14.Image = global::PAS.PMP.Properties.Resources.save_icon;
+            stateButtonTool11.SharedPropsInternal.AppearancesSmall.Appearance = appearance14;
             stateButtonTool11.SharedPropsInternal.Caption = "저장";
             stateButtonTool11.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            appearance7.Image = global::PAS.PMP.Properties.Resources.프린트;
-            stateButtonTool12.SharedPropsInternal.AppearancesLarge.Appearance = appearance7;
-            appearance8.Image = global::PAS.PMP.Properties.Resources.printer_icon;
-            stateButtonTool12.SharedPropsInternal.AppearancesSmall.Appearance = appearance8;
+            appearance15.Image = global::PAS.PMP.Properties.Resources.프린트;
+            stateButtonTool12.SharedPropsInternal.AppearancesLarge.Appearance = appearance15;
+            appearance16.Image = global::PAS.PMP.Properties.Resources.printer_icon;
+            stateButtonTool12.SharedPropsInternal.AppearancesSmall.Appearance = appearance16;
             stateButtonTool12.SharedPropsInternal.Caption = "인쇄";
             stateButtonTool12.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
             comboBoxTool2.SharedPropsInternal.Caption = "라인설정";
-            comboBoxTool2.ValueList = valueList1;
+            comboBoxTool2.ValueList = valueList2;
             this.ultraToolbarsManager1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             stateButtonTool6,
             stateButtonTool10,

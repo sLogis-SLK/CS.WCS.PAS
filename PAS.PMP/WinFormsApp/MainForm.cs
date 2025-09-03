@@ -1,5 +1,6 @@
 ﻿using Infragistics.Win.UltraWinDock;
 using Infragistics.Win.UltraWinTabbedMdi;
+using Infragistics.Win.UltraWinTabs;
 using Infragistics.Win.UltraWinToolbars;
 using Infragistics.Win.UltraWinTree;
 using PAS.PMP.WinFormsApp;
@@ -74,6 +75,10 @@ namespace PAS.PMP
 
                 }
             }
+
+            this.ultraTabbedMdiManager1.TabGroupSettings.TabOrientation = Infragistics.Win.UltraWinTabs.TabOrientation.BottomLeft;
+            this.ultraTabbedMdiManager1.TabGroupSettings.TabSizing = TabSizing.AutoSize;
+            this.ultraTabbedMdiManager1.TabSettings.TabAppearance.CreateFont(new Font("맑은 고딕", 24f, FontStyle.Regular));
         }
 
 

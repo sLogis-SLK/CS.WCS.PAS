@@ -110,5 +110,11 @@ namespace PAS.PMP
 
         #endregion
 
+        private void ultraButton3_Click(object sender, EventArgs e)
+        {
+            this.IsClicked = true;
+            this.DialogResult = DialogResult.OK;
+            this.Close();  // 명시적으로 닫기
+        }
     }
 }

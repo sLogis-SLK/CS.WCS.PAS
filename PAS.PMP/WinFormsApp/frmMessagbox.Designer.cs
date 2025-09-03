@@ -33,7 +33,8 @@ namespace PAS.PMP
         /// </summary>
         private void InitializeComponent()
         {
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMessageBox));
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraButton1 = new Infragistics.Win.Misc.UltraButton();
             this.ultraButton2 = new Infragistics.Win.Misc.UltraButton();
@@ -44,9 +45,9 @@ namespace PAS.PMP
             // 
             // ultraLabel1
             // 
-            appearance2.TextHAlignAsString = "Center";
-            appearance2.TextVAlignAsString = "Middle";
-            this.ultraLabel1.Appearance = appearance2;
+            appearance1.TextHAlignAsString = "Center";
+            appearance1.TextVAlignAsString = "Middle";
+            this.ultraLabel1.Appearance = appearance1;
             this.ultraLabel1.Location = new System.Drawing.Point(30, 10);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(268, 48);
@@ -90,6 +91,7 @@ namespace PAS.PMP
             this.ultraButton3.Size = new System.Drawing.Size(100, 32);
             this.ultraButton3.TabIndex = 6;
             this.ultraButton3.Text = "확인";
+            this.ultraButton3.Click += new System.EventHandler(this.ultraButton3_Click);
             // 
             // frmMessageBox
             // 
@@ -97,6 +99,7 @@ namespace PAS.PMP
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(350, 160);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(290, 160);
             this.Name = "frmMessageBox";
             this.Tag = "frmMessageBox";

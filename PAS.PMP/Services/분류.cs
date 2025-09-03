@@ -336,7 +336,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -624,7 +624,7 @@ namespace PAS.PMP
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -635,10 +635,18 @@ namespace PAS.PMP
                 dataTable.TableName = "usp_분류_배치작성_Get_JHG";
             }
 
-            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
-            new string[] { "@장비명", "@배치번호", "@원배치번호", "@구분" },
-            new object[] { 장비명, 배치번호, 원배치번호, 구분 }
-            );
+            try
+            {
+                TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+                    new string[] { "@장비명", "@배치번호", "@원배치번호", "@구분" },
+                    new object[] { 장비명, 배치번호, 원배치번호, 구분 }
+                );
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         internal static int 수신취소(DataRow[] rows)
@@ -704,10 +712,19 @@ namespace PAS.PMP
                 dataTable.TableName = "usp_분류_실적작성대상_Get";
             }
 
-            TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
-            new string[] { "@배치번호", "@조회구분자" },
-            new object[] { 배치번호, 조회구분자 }
-            );
+            try
+            {
+                TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
+                   new string[] { "@배치번호", "@조회구분자" },
+                   new object[] { 배치번호, 조회구분자 }
+                  );
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+           
         }
 
         internal static void 배치상태변경(string 장비명, string 분류번호, string 배치번호, string 배치상태)

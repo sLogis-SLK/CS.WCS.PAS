@@ -445,7 +445,7 @@ namespace PAS.PMP
             }
         }
 
-        private void 배치재구성및개시(string 분류번호, string 원배치번호)
+        private void 배치재구성및개시(string 분류번호, string 배치번호, string 원배치번호)
         {
             var rows = this.m_분류_작업요약Table.Select($"분류번호='{분류번호}' AND 순번=1");
             if (rows.Length == 0)
@@ -495,10 +495,11 @@ namespace PAS.PMP
                 var result = this.재구성_배치개시(분류번호, 월일);
                 if (result == 상태처리.TRUE)
                 {
-                    분류.분류상태변경_원배치용(GlobalClass.장비명, 분류번호, 분류번호, 원배치번호, "작업중");
+                    분류.분류상태변경_원배치용(GlobalClass.장비명, 분류번호, 배치번호, 원배치번호, "작업중");
                     //GlobalClass.전역상태바.Invoke((Delegate)(new MethodInvoker(() => GlobalClass.전역상태메시지.Text = $"[{원배치번호}] 배치를 개시 하였습니다.")));
                     break;
                 }
+
 
                 if (result == 상태처리.FALSE && i == 59)
                 {
@@ -747,7 +748,7 @@ namespace PAS.PMP
                 if (순번 == "1")
                     배치개시(분류번호, 분류명, 작업일자, 배치번호, 원배치번호);
                 else
-                    배치재구성및개시(분류번호, 원배치번호);   
+                    배치재구성및개시(분류번호, 배치번호, 원배치번호);   
             }
             catch (Exception ex)
             {

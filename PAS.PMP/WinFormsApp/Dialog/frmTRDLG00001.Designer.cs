@@ -68,6 +68,7 @@
             this.box별.Size = new System.Drawing.Size(271, 20);
             this.box별.TabIndex = 2;
             this.box별.Text = "1. 박스별 거래명세서";
+            this.box별.Checked = true;
             // 
             // total별
             // 
