@@ -1,5 +1,5 @@
 ﻿
-namespace PAS.Core.Controls
+namespace PAS.Core.WinFormsApp
 {
     partial class OutLineSettingForm
     {
@@ -62,6 +62,7 @@ namespace PAS.Core.Controls
             Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OutLineSettingForm));
             this.ultraGroupBox2 = new Infragistics.Win.Misc.UltraGroupBox();
             this.ultraGroupBox5 = new Infragistics.Win.Misc.UltraGroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -715,6 +716,7 @@ namespace PAS.Core.Controls
             this.ClientSize = new System.Drawing.Size(869, 656);
             this.Controls.Add(this.ultraGroupBox3);
             this.Controls.Add(this.ultraGroupBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "OutLineSettingForm";
             this.Text = "출하라인 - 환경설정";

@@ -38,6 +38,7 @@
     <Reference Include="Infragistics4.Win.UltraWinGrid.ExcelExport.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinGrid.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinSchedule.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.UltraWinTabControl.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinToolbars.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Infragistics4.Win.v23.1, Version=23.1.20231.52, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -56,16 +57,22 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\OutLineSettingForm.cs">
+    <Compile Include="WinFormsApp\OutLineSettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controls\OutLineSettingForm.Designer.cs">
+    <Compile Include="WinFormsApp\OutLineSettingForm.Designer.cs">
       <DependentUpon>OutLineSettingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\PasSettingForm.cs">
+    <Compile Include="Controls\PasSettingPopupForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controls\PasSettingForm.Designer.cs">
+    <Compile Include="Controls\PasSettingPopupForm.Designer.cs">
+      <DependentUpon>PasSettingPopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinFormsApp\PasSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinFormsApp\PasSettingForm.Designer.cs">
       <DependentUpon>PasSettingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Globel\GlobalCore.cs" />
@@ -84,7 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Library\" />
-    <Folder Include="WinFormsApp\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CS.TRabbit_V4\TR_Common\TR_Common.csproj">
@@ -101,14 +107,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\OutLineSettingForm.resx">
+    <EmbeddedResource Include="WinFormsApp\OutLineSettingForm.resx">
       <DependentUpon>OutLineSettingForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\PasSettingForm.resx">
+    <EmbeddedResource Include="Controls\PasSettingPopupForm.resx">
+      <DependentUpon>PasSettingPopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormsApp\PasSettingForm.resx">
       <DependentUpon>PasSettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

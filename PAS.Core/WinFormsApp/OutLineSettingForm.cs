@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TR_Common;
 
-namespace PAS.Core.Controls
+namespace PAS.Core.WinFormsApp
 {
-    public partial class PasSettingForm : Form
+    public partial class OutLineSettingForm : Form
     {
         #region 폼개체 선언부
 
@@ -50,7 +50,7 @@ namespace PAS.Core.Controls
 
         #region 초기화
 
-        public PasSettingForm()
+        public OutLineSettingForm()
         {
             InitializeComponent();
         }
@@ -68,23 +68,23 @@ namespace PAS.Core.Controls
             try
             {
                 #region uGrid1 BindingSource 초기화
-
-                m환경설정Table = 공통.Pas접속정보(GlobalCore.PasDBConnectionString);
+                m환경설정Table = 공통.출하라인접속정보(GlobalCore.PasDBConnectionString);
                 m환경설정BS.DataSource = m환경설정Table;
+
                 uGrid1.DataSource = m환경설정BS;
 
                 Common.SetGridInit(this.uGrid1, true, true, true, true, false, false);
                 Common.SetGridHiddenColumn(this.uGrid1, null);
                 Common.SetGridEditColumn(this.uGrid1, "선택");
 
-                //NAME.DataBindings.Add(new Binding("Text", m환경설정BS, "NAME", true));
-                //PLC_IP.DataBindings.Add(new Binding("Text", m환경설정BS, "PLC_IP", true));
-                //PLC_PORT.DataBindings.Add(new Binding("Text", m환경설정BS, "PLC_PORT", true));
-                //COM_NAME.DataBindings.Add(new Binding("Text", m환경설정BS, "COM_NAME", true));
-                //COM_BAUDRATE.DataBindings.Add(new Binding("Text", m환경설정BS, "COM_BAUDRATE", true));
-                //PRINTER_NAME.DataBindings.Add(new Binding("Text", m환경설정BS, "PRINTER_NAME", true));
-                //BARCODE_POSITION.DataBindings.Add(new Binding("Text", m환경설정BS, "BARCODE_POSITION", true));
-                //URL.DataBindings.Add(new Binding("Text", m환경설정BS, "URL", true));
+                NAME.DataBindings.Add(new Binding("Text", m환경설정BS, "NAME", true));
+                PLC_IP.DataBindings.Add(new Binding("Text", m환경설정BS, "PLC_IP", true));
+                PLC_PORT.DataBindings.Add(new Binding("Text", m환경설정BS, "PLC_PORT", true));
+                COM_NAME.DataBindings.Add(new Binding("Text", m환경설정BS, "COM_NAME", true));
+                COM_BAUDRATE.DataBindings.Add(new Binding("Text", m환경설정BS, "COM_BAUDRATE", true));
+                PRINTER_NAME.DataBindings.Add(new Binding("Text", m환경설정BS, "PRINTER_NAME", true));
+                BARCODE_POSITION.DataBindings.Add(new Binding("Text", m환경설정BS, "BARCODE_POSITION", true));
+                URL.DataBindings.Add(new Binding("Text", m환경설정BS, "URL", true));
 
                 NAME.ReadOnly = true;
 
@@ -117,7 +117,7 @@ namespace PAS.Core.Controls
 
 
         #endregion
-
+         
         #region 사용자정의함수
 
         #endregion
@@ -151,13 +151,13 @@ namespace PAS.Core.Controls
                 MessageBox.Show("추가/변경된 데이터가 없습니다.", this.Text);
                 return;
             }
-
+            
             //환경설정 갱신
             try
             {
                 공통.DB접속정보저장(GlobalCore.PasDBConnectionString, PAS_DB_IP.Text, PAS_DB_SERVICE.Text, PAS_DB_ID.Text, PAS_DB_PASSWORD.Text,
                                                                       HOST_DB_IP.Text, HOST_DB_SERVICE.Text, HOST_DB_ID.Text, HOST_DB_PASSWORD.Text);
-                //공통.출하라인접속정보저장(GlobalCore.PasDBConnectionString, changedTable);
+                공통.출하라인접속정보저장(GlobalCore.PasDBConnectionString, changedTable);
             }
             catch (Exception ex)
             {
@@ -169,17 +169,16 @@ namespace PAS.Core.Controls
             DialogResult = DialogResult.OK;
             this.Close();
         }
-
         private void 삭제버튼_Click(object sender, EventArgs e)
         {
             string msgText = "정말 삭제 하시겠습니까?\r\n\r\n삭제시 되돌릴수 없습니다.";
             if (MessageBox.Show(msgText, this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
                 return;
-
+             
             try
             {
                 DataRow[] rows = m환경설정Table.Select("선택 = True");
-                //공통.출하라인접속정보삭제(GlobalCore.PasDBConnectionString, rows);
+                공통.출하라인접속정보삭제(GlobalCore.PasDBConnectionString, rows);
 
                 foreach (DataRow row in rows)
                 {
