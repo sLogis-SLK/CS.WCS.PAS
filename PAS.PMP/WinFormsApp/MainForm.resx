@@ -413,7 +413,7 @@
   <data name="ultraTreeNode2.LeftImages" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAAPpJREFUSEu9lTEKg0AQRb2f5AamS8qkt1MM6BkkabSwVbCNRxAEG++gnf2EsQp/
+        DQAACw0B7QfALAAAAPpJREFUSEu9lTEKg0AQRb2f5AamS8qkt1MM6BkkabSwVbCNRxAEG++gnf2EsQp/
         N6zjaj68QmHmjbvCOHRwHHyxdxTBNE3UdR21bbua5v2m++1G8zxjO1XQ973SwMTr+aST69IjirCdKuCC
         oigoCAKq65rCMFyesek318tlEZw9D9vpBTZgtII0TUWIBTZgtAKc0IRYYANGK8AJTYgFNmC0At/3Kcsy
         EVyzWsAFVVVRkiTUNA3FcUxlWdIwDD/J81wmwAYmRAL+XC6QIDoiGzBawV8uGc/YhOgOTALdH7ZawNts
@@ -425,6 +425,12 @@
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>58</value>
+  </metadata>
+  <metadata name="ultraDockManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>386, 17</value>
+  </metadata>
+  <metadata name="ultraToolbarsManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>546, 17</value>
@@ -655,13 +661,4 @@
         qvRPRSSfRM8vIP4frOA3mSfbwy0AAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="ultraDockManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>386, 17</value>
-  </metadata>
-  <metadata name="ultraToolbarsManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>546, 17</value>
-  </metadata>
 </root>

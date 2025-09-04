@@ -146,9 +146,9 @@ namespace PAS.PMP
 
         internal static void 박스재발행조회(DataTable dataTable, string 분류번호, string 배치번호, int 구분자)
         {
-            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_박스바코드재발행_Get")
+            if (string.IsNullOrEmpty(dataTable.TableName) || dataTable.TableName.ToUpper() != "usp_분류_박스바코드재발행_Get_JHG")
             {
-                dataTable.TableName = "usp_분류_박스바코드재발행_Get";
+                dataTable.TableName = "usp_분류_박스바코드재발행_Get_JHG";
             }
 
             TlkTranscope.GetData(dataTable, Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString),
@@ -898,16 +898,15 @@ namespace PAS.PMP
             }
         }
 
-        internal static void 박스풀(string s분류번호, string s장비명, string s슈트번호, string s마지막박스여부)
+        internal static void 미발행_대상박스풀(string XML, string s분류번호, string s장비명, string s슈트번호, string s마지막박스여부)
         {
             try
             {
-                DataTable dt = new DataTable("usp_분류_박스풀작성_Set");
+                DataTable dt = new DataTable("usp_분류_미발행_대상박스풀_Set");
                 using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
                 {
-                    oScope.Initialize("usp_분류_박스풀작성_Set", "@분류번호", "@장비명", "@슈트번호", "@마지막박스여부");
-                    oScope.Fill(dt, s분류번호, s장비명, s슈트번호, s마지막박스여부);
-
+                    oScope.Initialize("usp_분류_미발행_대상박스풀_Set", "@분류번호", "@장비명", "@슈트번호", "@마지막박스여부",  "@호출구분", "@XML");
+                    oScope.Fill(dt, s분류번호, s장비명, s슈트번호, s마지막박스여부, "0", XML);
                     TcpClient oClient = new TcpClient(); //임시
                                                          //Commit전에 출력
                     bool 출력여부 = PasLib.출력(s슈트번호, dt, oClient);
@@ -922,6 +921,30 @@ namespace PAS.PMP
                 MessageBox.Show(ex.Message);
             }
         }
+        //internal static void 박스풀(string s분류번호, string s장비명, string s슈트번호, string s마지막박스여부)
+        //{
+        //    try
+        //    {
+        //        DataTable dt = new DataTable("usp_분류_박스풀작성_Set");
+        //        using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, GlobalClass.PasDBConnectionString), IsolationLevel.ReadCommitted))
+        //        {
+        //            oScope.Initialize("usp_분류_박스풀작성_Set", "@분류번호", "@장비명", "@슈트번호", "@마지막박스여부");
+        //            oScope.Fill(dt, s분류번호, s장비명, s슈트번호, s마지막박스여부);
+
+        //            TcpClient oClient = new TcpClient(); //임시
+        //                                                 //Commit전에 출력
+        //            bool 출력여부 = PasLib.출력(s슈트번호, dt, oClient);
+        //            if (출력여부)
+        //                oScope.Commit();
+        //            else
+        //                oScope.Rollback();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
 
 
     }

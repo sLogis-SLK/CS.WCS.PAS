@@ -315,7 +315,7 @@ namespace PAS.PMP
             return false;
         }
 
-        private bool 중복슈트확인(string 원배치번호)
+        private bool 배정불가슈트확인(string 원배치번호)
         {
             try
             {
@@ -440,6 +440,7 @@ namespace PAS.PMP
                     catch (Exception ex)
                     {
                         // 로그용: ex.Message
+                        MessageBox.Show(ex.Message, this.Text);
                     }
                 }
             }
@@ -733,7 +734,7 @@ namespace PAS.PMP
                 string 작업일자 = selectedRows["작업일자"].ToString();
 
                 if (!부모배치검사(배치번호, 원배치번호, 추가배치)) return;
-                if (!중복슈트확인(원배치번호)) return;
+                if (!배정불가슈트확인(원배치번호)) return;
                 if (!중복바코드확인(분류번호, 원배치번호)) return;
                 if (!배송사중복배정확인(분류번호, 원배치번호)) return;
                 if (!매장중복배정확인(분류번호, 원배치번호)) return;
@@ -748,7 +749,7 @@ namespace PAS.PMP
                 if (순번 == "1")
                     배치개시(분류번호, 분류명, 작업일자, 배치번호, 원배치번호);
                 else
-                    배치재구성및개시(분류번호, 배치번호, 원배치번호);   
+                    배치재구성및개시(분류번호, 배치번호, 원배치번호);
             }
             catch (Exception ex)
             {
@@ -852,6 +853,15 @@ namespace PAS.PMP
                 }
                 if (MessageBox.Show("현재 분류를 모두 종료합니다.\r\n\r\n★★★ 정말로 종료 하시겠습니까? ★★★", this.Text, MessageBoxButtons.YesNo) != DialogResult.Yes) return;
                 MessageBox.Show("PAS의 작동이 완료되었는지,\r\n\r\n컨베이어 위에 상품이 있는지,\r\n\r\n다시한번 확인해 주세요.", this.Text, MessageBoxButtons.OK);
+
+                DataTable dt = new DataTable("usp_분류_마지막박스내역_Get");
+                분류.마지막박스내역조회(dt, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), 1);
+
+                if (dt.Rows.Count > 0)
+                {
+                    MessageBox.Show("선택한 분류에 마지막 박스발행을 진행하지 않은\r\n\r\n내역이 있어 종료할 수 없습니다.", this.Text);
+                    return;
+                }
 
                 var rows = this.m_분류_작업요약Table.Select($"분류번호='{분류번호}' AND 순번=1");
                 if (rows == null || rows.Length <= 0)

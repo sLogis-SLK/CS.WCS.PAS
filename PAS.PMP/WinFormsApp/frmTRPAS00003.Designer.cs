@@ -99,7 +99,6 @@ namespace PAS.PMP
             Infragistics.Win.Appearance appearance64 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTRPAS00003));
             this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
-            this.박스풀 = new Infragistics.Win.Misc.UltraButton();
             this.panel7 = new System.Windows.Forms.Panel();
             this.출력대상유형 = new Infragistics.Win.UltraWinEditors.UltraOptionSet();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -109,6 +108,7 @@ namespace PAS.PMP
             this.panel4 = new System.Windows.Forms.Panel();
             this.ultraLabel11 = new Infragistics.Win.Misc.UltraLabel();
             this.조회 = new Infragistics.Win.Misc.UltraButton();
+            this.박스풀 = new Infragistics.Win.Misc.UltraButton();
             this.재발행 = new Infragistics.Win.Misc.UltraButton();
             this.ultraGroupBox2 = new Infragistics.Win.Misc.UltraGroupBox();
             this.uGrid5 = new TR_Library.Controls.uGrid();
@@ -165,16 +165,6 @@ namespace PAS.PMP
             this.ultraGroupBox1.Name = "ultraGroupBox1";
             this.ultraGroupBox1.Size = new System.Drawing.Size(1008, 40);
             this.ultraGroupBox1.TabIndex = 1027;
-            // 
-            // 박스풀
-            // 
-            this.박스풀.Dock = System.Windows.Forms.DockStyle.Right;
-            this.박스풀.Location = new System.Drawing.Point(826, 2);
-            this.박스풀.Name = "박스풀";
-            this.박스풀.Size = new System.Drawing.Size(90, 36);
-            this.박스풀.TabIndex = 1252;
-            this.박스풀.Text = "박스풀";
-            this.박스풀.Click += new System.EventHandler(this.박스풀_Click);
             // 
             // panel7
             // 
@@ -239,7 +229,7 @@ namespace PAS.PMP
             this.작업일자.Location = new System.Drawing.Point(6, 9);
             this.작업일자.Name = "작업일자";
             this.작업일자.NonAutoSizeHeight = 21;
-            this.작업일자.Size = new System.Drawing.Size(121, 21);
+            this.작업일자.Size = new System.Drawing.Size(121, 35);
             this.작업일자.TabIndex = 7;
             // 
             // panel4
@@ -273,6 +263,16 @@ namespace PAS.PMP
             this.조회.TabIndex = 4;
             this.조회.Text = "조회";
             this.조회.Click += new System.EventHandler(this.조회_Click);
+            // 
+            // 박스풀
+            // 
+            this.박스풀.Dock = System.Windows.Forms.DockStyle.Right;
+            this.박스풀.Location = new System.Drawing.Point(826, 2);
+            this.박스풀.Name = "박스풀";
+            this.박스풀.Size = new System.Drawing.Size(90, 36);
+            this.박스풀.TabIndex = 1252;
+            this.박스풀.Text = "박스풀";
+            this.박스풀.Click += new System.EventHandler(this.박스풀_Click);
             // 
             // 재발행
             // 
@@ -425,9 +425,9 @@ namespace PAS.PMP
             this.uGrid4.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.uGrid4.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.uGrid4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uGrid4.Location = new System.Drawing.Point(3, 18);
+            this.uGrid4.Location = new System.Drawing.Point(3, 37);
             this.uGrid4.Name = "uGrid4";
-            this.uGrid4.Size = new System.Drawing.Size(1002, 229);
+            this.uGrid4.Size = new System.Drawing.Size(1002, 210);
             this.uGrid4.TabIndex = 0;
             this.uGrid4.Text = "uGrid4";
             this.uGrid4.AfterRowActivate += new System.EventHandler(this.uGrid4_AfterRowActivate);
@@ -531,6 +531,7 @@ namespace PAS.PMP
             this.uGrid3.Size = new System.Drawing.Size(228, 185);
             this.uGrid3.TabIndex = 0;
             this.uGrid3.Text = "uGrid3";
+            this.uGrid3.AfterCellUpdate += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.uGrid3_AfterCellUpdate);
             // 
             // splitter3
             // 

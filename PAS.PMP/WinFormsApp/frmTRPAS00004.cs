@@ -15,7 +15,7 @@ namespace PAS.PMP
         #region 폼개체 선언부
 
         private DataTable m_분류_작업배치그룹Table = new DataTable("usp_분류_작업요약_배치그룹별_Get");
-        private DataTable m_분류_박스재발행Table = new DataTable("usp_분류_박스바코드재발행_Get");
+        private DataTable m_분류_박스재발행Table = new DataTable("usp_분류_박스바코드재발행_Get_JHG");
         private DataTable m_분류_박스재발행_슈트별Table = new DataTable("usp_분류_박스바코드재발행_슈트별_Get");
         private DataTable m_분류_박스재발행_슈트별상세Table = new DataTable("usp_분류_박스바코드재발행_슈트별상세_Get");
 

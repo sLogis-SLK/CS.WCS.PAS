@@ -10,6 +10,9 @@ using System.Threading;
 using PAS.PMP.Report;
 using PAS.PMP.Services;
 using System.Drawing;
+using Infragistics.Win.UltraWinGrid;
+using System.Linq;
+using PAS.PMP.PasWCS;
 
 namespace PAS.PMP
 {
@@ -18,7 +21,7 @@ namespace PAS.PMP
         #region 폼개체 선언부
 
         private DataTable m_분류_작업배치그룹Table = new DataTable("usp_분류_작업요약_배치그룹별_Get");
-        private DataTable m_분류_박스재발행Table = new DataTable("usp_분류_박스바코드재발행_Get");
+        private DataTable m_분류_박스재발행Table = new DataTable("usp_분류_박스바코드재발행_Get_JHG");
         private DataTable m_분류_박스재발행_슈트별Table = new DataTable("usp_분류_박스바코드재발행_슈트별_Get");
         private DataTable m_분류_박스재발행_슈트별상세Table = new DataTable("usp_분류_박스바코드재발행_슈트별상세_Get");
         private DataTable m_분류_박스별패킹내역Table = new DataTable("usp_분류_박스별패킹내역_Get");
@@ -32,6 +35,7 @@ namespace PAS.PMP
         string _분류번호 = "";
         string _슈트번호 = "";
         string _서브슈트번호 = "";
+        string _박스번호 = "";
         string _장비명 = string.Empty;
         string _배치구분 = string.Empty;
         #endregion
@@ -110,9 +114,9 @@ namespace PAS.PMP
                 this.uGrid3.DataSource = this.m_분류_박스재발행슈트별상세BS;
 
                 Common.SetGridInit(this.uGrid3, false, false, true, false, false, false);
-                Common.SetGridHiddenColumn(this.uGrid3, "IDX", "아이템코드", "조정", "잔여", "센터코드", "센터명", "배치명");
+                Common.SetGridHiddenColumn(this.uGrid3, "IDX", "아이템코드", "브랜드코드", "브랜드명", "센터코드", "센터명", "배치명");
 
-                Common.SetGridEditColumn(this.uGrid3, null);
+                Common.SetGridEditColumn(this.uGrid3, "조정");
 
                 #endregion
 
@@ -266,12 +270,20 @@ namespace PAS.PMP
         private void uGrid2_AfterRowActivate(object sender, EventArgs e)
         {
             DataRow oRow = ((DataRowView)uGrid2.ActiveRow.ListObject).Row;
+            _박스번호 = oRow["박스번호"].ToString();
             분류.슈트별박스풀상세조회(m_분류_박스재발행_슈트별상세Table, _분류번호, _배치번호, _슈트번호, _서브슈트번호, oRow["박스번호"].ToString(), 1);
         }
 
         private void 박스풀_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
+            DataRow[] dataRowArray = this.m_분류_박스재발행_슈트별상세Table.Select("수량 <> 잔여");
+
+            if (dataRowArray == null || dataRowArray.Length <= 0)
+            {
+                MessageBox.Show("이동할 대상이 없습니다.");
+                return;
+            }
 
             if (_슈트번호 == null)
             {
@@ -279,10 +291,36 @@ namespace PAS.PMP
                 return;
             }
 
+            if (this.uGrid2.ActiveRow == null || this.uGrid3.ActiveRow.Index < 0)
+            {
+                MessageBox.Show("이동할 대상이 없습니다.");
+                return;
+            }
+
+            if (this._박스번호 != "")
+            {
+                MessageBox.Show("이미 발행된 박스번호 입니다.");
+                return;
+            }
+
             try
             {
+                DataTable dataTable = new DataTable("박스풀");
+                dataTable.Columns.Add("아이템코드", typeof(string));
+                dataTable.Columns.Add("조정", typeof(int));
+
+                foreach (DataRow row in dataRowArray)
+                    dataTable.Rows.Add(row["아이템코드"], row["조정"]);
+
                 string s마지막박스여부 = "0";
-                분류.박스풀(_분류번호, GlobalClass.장비명, _슈트번호, s마지막박스여부);
+                using (StringWriter writer = new StringWriter())
+                {
+                    dataTable.WriteXml(writer);
+                    string xml = writer.ToString();
+
+                    분류.미발행_대상박스풀(xml, _분류번호, GlobalClass.장비명, _슈트번호, s마지막박스여부);
+                }
+                
             }
             catch (Exception ex)
             {
@@ -292,6 +330,7 @@ namespace PAS.PMP
             finally
             {
                 Cursor.Current = Cursors.Default;
+                this.조회_Click((object)null, EventArgs.Empty);
             }
         }
 
@@ -481,10 +520,40 @@ namespace PAS.PMP
             }
         }
 
+        private void uGrid3_AfterCellUpdate(object sender, Infragistics.Win.UltraWinGrid.CellEventArgs e)
+        {
+            object 조정 = e.Cell.Value;
+            var row = e.Cell.Row;
+
+            string 수량 = row.Cells["수량"].Value.ToString();
+            string 잔여 = row.Cells["잔여"].Value.ToString();
+
+            int num1 = ConvertUtil.ObjectToint(수량);
+            int num2 = ConvertUtil.ObjectToint(조정);
+            int num3 = ConvertUtil.ObjectToint(잔여);
+            string str = row.Cells["아이템코드"].Value.ToString();
+
+            DataRow[] dataRowArray = this.m_분류_박스재발행_슈트별상세Table.Select($"아이템코드='{str}'");
+
+            if (dataRowArray == null || dataRowArray.Length <= 0)
+                return;
+
+            if (num1 - num2 < 0)
+            {
+                MessageBox.Show("조정수가 실적수보다 많을 수 없습니다.");
+                row.Cells["조정"].Value = (object)(num1 - num3); ;
+                row.Cells["잔여"].Value = num3;
+            }
+            else
+            {
+                dataRowArray[0]["잔여"] = (object)(num1 - num2);
+                this.m_분류_박스재발행_슈트별상세Table.AcceptChanges();
+            }
 
 
-        #endregion
+            #endregion
 
-       
+
+        }
     }
 }

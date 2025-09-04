@@ -152,8 +152,8 @@ namespace PAS.PMP
                             form = new frmTRPAS00022();
                             break;
                         case "frmTRPAS00023":
-                            form = new frmTRPAS00023();
-                            //form = new Core.WinFormsApp.PasSettingForm();
+                            //form = new frmTRPAS00023();
+                            form = new Core.WinFormsApp.PasSettingForm();
                             break;
                         case "frmTRPAS00024":
                             form = new frmTRPAS00024();
