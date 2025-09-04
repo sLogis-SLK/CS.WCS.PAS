@@ -66,6 +66,7 @@ namespace PAS.PMP
             this.ultraLabel8 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel9 = new Infragistics.Win.Misc.UltraLabel();
             this.uGrid3 = new TR_Library.Controls.uGrid();
+            this.배치종료버튼 = new Infragistics.Win.Misc.UltraButton();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
             this.ultraGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox4)).BeginInit();
@@ -85,18 +86,21 @@ namespace PAS.PMP
             this.ultraGroupBox1.BorderStyle = Infragistics.Win.Misc.GroupBoxBorderStyle.RectangularSolid;
             this.ultraGroupBox1.Controls.Add(this.조회버튼);
             this.ultraGroupBox1.Controls.Add(this.배치개시버튼);
+            this.ultraGroupBox1.Controls.Add(this.배치종료버튼);
             this.ultraGroupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultraGroupBox1.Location = new System.Drawing.Point(0, 0);
+            this.ultraGroupBox1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
-            this.ultraGroupBox1.Size = new System.Drawing.Size(1384, 38);
+            this.ultraGroupBox1.Size = new System.Drawing.Size(3163, 86);
             this.ultraGroupBox1.TabIndex = 1028;
             // 
             // 조회버튼
             // 
             this.조회버튼.Dock = System.Windows.Forms.DockStyle.Right;
-            this.조회버튼.Location = new System.Drawing.Point(1202, 2);
+            this.조회버튼.Location = new System.Drawing.Point(2543, 2);
+            this.조회버튼.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.조회버튼.Name = "조회버튼";
-            this.조회버튼.Size = new System.Drawing.Size(90, 34);
+            this.조회버튼.Size = new System.Drawing.Size(206, 82);
             this.조회버튼.TabIndex = 2;
             this.조회버튼.Text = "조회";
             this.조회버튼.Click += new System.EventHandler(this.조회버튼_Click);
@@ -104,9 +108,10 @@ namespace PAS.PMP
             // 배치개시버튼
             // 
             this.배치개시버튼.Dock = System.Windows.Forms.DockStyle.Right;
-            this.배치개시버튼.Location = new System.Drawing.Point(1292, 2);
+            this.배치개시버튼.Location = new System.Drawing.Point(2749, 2);
+            this.배치개시버튼.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.배치개시버튼.Name = "배치개시버튼";
-            this.배치개시버튼.Size = new System.Drawing.Size(90, 34);
+            this.배치개시버튼.Size = new System.Drawing.Size(206, 82);
             this.배치개시버튼.TabIndex = 3;
             this.배치개시버튼.Text = "배치개시";
             this.배치개시버튼.Click += new System.EventHandler(this.배치개시_Click);
@@ -129,9 +134,10 @@ namespace PAS.PMP
             this.ultraGroupBox4.Controls.Add(this.ultraLabel8);
             this.ultraGroupBox4.Controls.Add(this.ultraLabel9);
             this.ultraGroupBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ultraGroupBox4.Location = new System.Drawing.Point(0, 38);
+            this.ultraGroupBox4.Location = new System.Drawing.Point(0, 86);
+            this.ultraGroupBox4.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.ultraGroupBox4.Name = "ultraGroupBox4";
-            this.ultraGroupBox4.Size = new System.Drawing.Size(1384, 92);
+            this.ultraGroupBox4.Size = new System.Drawing.Size(3163, 207);
             this.ultraGroupBox4.TabIndex = 1029;
             // 
             // 임계치퍼센트
@@ -141,9 +147,10 @@ namespace PAS.PMP
             this.임계치퍼센트.Appearance = appearance3;
             this.임계치퍼센트.AutoSize = true;
             this.임계치퍼센트.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.임계치퍼센트.Location = new System.Drawing.Point(757, 47);
+            this.임계치퍼센트.Location = new System.Drawing.Point(1730, 106);
+            this.임계치퍼센트.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.임계치퍼센트.Name = "임계치퍼센트";
-            this.임계치퍼센트.Size = new System.Drawing.Size(38, 14);
+            this.임계치퍼센트.Size = new System.Drawing.Size(87, 32);
             this.임계치퍼센트.TabIndex = 77;
             this.임계치퍼센트.Text = "100%";
             // 
@@ -154,9 +161,10 @@ namespace PAS.PMP
             this.ultraLabel2.Appearance = appearance4;
             this.ultraLabel2.AutoSize = true;
             this.ultraLabel2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ultraLabel2.Location = new System.Drawing.Point(726, 70);
+            this.ultraLabel2.Location = new System.Drawing.Point(1659, 158);
+            this.ultraLabel2.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.ultraLabel2.Name = "ultraLabel2";
-            this.ultraLabel2.Size = new System.Drawing.Size(29, 16);
+            this.ultraLabel2.Size = new System.Drawing.Size(66, 36);
             this.ultraLabel2.TabIndex = 76;
             this.ultraLabel2.Text = "혼잡";
             // 
@@ -167,17 +175,19 @@ namespace PAS.PMP
             this.ultraLabel1.Appearance = appearance5;
             this.ultraLabel1.AutoSize = true;
             this.ultraLabel1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ultraLabel1.Location = new System.Drawing.Point(95, 70);
+            this.ultraLabel1.Location = new System.Drawing.Point(217, 158);
+            this.ultraLabel1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.ultraLabel1.Name = "ultraLabel1";
-            this.ultraLabel1.Size = new System.Drawing.Size(29, 16);
+            this.ultraLabel1.Size = new System.Drawing.Size(66, 36);
             this.ultraLabel1.TabIndex = 75;
             this.ultraLabel1.Text = "쾌적";
             // 
             // 분류종료버튼
             // 
-            this.분류종료버튼.Location = new System.Drawing.Point(665, 9);
+            this.분류종료버튼.Location = new System.Drawing.Point(1520, 20);
+            this.분류종료버튼.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.분류종료버튼.Name = "분류종료버튼";
-            this.분류종료버튼.Size = new System.Drawing.Size(90, 27);
+            this.분류종료버튼.Size = new System.Drawing.Size(206, 61);
             this.분류종료버튼.TabIndex = 74;
             this.분류종료버튼.Text = "분류종료";
             this.분류종료버튼.Click += new System.EventHandler(this.분류종료_Click);
@@ -186,34 +196,38 @@ namespace PAS.PMP
             // 
             this.ultraLinearGauge1.BackColor = System.Drawing.Color.White;
             this.ultraLinearGauge1.FontSize = 11D;
-            this.ultraLinearGauge1.Location = new System.Drawing.Point(95, 42);
+            this.ultraLinearGauge1.Location = new System.Drawing.Point(217, 94);
+            this.ultraLinearGauge1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.ultraLinearGauge1.Name = "ultraLinearGauge1";
-            this.ultraLinearGauge1.Size = new System.Drawing.Size(660, 19);
+            this.ultraLinearGauge1.Size = new System.Drawing.Size(1509, 43);
             this.ultraLinearGauge1.TabIndex = 73;
             this.ultraLinearGauge1.Text = "ultraLinearGauge1";
             // 
             // ultraCheckEditor1
             // 
-            this.ultraCheckEditor1.Location = new System.Drawing.Point(539, 14);
+            this.ultraCheckEditor1.Location = new System.Drawing.Point(1232, 32);
+            this.ultraCheckEditor1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.ultraCheckEditor1.Name = "ultraCheckEditor1";
-            this.ultraCheckEditor1.Size = new System.Drawing.Size(120, 20);
+            this.ultraCheckEditor1.Size = new System.Drawing.Size(274, 45);
             this.ultraCheckEditor1.TabIndex = 72;
             this.ultraCheckEditor1.Text = "배치완료 대상";
             // 
             // 균등
             // 
             this.균등.Checked = true;
-            this.균등.Location = new System.Drawing.Point(147, 16);
+            this.균등.Location = new System.Drawing.Point(336, 36);
+            this.균등.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.균등.Name = "균등";
-            this.균등.Size = new System.Drawing.Size(70, 20);
+            this.균등.Size = new System.Drawing.Size(160, 45);
             this.균등.TabIndex = 71;
             this.균등.Text = "균등";
             // 
             // 연속
             // 
-            this.연속.Location = new System.Drawing.Point(95, 16);
+            this.연속.Location = new System.Drawing.Point(217, 36);
+            this.연속.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.연속.Name = "연속";
-            this.연속.Size = new System.Drawing.Size(80, 20);
+            this.연속.Size = new System.Drawing.Size(183, 45);
             this.연속.TabIndex = 70;
             this.연속.TabStop = false;
             this.연속.Text = "연속";
@@ -224,9 +238,10 @@ namespace PAS.PMP
             this.ultraLabel8.Appearance = appearance6;
             this.ultraLabel8.AutoSize = true;
             this.ultraLabel8.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ultraLabel8.Location = new System.Drawing.Point(10, 45);
+            this.ultraLabel8.Location = new System.Drawing.Point(23, 101);
+            this.ultraLabel8.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.ultraLabel8.Name = "ultraLabel8";
-            this.ultraLabel8.Size = new System.Drawing.Size(80, 16);
+            this.ultraLabel8.Size = new System.Drawing.Size(183, 36);
             this.ultraLabel8.TabIndex = 69;
             this.ultraLabel8.Text = "분류 임계치 : ";
             // 
@@ -236,9 +251,10 @@ namespace PAS.PMP
             this.ultraLabel9.Appearance = appearance7;
             this.ultraLabel9.AutoSize = true;
             this.ultraLabel9.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ultraLabel9.Location = new System.Drawing.Point(10, 18);
+            this.ultraLabel9.Location = new System.Drawing.Point(23, 40);
+            this.ultraLabel9.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.ultraLabel9.Name = "ultraLabel9";
-            this.ultraLabel9.Size = new System.Drawing.Size(67, 16);
+            this.ultraLabel9.Size = new System.Drawing.Size(153, 36);
             this.ultraLabel9.TabIndex = 69;
             this.ultraLabel9.Text = "분류 방법 : ";
             // 
@@ -304,22 +320,34 @@ namespace PAS.PMP
             this.uGrid3.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.uGrid3.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.uGrid3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uGrid3.Location = new System.Drawing.Point(0, 130);
+            this.uGrid3.Location = new System.Drawing.Point(0, 293);
+            this.uGrid3.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.uGrid3.Name = "uGrid3";
-            this.uGrid3.Size = new System.Drawing.Size(1384, 432);
+            this.uGrid3.Size = new System.Drawing.Size(3163, 971);
             this.uGrid3.TabIndex = 1035;
             this.uGrid3.Text = "uGrid3";
             this.uGrid3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.uGrid3_MouseUp);
             // 
+            // 배치종료버튼
+            // 
+            this.배치종료버튼.Dock = System.Windows.Forms.DockStyle.Right;
+            this.배치종료버튼.Location = new System.Drawing.Point(2955, 2);
+            this.배치종료버튼.Name = "배치종료버튼";
+            this.배치종료버튼.Size = new System.Drawing.Size(206, 82);
+            this.배치종료버튼.TabIndex = 4;
+            this.배치종료버튼.Text = "배치종료";
+            this.배치종료버튼.Click += new System.EventHandler(this.배치종료버튼_Click);
+            // 
             // frmTRPAS00021
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1384, 562);
+            this.ClientSize = new System.Drawing.Size(3163, 1264);
             this.Controls.Add(this.uGrid3);
             this.Controls.Add(this.ultraGroupBox4);
             this.Controls.Add(this.ultraGroupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.Name = "frmTRPAS00021";
             this.Text = "배치 시작/완료(frmTRPAS00021)";
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).EndInit();
@@ -353,5 +381,6 @@ namespace PAS.PMP
         private Infragistics.Win.Misc.UltraButton 분류종료버튼;
         private Infragistics.Win.Misc.UltraLabel 임계치퍼센트;
         private Infragistics.Win.DataVisualization.UltraLinearGauge ultraLinearGauge1;
+        private Infragistics.Win.Misc.UltraButton 배치종료버튼;
     }
 }

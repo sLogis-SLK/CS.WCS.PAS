@@ -323,9 +323,21 @@ namespace PAS.PMP
                 string s분류번호 = rows["분류번호"].ToString();
                 string s배치번호 = rows["배치번호"].ToString();
 
+
+
+
                 if (MessageBox.Show($"배치번호 : {s배치번호}\r\n\r\n선택한 배치의 패킹실적을 작성 하시겠습니까?", this.Text, MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
                     MessageBox.Show("작업을 취소합니다!!", this.Text);
+                    return;
+                }
+
+                DataTable dt = new DataTable("usp_출하_미발행박스_Get");
+                분류.출하미발행대상조회(dt, s분류번호, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 1);
+
+                if (dt.Rows.Count > 0)
+                {
+                    MessageBox.Show("아직 패킹이 완료되지 않은 박스가 있습니다. ", this.Text);
                     return;
                 }
 

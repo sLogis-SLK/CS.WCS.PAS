@@ -130,14 +130,14 @@ namespace PAS.PMP
             if (분류상태 == "개시")
             {
                 this.배치개시버튼.Enabled = !특정배치상태 && 배치상태 != "작업중";
-                //this.배치종료버튼.Enabled = 배치상태 == "작업중";
+                this.배치종료버튼.Enabled = 배치상태 == "작업중";
                 this.연속.Enabled = false;
                 this.균등.Enabled = false;
             }
             else
             {
                 this.배치개시버튼.Enabled = true;
-                //this.배치종료버튼.Enabled = false;
+                this.배치종료버튼.Enabled = false;
                 this.연속.Enabled = true;
                 this.균등.Enabled = true;
             }
@@ -763,9 +763,8 @@ namespace PAS.PMP
             }
         }
 
-        private void 배치종료_Click(object sender, EventArgs e)
+        private void 배치종료버튼_Click(object sender, EventArgs e)
         {
-            //var selectedRows = this.uGrid3.Selected.Rows;
             DataRow selectedRows = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
             if (selectedRows == null)
             {
@@ -802,7 +801,7 @@ namespace PAS.PMP
 
                 frmLoading.ShowLoading();
                 string 작업일자 = 첫작업Row["작업일자"].ToString();
-                string s월일 = 작업일자.Length >= 8 ? 작업일자.Substring(4, 4) : DateTime.Now.ToString("MMdd");
+                //string s월일 = 작업일자.Length >= 8 ? 작업일자.Substring(4, 4) : DateTime.Now.ToString("MMdd");
 
                 var 대상List = 배치종료대상(분류번호, 원배치번호);
                 string 종료파일경로 = 재구성데이터저장(원배치번호, 대상List);
@@ -813,7 +812,7 @@ namespace PAS.PMP
                     return;
                 }
 
-                //배치종료(분류번호, 배치번호, 원배치번호, 종료파일경로);
+                배치종료(분류번호, 배치번호, 원배치번호, 종료파일경로);
             }
             catch (Exception ex)
             {
@@ -920,5 +919,6 @@ namespace PAS.PMP
 
         #endregion
 
+     
     }
 }
