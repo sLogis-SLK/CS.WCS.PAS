@@ -82,8 +82,8 @@ namespace PAS.Core.WinFormsApp
             this.신규버튼 = new Infragistics.Win.Misc.UltraButton();
             this.수정버튼 = new Infragistics.Win.Misc.UltraButton();
             this.삭제버튼 = new Infragistics.Win.Misc.UltraButton();
-            this.uGrid1 = new TR_Library.Controls.uGrid();
             this.ultraGroupBox3 = new Infragistics.Win.Misc.UltraGroupBox();
+            this.uGrid1 = new TR_Library.Controls.uGrid();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).BeginInit();
             this.ultraGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox5)).BeginInit();
@@ -101,9 +101,9 @@ namespace PAS.Core.WinFormsApp
             this.ultraGroupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
             this.ultraGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).BeginInit();
             this.ultraGroupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraGroupBox2
@@ -117,7 +117,7 @@ namespace PAS.Core.WinFormsApp
             this.ultraGroupBox2.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBox2.Name = "ultraGroupBox2";
             this.ultraGroupBox2.Size = new System.Drawing.Size(983, 160);
-            this.ultraGroupBox2.TabIndex = 1042;
+            this.ultraGroupBox2.TabIndex = 1;
             this.ultraGroupBox2.Text = "DB접속정보";
             // 
             // ultraGroupBox5
@@ -166,7 +166,7 @@ namespace PAS.Core.WinFormsApp
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(975, 98);
-            this.tableLayoutPanel2.TabIndex = 71;
+            this.tableLayoutPanel2.TabIndex = 10;
             // 
             // HOST_DB_PASSWORD
             // 
@@ -174,7 +174,7 @@ namespace PAS.Core.WinFormsApp
             this.HOST_DB_PASSWORD.Location = new System.Drawing.Point(645, 75);
             this.HOST_DB_PASSWORD.Name = "HOST_DB_PASSWORD";
             this.HOST_DB_PASSWORD.Size = new System.Drawing.Size(327, 21);
-            this.HOST_DB_PASSWORD.TabIndex = 8;
+            this.HOST_DB_PASSWORD.TabIndex = 28;
             // 
             // ultraLabel1
             // 
@@ -185,7 +185,7 @@ namespace PAS.Core.WinFormsApp
             this.ultraLabel1.Location = new System.Drawing.Point(485, 75);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(154, 20);
-            this.ultraLabel1.TabIndex = 82;
+            this.ultraLabel1.TabIndex = 18;
             this.ultraLabel1.Text = "HOST DB 비밀번호 :";
             // 
             // PAS_DB_PASSWORD
@@ -194,7 +194,7 @@ namespace PAS.Core.WinFormsApp
             this.PAS_DB_PASSWORD.Location = new System.Drawing.Point(153, 75);
             this.PAS_DB_PASSWORD.Name = "PAS_DB_PASSWORD";
             this.PAS_DB_PASSWORD.Size = new System.Drawing.Size(326, 21);
-            this.PAS_DB_PASSWORD.TabIndex = 4;
+            this.PAS_DB_PASSWORD.TabIndex = 27;
             // 
             // ultraLabel2
             // 
@@ -205,7 +205,7 @@ namespace PAS.Core.WinFormsApp
             this.ultraLabel2.Location = new System.Drawing.Point(3, 75);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(144, 20);
-            this.ultraLabel2.TabIndex = 80;
+            this.ultraLabel2.TabIndex = 17;
             this.ultraLabel2.Text = "PAS DB 비밀번호 :";
             // 
             // HOST_DB_ID
@@ -214,7 +214,7 @@ namespace PAS.Core.WinFormsApp
             this.HOST_DB_ID.Location = new System.Drawing.Point(645, 51);
             this.HOST_DB_ID.Name = "HOST_DB_ID";
             this.HOST_DB_ID.Size = new System.Drawing.Size(327, 21);
-            this.HOST_DB_ID.TabIndex = 7;
+            this.HOST_DB_ID.TabIndex = 26;
             // 
             // ultraLabel3
             // 
@@ -225,7 +225,7 @@ namespace PAS.Core.WinFormsApp
             this.ultraLabel3.Location = new System.Drawing.Point(485, 51);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(154, 18);
-            this.ultraLabel3.TabIndex = 78;
+            this.ultraLabel3.TabIndex = 16;
             this.ultraLabel3.Text = "HOST DB  계정 ID :";
             // 
             // PAS_DB_ID
@@ -234,7 +234,7 @@ namespace PAS.Core.WinFormsApp
             this.PAS_DB_ID.Location = new System.Drawing.Point(153, 51);
             this.PAS_DB_ID.Name = "PAS_DB_ID";
             this.PAS_DB_ID.Size = new System.Drawing.Size(326, 21);
-            this.PAS_DB_ID.TabIndex = 3;
+            this.PAS_DB_ID.TabIndex = 25;
             // 
             // ultraLabel12
             // 
@@ -245,7 +245,7 @@ namespace PAS.Core.WinFormsApp
             this.ultraLabel12.Location = new System.Drawing.Point(3, 51);
             this.ultraLabel12.Name = "ultraLabel12";
             this.ultraLabel12.Size = new System.Drawing.Size(144, 18);
-            this.ultraLabel12.TabIndex = 76;
+            this.ultraLabel12.TabIndex = 15;
             this.ultraLabel12.Text = "PAS DB  계정 ID :";
             // 
             // HOST_DB_SERVICE
@@ -254,7 +254,7 @@ namespace PAS.Core.WinFormsApp
             this.HOST_DB_SERVICE.Location = new System.Drawing.Point(645, 27);
             this.HOST_DB_SERVICE.Name = "HOST_DB_SERVICE";
             this.HOST_DB_SERVICE.Size = new System.Drawing.Size(327, 21);
-            this.HOST_DB_SERVICE.TabIndex = 6;
+            this.HOST_DB_SERVICE.TabIndex = 24;
             // 
             // ultraLabel13
             // 
@@ -265,7 +265,7 @@ namespace PAS.Core.WinFormsApp
             this.ultraLabel13.Location = new System.Drawing.Point(485, 27);
             this.ultraLabel13.Name = "ultraLabel13";
             this.ultraLabel13.Size = new System.Drawing.Size(154, 18);
-            this.ultraLabel13.TabIndex = 74;
+            this.ultraLabel13.TabIndex = 14;
             this.ultraLabel13.Text = "HOST DB 서비스명 :";
             // 
             // PAS_DB_SERVICE
@@ -274,7 +274,7 @@ namespace PAS.Core.WinFormsApp
             this.PAS_DB_SERVICE.Location = new System.Drawing.Point(153, 27);
             this.PAS_DB_SERVICE.Name = "PAS_DB_SERVICE";
             this.PAS_DB_SERVICE.Size = new System.Drawing.Size(326, 21);
-            this.PAS_DB_SERVICE.TabIndex = 2;
+            this.PAS_DB_SERVICE.TabIndex = 23;
             // 
             // HOST_DB_IP
             // 
@@ -282,7 +282,7 @@ namespace PAS.Core.WinFormsApp
             this.HOST_DB_IP.Location = new System.Drawing.Point(645, 3);
             this.HOST_DB_IP.Name = "HOST_DB_IP";
             this.HOST_DB_IP.Size = new System.Drawing.Size(327, 21);
-            this.HOST_DB_IP.TabIndex = 5;
+            this.HOST_DB_IP.TabIndex = 22;
             // 
             // ultraLabel14
             // 
@@ -293,7 +293,7 @@ namespace PAS.Core.WinFormsApp
             this.ultraLabel14.Location = new System.Drawing.Point(3, 27);
             this.ultraLabel14.Name = "ultraLabel14";
             this.ultraLabel14.Size = new System.Drawing.Size(144, 18);
-            this.ultraLabel14.TabIndex = 69;
+            this.ultraLabel14.TabIndex = 13;
             this.ultraLabel14.Text = "PAS DB 서비스명 :";
             // 
             // PAS_DB_IP
@@ -302,7 +302,7 @@ namespace PAS.Core.WinFormsApp
             this.PAS_DB_IP.Location = new System.Drawing.Point(153, 3);
             this.PAS_DB_IP.Name = "PAS_DB_IP";
             this.PAS_DB_IP.Size = new System.Drawing.Size(326, 21);
-            this.PAS_DB_IP.TabIndex = 1;
+            this.PAS_DB_IP.TabIndex = 21;
             // 
             // ultraLabel15
             // 
@@ -314,7 +314,7 @@ namespace PAS.Core.WinFormsApp
             this.ultraLabel15.Location = new System.Drawing.Point(3, 3);
             this.ultraLabel15.Name = "ultraLabel15";
             this.ultraLabel15.Size = new System.Drawing.Size(144, 18);
-            this.ultraLabel15.TabIndex = 69;
+            this.ultraLabel15.TabIndex = 11;
             this.ultraLabel15.Text = "PAS DB  IP 주소 :";
             // 
             // ultraLabel16
@@ -326,7 +326,7 @@ namespace PAS.Core.WinFormsApp
             this.ultraLabel16.Location = new System.Drawing.Point(485, 3);
             this.ultraLabel16.Name = "ultraLabel16";
             this.ultraLabel16.Size = new System.Drawing.Size(154, 18);
-            this.ultraLabel16.TabIndex = 69;
+            this.ultraLabel16.TabIndex = 12;
             this.ultraLabel16.Text = "HOST DB  IP 주소 :";
             // 
             // ultraGroupBox4
@@ -341,7 +341,7 @@ namespace PAS.Core.WinFormsApp
             this.ultraGroupBox4.Location = new System.Drawing.Point(2, 18);
             this.ultraGroupBox4.Name = "ultraGroupBox4";
             this.ultraGroupBox4.Size = new System.Drawing.Size(979, 38);
-            this.ultraGroupBox4.TabIndex = 527;
+            this.ultraGroupBox4.TabIndex = 2;
             // 
             // 새로고침버튼
             // 
@@ -349,7 +349,7 @@ namespace PAS.Core.WinFormsApp
             this.새로고침버튼.Location = new System.Drawing.Point(777, 2);
             this.새로고침버튼.Name = "새로고침버튼";
             this.새로고침버튼.Size = new System.Drawing.Size(100, 34);
-            this.새로고침버튼.TabIndex = 23;
+            this.새로고침버튼.TabIndex = 5;
             this.새로고침버튼.Text = "새로고침";
             this.새로고침버튼.Click += new System.EventHandler(this.새로고침버튼_Click);
             // 
@@ -359,7 +359,7 @@ namespace PAS.Core.WinFormsApp
             this.DB정보저장버튼.Location = new System.Drawing.Point(877, 2);
             this.DB정보저장버튼.Name = "DB정보저장버튼";
             this.DB정보저장버튼.Size = new System.Drawing.Size(100, 34);
-            this.DB정보저장버튼.TabIndex = 22;
+            this.DB정보저장버튼.TabIndex = 6;
             this.DB정보저장버튼.Text = "DB 정보 저장";
             this.DB정보저장버튼.Click += new System.EventHandler(this.DB정보저장버튼_Click);
             // 
@@ -377,7 +377,7 @@ namespace PAS.Core.WinFormsApp
             this.ultraGroupBox1.Location = new System.Drawing.Point(2, 18);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
             this.ultraGroupBox1.Size = new System.Drawing.Size(979, 38);
-            this.ultraGroupBox1.TabIndex = 526;
+            this.ultraGroupBox1.TabIndex = 51;
             // 
             // 조회버튼
             // 
@@ -385,7 +385,7 @@ namespace PAS.Core.WinFormsApp
             this.조회버튼.Location = new System.Drawing.Point(577, 2);
             this.조회버튼.Name = "조회버튼";
             this.조회버튼.Size = new System.Drawing.Size(100, 34);
-            this.조회버튼.TabIndex = 24;
+            this.조회버튼.TabIndex = 53;
             this.조회버튼.Text = "[F5]조회";
             this.조회버튼.Click += new System.EventHandler(this.조회버튼_Click);
             // 
@@ -395,7 +395,7 @@ namespace PAS.Core.WinFormsApp
             this.신규버튼.Location = new System.Drawing.Point(677, 2);
             this.신규버튼.Name = "신규버튼";
             this.신규버튼.Size = new System.Drawing.Size(100, 34);
-            this.신규버튼.TabIndex = 21;
+            this.신규버튼.TabIndex = 54;
             this.신규버튼.Text = "[F6]신규";
             this.신규버튼.Click += new System.EventHandler(this.신규버튼_Click);
             // 
@@ -405,7 +405,7 @@ namespace PAS.Core.WinFormsApp
             this.수정버튼.Location = new System.Drawing.Point(777, 2);
             this.수정버튼.Name = "수정버튼";
             this.수정버튼.Size = new System.Drawing.Size(100, 34);
-            this.수정버튼.TabIndex = 22;
+            this.수정버튼.TabIndex = 55;
             this.수정버튼.Text = "[F7]수정";
             this.수정버튼.Click += new System.EventHandler(this.수정버튼_Click);
             // 
@@ -415,66 +415,80 @@ namespace PAS.Core.WinFormsApp
             this.삭제버튼.Location = new System.Drawing.Point(877, 2);
             this.삭제버튼.Name = "삭제버튼";
             this.삭제버튼.Size = new System.Drawing.Size(100, 34);
-            this.삭제버튼.TabIndex = 23;
+            this.삭제버튼.TabIndex = 56;
             this.삭제버튼.Text = "삭제";
             this.삭제버튼.Click += new System.EventHandler(this.삭제버튼_Click);
             // 
+            // ultraGroupBox3
+            // 
+            appearance13.AlphaLevel = ((short)(255));
+            this.ultraGroupBox3.Appearance = appearance13;
+            this.ultraGroupBox3.BorderStyle = Infragistics.Win.Misc.GroupBoxBorderStyle.RectangularSolid;
+            this.ultraGroupBox3.Controls.Add(this.uGrid1);
+            this.ultraGroupBox3.Controls.Add(this.ultraGroupBox1);
+            this.ultraGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraGroupBox3.Location = new System.Drawing.Point(0, 160);
+            this.ultraGroupBox3.Name = "ultraGroupBox3";
+            this.ultraGroupBox3.Size = new System.Drawing.Size(983, 501);
+            this.ultraGroupBox3.TabIndex = 50;
+            this.ultraGroupBox3.Text = "PAS 정보";
+            // 
             // uGrid1
             // 
-            appearance13.BackColor = System.Drawing.SystemColors.Window;
-            appearance13.BorderColor = System.Drawing.SystemColors.InactiveCaption;
-            this.uGrid1.DisplayLayout.Appearance = appearance13;
+            appearance14.BackColor = System.Drawing.SystemColors.Window;
+            appearance14.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.uGrid1.DisplayLayout.Appearance = appearance14;
             this.uGrid1.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.uGrid1.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            appearance14.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            appearance14.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance14.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance14.BorderColor = System.Drawing.SystemColors.Window;
-            this.uGrid1.DisplayLayout.GroupByBox.Appearance = appearance14;
-            appearance15.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.uGrid1.DisplayLayout.GroupByBox.BandLabelAppearance = appearance15;
-            this.uGrid1.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance16.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            appearance16.BackColor2 = System.Drawing.SystemColors.Control;
-            appearance16.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance15.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance15.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance15.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance15.BorderColor = System.Drawing.SystemColors.Window;
+            this.uGrid1.DisplayLayout.GroupByBox.Appearance = appearance15;
             appearance16.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.uGrid1.DisplayLayout.GroupByBox.PromptAppearance = appearance16;
+            this.uGrid1.DisplayLayout.GroupByBox.BandLabelAppearance = appearance16;
+            this.uGrid1.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance17.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance17.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance17.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance17.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.uGrid1.DisplayLayout.GroupByBox.PromptAppearance = appearance17;
             this.uGrid1.DisplayLayout.MaxColScrollRegions = 1;
             this.uGrid1.DisplayLayout.MaxRowScrollRegions = 1;
-            appearance17.BackColor = System.Drawing.SystemColors.Window;
-            appearance17.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.uGrid1.DisplayLayout.Override.ActiveCellAppearance = appearance17;
-            appearance18.BackColor = System.Drawing.SystemColors.Highlight;
-            appearance18.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.uGrid1.DisplayLayout.Override.ActiveRowAppearance = appearance18;
+            appearance18.BackColor = System.Drawing.SystemColors.Window;
+            appearance18.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.uGrid1.DisplayLayout.Override.ActiveCellAppearance = appearance18;
+            appearance19.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance19.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.uGrid1.DisplayLayout.Override.ActiveRowAppearance = appearance19;
             this.uGrid1.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False;
             this.uGrid1.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
             this.uGrid1.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
-            appearance19.BackColor = System.Drawing.SystemColors.Window;
-            this.uGrid1.DisplayLayout.Override.CardAreaAppearance = appearance19;
-            appearance20.BorderColor = System.Drawing.Color.Silver;
-            appearance20.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
-            this.uGrid1.DisplayLayout.Override.CellAppearance = appearance20;
+            appearance20.BackColor = System.Drawing.SystemColors.Window;
+            this.uGrid1.DisplayLayout.Override.CardAreaAppearance = appearance20;
+            appearance21.BorderColor = System.Drawing.Color.Silver;
+            appearance21.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.uGrid1.DisplayLayout.Override.CellAppearance = appearance21;
             this.uGrid1.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
             this.uGrid1.DisplayLayout.Override.CellPadding = 0;
             this.uGrid1.DisplayLayout.Override.DefaultRowHeight = 24;
-            appearance21.BackColor = System.Drawing.SystemColors.Control;
-            appearance21.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance21.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
-            appearance21.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance21.BorderColor = System.Drawing.SystemColors.Window;
-            this.uGrid1.DisplayLayout.Override.GroupByRowAppearance = appearance21;
-            appearance22.TextHAlignAsString = "Left";
-            this.uGrid1.DisplayLayout.Override.HeaderAppearance = appearance22;
+            appearance22.BackColor = System.Drawing.SystemColors.Control;
+            appearance22.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance22.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance22.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance22.BorderColor = System.Drawing.SystemColors.Window;
+            this.uGrid1.DisplayLayout.Override.GroupByRowAppearance = appearance22;
+            appearance23.TextHAlignAsString = "Left";
+            this.uGrid1.DisplayLayout.Override.HeaderAppearance = appearance23;
             this.uGrid1.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             this.uGrid1.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
-            appearance23.BackColor = System.Drawing.SystemColors.Window;
-            appearance23.BorderColor = System.Drawing.Color.Silver;
-            this.uGrid1.DisplayLayout.Override.RowAppearance = appearance23;
+            appearance24.BackColor = System.Drawing.SystemColors.Window;
+            appearance24.BorderColor = System.Drawing.Color.Silver;
+            this.uGrid1.DisplayLayout.Override.RowAppearance = appearance24;
             this.uGrid1.DisplayLayout.Override.RowSelectorNumberStyle = Infragistics.Win.UltraWinGrid.RowSelectorNumberStyle.None;
             this.uGrid1.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
-            appearance24.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.uGrid1.DisplayLayout.Override.TemplateAddRowAppearance = appearance24;
+            appearance25.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.uGrid1.DisplayLayout.Override.TemplateAddRowAppearance = appearance25;
             this.uGrid1.DisplayLayout.Override.WrapHeaderText = Infragistics.Win.DefaultableBoolean.True;
             this.uGrid1.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.uGrid1.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
@@ -484,23 +498,9 @@ namespace PAS.Core.WinFormsApp
             this.uGrid1.Location = new System.Drawing.Point(2, 56);
             this.uGrid1.Name = "uGrid1";
             this.uGrid1.Size = new System.Drawing.Size(979, 443);
-            this.uGrid1.TabIndex = 20;
+            this.uGrid1.TabIndex = 60;
             this.uGrid1.Text = "uGrid1";
             this.uGrid1.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler(this.uGrid1_DoubleClickRow);
-            // 
-            // ultraGroupBox3
-            // 
-            appearance25.AlphaLevel = ((short)(255));
-            this.ultraGroupBox3.Appearance = appearance25;
-            this.ultraGroupBox3.BorderStyle = Infragistics.Win.Misc.GroupBoxBorderStyle.RectangularSolid;
-            this.ultraGroupBox3.Controls.Add(this.uGrid1);
-            this.ultraGroupBox3.Controls.Add(this.ultraGroupBox1);
-            this.ultraGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraGroupBox3.Location = new System.Drawing.Point(0, 160);
-            this.ultraGroupBox3.Name = "ultraGroupBox3";
-            this.ultraGroupBox3.Size = new System.Drawing.Size(983, 501);
-            this.ultraGroupBox3.TabIndex = 1043;
-            this.ultraGroupBox3.Text = "PAS 정보";
             // 
             // PasSettingForm
             // 
@@ -510,6 +510,7 @@ namespace PAS.Core.WinFormsApp
             this.Controls.Add(this.ultraGroupBox3);
             this.Controls.Add(this.ultraGroupBox2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "PasSettingForm";
             this.Text = "Pas환경설정";
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).EndInit();
@@ -530,9 +531,9 @@ namespace PAS.Core.WinFormsApp
             this.ultraGroupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).EndInit();
             this.ultraGroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).EndInit();
             this.ultraGroupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).EndInit();
             this.ResumeLayout(false);
 
         }

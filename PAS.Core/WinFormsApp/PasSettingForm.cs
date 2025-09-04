@@ -35,6 +35,8 @@ namespace PAS.Core.WinFormsApp
             SetDataTableBindingInit(); //초기 데이터 바인딩
 
             Cursor = Cursors.Default;
+
+            uGrid1.Focus();
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
@@ -43,15 +45,15 @@ namespace PAS.Core.WinFormsApp
 
             if (e.KeyCode == Keys.F5)
             {
-                조회버튼_Click(null, null);
+                if (조회버튼.Enabled && 조회버튼.Visible) 조회버튼_Click(null, null);
             }
             else if (e.KeyCode == Keys.F6)
             {
-                신규버튼_Click(null, null);
+                if (신규버튼.Enabled && 신규버튼.Visible) 신규버튼_Click(null, null);
             }
             else if (e.KeyCode == Keys.F7)
             {
-                수정버튼_Click(null, null);
+                if (수정버튼.Enabled && 수정버튼.Visible) 수정버튼_Click(null, null);
             }
         }
 
