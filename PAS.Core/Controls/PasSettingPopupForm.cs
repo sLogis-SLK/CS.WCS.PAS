@@ -153,13 +153,13 @@ namespace PAS.Core.Controls
                 {
                     //신규일경우
                     NAME.ReadOnly = false;
-                    m입력 = enum입력.추가;
+                    입력여부 = enum입력.추가;
                 }
                 else 
                 {
                     //수정일경우
                     NAME.ReadOnly = true;
-                    m입력 = enum입력.수정;
+                    입력여부 = enum입력.수정;
                 }
 
                 //컨트롤에 데이터 넣기
@@ -298,6 +298,7 @@ namespace PAS.Core.Controls
                     throw new Exception("데이터가 비정상적입니다. 확인하여 주시기 바랍니다.");
                 }
 
+
                 기초DataRow["NAME"] = NAME.Value;
                 기초DataRow["SEIGYO_IP"] = SEIGYO_IP.Value;
                 기초DataRow["SEIGYO_PORT"] = SEIGYO_PORT.Value;
@@ -338,7 +339,7 @@ namespace PAS.Core.Controls
                     string 슈트뒤 = row["슈트뒤"]?.ToString();
                     BARCODE_PRINTER_LIST += 프린터 + "," + 슈트앞 + "," + 슈트뒤 + "|";
                 }
-                기초DataRow["BARCODE_PRINTER_LIST"] = BARCODE_PRINTER_LIST;
+                기초DataRow["BARCODE_PRINTER_LIST"] = BARCODE_PRINTER_LIST.Trim();
                 
                 string PRINTER_LIST = string.Empty;
                 foreach (DataRow row in m거래명세서Table.Rows)
@@ -486,58 +487,16 @@ namespace PAS.Core.Controls
 
         private void 저장버튼_Click(object sender, EventArgs e)
         {
-
-            ////데이터저장
-            //m환경설정BS.EndEdit();
-            //DataTable changedTable = m환경설정Table.GetChanges();
-            //if (changedTable == null || changedTable.Rows.Count == 0)
-            //{
-            //    MessageBox.Show("추가/변경된 데이터가 없습니다.", this.Text);
-            //    return;
-            //}
-
-            ////환경설정 갱신
-            //try
-            //{
-            //    공통.DB접속정보저장(GlobalCore.PasDBConnectionString, PAS_DB_IP.Text, PAS_DB_SERVICE.Text, PAS_DB_ID.Text, PAS_DB_PASSWORD.Text,
-            //                                                          HOST_DB_IP.Text, HOST_DB_SERVICE.Text, HOST_DB_ID.Text, HOST_DB_PASSWORD.Text);
-
-            //    //공통.출하라인접속정보저장(GlobalCore.PasDBConnectionString, changedTable);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, this.Text);
-            //    return;
-            //}
-
-            ////닫기
-            //DialogResult = DialogResult.OK;
-            //this.Close();
-
-
-
-            ////데이터저장
-            //m환경설정BS.EndEdit();
-            //DataTable changedTable = m환경설정Table.GetChanges();
-            //if (changedTable == null || changedTable.Rows.Count == 0)
-            //{
-            //    MessageBox.Show("추가/변경된 데이터가 없습니다.", this.Text);
-            //    return;
-            //}
-
-            //환경설정 갱신
+            //데이터저장
             try
             {
-                //공통.DB접속정보저장(GlobalCore.PasDBConnectionString, PAS_DB_IP.Text, PAS_DB_SERVICE.Text, PAS_DB_ID.Text, PAS_DB_PASSWORD.Text,
-                //                                                      HOST_DB_IP.Text, HOST_DB_SERVICE.Text, HOST_DB_ID.Text, HOST_DB_PASSWORD.Text);
-                //공통.출하라인접속정보저장(GlobalCore.PasDBConnectionString, changedTable);
-
                 DataRow row = GetDatas();
+                공통.PAS접속정보저장(GlobalCore.PasDBConnectionString, row);
+                GlobalCore.RefreshInfo();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, this.Text);
-                return;
             }
 
             //닫기

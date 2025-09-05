@@ -65,6 +65,48 @@ namespace PAS.Core
             }
         }
 
+        internal static void PAS접속정보저장(string ConnectionString, DataRow dr)
+        {
+            using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, ConnectionString), IsolationLevel.ReadCommitted))
+            {
+                oScope.Initialize("USP_공통_PAS접속정보_Set", "@키인덱스",
+                    "@NAME", "@SEIGYO_IP", "@SEIGYO_PORT", "@CHUTES",
+                    "@CHUTES_ERROR", "@CHUTES_OVERFLOW",
+                    "@SEIGYO_FOLDER", "@SEIGYO_ID", "@SEIGYO_PASSWORD",
+                    "@LOCAL_FOLDER", "@PAS_DURATION", "@INDICATOR_DURATION", "@INDICATOR_IP", 
+                    "@INDICATOR_PORT", "@INDICATOR_STRUCTURE", "@BARCODE_PRINTER_LIST" , "@PRINTER_LIST");
+
+              
+                int 키인덱스 = 0;
+                ConvertUtil.ObjectToInt32(dr["순서"], out 키인덱스);
+                string NAME = dr["NAME"].ToString();
+                string SEIGYO_IP = dr["SEIGYO_IP"].ToString();
+                string SEIGYO_PORT = dr["SEIGYO_PORT"].ToString();
+                string CHUTES = dr["CHUTES"].ToString();
+                string CHUTES_ERROR = dr["CHUTES_ERROR"].ToString();
+                string CHUTES_OVERFLOW = dr["CHUTES_OVERFLOW"].ToString();
+                string SEIGYO_FOLDER = dr["SEIGYO_FOLDER"].ToString();
+                string SEIGYO_ID = dr["SEIGYO_ID"].ToString();
+                string SEIGYO_PASSWORD = dr["SEIGYO_PASSWORD"].ToString();
+                string LOCAL_FOLDER = dr["LOCAL_FOLDER"].ToString();
+                string PAS_DURATION = dr["PAS_DURATION"].ToString();
+                string INDICATOR_DURATION = dr["INDICATOR_DURATION"].ToString();
+                string INDICATOR_IP = dr["INDICATOR_IP"].ToString();
+                string INDICATOR_PORT = dr["INDICATOR_PORT"].ToString();
+                string INDICATOR_STRUCTURE = dr["INDICATOR_STRUCTURE"].ToString();
+                string BARCODE_PRINTER_LIST = dr["BARCODE_PRINTER_LIST"].ToString();
+                string PRINTER_LIST = dr["PRINTER_LIST"].ToString();
+
+                oScope.Update(키인덱스, NAME, SEIGYO_IP, SEIGYO_PORT, CHUTES, 
+                    CHUTES_ERROR, CHUTES_OVERFLOW, SEIGYO_FOLDER, SEIGYO_ID, SEIGYO_PASSWORD,
+                    LOCAL_FOLDER, PAS_DURATION,
+                    INDICATOR_DURATION, INDICATOR_IP, INDICATOR_PORT, INDICATOR_STRUCTURE,
+                    BARCODE_PRINTER_LIST, PRINTER_LIST);
+                
+                oScope.Commit();
+            }
+        }
+
         internal static void 출하라인접속정보삭제(string ConnectionString, DataRow[] rows)
         {
             using (TlkTranscope oScope = new TlkTranscope(Connections.GetConnection(Connections.CN_MSSQL, ConnectionString), IsolationLevel.ReadCommitted))

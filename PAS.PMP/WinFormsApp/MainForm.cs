@@ -23,12 +23,13 @@ namespace PAS.PMP
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            #region 디자인관련 소스- 정리 및 기능 테스트필요
+
             string path_AppStyling = Application.StartupPath + @"\uStyle.isl";
             if (File.Exists(path_AppStyling))
             {
                 //Infragistics.Win.AppStyling.StyleManager.Load(path_AppStyling);
             }
-
 
             Color 색상 = Color.FromArgb(221, 235, 247);
 
@@ -52,6 +53,8 @@ namespace PAS.PMP
             ultraTabbedMdiManager1.TabSettings.ActiveTabAppearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
 
             //ultraDockManager1.floatin
+
+            #endregion
 
             GlobalClass.InitializationSettings();
             ComboBoxTool cbo = ultraToolbarsManager1.Tools["라인설정"] as ComboBoxTool;
@@ -189,6 +192,10 @@ namespace PAS.PMP
                         form.Show();
                         //form.WindowState = FormWindowState.Maximized;
 
+                        //if (form is Core.WinFormsApp.PasSettingForm)
+                        //{
+                        //    //갱신
+                        //}
                     }
                 }
             }

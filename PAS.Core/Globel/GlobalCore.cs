@@ -42,7 +42,18 @@ namespace PAS.Core
             {
                 //기본값확인
                 GetDefaultValueToIni();
+                RefreshInfo();
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
 
+        public static void RefreshInfo()
+        {
+            try
+            {
                 //DB접속정보 최초가져오기
                 DataTable dt_DB접속정보 = 공통.DB접속정보(PasDBConnectionString);
                 db접속정보.SetDataRow(dt_DB접속정보.Rows[0]);
@@ -64,8 +75,6 @@ namespace PAS.Core
                     saveRow.ItemArray = row.ItemArray;
                     Dic출하기기.Add(row["NAME"].ToString(), saveRow);
                 }
-
-
             }
             catch (System.Exception ex)
             {
