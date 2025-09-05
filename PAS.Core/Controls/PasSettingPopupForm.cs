@@ -315,7 +315,7 @@ namespace PAS.Core.Controls
                 기초DataRow["INDICATOR_PORT"] = INDICATOR_PORT.Value;
 
                 string INDICATOR_STRUCTURE = string.Empty;
-                기초DataRow["INDICATOR_STRUCTURE"] = INDICATOR_STRUCTURE;
+              
                 foreach (DataRow row in m숫자표시기Table.Rows)
                 {
                     bool 숫자1 = Convert.ToBoolean(row["1"]);
@@ -330,7 +330,7 @@ namespace PAS.Core.Controls
                     INDICATOR_STRUCTURE += (숫자1 ? "1" : "0") + (숫자2 ? "1" : "0") + (숫자3 ? "1" : "0") + (숫자4 ? "1" : "0") +
                         (숫자5 ? "1" : "0") + (숫자6 ? "1" : "0") + (숫자7 ? "1" : "0") + (숫자8 ? "1" : "0");
                 }
-                    
+                기초DataRow["INDICATOR_STRUCTURE"] = INDICATOR_STRUCTURE;
                 string BARCODE_PRINTER_LIST = string.Empty;
                 foreach (DataRow row in m바코드Table.Rows)
                 {
@@ -498,10 +498,15 @@ namespace PAS.Core.Controls
             {
                 MessageBox.Show(ex.Message, this.Text);
             }
+            finally
+            {
+                MessageBox.Show("수정이 완료되었습니다.", this.Text);
+                //닫기
+                DialogResult = DialogResult.OK;
+                this.Close();
+            }
 
-            //닫기
-            DialogResult = DialogResult.OK;
-            this.Close();
+            
         }
         
         private void 닫기버튼_Click(object sender, EventArgs e)

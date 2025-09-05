@@ -54,6 +54,8 @@ namespace PAS.Core
         {
             try
             {
+                DicPas기기.Clear();
+                Dic출하기기.Clear();
                 //DB접속정보 최초가져오기
                 DataTable dt_DB접속정보 = 공통.DB접속정보(PasDBConnectionString);
                 db접속정보.SetDataRow(dt_DB접속정보.Rows[0]);
