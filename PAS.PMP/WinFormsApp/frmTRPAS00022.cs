@@ -45,7 +45,7 @@ namespace PAS.PMP
             com분류실적처리.DataSource = new BindingSource(comboItems, null);
             com분류실적처리.DisplayMember = "Value";
             com분류실적처리.ValueMember = "Key";
-            com분류실적처리.Value = "1";
+            com분류실적처리.Value = "0";
         }
 
         protected override void OnShown(EventArgs e)
