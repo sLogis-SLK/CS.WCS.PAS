@@ -200,7 +200,7 @@ namespace PAS.SMP.출하
                     .AppendFormat("^FO380,20^A1R,40,30^FD{0}^FS", 배치번호)
                     .AppendFormat("^FO380,220^A1R,60,40^FD{0}^FS", 슈트번호)
                     .AppendFormat("^FO380,420^A1R,60,40^FD{0}^FS", 박스번호)
-                    .AppendFormat("^FO380,620^A1R,40,30^FD{0}kg^FS", 중량)
+                    .AppendFormat("^FO380,620^A1R,40,30^FD{0}^FS", 중량)
                     .AppendFormat("^FO380,820^A1R,60,40^FD{0}^FS", row["내품수"].ToString())
                     .Append("^FO370,10^GB0,920,2^FS");
 
@@ -253,7 +253,7 @@ namespace PAS.SMP.출하
                     .AppendFormat("^FO380,20^A1R,40,30^FD{0}^FS", 배치번호)
                     .AppendFormat("^FO380,220^A1R,60,40^FD{0}^FS", 슈트번호)
                     .AppendFormat("^FO380,420^A1R,60,40^FD{0}^FS", 박스번호)
-                    .AppendFormat("^FO380,620^A1R,40,30^FD{0}kg^FS", 중량)
+                    .AppendFormat("^FO380,620^A1R,40,30^FD{0}^FS", 중량)
                     .AppendFormat("^FO380,820^A1R,60,40^FD{0}^FS", row["내품수"].ToString())
                     .Append("^FO370,10^GB0,920,2^FS");
 
