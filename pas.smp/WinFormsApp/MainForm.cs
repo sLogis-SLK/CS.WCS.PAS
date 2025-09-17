@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Net.Sockets;
@@ -577,12 +578,12 @@ namespace PAS.SMP
             {
                 출하.출하내역관리.출하박스저장(s실배치번호, s슈트번호, s박스번호, c운송장.운송장번호, c운송장.출력값2, c운송장.출력값1, c운송장.출력값4, c운송장.출력값3, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, s중량, "1", "1");
 
-                if (시리얼포트.IsOpen == false)
-                {
-                    MessageBox.Show("시리얼포트 안열림");
-                    //시리얼포트 안열림
-                    return false;
-                }
+                //if (시리얼포트.IsOpen == false)
+                //{
+                //    MessageBox.Show("시리얼포트 안열림");
+                //    //시리얼포트 안열림
+                //    return false;
+                //}
 
                 string barcodeScript2 = 출하.출하내역관리.바코드출력(s배치번호, s슈트번호, s박스번호, s중량, c운송장, row);
                 if (string.IsNullOrEmpty(barcodeScript2))
@@ -595,8 +596,19 @@ namespace PAS.SMP
                 }
                 else
                 {
-                    byte[] bytes = Encoding.GetEncoding(949).GetBytes(barcodeScript2);
-                    시리얼포트.Write(bytes, 0, bytes.Length);
+                    TcpClient tcpClient2 = new TcpClient();
+                    tcpClient2.Connect("192.168.20.111", 9100);
+                    using (StreamWriter streamWriter = new StreamWriter((Stream)tcpClient2.GetStream(), Encoding.GetEncoding(949)))
+                    {
+                        streamWriter.Write(barcodeScript2);
+                        streamWriter.Flush();
+                        streamWriter.Close();
+                    }
+
+                    if (tcpClient2 != null)
+                    {
+                        tcpClient2.Close();
+                    }
                 }
             }
             catch (Exception ex)
