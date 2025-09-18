@@ -653,7 +653,11 @@ namespace PAS.SMP
                     timer출하상태확인.Interval = 2000; //2초
                     timer출하상태확인.Start();  //시작
 
-                    Refresh시리얼포트();
+                    //Refresh시리얼포트();
+
+                    timer출하박스확인.Stop();//종료
+                    timer출하박스확인.Interval = 100; //0.1초
+                    timer출하박스확인.Start();//시작
                 }
                 else
                 {
@@ -667,8 +671,8 @@ namespace PAS.SMP
                 timer출하상태확인?.Stop();
                 timer출하박스확인?.Stop();
 
-                if (시리얼포트?.IsOpen == true)
-                    시리얼포트.Close();
+                //if (시리얼포트?.IsOpen == true)
+                //    시리얼포트.Close();
 
                 //25.06.04 김동준
                 //작업중시시 화면 클리어 할지 안할지는 알아서 판단...주석으로 남겨놓음
@@ -686,7 +690,7 @@ namespace PAS.SMP
         private void 다시시작버튼_Click(object sender, EventArgs e)
         {
             //시리얼 포트 재시작 으로 보임
-            Refresh시리얼포트();
+            //Refresh시리얼포트();
         }
 
         private void 설정버튼_Click(object sender, EventArgs e)
