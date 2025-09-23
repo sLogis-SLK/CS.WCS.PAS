@@ -596,6 +596,14 @@ namespace PAS.SMP
                 }
                 else
                 {
+
+                    while(row["운송장출력여부"].ToString() == "1" && !this.재발행_Check.Checked)
+                    {
+                        Thread.Sleep(1000);
+                        Application.DoEvents();
+                    }
+
+                   
                     TcpClient tcpClient2 = new TcpClient();
                     tcpClient2.Connect("192.168.20.111", 9100);
                     using (StreamWriter streamWriter = new StreamWriter((Stream)tcpClient2.GetStream(), Encoding.GetEncoding(949)))
@@ -609,6 +617,7 @@ namespace PAS.SMP
                     {
                         tcpClient2.Close();
                     }
+                    
                 }
             }
             catch (Exception ex)
