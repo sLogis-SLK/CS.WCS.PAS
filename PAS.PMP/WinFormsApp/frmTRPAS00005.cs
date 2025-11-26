@@ -204,6 +204,13 @@ namespace PAS.PMP
                         return;
                     }
 
+                    DataTable 처리성공데이터 = new DataTable();
+                    처리성공데이터.Columns.Add("프린트명", typeof(string));
+                    처리성공데이터.Columns.Add("프린트str", typeof(string));
+                    처리성공데이터.Columns.Add("배치구분", typeof(string));
+                    처리성공데이터.Columns.Add("슈트번호", typeof(string));
+                    처리성공데이터.Columns.Add("배치번호", typeof(string));
+
                     Cursor.Current = Cursors.WaitCursor;
                     string empty18 = string.Empty;
 
@@ -302,35 +309,37 @@ namespace PAS.PMP
                                                             str10 = string.Format(printScript, (object)str2, (object)s슈트번호, (object)str3, (object)s박스바코드);
                                                             break;
                                                     }
-                                                    string printerName = PasLib.GetPrinterName(s슈트번호);
-                                                    if (oClient != null)
-                                                    {
-                                                        oClient.Close();
-                                                        oClient = (TcpClient)null;
-                                                    }
-                                                    oClient = new TcpClient();
-                                                    oClient.Connect(printerName, 9100);
-                                                    using (StreamWriter streamWriter = new StreamWriter((Stream)oClient.GetStream(), Encoding.GetEncoding(949)))
-                                                    {
-                                                        streamWriter.Write(str10);
-                                                        streamWriter.Flush();
-                                                        streamWriter.Close();
-                                                    }
-                                                    Thread.Sleep(300);
+
+                                                    처리성공데이터.Rows.Add(PasLib.GetPrinterName(s슈트번호), str10, s배치구분, s슈트번호, s배치번호);
+                                                    //string printerName = PasLib.GetPrinterName(s슈트번호);
+                                                    //if (oClient != null)
+                                                    //{
+                                                    //    oClient.Close();
+                                                    //    oClient = (TcpClient)null;
+                                                    //}
+                                                    //oClient = new TcpClient();
+                                                    //oClient.Connect(printerName, 9100);
+                                                    //using (StreamWriter streamWriter = new StreamWriter((Stream)oClient.GetStream(), Encoding.GetEncoding(949)))
+                                                    //{
+                                                    //    streamWriter.Write(str10);
+                                                    //    streamWriter.Flush();
+                                                    //    streamWriter.Close();
+                                                    //}
+                                                    //Thread.Sleep(300);
                                                     break;
                                                 }
                                                 break;
                                         }
 
-                                        if (s배치구분 == "출하")
-                                        {
-                                            DataRow[] dataRowArray = oDataTable1.Select($"슈트번호 = '{s슈트번호}'");
-                                            string s거명용바코드 = dataRowArray == null || dataRowArray.Length <= 0 ? $"*SLK{s슈트번호}{1.ToString("D4")}*" : $"*{dataRowArray[0]["아이템코드"].ToString()}*";
-                                            if (flag1)
-                                                분류.거래명세서발행_박스별(s배치번호, s슈트번호, s거명용바코드);
-                                            if (flag2)
-                                                분류.거래명세서발행_토탈(s배치번호, s슈트번호, s거명용바코드);
-                                        }
+                                        //if (s배치구분 == "출하")
+                                        //{
+                                        //    DataRow[] dataRowArray = oDataTable1.Select($"슈트번호 = '{s슈트번호}'");
+                                        //    string s거명용바코드 = dataRowArray == null || dataRowArray.Length <= 0 ? $"*SLK{s슈트번호}{1.ToString("D4")}*" : $"*{dataRowArray[0]["아이템코드"].ToString()}*";
+                                        //    if (flag1)
+                                        //        분류.거래명세서발행_박스별(s배치번호, s슈트번호, s거명용바코드);
+                                        //    if (flag2)
+                                        //        분류.거래명세서발행_토탈(s배치번호, s슈트번호, s거명용바코드);
+                                        //}
                                     }
                                 }
                             }
@@ -355,6 +364,39 @@ namespace PAS.PMP
                         finally
                         {
                             Cursor.Current = Cursors.Default;
+                        }
+                    }
+
+                    foreach(DataRow row in 처리성공데이터.Rows)
+                    {
+                        string printerName = row["프린트명"].ToString();
+
+                        if (oClient != null)
+                        {
+                            oClient.Close();
+                            oClient = (TcpClient)null;
+                        }
+                        oClient = new TcpClient();
+                        oClient.Connect(printerName, 9100);
+                        using (StreamWriter streamWriter = new StreamWriter((Stream)oClient.GetStream(), Encoding.GetEncoding(949)))
+                        {
+                            streamWriter.Write(row["프린트str"].ToString());
+                            streamWriter.Flush();
+                            streamWriter.Close();
+                        }
+
+                        Thread.Sleep(300);
+
+                        if (row["배치구분"].ToString() == "출하")
+                        {
+                            string s슈트번호 = row["슈트번호"].ToString();
+                            string s배치번호 = row["배치번호"].ToString();
+                            DataRow[] dataRowArray = oDataTable1.Select($"슈트번호 = '{s슈트번호}'");
+                            string s거명용바코드 = dataRowArray == null || dataRowArray.Length <= 0 ? $"*SLK{s슈트번호}{1.ToString("D4")}*" : $"*{dataRowArray[0]["아이템코드"].ToString()}*";
+                            if (flag1)
+                                분류.거래명세서발행_박스별(s배치번호, s슈트번호, s거명용바코드);
+                            if (flag2)
+                                분류.거래명세서발행_토탈(s배치번호, s슈트번호, s거명용바코드);
                         }
                     }
                 }
