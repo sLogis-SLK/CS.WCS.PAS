@@ -595,8 +595,9 @@ namespace PAS.SMP
                 }
                 else
                 {
-                    byte[] bytes = Encoding.GetEncoding(949).GetBytes(barcodeScript2);
-                    시리얼포트.Write(bytes, 0, bytes.Length);
+                    //byte[] bytes = Encoding.GetEncoding(949).GetBytes(barcodeScript2);
+                    //시리얼포트.Write(bytes, 0, bytes.Length);
+                    Print.ZebraPrinter.SendToPrinter("ZDesigner ZT610-203dpi ZPL", barcodeScript2.ToString());
                 }
             }
             catch (Exception ex)
