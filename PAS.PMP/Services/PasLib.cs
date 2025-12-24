@@ -383,6 +383,84 @@ namespace PAS.PMP.Services
             }
         }
 
+        public static List<string> GetPrintScript4(string s박스바코드, string s박스바코드구분, DataTable oDataTable)
+        {
+            if (oDataTable == null || oDataTable.Rows.Count <= 0)
+            {
+                throw new Exception("[패키지 데이터 없음] 박스바코드/박스바코드구분" + s박스바코드 + "/" + s박스바코드구분);
+            }
+
+            List<string> liStr = new List<string>();
+
+            string empty1 = string.Empty;
+            int num1 = oDataTable.Rows.Count / 15;
+            int val1 = oDataTable.Rows.Count % 15;
+            if (val1 > 0)
+                ++num1;
+            string empty2 = string.Empty;
+            string empty3 = string.Empty;
+            string empty4 = string.Empty;
+            int num2 = ConvertUtil.ObjectToint(oDataTable.Compute("SUM(수량)", string.Empty));
+            string empty5 = string.Empty;
+            string str1 = DateTime.Now.ToString("yyyy-MM-dd tt hh:mm:ss");
+            string str2 = "~DGSLKN.GRF,330,10," + "00000000000000000000" + "00000000000000000000" + "0007FFFF000000000000" + "007FFFFF000000000000" + "01FFFFFF800000000000" + "03FFFFFF800000000000" + "07FFFFFF800000000000" + "07FFFFFF800000000000" + "0FFFF80F800000000000" + "0FFFE000800000000000" + "0FFFE000000000000000" + "0FFFF000000000000000" + "07FFF800000000000000" + "03FFFE00000000000000" + "01FFFF80000000000000" + "00FFFFC0000000000000" + "003FFFF003F8007F03F8" + "000FFFFC03F800FF07F8" + "0007FFFE03F800FF0FF0" + "0001FFFF03F800FE1FC0" + "00007FFF83F800FE3F80" + "00003FFF83F800FE7F00" + "00001FFF83F800FFFE00" + "3C003FFF83F800FEFE00" + "1FE07FFF83F800FEFF00" + "1FFFFFFF83F800FE7F80" + "1FFFFFFF03F800FE3FC0" + "1FFFFFFE07FFFCFE1FE0" + "1FFFFFFC07FFFCFE0FF0" + "1FFFFFF007FFFCFE07F8" + "00FFFF0007FFF8FC03F8" + "00000000000000000000" + "00000000000000000000";
+            string str3 = "~DGSLKR.GRF,400,5," + "0000000000" + "0000000000" + "00C0000000" + "1FC0000000" + "1FC0078000" + "1FC00FE000" + "1F801FF000" + "1F803FF800" + "3F807FF800" + "3F807FFC00" + "3F80FFFC00" + "3F00FFFC00" + "3F01FFFE00" + "3F03FFFE00" + "3F03FFFE00" + "3F07FFFE00" + "3F87FFFE00" + "3F8FFFFE00" + "3FDFFFFE00" + "3FFFF8FE00" + "3FFFF8FE00" + "3FFFF07E00" + "3FFFF07E00" + "3FFFE07E00" + "1FFFC07E00" + "1FFFC07E00" + "1FFF807E00" + "1FFF807E00" + "0FFF00FE00" + "07FF00FE00" + "07FE00FE00" + "03FC00FE00" + "01F801F800" + "0000000000" + "0000000000" + "0000000000" + "0000000000" + "3C00000000" + "3FFF800000" + "3FFF800000" + "3FFF800000" + "3FFF800000" + "3FFF800000" + "3FFF800000" + "3FFF800000" + "3C00000000" + "3C00000000" + "3C00000000" + "3C00000000" + "3C00000000" + "3C00000000" + "3C00000000" + "3C00000000" + "1C00000000" + "0000000000" + "0000000000" + "3FFF000000" + "3FFF800000" + "3FFF800000" + "3FFF800000" + "3FFF800000" + "3FFF800000" + "1FFF800000" + "0023800000" + "00E0000000" + "01F0000000" + "03F8000000" + "07FC000000" + "0FFE000000" + "1FFF000000" + "3FFF800000" + "3F9F800000" + "3F0F800000" + "3E07800000" + "3C03800000" + "3803800000" + "3001800000" + "0000000000" + "0000000000" + "0000000000";
+            for (int index = 0; index < num1; ++index)
+            {
+                int num3 = 0;
+                string str4 = $"{$"{"^XA" + "^SEE:UHANGUL.DAT^FS" + "^CW1,E:KFONT3.FNT^FS" + "^CI26" + "^POI" + "^LH20,20"}^FO690,20^A1R,70,70^FD{s박스바코드구분}^FS"}^FO690,500^BY3,2.0^BCR,70,N,N^FD{s박스바코드}^FS" + "^FO680,10^GB0,850,2^FS" + "^FO640,20^A1R,25,25^FD스타일^FS" + "^FO640,370^A1R,25,25^FD색상^FS" + "^FO640,650^A1R,25,25^FD사이즈^FS" + "^FO640,0^A1R,25,25^FB850,1,0,R,0^FD수량^FS" + "^FO630,10^GB0,850,2^FS";
+                DataTableVerify(oDataTable, index * 15, ref empty2, ref empty3, ref empty4, ref empty5);
+                num3 += ConvertUtil.ObjectToint((object)empty5);
+                string str5 = $"{$"{$"{$"{str4}^FO590,10^A1R,30,25^FD{empty2}^FS"}^FO590,370^A1R,30,25^FD{empty3}^FS"}^FO590,650^A1R,30,25^FD{empty4}^FS"}^FO590,780^A1R,30,25^FB70,1,0,R,0^FD{empty5}^FS";
+                DataTableVerify(oDataTable, index * 15 + 1, ref empty2, ref empty3, ref empty4, ref empty5);
+                num3 += ConvertUtil.ObjectToint((object)empty5);
+                string str6 = $"{$"{$"{$"{str5}^FO555,10^A1R,30,25^FD{empty2}^FS"}^FO555,370^A1R,30,25^FD{empty3}^FS"}^FO555,650^A1R,30,25^FD{empty4}^FS"}^FO555,780^A1R,30,25^FB70,1,0,R,0^FD{empty5}^FS";
+                DataTableVerify(oDataTable, index * 15 + 2, ref empty2, ref empty3, ref empty4, ref empty5);
+                num3 += ConvertUtil.ObjectToint((object)empty5);
+                string str7 = $"{$"{$"{$"{str6}^FO520,10^A1R,30,25^FD{empty2}^FS"}^FO520,370^A1R,30,25^FD{empty3}^FS"}^FO520,650^A1R,30,25^FD{empty4}^FS"}^FO520,780^A1R,30,25^FB70,1,0,R,0^FD{empty5}^FS";
+                DataTableVerify(oDataTable, index * 15 + 3, ref empty2, ref empty3, ref empty4, ref empty5);
+                num3 += ConvertUtil.ObjectToint((object)empty5);
+                string str8 = $"{$"{$"{$"{str7}^FO485,10^A1R,30,25^FD{empty2}^FS"}^FO485,370^A1R,30,25^FD{empty3}^FS"}^FO485,650^A1R,30,25^FD{empty4}^FS"}^FO485,780^A1R,30,25^FB70,1,0,R,0^FD{empty5}^FS";
+                DataTableVerify(oDataTable, index * 15 + 4, ref empty2, ref empty3, ref empty4, ref empty5);
+                num3 += ConvertUtil.ObjectToint((object)empty5);
+                string str9 = $"{$"{$"{$"{str8}^FO450,10^A1R,30,25^FD{empty2}^FS"}^FO450,370^A1R,30,25^FD{empty3}^FS"}^FO450,650^A1R,30,25^FD{empty4}^FS"}^FO450,780^A1R,30,25^FB70,1,0,R,0^FD{empty5}^FS";
+                DataTableVerify(oDataTable, index * 15 + 5, ref empty2, ref empty3, ref empty4, ref empty5);
+                num3 += ConvertUtil.ObjectToint((object)empty5);
+                string str10 = $"{$"{$"{$"{str9}^FO415,10^A1R,30,25^FD{empty2}^FS"}^FO415,370^A1R,30,25^FD{empty3}^FS"}^FO415,650^A1R,30,25^FD{empty4}^FS"}^FO415,780^A1R,30,25^FB70,1,0,R,0^FD{empty5}^FS";
+                DataTableVerify(oDataTable, index * 15 + 6, ref empty2, ref empty3, ref empty4, ref empty5);
+                num3 += ConvertUtil.ObjectToint((object)empty5);
+                string str11 = $"{$"{$"{$"{str10}^FO380,10^A1R,30,25^FD{empty2}^FS"}^FO380,370^A1R,30,25^FD{empty3}^FS"}^FO380,650^A1R,30,25^FD{empty4}^FS"}^FO380,780^A1R,30,25^FB70,1,0,R,0^FD{empty5}^FS";
+                DataTableVerify(oDataTable, index * 15 + 7, ref empty2, ref empty3, ref empty4, ref empty5);
+                num3 += ConvertUtil.ObjectToint((object)empty5);
+                string str12 = $"{$"{$"{$"{str11}^FO345,10^A1R,30,25^FD{empty2}^FS"}^FO345,370^A1R,30,25^FD{empty3}^FS"}^FO345,650^A1R,30,25^FD{empty4}^FS"}^FO345,780^A1R,30,25^FB70,1,0,R,0^FD{empty5}^FS";
+                DataTableVerify(oDataTable, index * 15 + 8, ref empty2, ref empty3, ref empty4, ref empty5);
+                num3 += ConvertUtil.ObjectToint((object)empty5);
+                string str13 = $"{$"{$"{$"{str12}^FO310,10^A1R,30,25^FD{empty2}^FS"}^FO310,370^A1R,30,25^FD{empty3}^FS"}^FO310,650^A1R,30,25^FD{empty4}^FS"}^FO310,780^A1R,30,25^FB70,1,0,R,0^FD{empty5}^FS";
+                DataTableVerify(oDataTable, index * 15 + 9, ref empty2, ref empty3, ref empty4, ref empty5);
+                num3 += ConvertUtil.ObjectToint((object)empty5);
+                string str14 = $"{$"{$"{$"{str13}^FO275,10^A1R,30,25^FD{empty2}^FS"}^FO275,370^A1R,30,25^FD{empty3}^FS"}^FO275,650^A1R,30,25^FD{empty4}^FS"}^FO275,780^A1R,30,25^FB70,1,0,R,0^FD{empty5}^FS";
+                DataTableVerify(oDataTable, index * 15 + 10, ref empty2, ref empty3, ref empty4, ref empty5);
+                num3 += ConvertUtil.ObjectToint((object)empty5);
+                string str15 = $"{$"{$"{$"{str14}^FO240,10^A1R,30,25^FD{empty2}^FS"}^FO240,370^A1R,30,25^FD{empty3}^FS"}^FO240,650^A1R,30,25^FD{empty4}^FS"}^FO240,780^A1R,30,25^FB70,1,0,R,0^FD{empty5}^FS";
+                DataTableVerify(oDataTable, index * 15 + 11, ref empty2, ref empty3, ref empty4, ref empty5);
+                num3 += ConvertUtil.ObjectToint((object)empty5);
+                string str16 = $"{$"{$"{$"{str15}^FO205,10^A1R,30,25^FD{empty2}^FS"}^FO205,370^A1R,30,25^FD{empty3}^FS"}^FO205,650^A1R,30,25^FD{empty4}^FS"}^FO205,780^A1R,30,25^FB70,1,0,R,0^FD{empty5}^FS";
+                DataTableVerify(oDataTable, index * 15 + 12, ref empty2, ref empty3, ref empty4, ref empty5);
+                num3 += ConvertUtil.ObjectToint((object)empty5);
+                string str17 = $"{$"{$"{$"{str16}^FO170,10^A1R,30,25^FD{empty2}^FS"}^FO170,370^A1R,30,25^FD{empty3}^FS"}^FO170,650^A1R,30,25^FD{empty4}^FS"}^FO170,780^A1R,30,25^FB70,1,0,R,0^FD{empty5}^FS";
+                DataTableVerify(oDataTable, index * 15 + 13, ref empty2, ref empty3, ref empty4, ref empty5);
+                num3 += ConvertUtil.ObjectToint((object)empty5);
+                string str18 = $"{$"{$"{$"{str17}^FO135,10^A1R,30,25^FD{empty2}^FS"}^FO135,370^A1R,30,25^FD{empty3}^FS"}^FO135,650^A1R,30,25^FD{empty4}^FS"}^FO135,780^A1R,30,25^FB70,1,0,R,0^FD{empty5}^FS";
+                DataTableVerify(oDataTable, index * 15 + 14, ref empty2, ref empty3, ref empty4, ref empty5);
+                num3 += ConvertUtil.ObjectToint((object)empty5);
+                string str19 = $"{$"{$"{$"{$"{$"{$"{$"{$"{$"{$"{$"{$"{$"{$"{$"{$"{$"{$"{str18}^FO100,10^A1R,30,25^FD{empty2}^FS"}^FO100,370^A1R,30,25^FD{empty3}^FS"}^FO100,650^A1R,30,25^FD{empty4}^FS"}^FO100,780^A1R,30,25^FB70,1,0,R,0^FD{empty5}^FS" + "^FO95,10^GB0,850,2^FS"}^FO60,10^A1R30,25^FD소계. SKU : {(index + 1 != num1 ? 15 : Math.Min(val1, 15)).ToString()}, 수량 : {num3.ToString()}^FS"}^FO60,0^A1R30,25^FB850,1,0,R,0^FD누계. SKU : {oDataTable.Rows.Count.ToString()}, 수량 : {(object)num2}^FS" + "^FO45,10^GB0,850,2^FS"}^FO10,20^A1R,25,25^FD{oDataTable.Rows[0]["센터명"].ToString()}^FS"}^FO10,0^A1R,25,20^FB800,1,0,R,0^FD{str1}^FS" + "^FO10,230^A1R,25,25^FDPAS^FS"}^FO10,350^A1R,25,25^FD( {(index + 1).ToString()} / {num1.ToString()} )^FS"}^FO50,990^A1N,50,40^FD{s박스바코드구분}^FS"}^FO300,920^BY2,2.0^BCN,90,N,N^FD{s박스바코드}^FS"}^FO300,1015^A1N,25,17^FD{str1}^FS" + "^FO580,960^A1N,25,20^FD수량^FS"}^FO580,990^A1N,50,45^FD{num2.ToString()}^FS" + "^FO680,960^A1N,25,20^FDSKU^FS"}^FO680,990^A1N,50,45^FD{oDataTable.Rows.Count.ToString()}^FS"}^FO50,1110^A1N,50,40^FD{s박스바코드구분}^FS" + "^FO300,1080^A1N,25,20^FD수량^FS"}^FO300,1110^A1N,50,45^FD{num2.ToString()}^FS" + "^FO400,1080^A1N,25,20^FDSKU^FS"}^FO400,1110^A1N,50,45^FD{oDataTable.Rows.Count.ToString()}^FS"}^FO500,1040^BY2,2.0^BCN,90,N,N^FD{s박스바코드}^FS"}^FO500,1135^A1N,25,17^FD{str1}^FS" + "^XZ";
+
+                liStr.Add(str19);
+            }
+
+            return liStr;
+        }
+
         public static bool GetPrintScript3(string s프린터명, TcpClient oClient, DataTable oDataTable)
         {
             if (oDataTable == null || oDataTable.Rows.Count <= 0)

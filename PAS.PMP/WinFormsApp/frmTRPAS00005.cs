@@ -256,7 +256,11 @@ namespace PAS.PMP
                                         switch (s배치구분)
                                         {
                                             case "패키지":
-                                                PasLib.GetPrintScript2(PasLib.GetPrinterName("패키지"), s박스바코드, s박스바코드구분, oClient, oDataTable2.Copy());
+                                                foreach(string str in PasLib.GetPrintScript4(s박스바코드, s박스바코드구분, oDataTable2.Copy()))
+                                                {
+                                                    처리성공데이터.Rows.Add(PasLib.GetPrinterName("패키지"), str, s배치구분, s슈트번호, s배치번호);
+                                                }
+
                                                 break;
                                             case "반품":
                                                 s패턴구분 = num <= 3 ? "반품유형1" : "반품유형2";
@@ -310,7 +314,15 @@ namespace PAS.PMP
                                                             break;
                                                     }
 
-                                                    처리성공데이터.Rows.Add(PasLib.GetPrinterName(s슈트번호), str10, s배치구분, s슈트번호, s배치번호);
+
+                                                    DataRow rowTemp = 처리성공데이터.NewRow();
+                                                    rowTemp["프린트명"] = PasLib.GetPrinterName(s슈트번호);
+                                                    rowTemp["프린트str"] = str10;
+                                                    rowTemp["배치구분"] = s배치구분;
+                                                    rowTemp["슈트번호"] = s슈트번호;
+                                                    rowTemp["배치번호"] = s배치번호;
+
+                                                    처리성공데이터.Rows.Add(rowTemp);
                                                     //string printerName = PasLib.GetPrinterName(s슈트번호);
                                                     //if (oClient != null)
                                                     //{
