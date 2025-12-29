@@ -160,11 +160,8 @@ namespace PAS.PMP
         private void uGrid3_MouseClick(object sender, MouseEventArgs e)
         {
             this.조회_Click(null, null);
-        }
 
-        private void uGrid3_AfterRowActivate(object sender, EventArgs e)
-        {
-            if (this.uGrid3.ActiveRow ==  null || this.uGrid3.ActiveRow.Index < 0)
+            if (this.uGrid3.ActiveRow == null || this.uGrid3.ActiveRow.Index < 0)
                 return;
 
             Cursor = Cursors.WaitCursor;
@@ -175,16 +172,21 @@ namespace PAS.PMP
                 _배치번호 = oRow["배치번호"].ToString();
                 _분류번호 = oRow["분류번호"].ToString();
                 분류.미출고슈트별조회(m_분류_슈트별미출고Table, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), 1);
-            }   
-            catch (Exception ex) 
+            }
+            catch (Exception ex)
             {
-                    MessageBox.Show(ex.Message, this.Text);
-                    Cursor = Cursors.Default;
+                MessageBox.Show(ex.Message, this.Text);
+                Cursor = Cursors.Default;
             }
             finally
             {
                 Cursor = Cursors.Default;
             }
+        }
+
+        private void uGrid3_AfterRowActivate(object sender, EventArgs e)
+        {
+            
         }
 
         private void uGrid1_AfterRowActivate(object sender, EventArgs e)

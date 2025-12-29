@@ -338,13 +338,15 @@ namespace PAS.PMP
         private void uGrid2_MouseClick(object sender, MouseEventArgs e)
         {
             this.조회_Click(null, null);
+
+            DataRow oRow = ((DataRowView)uGrid2.ActiveRow.ListObject).Row;
+            _장비명 = oRow["장비명"].ToString();
+            this.분류_상품발송장_조회(oRow["분류번호"].ToString(), oRow["배치번호"].ToString());
         }
 
         private void uGrid2_AfterRowActivate(object sender, EventArgs e)
         {
-            DataRow oRow = ((DataRowView)uGrid2.ActiveRow.ListObject).Row;
-            _장비명 = oRow["장비명"].ToString();
-            this.분류_상품발송장_조회(oRow["분류번호"].ToString(), oRow["배치번호"].ToString());
+          
 
         }
 

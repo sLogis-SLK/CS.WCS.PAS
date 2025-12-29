@@ -195,9 +195,7 @@ namespace PAS.PMP
         private void uGrid2_MouseClick(object sender, MouseEventArgs e)
         {
             this.조회_Click(null, null);
-        }
-        private void uGrid2_AfterRowActivate(object sender, EventArgs e)
-        {
+
             if (this.uGrid2.ActiveRow == null || this.uGrid2.ActiveRow.Index < 0)
                 return;
 
@@ -207,7 +205,7 @@ namespace PAS.PMP
             {
                 DataRow oRow = ((DataRowView)uGrid2.ActiveRow.ListObject).Row;
                 분류.출하박스별패킹대상(m_출하_박스별패킹대상Table, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), 1);
-            } 
+            }
             catch (Exception ex)
             {
                 Common.ErrorMessage(this.Text, ex);
@@ -217,6 +215,10 @@ namespace PAS.PMP
             {
                 Cursor = Cursors.Default;
             }
+        }
+        private void uGrid2_AfterRowActivate(object sender, EventArgs e)
+        {
+            
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

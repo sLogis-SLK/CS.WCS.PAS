@@ -115,10 +115,7 @@ namespace PAS.PMP
         private void uGrid2_MouseClick(object sender, MouseEventArgs e)
         {
             this.조회_Click(null, null);
-        }
 
-        private void uGrid2_AfterRowActivate(object sender, EventArgs e)
-        {
             if (this.uGrid2.ActiveRow == null || this.uGrid2.ActiveRow.Index < 0)
                 return;
 
@@ -142,6 +139,11 @@ namespace PAS.PMP
             {
                 Cursor = Cursors.Default;
             }
+        }
+
+        private void uGrid2_AfterRowActivate(object sender, EventArgs e)
+        {
+            
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

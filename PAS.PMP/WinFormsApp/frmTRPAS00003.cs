@@ -262,15 +262,17 @@ namespace PAS.PMP
         private void uGrid4_MouseClick(object sender, MouseEventArgs e)
         {
             this.조회_Click((object)null, EventArgs.Empty);
-        }
 
-        private void uGrid4_AfterRowActivate(object sender, EventArgs e)
-        {
             DataRow oRow = ((DataRowView)uGrid4.ActiveRow.ListObject).Row;
             _배치번호 = oRow["배치번호"].ToString();
             _분류번호 = oRow["분류번호"].ToString();
             _장비명 = oRow["장비명"].ToString();
-            분류.박스재발행조회(m_분류_박스재발행Table, _분류번호,  _배치번호, 1);
+            분류.박스재발행조회(m_분류_박스재발행Table, _분류번호, _배치번호, 1);
+        }
+
+        private void uGrid4_AfterRowActivate(object sender, EventArgs e)
+        {
+       
             
         }
 
