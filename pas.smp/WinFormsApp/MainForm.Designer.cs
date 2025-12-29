@@ -30,18 +30,6 @@ namespace PAS.SMP
                     timer출하상태확인.Dispose();
                     timer출하상태확인 = null;
                 }
-                if (timer출하박스확인 != null)
-                {
-                    timer출하박스확인.Dispose();
-                    timer출하박스확인 = null;
-                }
-                if (시리얼포트 != null)
-                {
-                    if (시리얼포트.IsOpen)
-                        시리얼포트.Close();
-                    시리얼포트.Dispose();
-                    시리얼포트 = null;
-                }
             }
             base.Dispose(disposing);
         }
@@ -54,7 +42,6 @@ namespace PAS.SMP
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -107,7 +94,6 @@ namespace PAS.SMP
             this.배송사 = new PAS.SMP.UserControlHeaderLabel();
             this.중량 = new PAS.SMP.UserControlHeaderLabel();
             this.박스바코드 = new PAS.SMP.UserControlHeaderLabel();
-            this.시리얼포트 = new System.IO.Ports.SerialPort(this.components);
             this.ultraGroupBox5 = new Infragistics.Win.Misc.UltraGroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.uGrid2 = new TR_Library.Controls.uGrid();
@@ -715,7 +701,6 @@ namespace PAS.SMP
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox3;
         private UserControlHeaderLabel 박스바코드;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.IO.Ports.SerialPort 시리얼포트;
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private TR_Library.Controls.uGrid uGrid2;

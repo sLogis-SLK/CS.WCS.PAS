@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO.Ports;
 using System.Linq;
 using System.Net.Sockets;
@@ -23,7 +24,7 @@ namespace PAS.SMP
         //private List<KeyValuePair<string, string>> items;
 
         private System.Timers.Timer timer출하상태확인 = new System.Timers.Timer();
-        private System.Timers.Timer timer출하박스확인 = new System.Timers.Timer();
+        //private System.Timers.Timer timer출하박스확인 = new System.Timers.Timer();
 
         private DataTable m_출하상태Table = new DataTable("usp_출하_상태확인_Get");
         private DataTable m_출하박스내역Table = new DataTable("usp_출하_박스내용_Get");
@@ -125,12 +126,6 @@ namespace PAS.SMP
             종료버튼.Click += new System.EventHandler(this.종료버튼_Click);
 
             그리드초기화();
-
-            ////timer 초기 세팅값
-            //timer출하상태확인.Interval = 2000; //2초
-            //timer출하상태확인.Start();  //시작
-
-            //Refresh시리얼포트();
         }
 
         private void ControlInit()
@@ -158,22 +153,14 @@ namespace PAS.SMP
             출하.출하내역관리.출하상태확인(m_출하상태Table, true);
         }
 
-        private void Timer출하박스확인_Tick(object sender, EventArgs e)
-        {
-            timer출하박스확인.Stop();  //종료
-
-            DateTime dateTime = DateTime.Now;
-            this.Invoke(new Action(() =>{현시간.Text = dateTime.ToString("G");}));
-
-            //this.현시간.Text = dateTime.ToString("G");
-            //Application.DoEvents();
-            //Thread.Sleep(100000);
-            //Thread.Sleep(10000);
-
-            출하박스정보Receive();
-
-            timer출하박스확인.Start();  //시작
-        }
+        //private void Timer출하박스확인_Tick(object sender, EventArgs e)
+        //{
+        //    timer출하박스확인.Stop();  //종료
+        //    DateTime dateTime = DateTime.Now;
+        //    this.Invoke(new Action(() =>{현시간.Text = dateTime.ToString("G");}));
+        //    출하박스정보Receive();
+        //    timer출하박스확인.Start();  //시작
+        //}
 
         #endregion
 
@@ -226,42 +213,22 @@ namespace PAS.SMP
             }
         }
 
-        private void Refresh시리얼포트()
+        private void Refresh쓰레드()
         {
-            //시리얼포트 갱신 및 박스체크 쓰레드 동작
-            //return;
-            //string value = comboBox1.SelectedValue.ToString();
-            try
-            {
-                시리얼포트.Close();
-                시리얼포트.PortName = GlobalClass.출하라인설정.COM_NAME;
-                시리얼포트.BaudRate = Convert.ToInt32(GlobalClass.출하라인설정.COM_BAUDRATE);
-                시리얼포트.Open();
-            }
-            catch (Exception ex)
-            {
-                LogUtil.Log((object)"[Refresh시리얼포트]", (object)ex.Message);
-            }
-
             if (this.thread != null)
             {
-                this.isThread = false;
+                isThread = false;
                 this.thread.Abort();
-                this.thread = null;
+                this.thread = (Thread)null;
             }
-            this.isThread = true;
+            isThread = true;
             this.thread = new Thread(new ThreadStart(this.OnThread));
             this.thread.Start();
-
-            //쓰레드 다시 동작
-            //timer출하박스확인.Stop();//종료
-            //timer출하박스확인.Interval = 100; //0.1초
-            //timer출하박스확인.Start();//시작
         }
 
-        private void OnThread ()
+        private void OnThread()
         {
-            while (this.isThread)
+            while (isThread)
             {
                 DateTime dateTime = DateTime.Now;
                 this.Invoke(new Action(() => { 현시간.Text = dateTime.ToString("G"); }));
@@ -326,26 +293,10 @@ namespace PAS.SMP
             {
                 byte[] numArray1 = new byte[4096];
 
-                //if (this.socket != null)
-                //{
-                //    this.socket.Close();
-                //    this.socket = (Socket)null;
-                //}
-
-                //if (this.socket == null)
-                //{
-                //    //PLC통신용 Socket 
-                //    this.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                //    this.socket.Connect(GlobalClass.Setting.PLC_IP, Convert.ToInt32(GlobalClass.Setting.PLC_PORT));
-                //}
-
                 if (!this.Connection())
                 {
                     return false;
                 }
-
-                //this.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                //this.socket.Connect(GlobalClass.Setting.PLC_IP, Convert.ToInt32(GlobalClass.Setting.PLC_PORT));
 
                 this.socket.Send(GlobalClass.GetBufferBybyte);
 
@@ -462,8 +413,6 @@ namespace PAS.SMP
                 s바코드 = sList[0];
                 s슈트번호 = sList[0].Substring(8, 3);
                 s박스번호 = sList[0].Substring(11, 3);
-
-                //lstTemp[0].Substring(14, 1); //??
 
                 s중량 = sList[5] + sList[6];
                 s중량 = s중량.Replace("U", string.Empty);
@@ -616,13 +565,6 @@ namespace PAS.SMP
             {
                 출하.출하내역관리.출하박스저장(s실배치번호, s슈트번호, s박스번호, c운송장.운송장번호, c운송장.출력값2, c운송장.출력값1, c운송장.출력값4, c운송장.출력값3, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, s중량, "1", "1");
 
-                if (시리얼포트.IsOpen == false)
-                {
-                    MessageBox.Show("시리얼포트 안열림");
-                    //시리얼포트 안열림
-                    return false;
-                }
-
                 string barcodeScript2 = 출하.출하내역관리.바코드출력(s배치번호, s슈트번호, s박스번호, s중량, c운송장, row);
                 if (string.IsNullOrEmpty(barcodeScript2))
                 {
@@ -634,9 +576,10 @@ namespace PAS.SMP
                 }
                 else
                 {
-                    //byte[] bytes = Encoding.GetEncoding(949).GetBytes(barcodeScript2);
-                    //시리얼포트.Write(bytes, 0, bytes.Length);
-                    Print.ZebraPrinter.SendToPrinter("ZDesigner ZT610-203dpi ZPL", barcodeScript2.ToString());
+                    PrinterSettings settings = new PrinterSettings();
+                    string printerName = settings.PrinterName;
+
+                    Print.ZebraPrinter.SendToPrinter(printerName, barcodeScript2.ToString());
                 }
             }
             catch (Exception ex)
@@ -678,10 +621,10 @@ namespace PAS.SMP
                 if (GlobalClass.Settings출하기기(s출하기기)) //기기정보 세팅
                 {
                     //timer 초기 세팅값
-                    timer출하상태확인.Interval = 2000; //2초
+                    timer출하상태확인.Interval = 100; //2초
                     timer출하상태확인.Start();  //시작
 
-                    Refresh시리얼포트();
+                    Refresh쓰레드();
                 }
                 else
                 {
@@ -693,11 +636,8 @@ namespace PAS.SMP
             {
                 //작업중시
                 timer출하상태확인?.Stop();
-                timer출하박스확인?.Stop();
-                this.isThread = true;
-
-                if (시리얼포트?.IsOpen == true)
-                    시리얼포트.Close();
+                //timer출하박스확인?.Stop();
+                this.isThread = false;
 
                 //25.06.04 김동준
                 //작업중시시 화면 클리어 할지 안할지는 알아서 판단...주석으로 남겨놓음
@@ -715,7 +655,7 @@ namespace PAS.SMP
         private void 다시시작버튼_Click(object sender, EventArgs e)
         {
             //시리얼 포트 재시작 으로 보임
-            Refresh시리얼포트();
+            Refresh쓰레드();
         }
 
         private void 설정버튼_Click(object sender, EventArgs e)
@@ -746,11 +686,8 @@ namespace PAS.SMP
             try
             {
                 timer출하상태확인?.Stop();
-                timer출하박스확인?.Stop();
-                this.isThread = true;
-
-                if (시리얼포트?.IsOpen == true)
-                    시리얼포트.Close();
+                //timer출하박스확인?.Stop();
+                this.isThread = false;
 
                 if (comboBox1.SelectedItem != null)
                 {
