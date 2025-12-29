@@ -102,7 +102,7 @@ namespace PAS.PMP
             this.ultraGroupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultraGroupBox1.Location = new System.Drawing.Point(0, 0);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
-            this.ultraGroupBox1.Size = new System.Drawing.Size(1925, 44);
+            this.ultraGroupBox1.Size = new System.Drawing.Size(1924, 44);
             this.ultraGroupBox1.TabIndex = 1027;
             // 
             // checkBox1
@@ -111,7 +111,7 @@ namespace PAS.PMP
             this.checkBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.checkBox1.Location = new System.Drawing.Point(278, 2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(28, 40);
+            this.checkBox1.Size = new System.Drawing.Size(18, 40);
             this.checkBox1.TabIndex = 9;
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -153,7 +153,7 @@ namespace PAS.PMP
             this.작업일자.Location = new System.Drawing.Point(6, 11);
             this.작업일자.Name = "작업일자";
             this.작업일자.NonAutoSizeHeight = 21;
-            this.작업일자.Size = new System.Drawing.Size(121, 35);
+            this.작업일자.Size = new System.Drawing.Size(121, 21);
             this.작업일자.TabIndex = 7;
             // 
             // panel1
@@ -181,7 +181,7 @@ namespace PAS.PMP
             // 조회
             // 
             this.조회.Dock = System.Windows.Forms.DockStyle.Right;
-            this.조회.Location = new System.Drawing.Point(1726, 2);
+            this.조회.Location = new System.Drawing.Point(1725, 2);
             this.조회.Name = "조회";
             this.조회.Size = new System.Drawing.Size(90, 40);
             this.조회.TabIndex = 10;
@@ -191,7 +191,7 @@ namespace PAS.PMP
             // 박스발행
             // 
             this.박스발행.Dock = System.Windows.Forms.DockStyle.Right;
-            this.박스발행.Location = new System.Drawing.Point(1816, 2);
+            this.박스발행.Location = new System.Drawing.Point(1815, 2);
             this.박스발행.Name = "박스발행";
             this.박스발행.Size = new System.Drawing.Size(107, 40);
             this.박스발행.TabIndex = 4;
@@ -204,7 +204,7 @@ namespace PAS.PMP
             this.ultraGroupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultraGroupBox2.Location = new System.Drawing.Point(0, 44);
             this.ultraGroupBox2.Name = "ultraGroupBox2";
-            this.ultraGroupBox2.Size = new System.Drawing.Size(1925, 250);
+            this.ultraGroupBox2.Size = new System.Drawing.Size(1924, 250);
             this.ultraGroupBox2.TabIndex = 1028;
             this.ultraGroupBox2.Text = "배치리스트";
             // 
@@ -270,12 +270,13 @@ namespace PAS.PMP
             this.uGrid2.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.uGrid2.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.uGrid2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uGrid2.Location = new System.Drawing.Point(3, 37);
+            this.uGrid2.Location = new System.Drawing.Point(3, 18);
             this.uGrid2.Name = "uGrid2";
-            this.uGrid2.Size = new System.Drawing.Size(1919, 210);
+            this.uGrid2.Size = new System.Drawing.Size(1918, 229);
             this.uGrid2.TabIndex = 0;
             this.uGrid2.Text = "uGrid2";
             this.uGrid2.AfterRowActivate += new System.EventHandler(this.uGrid2_AfterRowActivate);
+            this.uGrid2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.uGrid2_MouseClick);
             // 
             // ultraGroupBox3
             // 
@@ -283,7 +284,7 @@ namespace PAS.PMP
             this.ultraGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraGroupBox3.Location = new System.Drawing.Point(0, 294);
             this.ultraGroupBox3.Name = "ultraGroupBox3";
-            this.ultraGroupBox3.Size = new System.Drawing.Size(1925, 573);
+            this.ultraGroupBox3.Size = new System.Drawing.Size(1924, 573);
             this.ultraGroupBox3.TabIndex = 1029;
             this.ultraGroupBox3.Text = "슈트별 작업 요약";
             // 
@@ -349,9 +350,9 @@ namespace PAS.PMP
             this.uGrid1.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.uGrid1.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.uGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uGrid1.Location = new System.Drawing.Point(3, 37);
+            this.uGrid1.Location = new System.Drawing.Point(3, 18);
             this.uGrid1.Name = "uGrid1";
-            this.uGrid1.Size = new System.Drawing.Size(1919, 533);
+            this.uGrid1.Size = new System.Drawing.Size(1918, 552);
             this.uGrid1.TabIndex = 0;
             this.uGrid1.Text = "uGrid1";
             // 
@@ -361,14 +362,14 @@ namespace PAS.PMP
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
             this.splitter1.Location = new System.Drawing.Point(0, 294);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(1925, 3);
+            this.splitter1.Size = new System.Drawing.Size(1924, 3);
             this.splitter1.TabIndex = 1030;
             this.splitter1.TabStop = false;
             // 
             // frmTRPAS00005
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1925, 867);
+            this.ClientSize = new System.Drawing.Size(1924, 867);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.ultraGroupBox3);
             this.Controls.Add(this.ultraGroupBox2);

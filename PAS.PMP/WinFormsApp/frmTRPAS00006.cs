@@ -335,6 +335,11 @@ namespace PAS.PMP
             UltraGridHelper.RestoreActiveRow(uGrid2, _uGrid2RowKey);
         }
 
+        private void uGrid2_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.조회_Click(null, null);
+        }
+
         private void uGrid2_AfterRowActivate(object sender, EventArgs e)
         {
             DataRow oRow = ((DataRowView)uGrid2.ActiveRow.ListObject).Row;
@@ -344,9 +349,10 @@ namespace PAS.PMP
         }
 
 
+
+
         #endregion
 
-
-
+        
     }
 }

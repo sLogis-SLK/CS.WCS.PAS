@@ -157,6 +157,11 @@ namespace PAS.PMP
             //}
         }
 
+        private void uGrid3_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.조회_Click(null, null);
+        }
+
         private void uGrid3_AfterRowActivate(object sender, EventArgs e)
         {
             if (this.uGrid3.ActiveRow ==  null || this.uGrid3.ActiveRow.Index < 0)
@@ -343,7 +348,7 @@ namespace PAS.PMP
           
         }
 
-   
+        
     }
 
 }

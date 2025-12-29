@@ -59,9 +59,12 @@ namespace PAS.PMP
             Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTRPAS00007));
             this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.ultraLabel12 = new Infragistics.Win.Misc.UltraLabel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.작업일자 = new TR_Library.Controls.uCalendarCombo();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.ultraLabel11 = new Infragistics.Win.Misc.UltraLabel();
             this.조회 = new Infragistics.Win.Misc.UltraButton();
             this.ultraGroupBox2 = new Infragistics.Win.Misc.UltraGroupBox();
@@ -69,21 +72,18 @@ namespace PAS.PMP
             this.ultraGroupBox3 = new Infragistics.Win.Misc.UltraGroupBox();
             this.uGrid1 = new TR_Library.Controls.uGrid();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
             this.ultraGroupBox1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.작업일자)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).BeginInit();
             this.ultraGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uGrid2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).BeginInit();
             this.ultraGroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // ultraGroupBox1
@@ -102,15 +102,15 @@ namespace PAS.PMP
             this.ultraGroupBox1.Size = new System.Drawing.Size(1380, 40);
             this.ultraGroupBox1.TabIndex = 1027;
             // 
-            // checkBox1
+            // panel3
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(68, 12);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 9;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.panel3.Controls.Add(this.ultraLabel12);
+            this.panel3.Controls.Add(this.checkBox1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(226, 2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(91, 36);
+            this.panel3.TabIndex = 12;
             // 
             // ultraLabel12
             // 
@@ -125,6 +125,25 @@ namespace PAS.PMP
             this.ultraLabel12.TabIndex = 8;
             this.ultraLabel12.Text = "전체선택";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(68, 12);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(18, 17);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.작업일자);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(84, 2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(142, 36);
+            this.panel2.TabIndex = 11;
+            // 
             // 작업일자
             // 
             this.작업일자.DateButtons.Add(dateButton1);
@@ -133,6 +152,15 @@ namespace PAS.PMP
             this.작업일자.NonAutoSizeHeight = 21;
             this.작업일자.Size = new System.Drawing.Size(121, 21);
             this.작업일자.TabIndex = 7;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ultraLabel11);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(82, 36);
+            this.panel1.TabIndex = 10;
             // 
             // ultraLabel11
             // 
@@ -235,6 +263,7 @@ namespace PAS.PMP
             this.uGrid2.TabIndex = 0;
             this.uGrid2.Text = "uGrid2";
             this.uGrid2.AfterRowActivate += new System.EventHandler(this.uGrid2_AfterRowActivate);
+            this.uGrid2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.uGrid2_MouseClick);
             // 
             // ultraGroupBox3
             // 
@@ -324,34 +353,6 @@ namespace PAS.PMP
             this.splitter1.TabIndex = 1030;
             this.splitter1.TabStop = false;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.ultraLabel11);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(82, 36);
-            this.panel1.TabIndex = 10;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.작업일자);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(84, 2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(142, 36);
-            this.panel2.TabIndex = 11;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.ultraLabel12);
-            this.panel3.Controls.Add(this.checkBox1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(226, 2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(91, 36);
-            this.panel3.TabIndex = 12;
-            // 
             // frmTRPAS00007
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -367,18 +368,18 @@ namespace PAS.PMP
             this.Text = "거래명세서 재출력(TRPAS00007)";
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).EndInit();
             this.ultraGroupBox1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.작업일자)).EndInit();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).EndInit();
             this.ultraGroupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uGrid2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).EndInit();
             this.ultraGroupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uGrid1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }

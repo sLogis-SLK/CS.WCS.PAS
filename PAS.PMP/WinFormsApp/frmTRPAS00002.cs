@@ -232,5 +232,10 @@ namespace PAS.PMP
 
 
         #endregion
+
+        private void uGrid2_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.조회_Click(null, null);
+        }
     }
 }

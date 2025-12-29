@@ -363,6 +363,7 @@ namespace PAS.PMP
             this.uGrid3.TabIndex = 1;
             this.uGrid3.Text = "uGrid3";
             this.uGrid3.AfterRowActivate += new System.EventHandler(this.uGrid3_AfterRowActivate);
+            this.uGrid3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.uGrid3_MouseClick);
             // 
             // splitter1
             // 

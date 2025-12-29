@@ -229,7 +229,7 @@ namespace PAS.PMP
             this.작업일자.Location = new System.Drawing.Point(6, 9);
             this.작업일자.Name = "작업일자";
             this.작업일자.NonAutoSizeHeight = 21;
-            this.작업일자.Size = new System.Drawing.Size(121, 35);
+            this.작업일자.Size = new System.Drawing.Size(121, 21);
             this.작업일자.TabIndex = 7;
             // 
             // panel4
@@ -425,12 +425,13 @@ namespace PAS.PMP
             this.uGrid4.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.uGrid4.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.uGrid4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uGrid4.Location = new System.Drawing.Point(3, 37);
+            this.uGrid4.Location = new System.Drawing.Point(3, 18);
             this.uGrid4.Name = "uGrid4";
-            this.uGrid4.Size = new System.Drawing.Size(1002, 210);
+            this.uGrid4.Size = new System.Drawing.Size(1002, 229);
             this.uGrid4.TabIndex = 0;
             this.uGrid4.Text = "uGrid4";
             this.uGrid4.AfterRowActivate += new System.EventHandler(this.uGrid4_AfterRowActivate);
+            this.uGrid4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.uGrid4_MouseClick);
             // 
             // splitter1
             // 

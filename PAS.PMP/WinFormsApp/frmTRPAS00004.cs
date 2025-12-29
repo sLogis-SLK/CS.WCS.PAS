@@ -146,6 +146,12 @@ namespace PAS.PMP
 
             UltraGridHelper.RestoreActiveRow(uGrid4, _uGrid4RowKey);
         }
+
+        private void uGrid4_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.조회_Click(null, null);
+        }
+
         private void uGrid4_AfterRowActivate(object sender, EventArgs e)
         {
             DataRow oRow = ((DataRowView)uGrid4.ActiveRow.ListObject).Row;
@@ -296,5 +302,7 @@ namespace PAS.PMP
             }
 
         }
+
+        
     }
 }

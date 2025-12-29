@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZebraPrinter.cs" />
     <EmbeddedResource Include="Controls\SMPCheckBox.resx">
       <DependentUpon>SMPCheckBox.cs</DependentUpon>
     </EmbeddedResource>

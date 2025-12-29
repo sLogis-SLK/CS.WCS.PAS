@@ -165,7 +165,7 @@ namespace PAS.PMP
             this.작업일자.Location = new System.Drawing.Point(6, 7);
             this.작업일자.Name = "작업일자";
             this.작업일자.NonAutoSizeHeight = 21;
-            this.작업일자.Size = new System.Drawing.Size(121, 35);
+            this.작업일자.Size = new System.Drawing.Size(121, 21);
             this.작업일자.TabIndex = 7;
             // 
             // panel1
@@ -341,12 +341,13 @@ namespace PAS.PMP
             this.uGrid2.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.uGrid2.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.uGrid2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uGrid2.Location = new System.Drawing.Point(3, 37);
+            this.uGrid2.Location = new System.Drawing.Point(3, 18);
             this.uGrid2.Name = "uGrid2";
-            this.uGrid2.Size = new System.Drawing.Size(1374, 210);
+            this.uGrid2.Size = new System.Drawing.Size(1374, 229);
             this.uGrid2.TabIndex = 1;
             this.uGrid2.Text = "uGrid2";
             this.uGrid2.AfterRowActivate += new System.EventHandler(this.uGrid2_AfterRowActivate);
+            this.uGrid2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.uGrid2_MouseClick);
             // 
             // ultraGroupBox3
             // 
@@ -420,9 +421,9 @@ namespace PAS.PMP
             this.uGrid1.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.uGrid1.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.uGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uGrid1.Location = new System.Drawing.Point(3, 37);
+            this.uGrid1.Location = new System.Drawing.Point(3, 18);
             this.uGrid1.Name = "uGrid1";
-            this.uGrid1.Size = new System.Drawing.Size(1374, 399);
+            this.uGrid1.Size = new System.Drawing.Size(1374, 418);
             this.uGrid1.TabIndex = 0;
             this.uGrid1.Text = "uGrid1";
             // 
