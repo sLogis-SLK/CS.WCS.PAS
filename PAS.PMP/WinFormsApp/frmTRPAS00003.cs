@@ -13,6 +13,8 @@ using System.Drawing;
 using Infragistics.Win.UltraWinGrid;
 using System.Linq;
 using PAS.PMP.PasWCS;
+using System.Collections.Generic;
+using PAS.PMP.Utils;
 
 namespace PAS.PMP
 {
@@ -38,6 +40,8 @@ namespace PAS.PMP
         string _박스번호 = "";
         string _장비명 = string.Empty;
         string _배치구분 = string.Empty;
+
+        private Dictionary<string, string> _uGrid4RowKey;
         #endregion
 
         #region 초기화
@@ -245,7 +249,14 @@ namespace PAS.PMP
 
         private void 조회_Click(object sender, EventArgs e)
         {
+            _uGrid4RowKey = UltraGridHelper.RememberActiveRow(
+                uGrid4,
+                "배치번호",
+                "분류번호"
+            );
             분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 1);
+
+            UltraGridHelper.RestoreActiveRow(uGrid4, _uGrid4RowKey);
         }
 
         private void uGrid4_AfterRowActivate(object sender, EventArgs e)

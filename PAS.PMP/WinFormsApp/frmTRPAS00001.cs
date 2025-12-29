@@ -1,6 +1,8 @@
 ﻿using CrystalDecisions.Windows.Forms;
 using Infragistics.Win.UltraWinGrid;
+using PAS.PMP.Utils;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -24,6 +26,8 @@ namespace PAS.PMP
 
         string _배치번호 = "";
         string _분류번호 = "";
+
+        private Dictionary<string, string> _uGrid3RowKey;
 
         enum enum신규입력
         {
@@ -204,8 +208,18 @@ namespace PAS.PMP
 
         private void 조회_Click(object sender, EventArgs e)
         {
+            _uGrid3RowKey = UltraGridHelper.RememberActiveRow(
+                uGrid3,
+                "배치번호",
+                "분류번호"
+            );
+
             분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.조회시작일.Value).ToString("yyyyMMdd"), 1);
+
+            UltraGridHelper.RestoreActiveRow(uGrid3, _uGrid3RowKey);
         }
+
+      
 
         public void OnPrint(bool bPrevView)
         {

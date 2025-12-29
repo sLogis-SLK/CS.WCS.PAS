@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -11,8 +12,10 @@ using DbProvider;
 using Infragistics.Win.UltraWinGrid;
 using PAS.Core;
 using PAS.PMP.Services;
+using PAS.PMP.Utils;
 using PAS.PMP.WinFormsApp.Dialog;
 using TR_Common;
+using TR_Library.Controls;
 using TR_Provider;
 
 namespace PAS.PMP
@@ -30,6 +33,8 @@ namespace PAS.PMP
         string _분류번호 = string.Empty;
         string _배치번호 = string.Empty;
         string _장비명 = string.Empty;
+
+        private Dictionary<string, string> _uGrid2RowKey;
         #endregion
 
         #region 초기화
@@ -95,7 +100,15 @@ namespace PAS.PMP
         private void 조회_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
+            _uGrid2RowKey = UltraGridHelper.RememberActiveRow(
+               uGrid2,
+               "배치번호",
+               "분류번호"
+           );
+
             분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 1);
+
+            UltraGridHelper.RestoreActiveRow(uGrid2, _uGrid2RowKey);
             Cursor = Cursors.Default;
         }
 

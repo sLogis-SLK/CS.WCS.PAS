@@ -20,7 +20,7 @@ namespace PAS.PMP
             {
                 ValueList oValueList = new ValueList();
                 oValueList.ValueListItems.Add("0", "백업");
-                //oValueList.ValueListItems.Add("1", "삭제");
+                oValueList.ValueListItems.Add("1", "삭제");
                 return oValueList;
             }
         }

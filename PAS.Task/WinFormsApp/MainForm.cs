@@ -83,7 +83,12 @@ namespace PAS.Task
             {
                 //스크린 최상단으로 위치이동
                 Screen screen = Screen.FromPoint(Location);
-                Location = new Point(screen.WorkingArea.X, screen.WorkingArea.Y);
+
+                //Y축의 중간으로 가도록
+                int centerY =
+                    screen.WorkingArea.Y +
+                    (screen.WorkingArea.Height - this.Height) / 2;
+                Location = new Point(screen.WorkingArea.X, centerY);
 
                 //최초 초기화 및 정보 가져오기
                 GlobalClass.InitializationSettings();

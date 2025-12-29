@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Infragistics.Win.UltraWinGrid;
 using PAS.PMP.Report;
+using PAS.PMP.Utils;
 using TR_Common;
 using TR_Library.Controls;
 using TR_Provider;
@@ -19,6 +21,8 @@ namespace PAS.PMP
 
         private BindingSource m_분류_작업배치그룹BS = new BindingSource();
         private BindingSource m_분류_상품별미출고BS = new BindingSource();
+
+        private Dictionary<string, string> _uGrid2RowKey;
 
         #endregion
 
@@ -189,9 +193,18 @@ namespace PAS.PMP
 
         #region Event
 
+   
+
         private void 조회_Click(object sender, EventArgs e)
         {
+            _uGrid2RowKey = UltraGridHelper.RememberActiveRow(
+                uGrid2,
+                "배치번호",
+                "분류번호"
+            );
             분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 1);
+
+            UltraGridHelper.RestoreActiveRow(uGrid2, _uGrid2RowKey);
         }
 
         private void uGrid2_AfterRowActivate(object sender, EventArgs e)
