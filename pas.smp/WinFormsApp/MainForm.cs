@@ -33,6 +33,9 @@ namespace PAS.SMP
 
         //Socket 통신용
         private Socket socket;
+        private Thread thread;
+        private bool isThread {  get; set; }
+        private bool isEvent { get; set; }
 
         #endregion
 
@@ -114,7 +117,7 @@ namespace PAS.SMP
 
             //이벤트모음
             timer출하상태확인.Elapsed += Timer출하상태확인_Tick;
-            timer출하박스확인.Elapsed += Timer출하박스확인_Tick;
+            //timer출하박스확인.Elapsed += Timer출하박스확인_Tick;
 
             미발행대상버튼.Click += new System.EventHandler(this.미발행대상버튼_Click);
             다시시작버튼.Click += new System.EventHandler(this.다시시작버튼_Click);
@@ -240,10 +243,45 @@ namespace PAS.SMP
                 LogUtil.Log((object)"[Refresh시리얼포트]", (object)ex.Message);
             }
 
+            if (this.thread != null)
+            {
+                this.isThread = false;
+                this.thread.Abort();
+                this.thread = null;
+            }
+            this.isThread = true;
+            this.thread = new Thread(new ThreadStart(this.OnThread));
+            this.thread.Start();
+
             //쓰레드 다시 동작
-            timer출하박스확인.Stop();//종료
-            timer출하박스확인.Interval = 100; //0.1초
-            timer출하박스확인.Start();//시작
+            //timer출하박스확인.Stop();//종료
+            //timer출하박스확인.Interval = 100; //0.1초
+            //timer출하박스확인.Start();//시작
+        }
+
+        private void OnThread ()
+        {
+            while (this.isThread)
+            {
+                DateTime dateTime = DateTime.Now;
+                this.Invoke(new Action(() => { 현시간.Text = dateTime.ToString("G"); }));
+                if (!this.isEvent)
+                {
+                    try
+                    {
+                        this.isEvent = true;
+                        출하박스정보Receive();
+                    }
+                    catch (Exception ex)
+                    {
+                        LogUtil.Log((object)"[SMP9009]", (object)ex.Message);
+                    }
+                    finally
+                    {
+                        this.isEvent = false;
+                    }
+                }
+            }
         }
 
         private bool Disconnection()
@@ -377,7 +415,7 @@ namespace PAS.SMP
             string s중량 = string.Empty;
 
             //박스바코드랑 같으면 동일한 정보이기에 PASS
-            if (m박스바코드 == sList[0].Trim())
+            if (m박스바코드 == sList[0].Trim() && m재발행 == false)
             {
                 return true;
             }
@@ -483,6 +521,7 @@ namespace PAS.SMP
                     this.uMessage1.ShowMessage(uMessage.MessageType.재발행);
                     Application.DoEvents();
                 }));
+                return false;
             }
 
             string sB코드 = row["브랜드코드"].ToString();
@@ -655,6 +694,7 @@ namespace PAS.SMP
                 //작업중시
                 timer출하상태확인?.Stop();
                 timer출하박스확인?.Stop();
+                this.isThread = true;
 
                 if (시리얼포트?.IsOpen == true)
                     시리얼포트.Close();
@@ -707,6 +747,7 @@ namespace PAS.SMP
             {
                 timer출하상태확인?.Stop();
                 timer출하박스확인?.Stop();
+                this.isThread = true;
 
                 if (시리얼포트?.IsOpen == true)
                     시리얼포트.Close();
