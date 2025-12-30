@@ -211,6 +211,11 @@ namespace PAS.PMP
                     _배치번호,
                     1
                 );
+
+                if (this.m_분류_슈트별미출고Table.Rows.Count == 0)
+                {
+                    this.m_분류_슈트별미출고상세Table.Clear();
+                }
             }
             catch (Exception ex)
             {

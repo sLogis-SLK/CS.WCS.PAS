@@ -178,6 +178,12 @@ namespace PAS.PMP
                 _장비명 = oRow["장비명"].ToString();
                 _배치구분 = oRow["배치구분"].ToString();
                 분류.박스재발행조회(m_분류_박스재발행Table, _분류번호, _배치번호, 1);
+
+                if (m_분류_박스재발행Table.Rows.Count == 0)
+                {
+                    m_분류_박스재발행_슈트별Table.Clear();
+                    m_분류_박스재발행_슈트별상세Table.Clear();
+                }
             }
             catch (Exception ex)
             {

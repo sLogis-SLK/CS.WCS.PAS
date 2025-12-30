@@ -289,6 +289,12 @@ namespace PAS.PMP
                 _분류번호 = oRow["분류번호"].ToString();
                 _장비명 = oRow["장비명"].ToString();
                 분류.박스재발행조회(m_분류_박스재발행Table, _분류번호, _배치번호, 1);
+
+                if (m_분류_박스재발행Table.Rows.Count == 0)
+                {
+                    m_분류_박스재발행_슈트별Table.Clear();
+                    m_분류_박스재발행_슈트별상세Table.Clear();
+                }
             }
             catch (Exception ex)
             {
@@ -314,6 +320,11 @@ namespace PAS.PMP
             _서브슈트번호 = oRow["서브슈트번호"].ToString();
             _배치구분 = oRow["배치구분"].ToString();
             분류.슈트별박스풀조회(m_분류_박스재발행_슈트별Table, _분류번호, _배치번호, _슈트번호, _서브슈트번호, 1);
+
+            if (m_분류_박스재발행_슈트별Table.Rows.Count == 0)
+            {
+                m_분류_박스재발행_슈트별상세Table.Clear();
+            }
         }
 
         private void uGrid2_AfterRowActivate(object sender, EventArgs e)
