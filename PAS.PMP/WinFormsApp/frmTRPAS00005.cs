@@ -110,15 +110,25 @@ namespace PAS.PMP
 
             UltraGridHelper.RestoreActiveRow(uGrid2, _uGrid2RowKey);
             Cursor = Cursors.Default;
+
+            if (m_분류_작업배치그룹Table.Rows.Count == 0)
+            {
+                m_분류_마지막박스내역Table.Clear();
+                return;
+            }
+
+            if (uGrid2.ActiveRow == null)
+            {
+                uGrid2.ActiveRow = uGrid2.Rows[0];
+            }
+
+            Load마지막박스ByActiveRow();
         }
 
-        private void uGrid2_MouseClick(object sender, MouseEventArgs e)
+        private void Load마지막박스ByActiveRow()
         {
-            this.조회_Click(null, null);
-
             if (this.uGrid2.ActiveRow == null || this.uGrid2.ActiveRow.Index < 0)
                 return;
-
 
             Cursor = Cursors.WaitCursor;
 
@@ -141,9 +151,9 @@ namespace PAS.PMP
             }
         }
 
-        private void uGrid2_AfterRowActivate(object sender, EventArgs e)
+        private void uGrid2_MouseClick(object sender, MouseEventArgs e)
         {
-            
+            this.조회_Click(null, null);
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

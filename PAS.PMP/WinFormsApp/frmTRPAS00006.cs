@@ -333,28 +333,49 @@ namespace PAS.PMP
             분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 1);
 
             UltraGridHelper.RestoreActiveRow(uGrid2, _uGrid2RowKey);
+
+            if (m_분류_작업배치그룹Table.Rows.Count == 0)
+            {
+                m_분류_상품발송장대상Table.Clear();
+                return;
+            }
+
+            if (uGrid2.ActiveRow == null)
+            {
+                uGrid2.ActiveRow = uGrid2.Rows[0];
+            }
+
+            Load뷴류상품발송ByActiveRow();
+        }
+
+        private void Load뷴류상품발송ByActiveRow()
+        {
+            if (this.uGrid2.ActiveRow == null || this.uGrid2.ActiveRow.Index < 0)
+                return;
+
+            Cursor = Cursors.WaitCursor;
+
+            try
+            {
+                DataRow oRow = ((DataRowView)uGrid2.ActiveRow.ListObject).Row;
+                _장비명 = oRow["장비명"].ToString();
+                this.분류_상품발송장_조회(oRow["분류번호"].ToString(), oRow["배치번호"].ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Cursor = Cursors.Default;
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
         }
 
         private void uGrid2_MouseClick(object sender, MouseEventArgs e)
         {
             this.조회_Click(null, null);
-
-            DataRow oRow = ((DataRowView)uGrid2.ActiveRow.ListObject).Row;
-            _장비명 = oRow["장비명"].ToString();
-            this.분류_상품발송장_조회(oRow["분류번호"].ToString(), oRow["배치번호"].ToString());
         }
-
-        private void uGrid2_AfterRowActivate(object sender, EventArgs e)
-        {
-          
-
-        }
-
-
-
-
         #endregion
-
-        
     }
 }

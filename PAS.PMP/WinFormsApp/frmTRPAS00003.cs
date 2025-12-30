@@ -257,24 +257,55 @@ namespace PAS.PMP
             분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 1);
 
             UltraGridHelper.RestoreActiveRow(uGrid4, _uGrid4RowKey);
+
+            if (m_분류_작업배치그룹Table.Rows.Count == 0)
+            {
+                m_분류_박스재발행Table.Clear();
+                m_분류_박스재발행_슈트별Table.Clear();
+                m_분류_박스재발행_슈트별상세Table.Clear();
+
+                return;
+            }
+
+            if (uGrid4.ActiveRow == null)
+            {
+                uGrid4.ActiveRow = uGrid4.Rows[0];
+            }
+
+            Load박스재발행ByActiveRow();
+        }
+
+        private void Load박스재발행ByActiveRow()
+        {
+            if (this.uGrid4.ActiveRow == null || this.uGrid4.ActiveRow.Index < 0)
+                return;
+
+            Cursor = Cursors.WaitCursor;
+
+            try
+            {
+                DataRow oRow = ((DataRowView)uGrid4.ActiveRow.ListObject).Row;
+                _배치번호 = oRow["배치번호"].ToString();
+                _분류번호 = oRow["분류번호"].ToString();
+                _장비명 = oRow["장비명"].ToString();
+                분류.박스재발행조회(m_분류_박스재발행Table, _분류번호, _배치번호, 1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Cursor = Cursors.Default;
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
         }
 
         private void uGrid4_MouseClick(object sender, MouseEventArgs e)
         {
             this.조회_Click((object)null, EventArgs.Empty);
-
-            DataRow oRow = ((DataRowView)uGrid4.ActiveRow.ListObject).Row;
-            _배치번호 = oRow["배치번호"].ToString();
-            _분류번호 = oRow["분류번호"].ToString();
-            _장비명 = oRow["장비명"].ToString();
-            분류.박스재발행조회(m_분류_박스재발행Table, _분류번호, _배치번호, 1);
         }
 
-        private void uGrid4_AfterRowActivate(object sender, EventArgs e)
-        {
-       
-            
-        }
 
         private void uGrid1_AfterRowActivate(object sender, EventArgs e)
         {

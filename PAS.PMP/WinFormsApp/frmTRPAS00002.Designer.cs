@@ -346,7 +346,6 @@ namespace PAS.PMP
             this.uGrid2.Size = new System.Drawing.Size(1374, 229);
             this.uGrid2.TabIndex = 1;
             this.uGrid2.Text = "uGrid2";
-            this.uGrid2.AfterRowActivate += new System.EventHandler(this.uGrid2_AfterRowActivate);
             this.uGrid2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.uGrid2_MouseClick);
             // 
             // ultraGroupBox3
@@ -460,7 +459,6 @@ namespace PAS.PMP
             this.Name = "frmTRPAS00002";
             this.Tag = "TRPAS00002";
             this.Text = "미출고 내역(상품별)(TRPAS00002)";
-            this.Load += new System.EventHandler(this.조회_Click);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).EndInit();
             this.ultraGroupBox1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

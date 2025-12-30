@@ -190,12 +190,23 @@ namespace PAS.PMP
             분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.작업일자.Value).ToString("yyyyMMdd"), 1);
 
             UltraGridHelper.RestoreActiveRow(uGrid2, _uGrid2RowKey);
+
+            if (m_분류_작업배치그룹Table.Rows.Count == 0)
+            {
+                m_출하_박스별패킹대상Table.Clear();
+                return;
+            }
+
+            if (uGrid2.ActiveRow == null)
+            {
+                uGrid2.ActiveRow = uGrid2.Rows[0];
+            }
+
+            Load출하박스별패킹대상ByActiveRow();
         }
 
-        private void uGrid2_MouseClick(object sender, MouseEventArgs e)
+        private void Load출하박스별패킹대상ByActiveRow()
         {
-            this.조회_Click(null, null);
-
             if (this.uGrid2.ActiveRow == null || this.uGrid2.ActiveRow.Index < 0)
                 return;
 
@@ -215,6 +226,13 @@ namespace PAS.PMP
             {
                 Cursor = Cursors.Default;
             }
+        }
+
+        private void uGrid2_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.조회_Click(null, null);
+
+           
         }
         private void uGrid2_AfterRowActivate(object sender, EventArgs e)
         {

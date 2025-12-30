@@ -286,7 +286,6 @@ namespace PAS.PMP
             this.uGrid4.Size = new System.Drawing.Size(1369, 229);
             this.uGrid4.TabIndex = 0;
             this.uGrid4.Text = "uGrid4";
-            this.uGrid4.AfterRowActivate += new System.EventHandler(this.uGrid4_AfterRowActivate);
             this.uGrid4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.uGrid4_MouseClick);
             // 
             // splitter1

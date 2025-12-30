@@ -111,7 +111,7 @@ namespace PAS.PMP
             this.checkBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.checkBox1.Location = new System.Drawing.Point(278, 2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(18, 40);
+            this.checkBox1.Size = new System.Drawing.Size(15, 40);
             this.checkBox1.TabIndex = 9;
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -275,7 +275,6 @@ namespace PAS.PMP
             this.uGrid2.Size = new System.Drawing.Size(1918, 229);
             this.uGrid2.TabIndex = 0;
             this.uGrid2.Text = "uGrid2";
-            this.uGrid2.AfterRowActivate += new System.EventHandler(this.uGrid2_AfterRowActivate);
             this.uGrid2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.uGrid2_MouseClick);
             // 
             // ultraGroupBox3

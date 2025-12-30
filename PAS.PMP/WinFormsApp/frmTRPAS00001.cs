@@ -160,7 +160,38 @@ namespace PAS.PMP
         private void uGrid3_MouseClick(object sender, MouseEventArgs e)
         {
             this.조회_Click(null, null);
+        }
 
+        private void 조회_Click(object sender, EventArgs e)
+        {
+            _uGrid3RowKey = UltraGridHelper.RememberActiveRow(
+                uGrid3,
+                "배치번호",
+                "분류번호"
+            );
+
+            분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.조회시작일.Value).ToString("yyyyMMdd"), 1);
+
+            UltraGridHelper.RestoreActiveRow(uGrid3, _uGrid3RowKey);
+
+            if (this.m_분류_작업배치그룹Table.Rows.Count == 0)
+            {
+                this.m_분류_슈트별미출고Table.Clear();
+                this.m_분류_슈트별미출고상세Table.Clear();
+
+                return;
+            }
+
+            if (uGrid3.ActiveRow == null)
+            {
+                uGrid3.ActiveRow = uGrid3.Rows[0];
+            }
+
+            Load슈트별미출고ByActiveRow();
+        }
+
+        private void Load슈트별미출고ByActiveRow()
+        {
             if (this.uGrid3.ActiveRow == null || this.uGrid3.ActiveRow.Index < 0)
                 return;
 
@@ -168,15 +199,22 @@ namespace PAS.PMP
 
             try
             {
-                DataRow oRow = ((DataRowView)uGrid3.ActiveRow.ListObject).Row;
+                DataRow oRow =
+                    ((DataRowView)this.uGrid3.ActiveRow.ListObject).Row;
+
                 _배치번호 = oRow["배치번호"].ToString();
                 _분류번호 = oRow["분류번호"].ToString();
-                분류.미출고슈트별조회(m_분류_슈트별미출고Table, oRow["분류번호"].ToString(), oRow["배치번호"].ToString(), 1);
+
+                분류.미출고슈트별조회(
+                    m_분류_슈트별미출고Table,
+                    _분류번호,
+                    _배치번호,
+                    1
+                );
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, this.Text);
-                Cursor = Cursors.Default;
             }
             finally
             {
@@ -184,10 +222,6 @@ namespace PAS.PMP
             }
         }
 
-        private void uGrid3_AfterRowActivate(object sender, EventArgs e)
-        {
-            
-        }
 
         private void uGrid1_AfterRowActivate(object sender, EventArgs e)
         {
@@ -211,21 +245,6 @@ namespace PAS.PMP
                 Cursor= Cursors.Default;
             }
         }
-
-
-        private void 조회_Click(object sender, EventArgs e)
-        {
-            _uGrid3RowKey = UltraGridHelper.RememberActiveRow(
-                uGrid3,
-                "배치번호",
-                "분류번호"
-            );
-
-            분류.배치리스트조회(m_분류_작업배치그룹Table, Convert.ToDateTime(this.조회시작일.Value).ToString("yyyyMMdd"), 1);
-
-            UltraGridHelper.RestoreActiveRow(uGrid3, _uGrid3RowKey);
-        }
-
       
 
         public void OnPrint(bool bPrevView)
