@@ -700,10 +700,16 @@ namespace PAS.SMP
                 sList.Add(바코드.Text);
 
                 체크후화면에출력(sList);
+                
             }
             catch (Exception EX)
             {
                 MessageBox.Show(EX.Message);
+            }
+            finally
+            {
+                this.바코드.Focus();
+                this.바코드.SelectAll();
             }
         }
     }
