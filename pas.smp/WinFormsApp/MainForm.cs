@@ -91,10 +91,6 @@ namespace PAS.SMP
             base.OnShown(e);
             if (DesignMode) return; //디자인모드일때 아래 부분 적용안되게 함.
 
-            //구초기화..
-            //GlobalClass.GetSetting();
-            //GlobalClass.IsLog = true;
-
             //최초 초기화 및 정보 가져오기
             GlobalClass.InitializationSettings();
 
@@ -115,6 +111,9 @@ namespace PAS.SMP
                     //실패
                 }
             }
+
+            //timer UI 동기화
+            timer출하상태확인.SynchronizingObject = this;
 
             //이벤트모음
             timer출하상태확인.Elapsed += Timer출하상태확인_Tick;
@@ -181,11 +180,6 @@ namespace PAS.SMP
                 Common.SetGridHiddenColumn(uGrid1, null);
                 Common.SetGridEditColumn(uGrid1, null);
 
-                //uGrid1.DisplayLayout.Bands[0].Columns["등록일시"].Format = "yy-MM-dd HH:mm";
-                //uGrid1.DisplayLayout.Bands[0].Columns["수정일시"].Format = "yy-MM-dd HH:mm";
-
-                //Common.uGridSummarySet(uGrid1, SummaryType.Count, "센터코드");
-
                 #endregion
 
                 #region uGrid2 BindingSource 초기화
@@ -200,11 +194,6 @@ namespace PAS.SMP
                 Common.SetGridHiddenColumn(uGrid2, null);
                 Common.SetGridEditColumn(uGrid2, null);
 
-                //uGrid2.DisplayLayout.Bands[0].Columns["등록일시"].Format = "yy-MM-dd HH:mm";
-                //uGrid2.DisplayLayout.Bands[0].Columns["수정일시"].Format = "yy-MM-dd HH:mm";
-                
-                //Common.uGridSummarySet(uGrid2, SummaryType.Count, "브랜드코드");
-
                 #endregion
             }
             catch (Exception ex)
@@ -217,18 +206,18 @@ namespace PAS.SMP
         {
             if (this.thread != null)
             {
-                isThread = false;
+                this.isThread = false;
                 this.thread.Abort();
                 this.thread = (Thread)null;
             }
-            isThread = true;
+            this.isThread = true;
             this.thread = new Thread(new ThreadStart(this.OnThread));
             this.thread.Start();
         }
 
         private void OnThread()
         {
-            while (isThread)
+            while (this.isThread)
             {
                 DateTime dateTime = DateTime.Now;
                 this.Invoke(new Action(() => { 현시간.Text = dateTime.ToString("G"); }));
@@ -474,15 +463,12 @@ namespace PAS.SMP
             }
 
             string sB코드 = row["브랜드코드"].ToString();
-            //row["브랜드명"].ToString();
             string s센터코드 = row["센터코드"].ToString();
             string s배송사코드 = row["배송사코드"].ToString();
             s배송사명 = row["배송사명"].ToString();
             string s점코드 = row["점코드"].ToString();
             s매장명 = row["점명"].ToString();
             s내품수 = row["내품수"].ToString();
-            //row["점주소"].ToString();
-            //row["점전화번호1"].ToString();
             s마지막박스 = row["마지막박스여부"].ToString() == "1" ? GlobalClass.LAST_BOX_IDENTIFIER : string.Empty;
             s실배치번호 = row["실배치번호"].ToString();
             string str2 = row["출력값1"].ToString();
@@ -490,11 +476,6 @@ namespace PAS.SMP
             string str4 = row["출력값3"].ToString();
             string str5 = row["출력값4"].ToString();
             string str6 = row["출력값5"].ToString();
-            //row["출력값6"].ToString();
-            //row["출력값7"].ToString();
-            //row["출력값8"].ToString();
-            //row["출력값9"].ToString();
-            //row["출력값10"].ToString();
             if (row["배송사코드"].ToString() == string.Empty)
             {
                 this.uMessage1.Invoke(new Action(() =>
