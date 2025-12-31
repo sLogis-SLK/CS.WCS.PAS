@@ -375,24 +375,24 @@ namespace PAS.SMP
                 result = false;
             }
 
-            double weight;
-            bool isDouble = ConvertUtil.ObjectToDouble(sList[sList.Count - 2], out weight);
+            //double weight;
+            //bool isDouble = ConvertUtil.ObjectToDouble(sList[sList.Count - 2], out weight);
 
-            if (isDouble == false && result == false)//숫자아닌형태로 들어오고, 단위가 KG 이 아니면??
-            {
-                result = false;
-            }
-            else if (weight <= (double)0) //중량이 없으면
-            {
-                result = false;
-            }
+            //if (isDouble == false && result == false)//숫자아닌형태로 들어오고, 단위가 KG 이 아니면??
+            //{
+            //    result = false;
+            //}
+            //else if (weight <= (double)0) //중량이 없으면
+            //{
+            //    result = false;
+            //}
 
-            //중량등이 안넘어와 있을때 중량 무시인경우 - 기본값 주고 실행하도록 함.
-            if (result && m중량무시)
-            {
-                sList[sList.Count - 2] = "100";//중량무시일경우
-                result = true;
-            }
+            ////중량등이 안넘어와 있을때 중량 무시인경우 - 기본값 주고 실행하도록 함.
+            //if (result && m중량무시)
+            //{
+            //    sList[sList.Count - 2] = "100";//중량무시일경우
+            //    result = true;
+            //}
             #endregion
 
             this.중량무시_Check.Invoke(new Action(() => this.중량무시_Check.Checked = false));
@@ -403,9 +403,7 @@ namespace PAS.SMP
                 s슈트번호 = sList[0].Substring(8, 3);
                 s박스번호 = sList[0].Substring(11, 3);
 
-                s중량 = sList[5] + sList[6];
-                s중량 = s중량.Replace("U", string.Empty);
-                s중량 = s중량.Replace("u", string.Empty);
+                s중량 = "-";
                 
                 string s배치번호 = sList[0].Substring(0, 8);
 
@@ -605,7 +603,7 @@ namespace PAS.SMP
                     timer출하상태확인.Interval = 100; //2초
                     timer출하상태확인.Start();  //시작
 
-                    Refresh쓰레드();
+                    //Refresh쓰레드();
                 }
                 else
                 {
@@ -686,5 +684,23 @@ namespace PAS.SMP
         }
 
         #endregion
+
+        private void 바코드_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Enter)
+                return;
+
+            try
+            {
+
+
+
+                체크후화면에출력(sList);
+            }
+            catch (Exception EX)
+            {
+
+            }
+        }
     }
 }

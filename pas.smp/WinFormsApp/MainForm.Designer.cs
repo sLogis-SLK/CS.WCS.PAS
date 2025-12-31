@@ -66,8 +66,8 @@ namespace PAS.SMP
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             this.업데이트 = new Infragistics.Win.Misc.UltraButton();
             this.종료버튼 = new Infragistics.Win.Misc.UltraButton();
             this.설정버튼 = new Infragistics.Win.Misc.UltraButton();
@@ -105,6 +105,7 @@ namespace PAS.SMP
             this.ultraButton1 = new Infragistics.Win.Misc.UltraButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.uMessage1 = new PAS.SMP.uMessage();
+            this.바코드 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
             this.ultraGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).BeginInit();
@@ -563,12 +564,12 @@ namespace PAS.SMP
             // 
             // HeaderText
             // 
-            appearance25.BackColor = System.Drawing.Color.LightSlateGray;
-            appearance25.FontData.BoldAsString = "True";
-            appearance25.ForeColor = System.Drawing.Color.White;
-            appearance25.TextHAlignAsString = "Center";
-            appearance25.TextVAlignAsString = "Middle";
-            this.HeaderText.Appearance = appearance25;
+            appearance27.BackColor = System.Drawing.Color.LightSlateGray;
+            appearance27.FontData.BoldAsString = "True";
+            appearance27.ForeColor = System.Drawing.Color.White;
+            appearance27.TextHAlignAsString = "Center";
+            appearance27.TextVAlignAsString = "Middle";
+            this.HeaderText.Appearance = appearance27;
             this.HeaderText.Dock = System.Windows.Forms.DockStyle.Left;
             this.HeaderText.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.HeaderText.Location = new System.Drawing.Point(3, 16);
@@ -579,8 +580,8 @@ namespace PAS.SMP
             // 
             // 현시간
             // 
-            appearance26.TextHAlignAsString = "Right";
-            this.현시간.Appearance = appearance26;
+            appearance28.TextHAlignAsString = "Right";
+            this.현시간.Appearance = appearance28;
             this.현시간.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.현시간.Location = new System.Drawing.Point(0, 794);
             this.현시간.Name = "현시간";
@@ -599,12 +600,13 @@ namespace PAS.SMP
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 4;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.87898F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.48832F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.57113F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.955414F));
             this.tableLayoutPanel3.Controls.Add(this.ultraButton1, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.comboBox1, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.바코드, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -617,9 +619,9 @@ namespace PAS.SMP
             // 
             this.ultraButton1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraButton1.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Bold);
-            this.ultraButton1.Location = new System.Drawing.Point(567, 3);
+            this.ultraButton1.Location = new System.Drawing.Point(826, 3);
             this.ultraButton1.Name = "ultraButton1";
-            this.ultraButton1.Size = new System.Drawing.Size(182, 56);
+            this.ultraButton1.Size = new System.Drawing.Size(103, 56);
             this.ultraButton1.TabIndex = 1;
             this.ultraButton1.Text = "시작";
             this.ultraButton1.Click += new System.EventHandler(this.시작버튼_Click);
@@ -630,10 +632,10 @@ namespace PAS.SMP
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("굴림", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(198, 10);
+            this.comboBox1.Location = new System.Drawing.Point(640, 10);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(10);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(356, 41);
+            this.comboBox1.Size = new System.Drawing.Size(173, 41);
             this.comboBox1.TabIndex = 0;
             // 
             // uMessage1
@@ -644,6 +646,16 @@ namespace PAS.SMP
             this.uMessage1.Name = "uMessage1";
             this.uMessage1.Size = new System.Drawing.Size(398, 198);
             this.uMessage1.TabIndex = 9;
+            // 
+            // 바코드
+            // 
+            this.바코드.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.바코드.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.바코드.Location = new System.Drawing.Point(3, 3);
+            this.바코드.Name = "바코드";
+            this.바코드.Size = new System.Drawing.Size(624, 39);
+            this.바코드.TabIndex = 2;
+            this.바코드.KeyDown += new System.Windows.Forms.KeyEventHandler(this.바코드_KeyDown);
             // 
             // MainForm
             // 
@@ -675,6 +687,7 @@ namespace PAS.SMP
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox6)).EndInit();
             this.ultraGroupBox6.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -717,6 +730,7 @@ namespace PAS.SMP
         private ComboBox comboBox1;
         private Infragistics.Win.Misc.UltraButton ultraButton1;
         private TableLayoutPanel tableLayoutPanel3;
+        private TextBox 바코드;
     }
 }
 
