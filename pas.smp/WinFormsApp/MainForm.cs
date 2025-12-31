@@ -369,11 +369,11 @@ namespace PAS.SMP
             */
             bool result = true;
 
-            //단위 KG 이 아닌경우
-            if (sList[sList.Count - 1].ToUpper() != "KG")
-            {
-                result = false;
-            }
+            ////단위 KG 이 아닌경우
+            //if (sList[sList.Count - 1].ToUpper() != "KG")
+            //{
+            //    result = false;
+            //}
 
             //double weight;
             //bool isDouble = ConvertUtil.ObjectToDouble(sList[sList.Count - 2], out weight);
@@ -569,7 +569,7 @@ namespace PAS.SMP
 
             LogUtil.History((object)s바코드, (object)s중량);
             this.재발행_Check.Invoke(new Action(() => this.재발행_Check.Checked = false));
-
+            this.바코드.Focus();
             return true;
         }
 
@@ -692,14 +692,18 @@ namespace PAS.SMP
 
             try
             {
-
-
+                if(바코드.Text == "")
+                {
+                    return;
+                }
+                List<string> sList = new List<string>();
+                sList.Add(바코드.Text);
 
                 체크후화면에출력(sList);
             }
             catch (Exception EX)
             {
-
+                MessageBox.Show(EX.Message);
             }
         }
     }
